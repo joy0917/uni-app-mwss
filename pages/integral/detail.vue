@@ -1,6 +1,6 @@
 <template>
 	<view class="container">
-		商品详情
+		积分商城
 	</view>
 </template>
 

@@ -40,11 +40,65 @@
 					"bounce": "vertical",
 					"titleNView": {
 						"buttons": [{
-							"text": "注册/登陆",
+							"text": "登陆",
 							"fontSize": "14"
 						}]
 					}
 				}
+			}
+		},
+		{
+			"path": "pages/user/login",
+			"style": {
+				"navigationBarTitleText": "登陆"
+			}
+		},
+		{
+			"path": "pages/user/register",
+			"style": {
+				"navigationBarTitleText": "注册"
+			}
+		},
+		{
+			"path": "pages/index/invest",
+			"style": {
+				"navigationBarTitleText": "如何投资"
+			}
+		},
+		{
+			"path": "pages/index/invest-detail",
+			"style": {
+				"navigationBarTitleText": "投资详情"
+			}
+		},
+		{
+			"path" : "pages/index/calculator",
+			"style": {
+				"navigationBarTitleText": "计算器"
+			}
+		},
+		{
+			"path" : "pages/index/download",
+			"style": {
+				"navigationBarTitleText": "APP下载"
+			} 
+		},
+		{
+			"path" : "pages/index/pay",
+			"style": {
+				"navigationBarTitleText": "马上充值"
+			}
+		},
+		{
+			"path" : "pages/index/withdraw",
+			"style": {
+				"navigationBarTitleText": "快速提现"
+			}
+		},
+		{
+			"path" : "pages/index/invite",
+			"style": {
+				"navigationBarTitleText": "邀请好友"
 			}
 		},
 		{
@@ -54,7 +108,19 @@
 			}
 		},
 		{
-			"path": "pages/member/index",
+			"path" : "pages/integral/log",
+			"style": {
+				"navigationBarTitleText": "兑换记录"
+			}
+		},
+		{
+			"path": "pages/integral/detail",
+			"style": {
+				"navigationBarTitleText": "商品详情"
+			}
+		},
+		{
+			"path": "pages/user/index",
 			"style": {
 				"navigationBarTitleText": "会员中心"
 			}
@@ -72,18 +138,66 @@
 			}
 		},
 		{
-			"path": "pages/user/login",
+			"path" : "pages/user/log-fund",
 			"style": {
-				"navigationBarTitleText": "登陆"
+				"navigationBarTitleText": "资金明细"
+			}
+    },
+		{
+			"path" : "pages/user/log-invest",
+			"style": {
+				"navigationBarTitleText": "投资记录"
+			}
+    },
+		{
+			"path" : "pages/user/log-earnings",
+			"style": {
+				"navigationBarTitleText": "收益记录"
 			}
 		},
 		{
-			"path": "pages/user/register",
+			"path" : "pages/user/log-pay",
 			"style": {
-				"navigationBarTitleText": "注册"
+				"navigationBarTitleText": "支付记录"
 			}
-		}
-	],
+    },
+		{
+			"path" : "pages/user/log-withdraw",
+			"style": {
+				"navigationBarTitleText": "提现记录"
+			}
+    },
+		{
+			"path" : "pages/user/activity",
+			"style": {
+				"navigationBarTitleText": "优惠活动"
+			}
+    },
+		{
+			"path" : "pages/user/message",
+			"style": {
+				"navigationBarTitleText": "站内信"
+			}
+    },
+		{
+			"path" : "pages/user/auth",
+			"style": {
+				"navigationBarTitleText": "实名认证"
+			}
+    },
+		{
+			"path" : "pages/user/bind",
+			"style": {
+				"navigationBarTitleText": "银行卡绑定"
+			}
+    },
+		{
+			"path" : "pages/user/set",
+			"style": {
+				"navigationBarTitleText": "账户安全"
+			}
+    }
+  ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",

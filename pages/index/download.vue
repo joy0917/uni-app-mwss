@@ -1,6 +1,6 @@
 <template>
-	<view class="container">
-		商品详情
+	<view>
+		App下载
 	</view>
 </template>
 
@@ -8,13 +8,12 @@
 	export default {
 		data() {
 			return {
-			}
-		},
-		methods: {
-
+				
+			};
 		}
 	}
 </script>
 
-<style>
+<style lang="less">
+
 </style>
