@@ -4,20 +4,26 @@
 		<view class="section1">
 			<swiper class="swiper" circular :indicator-dots="indicatorDots" :autoplay="autoplay" :interval="interval" :duration="duration">
 				<swiper-item>
-					<view class="swiper-item red"></view>
+					<view class="swiper-item">
+						<image src="/static/image/bg.png" class="w h"></image>
+					</view>
 				</swiper-item>
 				<swiper-item>
-					<view class="swiper-item green"></view>
+					<view class="swiper-item">
+						<image src="/static/image/bg.png" class="w h"></image>
+					</view>
 				</swiper-item>
 				<swiper-item>
-					<view class="swiper-item blue"></view>
+					<view class="swiper-item">
+						<image src="/static/image/bg.png" class="w h"></image>
+					</view>
 				</swiper-item>
 			</swiper>
 		</view>
 		<!-- 九宫格 -->
 		<view class="section2">
 			<uni-grid :column="4" :highlight="false" :showBorder="false" @change="gridChange">
-				<uni-grid-item v-for="(item, index) in list" :index="index" :key="index">
+				<uni-grid-item v-for="(item, index) in gridList" :index="index" :key="index">
 					<view class="grid-item-box">
 						<image :src="item.image" class="image"/>
 						<view class="text">{{ item.text }}</view>
@@ -33,44 +39,44 @@
 			</video>
 		</view>
 		<!-- 活动列表 -->
-		<view class="section4">
-			<view class="event-head tc">
-				活动专享区
+		<view class="section4" v-for="(item, index) in eventList" :key="index">
+			<view class="event-title">{{ item.type }}</view>
+			<view class="event-head">
+				<image src="/static/image/bg.png" class="event-img"></image>
 			</view>
-			<image src="/pages/static/image/c1.png" class="event-img"></image>
 			<view class="event-body">
-				<view class="t1">道路建设项目</view>				
+				<view class="item-title"><image src="/static/image/verify.png" class="verify"></image>{{ item.title }}</view>				
 				<uni-row class="mb10">
-					<uni-col :span="8">
-						<view class="t2">8000元</view>
+					<uni-col :span="8" class="tl">
+						<view><text class="txt1">{{ item.aa }}</text>元</view>
 						<view>起投金额</view>
 					</uni-col>
 					<uni-col :span="8" class="tc">
-						<view class="t2">1960元起</view>
+						<view><text class="txt1">{{ item.bb }}</text>元起</view>
 						<view>每日分红</view>
 					</uni-col>
 					<uni-col :span="8" class="tr">
-						<view class="t2">85天</view>
+						<view><text class="txt1">{{ item.cc }}</text>天</view>
 						<view>投资周期</view>
 					</uni-col>
 				</uni-row>
 				<uni-row class="mb10">
-					<uni-col :span="6">
+					<uni-col :span="5" class="mt2">
 						投资进度：
 					</uni-col>
-					<uni-col :span="14">
-						<progress :percent="26.66" stroke-width="3" class="p1"/>
+					<uni-col :span="13">
+						<progress :percent="item.dd" stroke-width="6" activeColor="#CBA65B" class="mt8"/>
 					</uni-col>
-					<uni-col :span="4" class="tr">
-						26.66%
+					<uni-col :span="6" class="txt2 tr">
+						{{ item.dd }}%
 					</uni-col>
 				</uni-row>
 				<uni-row>
 					<uni-col :span="12">
-						<view class="t4">项目规模：230000万元</view>
+						<view class="mt2">项目规模：<text class="txt1">{{ item.ee }}</text>万元</view>
 					</uni-col>
 					<uni-col :span="12" class="tr">
-						<button type="info" size="mini">立即投资</button>
+						<view class="btn-invest" @click="navigateTo('/pages/index/invest-detail')"></view>
 					</uni-col>
 				</uni-row>
 			</view>
@@ -87,22 +93,31 @@
 				autoplay: true,
 				interval: 2000,
 				duration: 500,
-				list: [
-					{ image: '/static/image/icon.png', text: '如何投资', url: '/pages/index/invest' },
-					{ image: '/static/image/icon.png', text: '计算器', url: '/pages/index/calculator' },
-					{ image: '/static/image/icon.png', text: 'App下载', url: '/pages/index/download' },
-					{ image: '/static/image/icon.png', text: '每日签到', url: null },
-					{ image: '/static/image/icon.png', text: '马上充值', url: '/pages/index/pay' },
-					{ image: '/static/image/icon.png', text: '快速体现', url: '/pages/index/withdraw' },
-					{ image: '/static/image/icon.png', text: '邀请好友', url: '/pages/index/invite' },
-					{ image: '/static/image/icon.png', text: '联系客服', url: '/pages/service/index' }
+				gridList: [
+					{ image: '/static/image/invest.png', text: '如何投资', url: '/pages/index/invest' },
+					{ image: '/static/image/calculator.png', text: '计算器', url: '/pages/index/calculator' },
+					{ image: '/static/image/download.png', text: 'App下载', url: '/pages/index/download' },
+					{ image: '/static/image/signin.png', text: '每日签到', url: null },
+					{ image: '/static/image/pay.png', text: '马上充值', url: '/pages/index/pay' },
+					{ image: '/static/image/withdraw.png', text: '快速体现', url: '/pages/index/withdraw' },
+					{ image: '/static/image/invite.png', text: '邀请好友', url: '/pages/index/invite' },
+					{ image: '/static/image/service2.png', text: '联系客服', url: '/pages/service/index' }
+				],
+				eventList: [
+					{ type: '活动专享区', title: '道路建设项目', image: '/static/image/bg.png', aa: '8000', bb: '1960', cc: '85', dd: '26.66', ee: '230000' },
+					{ type: '新手体验区', title: '贵州妇女儿童医院建设项目', image: '/static/image/bg.png', aa: '8000', bb: '1960', cc: '85', dd: '26.66', ee: '230000' },
+					{ type: '稳健精选区', title: '投资理财项目', image: '/static/image/bg.png', aa: '8000', bb: '1960', cc: '85', dd: '26.66', ee: '230000' },
 				]
 			}
 		},
 		methods: {
+			navigateTo (url) { // 跳转
+				console.log(url)
+				uni.navigateTo({ url })
+			},
 			gridChange (e) { // 九宫格切换
 				let { index } = e.detail
-				let item = this.list[index]
+				let item = this.gridList[index]
 				switch (item.text){
 					case '联系客服':
 						uni.switchTab({ url: item.url })
@@ -136,20 +151,10 @@
 <style lang="less" scoped>
 	.section1{
 		.swiper {
-			height: 400rpx;
+			height: 360rpx;
 			.swiper-item {
 				display: block;
 				height: 100%;
-				text-align: center;
-			}
-			.red{
-				background-color: red;
-			}
-			.green{
-				background-color: green;
-			}
-			.blue{
-				background-color: blue;
 			}
 		}
 	}
@@ -168,7 +173,6 @@
 			height: 88rpx;
 		}
 		.text{
-			font-size: 24rpx;
 			margin-top: 10rpx;
 		}
 	}
@@ -179,28 +183,45 @@
 		}
 	}
 	.section4{
-		.event-head{
-			padding: 14rpx 0;
-			color: #007aff;
-			font-size: 28rpx;
+		.event-title{
+			padding: 30rpx 0;
+			color: #CBA65B;
+			font-size: 36rpx;
 		}
-		.event-img{
-			width: 100%;
+		.event-head{
+			height: 252rpx;
+			overflow: hidden;
+			.event-img{
+				width: 100%;
+			}
 		}
 		.event-body{
-			padding: 20rpx;
-			font-size: 24rpx;
-			.t1{
+			padding: 20rpx 40rpx 30rpx 40rpx;
+			.item-title{
+				font-size: 28rpx;
+				color: #000;
 				margin-bottom: 20rpx;
+				font-weight: bold;
 			}
-			.t2{
+			.verify{
+				width: 32rpx;
+				height: 32rpx;
+				vertical-align: middle;
+			}
+			.txt1{
+				color: #E38075;
 				font-size: 32rpx;
 			}
-			.t4{
-				margin-top: 15rpx;
+			.txt2{
+				color: #CBA65B;
+				font-size: 32rpx;
 			}
-			.p1{
-				margin-top: 16rpx;
+			.btn-invest{
+				display: inline-block;
+				width: 114rpx;
+				height: 44rpx;
+				background: url(/static/image/btn-invest.png) no-repeat 100% 100%;
+				background-size: 100%;
 			}
 		}
 	}

@@ -283,12 +283,28 @@
   margin-top: -5px;
 }
 
+.mt2 {
+  margin-top: 4rpx;
+}
+
+.mt4 {
+  margin-top: 8rpx;
+}
+
 .mt5 {
-  margin-top: 5px;
+  margin-top: 10rpx;
+}
+
+.mt6 {
+  margin-top: 12rpx;
+}
+
+.mt8 {
+  margin-top: 16rpx;
 }
 
 .mt10 {
-  margin-top: 10px;
+  margin-top: 20rpx;
 }
 
 .mt15 {
@@ -328,7 +344,7 @@
 }
 
 .mb10 {
-  margin-bottom: 10px;
+  margin-bottom: 20rpx;
 }
 
 .mb15 {

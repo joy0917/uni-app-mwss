@@ -19,5 +19,7 @@
 	.container{
 		padding: 0 40rpx;
 		background: #fff;
+		font-size: 24rpx;
+		color: #333;
 	}
 </style>
