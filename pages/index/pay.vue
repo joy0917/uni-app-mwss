@@ -1,6 +1,21 @@
 <template>
-	<view>
-		马上充值
+	<view class="pay">
+		<uni-group>
+			<uni-title type="h3" title="充值金额"></uni-title>
+			<uni-forms ref="form" :modelValue="formData" :rules="rules" label-width="10">
+				<uni-forms-item label="¥" name="amount">
+					<uni-easyinput type="number" :inputBorder="false" trim v-model="formData.amount" placeholder="请输入充值金额" />
+				</uni-forms-item>
+			</uni-forms>
+			<view>可用金额 ¥<text class="blue">34.00</text>元</view>
+		</uni-group>
+		<uni-group margin-top="20">
+			<uni-title type="h3" title="充值方式"></uni-title>
+		</uni-group>
+		<uni-group margin-top="20">
+			<uni-title type="h3" title="充值说明"></uni-title>
+			充值金额￥请输入充值金额可用余额￥ 34 . 00 元 O 微信一扫码支付充值通道一微信专扫充值方式 O 支付宝快捷充值通道一充值返现 2 盼 3 % 尊敬的美湾盛世会员：因活动期间公司充值会员众多，财务收款充值账户需及时结算对账，充值收款账户会不定时更新，请广大会员账户入款最新充值财务账户，每次充值前都需要在 App 首页点击 【 马上充值」 【 选择手机银行转账入款 】 复制最新银行入款财务账号充值或联系在线客服索取最新账号充值，切勿不提交充值直接转账之前财务收款账户，以免充值未能及时到账！ 【 温馨提示 】 ① 请您充值的金额与您实际输入充值的金额提交一致的资金，方便系统自动识别入款； ② 使用网银手机银行转账汇款充值通道：单笔充值 1 万元及以上可享 2 % 的充值返利奖励，单笔充值 50 万以上可享 3 ％的充值返利奖励，次次充，次次返，返利无上限！ ③ 到期返本收益未提现，直接复投任何项目，单笔复投 1 万元及以上奖励 3 % 资金返现，复投成功后联系在线客服领取返现奖励！如遇到充值问题，请您及时咨询在线客服，谢谢！立即充值
+		</uni-group>
 	</view>
 </template>
 
@@ -8,12 +23,31 @@
 	export default {
 		data() {
 			return {
-				
-			};
+				formData: {
+					amount: null
+				},
+				rules: {
+					amount: {
+						rules: [{ required: true, errorMessage: '请输入' }]
+					}					
+				}
+			}
+		},
+		mounted () {
 		}
 	}
 </script>
 
-<style lang="less">
-
+<style lang="less" scoped>
+	.pay{
+		background: #F0F0F0;
+		width: 100vw;
+		height: 100vh;
+		font-size: 24rpx;
+	}
+	.blue{
+		font-weight: bold;
+		padding: 0 10rpx;
+		font-size: 28rpx;
+	}
 </style>

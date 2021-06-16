@@ -75,7 +75,7 @@
 	}
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 	.calculator{
 		background: #fff;
 		padding-top: 40rpx;
