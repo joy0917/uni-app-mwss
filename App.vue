@@ -18,7 +18,7 @@
 	@import '/static/libs/base.css';
 	.container{
 		padding: 0 40rpx;
-		background: #fff;
+		background: #F0F0F0;
 		font-size: 24rpx;
 		color: #333;
 	}

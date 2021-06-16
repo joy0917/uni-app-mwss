@@ -1,5 +1,5 @@
 <template>
-	<view class="container">
+	<view class="container index">
 		<!-- 轮播 -->
 		<view class="section1">
 			<swiper class="swiper" circular :indicator-dots="indicatorDots" :autoplay="autoplay" :interval="interval" :duration="duration">
@@ -149,6 +149,9 @@
 </script>
 
 <style lang="less" scoped>
+	.index{
+		background: #fff;
+	}
 	.section1{
 		.swiper {
 			height: 360rpx;

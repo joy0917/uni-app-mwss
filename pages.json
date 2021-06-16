@@ -15,7 +15,7 @@
 			"selectedIconPath": "static/image/integral2.png",
 			"text": "积分商城"
 		}, {
-			"pagePath": "pages/member/index",
+			"pagePath": "pages/user/index",
 			"iconPath": "static/image/member1.png",
 			"selectedIconPath": "static/image/member2.png",
 			"text": "会员中心"
