@@ -158,7 +158,7 @@
 		{
 			"path" : "pages/user/log-pay",
 			"style": {
-				"navigationBarTitleText": "支付记录"
+				"navigationBarTitleText": "充值记录"
 			}
     },
 		{
