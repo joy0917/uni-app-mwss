@@ -1,5 +1,5 @@
 <template>
-	<view class="index">
+	<view class="container">
 		<!-- 轮播 -->
 		<view class="section1">
 			<swiper class="swiper" circular :indicator-dots="indicatorDots" :autoplay="autoplay" :interval="interval" :duration="duration">
@@ -16,17 +16,18 @@
 		</view>
 		<!-- 九宫格 -->
 		<view class="section2">
-			<uni-grid :column="4" :highlight="true" @change="change">
+			<uni-grid :column="4" :highlight="false" :showBorder="false" @change="gridChange">
 				<uni-grid-item v-for="(item, index) in list" :index="index" :key="index">
 					<view class="grid-item-box">
-						<image :src="item.url" class="image"/>
-						<text class="text">{{ item.text }}</text>
+						<image :src="item.image" class="image"/>
+						<view class="text">{{ item.text }}</view>
 					</view>
 				</uni-grid-item>
 			</uni-grid>
 		</view>
 		<!-- 视频 -->
 		<view class="section3">
+			<uni-notice-bar :show-icon="true" :scrollable="true" :single="true" text="uni-app 1.6版正式发布，开发一次，同时发布iOS、Android、H5、微信小程序、支付宝小程序、百度小程序、头条小程序等7大平台。" />
 			<video class="video" src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-uni-app-doc/3c1782e0-60ab-11eb-8ff1-d5dcf8779628.m4v"
 			 @error="videoErrorCallback" controls poster="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/b1476d40-4e5f-11eb-b997-9918a5dda011.png">
 			</video>
@@ -36,7 +37,7 @@
 			<view class="event-head tc">
 				活动专享区
 			</view>
-			<image src="../../static/c1.png" class="event-img"></image>
+			<image src="/pages/static/image/c1.png" class="event-img"></image>
 			<view class="event-body">
 				<view class="t1">道路建设项目</view>				
 				<uni-row class="mb10">
@@ -86,66 +87,45 @@
 				autoplay: true,
 				interval: 2000,
 				duration: 500,
-				list: [{
-						url: '/static/c1.png',
-						text: '如何投资',
-						badge: '0',
-						type: "primary"
-					},
-					{
-						url: '/static/c2.png',
-						text: '计算器',
-						badge: '1',
-						type: "success"
-					},
-					{
-						url: '/static/c3.png',
-						text: 'App下载',
-						badge: '99',
-						type: "warning"
-					},
-					{
-						url: '/static/c4.png',
-						text: '每日签到',
-						badge: '2',
-						type: "error"
-					},
-					{
-						url: '/static/c5.png',
-						text: '马上充值'
-					},
-					{
-						url: '/static/c6.png',
-						text: '快速体现'
-					},
-					{
-						url: '/static/c7.png',
-						text: '邀请好友'
-					},
-					{
-						url: '/static/c8.png',
-						text: '联系客服'
-					}
+				list: [
+					{ image: '/static/image/icon.png', text: '如何投资', url: '/pages/index/invest' },
+					{ image: '/static/image/icon.png', text: '计算器', url: '/pages/index/calculator' },
+					{ image: '/static/image/icon.png', text: 'App下载', url: '/pages/index/download' },
+					{ image: '/static/image/icon.png', text: '每日签到', url: null },
+					{ image: '/static/image/icon.png', text: '马上充值', url: '/pages/index/pay' },
+					{ image: '/static/image/icon.png', text: '快速体现', url: '/pages/index/withdraw' },
+					{ image: '/static/image/icon.png', text: '邀请好友', url: '/pages/index/invite' },
+					{ image: '/static/image/icon.png', text: '联系客服', url: '/pages/service/index' }
 				]
 			}
 		},
 		methods: {
-			change(e) {
+			gridChange (e) { // 九宫格切换
 				let { index } = e.detail
-				this.list[index].badge && this.list[index].badge++
-				uni.showToast({
-					title: `点击第${index+1}个宫格`,
-					icon: 'none'
-				})
+				let item = this.list[index]
+				switch (item.text){
+					case '联系客服':
+						uni.switchTab({ url: item.url })
+						break;
+					case '每日签到':
+						uni.showModal({
+							content: '签到成功',
+							showCancel: false
+						})
+						break;
+					default:
+						uni.navigateTo({ url: item.url })
+						break;
+				}
 			},
-			videoErrorCallback: function(e) {
+			videoErrorCallback (e) { // 视频报错
 				uni.showModal({
 					content: e.target.errMsg,
 					showCancel: false
 				})
 			},
 		},
-		onNavigationBarButtonTap(e) {
+		onNavigationBarButtonTap (e) { // 右上角按钮
 			uni.navigateTo({
 				url: '/pages/user/login'
 			})
@@ -154,18 +134,6 @@
 </script>
 
 <style lang="less" scoped>
-	.tl{
-		text-align: left;
-	}
-	.tr{
-		text-align: right;
-	}
-	.tc{
-		text-align: center;
-	}
-	.mb10{
-		margin-bottom: 20rpx;
-	}
 	.section1{
 		.swiper {
 			height: 400rpx;
@@ -186,22 +154,28 @@
 		}
 	}
 	.section2 {
+		padding: 40rpx 0;
 		.grid-item-box {
 			flex: 1;
 			display: flex;
 			flex-direction: column;
 			align-items: center;
 			justify-content: center;
-			padding: 30rpx 0;
+			padding: 20rpx 0;
 		}
 		.image {
-			width: 50rpx;
-			height: 50rpx;
+			width: 88rpx;
+			height: 88rpx;
+		}
+		.text{
+			font-size: 24rpx;
+			margin-top: 10rpx;
 		}
 	}
 	.section3{		
 		.video{
 			width: 100%;
+			margin-top: 20rpx;
 		}
 	}
 	.section4{

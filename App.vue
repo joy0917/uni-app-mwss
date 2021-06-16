@@ -14,5 +14,10 @@
 </script>
 
 <style>
-	/*每个页面公共css */
+	/*公共css */
+	@import '/static/libs/base.css';
+	.container{
+		padding: 0 40rpx;
+		background: #fff;
+	}
 </style>
