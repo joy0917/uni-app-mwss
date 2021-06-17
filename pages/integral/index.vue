@@ -1,3 +1,4 @@
+<!-- 会员中心 -->
 <template>
 	<view class="container integral">
 		<uni-row :gutter="20">

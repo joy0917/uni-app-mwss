@@ -1,3 +1,4 @@
+<!-- 商品详情 -->
 <template>
 	<view class="detail">
 		<image src="/static/image/bg.png" class="detail-img"></image>
@@ -10,7 +11,9 @@
 			<uni-row>
 				<uni-col :span="12">库存：9999</uni-col>
 				<uni-col :span="12" class="tr">
-					<button type="default" class="detail-btn">立即兑换</button>
+					<navigator url="/pages/integral/order">
+						<button type="primary" class="detail-btn">立即兑换</button>
+					</navigator>
 				</uni-col>
 			</uni-row>
 		</view>
@@ -52,7 +55,6 @@
 			line-height: 60rpx;
 			background: linear-gradient(180deg, #E8D396 0%, #CCA75D 100%);
 			border-radius: 15px;
-			color: #fff;
 			font-size: 28rpx;
 		}
 	}

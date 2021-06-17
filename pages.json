@@ -117,16 +117,28 @@
 			}
 		},
 		{
+			"path": "pages/integral/detail",
+			"style": {
+				"navigationBarTitleText": "商品详情"
+			}
+		},
+		{
+			"path" : "pages/integral/order",
+			"style": {
+				"navigationBarTitleText": "订单详情"
+			}
+		},
+		{
 			"path" : "pages/integral/log",
 			"style": {
 				"navigationBarTitleText": "兑换记录"
 			}
 		},
 		{
-			"path": "pages/integral/detail",
+			"path" : "pages/integral/status",
 			"style": {
-				"navigationBarTitleText": "商品详情"
-			}
+				"navigationBarTitleText": "订单状态"
+			}  
 		},
 		{
 			"path": "pages/user/index",
@@ -206,7 +218,7 @@
 				"navigationBarTitleText": "账户安全"
 			}
     }
-  ],
+	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",

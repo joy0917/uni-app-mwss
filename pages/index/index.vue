@@ -1,3 +1,4 @@
+<!-- 首页 -->
 <template>
 	<view class="container index">
 		<!-- 轮播 -->
