@@ -1,3 +1,4 @@
+<!-- 马上充值 -->
 <template>
 	<view class="pay">
     <uni-forms ref="form" :modelValue="formData" :rules="rules" label-width="10">

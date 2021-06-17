@@ -1,3 +1,4 @@
+<!-- 快速提现 -->
 <template>
 	<view class="withdraw">
     <uni-forms ref="form" :modelValue="formData" :rules="rules" label-width="10">

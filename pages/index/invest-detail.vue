@@ -1,3 +1,4 @@
+<!-- 投资详情 -->
 <template>
 	<view class="">
 		投资详情
