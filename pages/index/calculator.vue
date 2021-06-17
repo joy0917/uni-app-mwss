@@ -63,7 +63,7 @@
 			}
 		},
 		methods: {
-			submitForm (form) {
+			submitForm () {
 				this.$refs.form.validate().then((res)=>{
 					console.log('表单返回得值：', res)
 				})

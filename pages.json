@@ -104,7 +104,16 @@
 		{
 			"path": "pages/integral/index",
 			"style": {
-				"navigationBarTitleText": "积分商城"
+				"navigationBarTitleText": "积分商城",
+				"app-plus": {
+					"bounce": "vertical",
+					"titleNView": {
+						"buttons": [{
+							"text": "记录",
+							"fontSize": "14"
+						}]
+					}
+				}
 			}
 		},
 		{

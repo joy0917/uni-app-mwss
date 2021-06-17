@@ -1,6 +1,9 @@
 <template>
 	<view class="container">
-		商品详情
+		<uni-row :gutter="20">
+			<uni-col :span="12">1</uni-col>
+			<uni-col :span="12">2</uni-col>
+		</uni-row>
 	</view>
 </template>
 
@@ -12,9 +15,14 @@
 		},
 		methods: {
 
+		},
+		onNavigationBarButtonTap (e) { // 右上角按钮
+			uni.navigateTo({
+				url: '/pages/integral/log'
+			})
 		}
 	}
 </script>
 
-<style>
+<style lang="less" scoped>
 </style>

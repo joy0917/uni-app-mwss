@@ -1,7 +1,7 @@
 {
-    "name" : "uniapp",
+    "name" : "盛世美湾",
     "appid" : "__UNI__0FA0BFA",
-    "description" : "",
+    "description" : "盛世美湾",
     "versionName" : "1.0.0",
     "versionCode" : "100",
     "transformPx" : false,
@@ -15,7 +15,9 @@
             "autoclose" : true,
             "delay" : 0
         },
-        "modules" : {},
+        "modules" : {
+            "VideoPlayer" : {}
+        },
         /* 模块配置 */
         "distribute" : {
             /* 应用发布信息 */
@@ -76,6 +78,9 @@
                         "spotlight@3x" : "unpackage/res/icons/120x120.png"
                     }
                 }
+            },
+            "splashscreen" : {
+                "androidStyle" : "common"
             }
         }
     },
@@ -91,7 +96,7 @@
         "usingComponents" : true
     },
     "h5" : {
-        "title" : "uni-app",
+        "title" : "盛世美湾",
         "router" : {
             "mode" : "hash"
         }

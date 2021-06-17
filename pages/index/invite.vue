@@ -1,6 +1,6 @@
 <template>
 	<view>
-		邀请好友
+		邀请好友-接口取值
 	</view>
 </template>
 
@@ -14,6 +14,5 @@
 	}
 </script>
 
-<style lang="less">
-
+<style lang="less" scoped>
 </style>
