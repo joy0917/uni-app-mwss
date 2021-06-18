@@ -4,7 +4,7 @@
 		<!-- 轮播 -->
 		<view class="section1">
 			<swiper class="swiper" circular :indicator-dots="swiperOption.indicatorDots" :autoplay="swiperOption.autoplay" :interval="swiperOption.interval" :duration="swiperOption.duration">
-				<swiper-item v-for="(item, index) in swiperList" :key="index">
+				<swiper-item v-for="(item, index) in swiperData" :key="index">
 					<view class="swiper-item">
 						<image :src="item.img_url" class="w h"></image>
 					</view>
@@ -14,7 +14,7 @@
 		<!-- 九宫格 -->
 		<view class="section2">
 			<uni-grid :column="4" :highlight="false" :showBorder="false" @change="gridChange">
-				<uni-grid-item v-for="(item, index) in gridList" :index="index" :key="index">
+				<uni-grid-item v-for="(item, index) in gridData" :index="index" :key="index">
 					<view class="grid-item-box">
 						<image :src="item.image" class="image"/>
 						<view class="text">{{ item.text }}</view>
@@ -22,15 +22,19 @@
 				</uni-grid-item>
 			</uni-grid>
 		</view>
-		<!-- 视频 -->
+		<!-- 公告和视频 -->
 		<view class="section3">
-			<uni-notice-bar :show-icon="true" :scrollable="true" :single="true" text="uni-app 1.6版正式发布，开发一次，同时发布iOS、Android、H5、微信小程序、支付宝小程序、百度小程序、头条小程序等7大平台。" />
-			<video class="video" src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-uni-app-doc/3c1782e0-60ab-11eb-8ff1-d5dcf8779628.m4v"
-			 @error="videoErrorCallback" controls poster="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/b1476d40-4e5f-11eb-b997-9918a5dda011.png">
+			<uni-notice-bar :show-icon="true" :scrollable="true" :single="true" :text="articleData"/>
+			<video
+        class="video"
+        autoplay
+        loop
+        src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-uni-app-doc/3c1782e0-60ab-11eb-8ff1-d5dcf8779628.m4v"
+			  @error="videoErrorCallback" controls poster="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/b1476d40-4e5f-11eb-b997-9918a5dda011.png">
 			</video>
 		</view>
 		<!-- 活动列表 -->
-		<view class="section4" v-for="(item, index) in eventList" :key="index">
+		<view class="section4" v-for="(item, index) in eventData" :key="index">
 			<view class="event-title">{{ item.type }}</view>
 			<view class="event-head">
 				<image src="/static/image/bg.png" class="event-img"></image>
@@ -76,19 +80,19 @@
 </template>
 
 <script>
-import { carouselList } from 'static/api/api'
+import { carouselList, articleList } from 'static/api/api'
 import { getFormatDate } from 'static/libs/libs'
 export default {
 	data() {
 		return {
-      swiperList: [],
+      swiperData: [],
       swiperOption: {
         indicatorDots: true,
         autoplay: true,
         interval: 2000,
         duration: 500
       },
-			gridList: [
+			gridData: [
 				{ image: '/static/image/invest.png', text: '如何投资', url: '/pages/index/invest' },
 				{ image: '/static/image/calculator.png', text: '计算器', url: '/pages/index/calculator' },
 				{ image: '/static/image/download.png', text: 'App下载', url: '/pages/index/download' },
@@ -98,7 +102,8 @@ export default {
 				{ image: '/static/image/invite.png', text: '邀请好友', url: '/pages/index/invite' },
 				{ image: '/static/image/service2.png', text: '在线客服', url: '/pages/service/index' }
 			],
-			eventList: [
+      articleData: '',
+			eventData: [
 				{ type: '活动专享区', title: '道路建设项目', image: '/static/image/bg.png', aa: '8000', bb: '1960', cc: '85', dd: '26.66', ee: '230000' },
 				{ type: '新手体验区', title: '贵州妇女儿童医院建设项目', image: '/static/image/bg.png', aa: '8000', bb: '1960', cc: '85', dd: '26.66', ee: '230000' },
 				{ type: '稳健精选区', title: '投资理财项目', image: '/static/image/bg.png', aa: '8000', bb: '1960', cc: '85', dd: '26.66', ee: '230000' },
@@ -111,7 +116,7 @@ export default {
 		},
 		gridChange (e) { // 九宫格切换
 			let { index } = e.detail
-			let item = this.gridList[index]
+			let item = this.gridData[index]
 			switch (item.text){
 				case '在线客服':
 					uni.switchTab({ url: item.url })
@@ -133,18 +138,30 @@ export default {
 				showCancel: false
 			})
 		},
-		carouselList () { // 轮播
+		carouselList () { // 轮播列表
 			carouselList({
         time: getFormatDate(),
         per_page: 10,
         current_page: 1
       }).then(res => {
-        this.swiperList = res.response.data
+        this.swiperData = res.response.data
+			})
+		},
+		articleList () { // 公告列表
+			articleList({
+        title: '',
+        type: '',
+        per_page: 1,
+        current_page: 1
+      }).then(res => {
+        let data = res.response.data
+        this.articleData = data[0] && data[0].desc
 			})
 		}
 	},
 	mounted () {
 		this.carouselList()
+		this.articleList()
 	},
 	onNavigationBarButtonTap (e) { // 右上角按钮
 		uni.navigateTo({
