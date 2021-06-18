@@ -6,6 +6,17 @@
 </template>
 
 <script>
+	import { login } from 'libs/api'
+	export default {
+		data() {
+			return {
+				
+			}
+		},
+		mounted() {
+			login()
+		}
+	}
 </script>
 
 <style>

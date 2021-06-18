@@ -15,7 +15,7 @@
 
 <style>
 	/*公共css */
-	@import '/static/libs/base.css';
+	@import '/static/css/base.css';
 	.container{
 		padding: 0 40rpx;
 		background: #F0F0F0;
