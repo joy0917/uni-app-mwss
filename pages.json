@@ -147,18 +147,6 @@
 			}
 		},
 		{
-			"path": "pages/about/index",
-			"style": {
-				"navigationBarTitleText": "关于我们"
-			}
-		},
-		{
-			"path": "pages/service/index",
-			"style": {
-				"navigationBarTitleText": "在线客服"
-			}
-		},
-		{
 			"path" : "pages/user/log-fund",
 			"style": {
 				"navigationBarTitleText": "资金明细"
@@ -229,7 +217,97 @@
       "style": {
         "navigationBarTitleText": "隐私协议"
       }
-    }
+    },
+		{
+			"path": "pages/about/index",
+			"style": {
+				"navigationBarTitleText": "关于我们"
+			}
+		},
+    {
+			"path": "pages/about/register",
+			"style": {
+				"navigationBarTitleText": "如何注册"
+			}
+		},
+    {
+			"path": "pages/about/invest",
+			"style": {
+				"navigationBarTitleText": "如何投资"
+			}
+		},
+    {
+			"path": "pages/about/pay",
+			"style": {
+				"navigationBarTitleText": "如何充值"
+			}
+		},
+    {
+			"path": "pages/about/qa",
+			"style": {
+				"navigationBarTitleText": "常见问题"
+			}
+		},
+    {
+			"path": "pages/about/notice",
+			"style": {
+				"navigationBarTitleText": "公司公告"
+			}
+		},
+    {
+			"path": "pages/about/about",
+			"style": {
+				"navigationBarTitleText": "关于我们"
+			}
+		},
+    {
+			"path": "pages/about/safeguard",
+			"style": {
+				"navigationBarTitleText": "安全保障"
+			}
+		},
+    {
+			"path": "pages/about/risk",
+			"style": {
+				"navigationBarTitleText": "风控机构"
+			}
+		},
+    {
+			"path": "pages/about/qualification",
+			"style": {
+				"navigationBarTitleText": "企业资质"
+			}
+		},
+    {
+			"path": "pages/about/level",
+			"style": {
+				"navigationBarTitleText": "会员等级"
+			}
+		},
+    {
+			"path": "pages/about/welfare",
+			"style": {
+				"navigationBarTitleText": "福利活动"
+			}
+		},
+    {
+			"path": "pages/about/expand",
+			"style": {
+				"navigationBarTitleText": "推广活动"
+			}
+		},
+    {
+			"path": "pages/about/contact",
+			"style": {
+				"navigationBarTitleText": "联系我们"
+			}
+		},
+		{
+			"path": "pages/service/index",
+			"style": {
+				"navigationBarTitleText": "在线客服"
+			}
+		}
   ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
