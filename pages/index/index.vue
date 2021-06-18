@@ -102,7 +102,7 @@
 					{ image: '/static/image/pay.png', text: '马上充值', url: '/pages/index/pay' },
 					{ image: '/static/image/withdraw.png', text: '快速体现', url: '/pages/index/withdraw' },
 					{ image: '/static/image/invite.png', text: '邀请好友', url: '/pages/index/invite' },
-					{ image: '/static/image/service2.png', text: '联系客服', url: '/pages/service/index' }
+					{ image: '/static/image/service2.png', text: '在线客服', url: '/pages/service/index' }
 				],
 				eventList: [
 					{ type: '活动专享区', title: '道路建设项目', image: '/static/image/bg.png', aa: '8000', bb: '1960', cc: '85', dd: '26.66', ee: '230000' },
@@ -120,7 +120,7 @@
 				let { index } = e.detail
 				let item = this.gridList[index]
 				switch (item.text){
-					case '联系客服':
+					case '在线客服':
 						uni.switchTab({ url: item.url })
 						break;
 					case '每日签到':
