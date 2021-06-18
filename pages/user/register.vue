@@ -7,23 +7,23 @@
 			</view>
 			<view class="registerItem">
 				<text>您的密码：</text>
-				<input placeholder="6-13位数字和字母" type="passwold" v-model="tel">
+				<input placeholder="6-13位数字和字母" type="passwold" v-model="passwold">
 			</view>
 			<view class="registerItem">
 				<text>确认密码：</text>
-				<input placeholder="6-13位数字和字母" type="passwold" v-model="tel">
+				<input placeholder="6-13位数字和字母" type="passwold" v-model="againPasswold">
 			</view>
 			<view class="registerItem">
 				<text class="three">验证码：</text>
-				<input type="text" v-model="tel">
+				<input type="text" v-model="graphicalCAPTCHA">
 			</view>
 			<view class="registerItem">
 				<text>短信验证：</text>
-				<input type="text" v-model="tel">
+				<input type="text" v-model="SMSCode">
 			</view>
 			<view class="registerItem">
 				<text class="three">推荐人：</text>
-				<input placeholder="推荐人" type="text" v-model="tel">
+				<input placeholder="推荐人" type="text" v-model="referrer">
 			</view>
 			<view class="registerAgreement">
 				<checkbox v-model="checkbox"></checkbox>
@@ -71,7 +71,7 @@
 		background: #f0f0f0;
 		.registerForm {
 			.registerItem {
-				background: #fff;
+				background: #F6F6F6;
 				border-radius: 18rpx;
 				height: 108rpx;
 				box-sizing: border-box;
