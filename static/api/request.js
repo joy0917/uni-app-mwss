@@ -6,16 +6,14 @@ export default ({url, data, method}) => {
 			url: baseUrl + url,
 			data,
 			method,
-			header: {
-				'x-access-token': '828142e749a14c7b9adf5bf80e3a7eac'
-			}
+			header: {}
 		}).then(response => {
 			let res = response[1].data
-			if (res.code === 200) {
+			if (res.msg_code === 100000) {
 				resolve(res)
 			} else {
 				uni.showToast({
-					title: res.msg || '请求失败',
+					title: res.message || '请求失败',
 					icon: 'none'
 				})
 			}

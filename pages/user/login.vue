@@ -6,7 +6,7 @@
 </template>
 
 <script>
-	import { login } from 'libs/api'
+	import { login } from 'static/api/api'
 	export default {
 		data() {
 			return {

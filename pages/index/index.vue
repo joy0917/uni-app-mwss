@@ -3,20 +3,10 @@
 	<view class="container index">
 		<!-- 轮播 -->
 		<view class="section1">
-			<swiper class="swiper" circular :indicator-dots="indicatorDots" :autoplay="autoplay" :interval="interval" :duration="duration">
-				<swiper-item>
+			<swiper class="swiper" circular :indicator-dots="swiperOption.indicatorDots" :autoplay="swiperOption.autoplay" :interval="swiperOption.interval" :duration="swiperOption.duration">
+				<swiper-item v-for="(item, index) in swiperList" :key="index">
 					<view class="swiper-item">
-						<image src="/static/image/bg.png" class="w h"></image>
-					</view>
-				</swiper-item>
-				<swiper-item>
-					<view class="swiper-item">
-						<image src="/static/image/bg.png" class="w h"></image>
-					</view>
-				</swiper-item>
-				<swiper-item>
-					<view class="swiper-item">
-						<image src="/static/image/bg.png" class="w h"></image>
+						<image :src="item.img_url" class="w h"></image>
 					</view>
 				</swiper-item>
 			</swiper>
@@ -86,67 +76,82 @@
 </template>
 
 <script>
-	export default {
-		data() {
-			return {
-				background: ['color1', 'color2', 'color3'],
-				indicatorDots: true,
-				autoplay: true,
-				interval: 2000,
-				duration: 500,
-				gridList: [
-					{ image: '/static/image/invest.png', text: '如何投资', url: '/pages/index/invest' },
-					{ image: '/static/image/calculator.png', text: '计算器', url: '/pages/index/calculator' },
-					{ image: '/static/image/download.png', text: 'App下载', url: '/pages/index/download' },
-					{ image: '/static/image/signin.png', text: '每日签到', url: null },
-					{ image: '/static/image/pay.png', text: '马上充值', url: '/pages/index/pay' },
-					{ image: '/static/image/withdraw.png', text: '快速体现', url: '/pages/index/withdraw' },
-					{ image: '/static/image/invite.png', text: '邀请好友', url: '/pages/index/invite' },
-					{ image: '/static/image/service2.png', text: '在线客服', url: '/pages/service/index' }
-				],
-				eventList: [
-					{ type: '活动专享区', title: '道路建设项目', image: '/static/image/bg.png', aa: '8000', bb: '1960', cc: '85', dd: '26.66', ee: '230000' },
-					{ type: '新手体验区', title: '贵州妇女儿童医院建设项目', image: '/static/image/bg.png', aa: '8000', bb: '1960', cc: '85', dd: '26.66', ee: '230000' },
-					{ type: '稳健精选区', title: '投资理财项目', image: '/static/image/bg.png', aa: '8000', bb: '1960', cc: '85', dd: '26.66', ee: '230000' },
-				]
+import { carouselList } from 'static/api/api'
+import { getFormatDate } from 'static/libs/libs'
+export default {
+	data() {
+		return {
+      swiperList: [],
+      swiperOption: {
+        indicatorDots: true,
+        autoplay: true,
+        interval: 2000,
+        duration: 500
+      },
+			gridList: [
+				{ image: '/static/image/invest.png', text: '如何投资', url: '/pages/index/invest' },
+				{ image: '/static/image/calculator.png', text: '计算器', url: '/pages/index/calculator' },
+				{ image: '/static/image/download.png', text: 'App下载', url: '/pages/index/download' },
+				{ image: '/static/image/signin.png', text: '每日签到', url: null },
+				{ image: '/static/image/pay.png', text: '马上充值', url: '/pages/index/pay' },
+				{ image: '/static/image/withdraw.png', text: '快速体现', url: '/pages/index/withdraw' },
+				{ image: '/static/image/invite.png', text: '邀请好友', url: '/pages/index/invite' },
+				{ image: '/static/image/service2.png', text: '在线客服', url: '/pages/service/index' }
+			],
+			eventList: [
+				{ type: '活动专享区', title: '道路建设项目', image: '/static/image/bg.png', aa: '8000', bb: '1960', cc: '85', dd: '26.66', ee: '230000' },
+				{ type: '新手体验区', title: '贵州妇女儿童医院建设项目', image: '/static/image/bg.png', aa: '8000', bb: '1960', cc: '85', dd: '26.66', ee: '230000' },
+				{ type: '稳健精选区', title: '投资理财项目', image: '/static/image/bg.png', aa: '8000', bb: '1960', cc: '85', dd: '26.66', ee: '230000' },
+			]
+		}
+	},
+	methods: {
+		navigateTo (url) { // 跳转
+			uni.navigateTo({ url })
+		},
+		gridChange (e) { // 九宫格切换
+			let { index } = e.detail
+			let item = this.gridList[index]
+			switch (item.text){
+				case '在线客服':
+					uni.switchTab({ url: item.url })
+					break;
+				case '每日签到':
+					uni.showModal({
+						content: '签到成功',
+						showCancel: false
+					})
+					break;
+				default:
+					uni.navigateTo({ url: item.url })
+					break;
 			}
 		},
-		methods: {
-			navigateTo (url) { // 跳转
-				console.log(url)
-				uni.navigateTo({ url })
-			},
-			gridChange (e) { // 九宫格切换
-				let { index } = e.detail
-				let item = this.gridList[index]
-				switch (item.text){
-					case '在线客服':
-						uni.switchTab({ url: item.url })
-						break;
-					case '每日签到':
-						uni.showModal({
-							content: '签到成功',
-							showCancel: false
-						})
-						break;
-					default:
-						uni.navigateTo({ url: item.url })
-						break;
-				}
-			},
-			videoErrorCallback (e) { // 视频报错
-				uni.showModal({
-					content: e.target.errMsg,
-					showCancel: false
-				})
-			},
+		videoErrorCallback (e) { // 视频报错
+			uni.showModal({
+				content: e.target.errMsg,
+				showCancel: false
+			})
 		},
-		onNavigationBarButtonTap (e) { // 右上角按钮
-			uni.navigateTo({
-				url: '/pages/user/login'
+		carouselList () { // 轮播
+			carouselList({
+        time: getFormatDate(),
+        per_page: 10,
+        current_page: 1
+      }).then(res => {
+        this.swiperList = res.response.data
 			})
 		}
+	},
+	mounted () {
+		this.carouselList()
+	},
+	onNavigationBarButtonTap (e) { // 右上角按钮
+		uni.navigateTo({
+			url: '/pages/user/login'
+		})
 	}
+}
 </script>
 
 <style lang="less" scoped>
