@@ -126,6 +126,9 @@
 							showCancel: false
 						})
 						break;
+					case '积分商城':
+						uni.switchTab({ url: item.url })
+						break;
 					default:
 						uni.navigateTo({ url: item.url })
 						break;
@@ -135,7 +138,7 @@
 				let { index } = e.detail
 				let item = this.gridList2[index]
 				switch (item.text){
-					case '联系客服':
+					case '在线客服':
 						uni.switchTab({ url: item.url })
 						break;
 					default:
