@@ -217,8 +217,20 @@
 			"style": {
 				"navigationBarTitleText": "账户安全"
 			}
+    },
+    {
+      "path" : "pages/user/agreement",
+      "style": {
+        "navigationBarTitleText": "用户协议"
+      }
+    },
+    {
+      "path" : "pages/user/privacy",
+      "style": {
+        "navigationBarTitleText": "隐私协议"
+      }
     }
-	],
+  ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",
