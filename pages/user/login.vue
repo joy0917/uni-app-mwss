@@ -26,11 +26,11 @@
 			<navigator url="/pages/user/login">忘记密码</navigator>
 			<navigator url="/pages/user/register">注册</navigator>
 		</view>
-		
 	</view>
 </template>
 
 <script>
+	import { login } from 'libs/api'
 	export default {
 		data () {
 			return {
