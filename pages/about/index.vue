@@ -1,7 +1,9 @@
 <!-- 关于我们 -->
 <template>
 	<view class="container about">
+		<image src="/static/image/bg.png" class="about-thumbnail"></image>
 		<!-- 九宫格 -->
+		<view class="about-title">新手指南</view>
 		<view class="grid">
 			<uni-grid :column="4" :highlight="false" :showBorder="false" @change="gridChange1">
 				<uni-grid-item v-for="(item, index) in gridList1" :index="index" :key="index">
@@ -13,6 +15,7 @@
 			</uni-grid>
 		</view>
     <!-- 九宫格 -->
+		<view class="about-title">关于我们</view>
 		<view class="grid">
 			<uni-grid :column="4" :highlight="false" :showBorder="false" @change="gridChange2">
 				<uni-grid-item v-for="(item, index) in gridList2" :index="index" :key="index">
@@ -24,6 +27,7 @@
 			</uni-grid>
 		</view>
     <!-- 九宫格 -->
+		<view class="about-title">帮助中心</view>
 		<view class="grid">
 			<uni-grid :column="4" :highlight="false" :showBorder="false" @change="gridChange3">
 				<uni-grid-item v-for="(item, index) in gridList3" :index="index" :key="index">
@@ -86,13 +90,24 @@
 						uni.navigateTo({ url: item.url })
 						break;
 				}
-			},
+			}
 		}
 	}
 </script>
 
 <style lang="less" scoped>
 .about{
+	padding-bottom: 40rpx;
+	.about-thumbnail{
+		width: 100%;
+		height: 360rpx;
+	}
+	.about-title{
+		font-size: 28rpx;
+		color: #CBA65B;
+		font-weight: bold;
+		margin-top: 24rpx;
+	}
   .grid{
     margin-top: 24rpx;
     padding: 18rpx 0;
