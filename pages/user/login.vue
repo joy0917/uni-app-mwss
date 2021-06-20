@@ -1,13 +1,17 @@
 <template>
 	<view class="login">
-		<form @submit="formSubmit" class="loginForm">
+		<view class="loginForm">
 			<view class="loginItem">
-				<text>手机号：</text>
-				<input type="text" v-model="tel">
+				<view class="loginItemLabel">
+					<text>手机号：</text>
+				</view>
+				<uni-easyinput class="loginItemInput" :inputBorder="false" type="text" v-model="tel"></uni-easyinput>
 			</view>
 			<view class="loginItem">
-				<text>密码：</text>
-				<input placeholder="6-13位数字和字母" type="passwold" v-model="passwold">
+				<view class="loginItemLabel">
+					<text class="three">密码：</text>
+				</view>
+				<uni-easyinput class="loginItemInput" :inputBorder="false" placeholder="6-13位数字和字母" type="passwold" v-model="passwold"></uni-easyinput>
 			</view>
 			<view class="loginAgreement">
 				<checkbox v-model="checkbox"></checkbox>
@@ -21,7 +25,7 @@
 			<view class="uni-btn-v">
 				<button form-type="submit">登陆</button>
 			</view>
-		</form>
+		</view>
 		<view class="bottom">
 			<navigator url="/pages/user/login">忘记密码</navigator>
 			<navigator url="/pages/user/register">注册</navigator>
@@ -66,14 +70,20 @@
 				justify-content: space-between;
 				align-items: center;
 				margin-bottom: 40rpx;
-				text {
-					font-size: 32rpx;
+				.loginItemLabel {
+					width: 172rpx;
+					text {
+						font-size: 32rpx;
+					}
 				}
 				.three {
 					letter-spacing:0.33em;
 				}
-				input {
+				.loginItemInput {
 					width: calc(100% - 172rpx);
+					* {
+						border: none;
+					}
 				}
 			}
 			.uni-btn-v {
