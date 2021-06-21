@@ -17,3 +17,12 @@ export const articleList = data => {
 		method: 'GET'
 	})
 }
+
+// 关于我们子页面
+export const aboutDetail = data => {
+	return request({
+		url: '/api/frontend/about/detail',
+		data,
+		method: 'GET'
+	})
+}
