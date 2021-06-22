@@ -3,7 +3,7 @@
   <view>
     <uni-list>
 		<template v-for="(item, index) in payTipsList">
-			<uni-list-item :key="index" :title="item.title" link to="/pages/vue/index/index" @click="onClick($event,1)" ></uni-list-item>
+			<uni-list-item :key="index" :title="item.title" link :to="item.url"></uni-list-item>
 		</template>
     </uni-list>
   </view>

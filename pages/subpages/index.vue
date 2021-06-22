@@ -40,7 +40,6 @@
     			}
     		},
     		onLoad(options) {
-    			console.log(options)
 				this.aboutDetail(this.text[options.text])
     		},
     		methods: {
