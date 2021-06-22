@@ -31,7 +31,8 @@
 			"text": "在线客服"
 		}]
 	},
-	"pages": [{
+	"pages": [
+		{
 			"path": "pages/index/index",
 			"style": {
 				"navigationBarTitleText": "盛世美湾",
@@ -59,12 +60,6 @@
 			}
 		},
 		{
-			"path": "pages/index/invest",
-			"style": {
-				"navigationBarTitleText": "如何投资"
-			}
-		},
-		{
 			"path": "pages/index/invest-detail",
 			"style": {
 				"navigationBarTitleText": "投资详情"
@@ -74,12 +69,6 @@
 			"path": "pages/index/calculator",
 			"style": {
 				"navigationBarTitleText": "收益计算器"
-			}
-		},
-		{
-			"path": "pages/index/download",
-			"style": {
-				"navigationBarTitleText": "APP下载"
 			}
 		},
 		{
@@ -224,33 +213,9 @@
 			}
 		},
 		{
-			"path": "pages/about/register",
-			"style": {
-				"navigationBarTitleText": "如何注册"
-			}
-		},
-		{
-			"path": "pages/about/invest",
-			"style": {
-				"navigationBarTitleText": "如何投资"
-			}
-		},
-		{
 			"path": "pages/about/pay",
 			"style": {
 				"navigationBarTitleText": "如何充值"
-			}
-		},
-		{
-			"path": "pages/about/qa",
-			"style": {
-				"navigationBarTitleText": "常见问题"
-			}
-		},
-		{
-			"path": "pages/about/notice",
-			"style": {
-				"navigationBarTitleText": "公司公告"
 			}
 		},
 		{
@@ -260,45 +225,9 @@
 			}
 		},
 		{
-			"path": "pages/about/safeguard",
-			"style": {
-				"navigationBarTitleText": "安全保障"
-			}
-		},
-		{
 			"path": "pages/about/risk",
 			"style": {
 				"navigationBarTitleText": "风控机构"
-			}
-		},
-		{
-			"path": "pages/about/qualification",
-			"style": {
-				"navigationBarTitleText": "企业资质"
-			}
-		},
-		{
-			"path": "pages/about/level",
-			"style": {
-				"navigationBarTitleText": "会员等级"
-			}
-		},
-		{
-			"path": "pages/about/welfare",
-			"style": {
-				"navigationBarTitleText": "福利活动"
-			}
-		},
-		{
-			"path": "pages/about/expand",
-			"style": {
-				"navigationBarTitleText": "推广活动"
-			}
-		},
-		{
-			"path": "pages/about/contact",
-			"style": {
-				"navigationBarTitleText": "联系我们"
 			}
 		},
 		{
@@ -308,12 +237,12 @@
 			}
 		},
 		{
-            "path" : "pages/subpages/index",
+      "path" : "pages/subpages/index",
 			"style": {
 				"navigationBarTitleText": ""
 			}
-        }
-    ],
+    }
+  ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",

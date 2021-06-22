@@ -93,9 +93,9 @@ export default {
         duration: 500
       },
 			gridData: [
-				{ image: '/static/image/invest.png', text: '如何投资', url: '/pages/index/invest' },
+				{ image: '/static/image/invest.png', text: '如何投资', url: '/pages/subpages/index?text=1' },
 				{ image: '/static/image/calculator.png', text: '计算器', url: '/pages/index/calculator' },
-				{ image: '/static/image/download.png', text: 'App下载', url: '/pages/index/download' },
+				{ image: '/static/image/download.png', text: 'APP下载', url: '/pages/subpages/index?text=19' },
 				{ image: '/static/image/signin.png', text: '每日签到', url: null },
 				{ image: '/static/image/pay.png', text: '马上充值', url: '/pages/index/pay' },
 				{ image: '/static/image/withdraw.png', text: '快速体现', url: '/pages/index/withdraw' },

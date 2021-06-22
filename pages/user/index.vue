@@ -93,7 +93,7 @@
 					{ image: '/static/image/rechargeRecord.png', text: '充值记录', url: '/pages/user/log-pay' },
 					{ image: '/static/image/cashWithdrawalRecords.png', text: '提现记录', url: '/pages/user/log-withdraw' },
 					{ image: '/static/image/pointsMall.png', text: '积分商城', url: '/pages/integral/index' },
-					{ image: '/static/image/promotions.png', text: '优惠活动', url: '/pages/user/activity' }
+					{ image: '/static/image/promotions.png', text: '福利活动', url: '/pages/subpages/index?text=20' }
 				],
 				gridList2: [
 					{ image: '/static/image/message.png', text: '站内消息', url: '/pages/user/message' },
