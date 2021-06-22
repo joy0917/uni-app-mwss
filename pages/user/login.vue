@@ -5,25 +5,21 @@
 				<view class="loginItemLabel">
 					<text>手机号：</text>
 				</view>
-				<uni-easyinput class="loginItemInput" :inputBorder="false" type="text" v-model="tel"></uni-easyinput>
+				<uni-easyinput class="loginItemInput" :inputBorder="false" :maxlength="11" type="text" v-model="tel"></uni-easyinput>
 			</view>
 			<view class="loginItem">
 				<view class="loginItemLabel">
 					<text class="three">密码：</text>
 				</view>
-				<uni-easyinput class="loginItemInput" :inputBorder="false" placeholder="6-13位数字和字母" type="passwold" v-model="passwold"></uni-easyinput>
+				<uni-easyinput class="loginItemInput" :inputBorder="false" :maxlength="13" placeholder="6-13位数字和字母" type="password" v-model="password"></uni-easyinput>
 			</view>
 			<view class="loginAgreement">
-				<checkbox v-model="checkbox"></checkbox>
-				<text>记住密码</text>
-			</view>
-			<view class="loginAgreement">
-				<checkbox v-model="checkbox"></checkbox>
-				<text>已经阅读</text>
-				<navigator url="/pages/user/login">使用协议</navigator>
+				<uni-data-checkbox multiple wrap selectedTextColor="black" v-model="value" :localdata="range"></uni-data-checkbox>
+				<navigator url="/pages/user/login">《用户协议》</navigator>
+				<navigator url="/pages/user/login" style="left: 406rpx">《隐私协议》</navigator>
 			</view>
 			<view class="uni-btn-v">
-				<button form-type="submit">登陆</button>
+				<button @click="login">登陆</button>
 			</view>
 		</view>
 		<view class="bottom">
@@ -39,15 +35,60 @@
 		data () {
 			return {
 				tel: '',
-				passwold: '',
-				checkbox: 'false',
-				remember: 'false'
+				password: '',
+				value: [],
+				range: [
+					{"value": 0,"text": "记住密码"},
+					{"value": 1,"text": "我已阅读并同意"}
+				]
 			}
 		},
 		methods: {
-			formSubmit (e) {
-				console.log(e)
+			login () {
+				if (!/^1\d{10}$/.test(this.tel)) {
+					uni.showToast({title: '请输入正确的手机号码', icon: 'none'})
+					return
+				}
+				if (this.password.length < 6) {
+					uni.showToast({title: '请输入正确的密码', icon: 'none'})
+					return
+				}
+				if (this.value.length === 0 || this.value.findIndex(v => v === 1) === -1) {
+					uni.showToast({title: '请阅读并同意协议', icon: 'none'})
+					return
+				}
+				if (this.value.findIndex(v => v === 0) !== -1) {
+					uni.setStorage({
+						key: 'login_phone',
+						data: { tel: this.tel, password: this.password },
+						success: function () {
+							console.log('success');
+						}
+					});
+				}
+				login({ phone: this.tel, password: this.password }).then(res => {
+					uni.setStorage({
+						key: 'login_info',
+						data: res.response,
+						success: () => {
+							console.log('success');
+							uni.switchTab({
+								url: '/pages/index/index'
+							});
+						}
+					});
+				})
 			}
+		},
+		mounted () {
+			// 获取保存密码中的信息
+			uni.getStorage({
+				key: 'login_phone',
+				success: (e) => {
+					this.tel = e.data.tel
+					this.password = e.data.password
+				}
+			});
 		}
 	}
 </script>
@@ -103,9 +144,10 @@
 				display: flex;
 				justify-content: flex-start;
 				align-items: center;
-				font-size: 25rpx;
+				font-size: 28rpx;
 				margin-top: 0;
 				margin-bottom: 30rpx;
+				position: relative;
 				&:first-child {
 					margin-top: 40rpx;
 					margin-bottom: 20rpx;
@@ -114,8 +156,8 @@
 					transform:scale(0.5)
 				}
 				navigator {
-					color: #0089DE;
-					text-decoration: underline;
+					color: rgb(0, 122, 255);
+					position: absolute; bottom: 8rpx; left: 238rpx;
 				}
 			}
 		}

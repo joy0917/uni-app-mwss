@@ -78,3 +78,30 @@ export const aboutDetail = data => {
 		method: 'GET'
 	})
 }
+
+// 登录
+export const login = data => {
+	return request({
+		url: '/api/frontend/user/account/login',
+		data,
+		method: 'POST'
+	})
+}
+
+// 注册
+export const register = data => {
+	return request({
+		url: '/api/frontend/user/phone/register',
+		data,
+		method: 'POST'
+	})
+}
+
+// 发送验证码
+export const sendSms = data => {
+	return request({
+		url: '/api/frontend/sms',
+		data,
+		method: 'POST'
+	})
+}
