@@ -2,12 +2,12 @@
 <template>
 	<view class="container integral">
 		<uni-row :gutter="20">
-			<uni-col :span="12" class="mb10">
-				<navigator url="/pages/integral/detail">
+			<uni-col :span="12" class="mb10" v-for="(item, index) in productData" :key="index">
+				<navigator :url="`/pages/integral/detail?id=${item.id}`">
 					<view class="goods-item">
-						<image src="/static/image/bg.png" class="goods-img"></image>
-						<view class="goods-title">福鼎白茶</view>
-						<view class="goods-sub">需要<text class="red">1118</text>积分</view>
+						<image :src="item.bg_img" class="goods-img"></image>
+						<view class="goods-title">{{ item.title }}</view>
+						<view class="goods-sub">需要<text class="red">{{ item.integral }}</text>积分</view>
 					</view>
 				</navigator>
 			</uni-col>
@@ -16,13 +16,26 @@
 </template>
 
 <script>
+	import { productList } from 'static/api/api'
 	export default {
 		data() {
 			return {
+				productData: []
 			}
 		},
 		methods: {
-
+			productList () { // 商品列表
+				productList({
+					title: '',
+					per_page: 100,
+					current_page: 1
+				}).then(res => {
+					this.productData = res.response.data
+				})
+			}
+		},
+		mounted () {
+			this.productList()
 		},
 		onNavigationBarButtonTap (e) { // 右上角按钮
 			uni.navigateTo({

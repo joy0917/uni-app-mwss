@@ -9,6 +9,7 @@
 </template>
 
 <script>
+	import { orderList } from 'static/api/api'
 	export default {
 		data () {
 			return {

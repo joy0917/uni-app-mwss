@@ -27,8 +27,8 @@
 			<uni-notice-bar :show-icon="true" :scrollable="true" :single="true" :text="articleData"/>
 			<video
         class="video"
-        autoplay
-        loop
+        :loop="videoOption.loop"
+        :autoplay="videoOption.autoplay"
         src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-uni-app-doc/3c1782e0-60ab-11eb-8ff1-d5dcf8779628.m4v"
 			  @error="videoErrorCallback" controls poster="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/b1476d40-4e5f-11eb-b997-9918a5dda011.png">
 			</video>
@@ -71,7 +71,9 @@
 						<view class="mt2">项目规模：<text class="txt1">{{ item.ee }}</text>万元</view>
 					</uni-col>
 					<uni-col :span="12" class="tr">
-						<view class="btn-invest" @click="navigateTo('/pages/index/invest-detail')"></view>
+						<navigator url="/pages/index/invest-detail">
+							<view class="btn-invest"></view>
+						</navigator>
 					</uni-col>
 				</uni-row>
 			</view>
@@ -80,7 +82,7 @@
 </template>
 
 <script>
-import { carouselList, articleList } from 'static/api/api'
+import { carouselList, articleList, investProject } from 'static/api/api'
 import { getFormatDate } from 'static/libs/libs'
 export default {
 	data() {
@@ -92,6 +94,10 @@ export default {
         interval: 2000,
         duration: 500
       },
+			videoOption: {
+				loop: true,
+				autoplay: false
+			},
 			gridData: [
 				{ image: '/static/image/invest.png', text: '如何投资', url: '/pages/subpages/index?text=1' },
 				{ image: '/static/image/calculator.png', text: '计算器', url: '/pages/index/calculator' },
@@ -111,9 +117,6 @@ export default {
 		}
 	},
 	methods: {
-		navigateTo (url) { // 跳转
-			uni.navigateTo({ url })
-		},
 		gridChange (e) { // 九宫格切换
 			let { index } = e.detail
 			let item = this.gridData[index]
@@ -157,11 +160,21 @@ export default {
         let data = res.response.data
         this.articleData = data[0] && data[0].desc
 			})
+		},
+		investProject () { // 投资项目
+			investProject({
+				type: 'STABLE',
+				page_num: 1,
+				page: 1
+			}).then(res => {
+				
+			})
 		}
 	},
 	mounted () {
 		this.carouselList()
 		this.articleList()
+		this.investProject()
 	},
 	onNavigationBarButtonTap (e) { // 右上角按钮
 		uni.navigateTo({

@@ -18,6 +18,58 @@ export const articleList = data => {
 	})
 }
 
+// 投资项目列表
+export const investProject = data => {
+	return request({
+		url: '/api/frontend/invest_project',
+		data,
+		method: 'GET'
+	})
+}
+
+// 投资项目详情
+export const investProjectDetail = id => {
+	return request({
+		url: `/api/frontend/invest_project/${id}`,
+		method: 'GET'
+	})
+}
+
+// 积分商城-商品列表
+export const productList = data => {
+	return request({
+		url: '/api/frontend/mall/product/list',
+		data,
+		method: 'GET'
+	})
+}
+
+// 积分商城-商品详情
+export const productDetail = id => {
+	return request({
+		url: `/api/frontend/mall/product/detail/${id}`,
+		method: 'GET'
+	})
+}
+
+// 积分商城-立即兑换
+export const orderAdd = data => {
+	return request({
+		url: '/api/frontend/mall/order/add',
+		data,
+		method: 'POST'
+	})
+}
+
+// 积分商城-订单列表
+export const orderList = data => {
+	return request({
+		url: '/api/frontend/mall/order/list',
+		data,
+		method: 'GET'
+	})
+}
+
 // 关于我们子页面
 export const aboutDetail = data => {
 	return request({
