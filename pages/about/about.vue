@@ -14,18 +14,11 @@ export default {
   data () {
     return {
 		payTipsList: [
-			{ url: '', title: '公司简介' },
-			{ url: '', title: '企业文化' },
-			{ url: '', title: '企业宗旨' }
+			{ url: '/pages/subpages/index?text=10', title: '公司简介' },
+			{ url: '/pages/subpages/index?text=11', title: '企业文化' },
+			{ url: '/pages/subpages/index?text=12', title: '企业宗旨' }
 		]
     }
-  },
-  methods: {
-  },
-  mounted () {
   }
 }
 </script>
-
-<style lang="less" scoped>
-</style>

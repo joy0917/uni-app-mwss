@@ -14,7 +14,7 @@
 				</uni-grid-item>
 			</uni-grid>
 		</view>
-    <!-- 九宫格 -->
+		<!-- 九宫格 -->
 		<view class="about-title">关于我们</view>
 		<view class="grid">
 			<uni-grid :column="4" :highlight="false" :showBorder="false" @change="gridChange2">
@@ -26,7 +26,7 @@
 				</uni-grid-item>
 			</uni-grid>
 		</view>
-    <!-- 九宫格 -->
+		<!-- 九宫格 -->
 		<view class="about-title">帮助中心</view>
 		<view class="grid">
 			<uni-grid :column="4" :highlight="false" :showBorder="false" @change="gridChange3">
@@ -46,24 +46,24 @@
 		data() {
 			return {
 				gridList1: [
-					{ image: '/static/image/about-register.png', text: '如何注册', url: '/pages/about/register' },
-					{ image: '/static/image/about-invest.png', text: '如何投资', url: '/pages/about/invest' },
+					{ image: '/static/image/about-register.png', text: '如何注册', url: '/pages/subpages/index?text=0' },
+					{ image: '/static/image/about-invest.png', text: '如何投资', url: '/pages/subpages/index?text=1' },
 					{ image: '/static/image/about-pay.png', text: '如何充值', url: '/pages/about/pay' },
-					{ image: '/static/image/about-qa.png', text: '常见问题', url: '/pages/about/qa' },
-					{ image: '/static/image/about-notice.png', text: '公司公告', url: '/pages/about/notice' }
+					{ image: '/static/image/about-qa.png', text: '常见问题', url: '/pages/subpages/index?text=8' },
+					{ image: '/static/image/about-notice.png', text: '公司公告', url: '/pages/subpages/index?text=9' }
 				],
 				gridList2: [
 					{ image: '/static/image/about-about.png', text: '关于我们', url: '/pages/about/about' },
-					{ image: '/static/image/about-safeguard.png', text: '安全保障', url: '/pages/about/safeguard' },
+					{ image: '/static/image/about-safeguard.png', text: '安全保障', url: '/pages/subpages/index?text=13' },
 					{ image: '/static/image/about-risk.png', text: '风控机构', url: '/pages/about/risk' },
-					{ image: '/static/image/about-qualification.png', text: '企业资质', url: '/pages/about/qualification' },
-					{ image: '/static/image/about-level.png', text: '会员等级', url: '/pages/about/level' },
-					{ image: '/static/image/download.png', text: 'APP下载', url: '/pages/index/download' },
-					{ image: '/static/image/about-welfare.png', text: '福利活动', url: '/pages/about/welfare' },
-					{ image: '/static/image/about-expand.png', text: '推广活动', url: '/pages/about/expand' }
+					{ image: '/static/image/about-qualification.png', text: '企业资质', url: '/pages/subpages/index?text=17' },
+					{ image: '/static/image/about-level.png', text: '会员等级', url: '/pages/subpages/index?text=18' },
+					{ image: '/static/image/download.png', text: 'APP下载', url: '/pages/subpages/index?text=19' },
+					{ image: '/static/image/about-welfare.png', text: '福利活动', url: '/pages/subpages/index?text=20' },
+					{ image: '/static/image/about-expand.png', text: '推广活动', url: '/pages/subpages/index?text=21' }
 				],
 				gridList3: [
-					{ image: '/static/image/about-contact.png', text: '联系我们', url: '/pages/about/contact' },
+					{ image: '/static/image/about-contact.png', text: '联系我们', url: '/pages/subpages/index?text=22' },
 					{ image: '/static/image/service2.png', text: '在线客服', url: '/pages/service/index' }
 				]
 			}
