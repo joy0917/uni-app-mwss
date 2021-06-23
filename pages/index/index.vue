@@ -68,7 +68,7 @@
 				</uni-row>
 				<uni-row>
 					<uni-col :span="16">
-						<view class="mt2">项目规模：<text class="txt1">{{ item.total_investment }}</text>万元</view>
+						<view class="mt2">项目规模：<text class="txt1">{{ item.total_investment }}</text>元</view>
 					</uni-col>
 					<uni-col :span="8" class="tr">
 						<navigator :url="`/pages/index/invest-detail?id=${item.id}`">

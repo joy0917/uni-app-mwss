@@ -23,7 +23,7 @@
 					<button type="primary" class="submitbtn" @click="submitForm">计算收益</button>
 				</uni-col>
 				<uni-col :span="12">
-					<button type="default" @click="resetForm">重新计算</button>
+					<button type="primary" @click="resetForm">重新计算</button>
 				</uni-col>
 			</uni-row>
 		</uni-forms>
@@ -71,7 +71,7 @@
 			},
 			resetForm () {
 				this.$refs.form.resetFields()
-			},
+			}
 		}
 	}
 </script>

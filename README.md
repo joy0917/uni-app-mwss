@@ -9,3 +9,15 @@ https://lanhuapp.com/web/#/item/project/stage?pid=99cd3c2b-96c4-48c1-9b56-b4b811
 
 uni-app文档:
 https://uniapp.dcloud.io/component/README
+
+首页
+  计算器  接口没接
+  每日签到  接口没接
+  马上充值  接口没接
+  快速提现  接口没接
+  邀请好友  页面没画
+  在线客服  页面没画
+  立即投资  页面没画
+积分商城
+  兑换记录  接口没接
+  订单状态  接口没接

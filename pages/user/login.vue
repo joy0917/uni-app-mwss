@@ -64,6 +64,7 @@
 					})
 				}
 				login({ phone: this.tel, password: this.password }).then(res => {
+          getApp().globalData.userInfo = res.response
 					uni.setStorage({
 						key: 'user_info',
 						data: res.response,

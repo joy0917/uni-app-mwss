@@ -13,7 +13,7 @@
 					<uni-row class="detail-item">
 						<uni-col :span="8">
 							<text class="t1">项目规模</text>
-							<view><text class="red">{{ baseForm.total_investment }}</text>万元</view>
+							<view><text class="red">{{ baseForm.total_investment }}</text>元</view>
 						</uni-col>
 						<uni-col :span="8">
 							<text class="t1">每日分红</text>
@@ -44,6 +44,7 @@
 			</uni-list-item>
 			<view class="detail-body" v-html="baseForm.remark"></view>
 		</uni-list>
+    <navigator :url="`/pages/index/invest-order`" class="detail-btn">立即投资</navigator>
 </view>
 </template>
 
@@ -92,7 +93,18 @@
 			}
 		}
 		.detail-body{
-			padding: 10rpx 40rpx;
+			padding: 10rpx 40rpx 110rpx 40rpx;
 		}
+    .detail-btn{
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      color: #fff;
+      height: 100rpx;
+      line-height: 100rpx;
+      text-align: center;
+      font-size: 32rpx;
+      background: linear-gradient(180deg, #E7D294 0%, #CBA65B 100%);
+    }
 	}
 </style>
