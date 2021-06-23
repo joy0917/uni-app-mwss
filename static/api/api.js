@@ -144,7 +144,7 @@ export const updateUserInfo = id => {
 // 修改登录密码
 export const setPassword = data => {
 	return request({
-		url: '/api/frontend/user/forget/password',
+		url: '/api/frontend/user/reset/password/set',
 		data,
 		method: 'POST'
 	})
@@ -154,6 +154,24 @@ export const setPassword = data => {
 export const setPayPassword = data => {
 	return request({
 		url: '/api/frontend/user/reset/pay/password',
+		data,
+		method: 'POST'
+	})
+}
+
+// 绑定银行卡
+export const bindBankcard = data => {
+	return request({
+		url: '/api/frontend/user/bind/bankcard',
+		data,
+		method: 'POST'
+	})
+}
+
+// 解绑银行卡
+export const delBankcard = data => {
+	return request({
+		url: '/api/frontend/user/del/card',
 		data,
 		method: 'POST'
 	})

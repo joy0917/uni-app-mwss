@@ -19,6 +19,7 @@
 
 <script>
 import { setPassword } from '@/static/api/api'
+import { mapMutations } from 'vuex'
 export default {
   data () {
     return {
@@ -47,6 +48,9 @@ export default {
     }
   },
   methods: {
+    ...mapMutations([
+      'setUserInfo'
+    ]),
     submitForm () {
       this.$refs.form.validate().then(res => {
         setPassword({
@@ -58,6 +62,8 @@ export default {
             content: '修改成功',
             showCancel: false,
             success: () => {
+              uni.setStorageSync('login_info', { tel: this.user_info.phone, password: null })
+              this.setUserInfo({})
               uni.navigateTo({
                 url: '/pages/user/login'
               })
