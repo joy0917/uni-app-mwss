@@ -4,10 +4,10 @@
 		<!-- 用户信息 -->
 		<view class="top">
 			<view>
-				<text>我的账号：</text><text>{{ mobile }}</text>
+				<text>我的账号：</text><text>{{ user_info.phone }}</text>
 			</view>
 			<view>
-				<text>用户等级：</text><text>{{ level }}</text>
+				<text>用户等级：</text><text>VIP {{ user_info.vip_level || 0 }}</text>
 			</view>
 		</view>
 		<!-- 账户信息 -->
@@ -25,7 +25,7 @@
 				<text>我的积分：{{ point }}</text>
 			</view>
 			<view class="normal">
-				<text>我的ID：{{ id }}</text>
+				<text>我的ID：{{ user_info.id }}</text>
 			</view>
 			<view class="last">
 				<view class="left">
@@ -78,6 +78,7 @@
 
 <script>
 import { checkLogin } from 'static/libs/common'
+import { mapMutations } from 'vuex'
 export default {
   data() {
     return {
@@ -110,14 +111,14 @@ export default {
     }
   },
   computed: {
-    mobile () { // 账户
-      return '13333333333'
-    },
-    level () { // 等级
-      return '普通会员'
+    user_info () {
+      return this.$store.state.user.user_info
     }
   },
   methods: {
+    ...mapMutations([
+      'setUserInfo'
+    ]),
     gridChange1 (e) { // 九宫格切换
       let { index } = e.detail
       let item = this.gridList1[index]
@@ -154,8 +155,12 @@ export default {
       uni.navigateTo({ url: item.url })
     },
     logout () { // 退出
+      this.setUserInfo({})
       uni.navigateTo({ url: '/pages/user/login' })
     }
+  },
+  mounted () {
+    console.log(this.user_info)
   },
   onShow () {
     checkLogin()
