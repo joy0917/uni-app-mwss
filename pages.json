@@ -189,6 +189,12 @@
 			}
 		},
 		{
+			"path": "pages/user/bank",
+			"style": {
+				"navigationBarTitleText": "银行卡列表"
+			}
+		},
+		{
 			"path": "pages/user/bind",
 			"style": {
 				"navigationBarTitleText": "银行卡绑定"

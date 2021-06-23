@@ -106,7 +106,7 @@ export default {
       gridList3: [
         { image: '/static/image/accountSecurity.png', text: '账户安全', url: '/pages/user/set' },
         { image: '/static/image/realNameAuthentication.png', text: '实名认证', url: '/pages/user/auth' },
-        { image: '/static/image/bankCardBinding.png', text: '银行卡绑定', url: '/pages/user/bind' }
+        { image: '/static/image/bankCardBinding.png', text: '银行卡绑定', url: '/pages/user/bank' }
       ]
     }
   },

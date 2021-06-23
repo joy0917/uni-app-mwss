@@ -176,3 +176,11 @@ export const delBankcard = data => {
 		method: 'POST'
 	})
 }
+
+// 银行卡列表
+export const bankcardList = id => {
+	return request({
+		url: `/api/frontend/user/card/list/${id}`,
+		method: 'GET'
+	})
+}
