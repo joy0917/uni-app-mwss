@@ -43,7 +43,7 @@
 				<view class="item-title"><image src="/static/image/verify.png" class="verify"></image>{{ item.title }}</view>				
 				<uni-row class="mb10">
 					<uni-col :span="8" class="tl">
-						<view><text class="txt1">{{ item.min_investment }}</text>元</view>
+						<view><text class="txt1">{{ item.min_investment }}</text>万元</view>
 						<view>起投金额</view>
 					</uni-col>
 					<uni-col :span="8" class="tc">

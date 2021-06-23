@@ -13,7 +13,7 @@
 					<uni-row class="detail-item">
 						<uni-col :span="8">
 							<text class="t1">项目规模</text>
-							<view><text class="red">{{ baseForm.total_investment }}</text>元</view>
+							<view><text class="red">{{ baseForm.total_investment }}</text>万元</view>
 						</uni-col>
 						<uni-col :span="8">
 							<text class="t1">每日分红</text>
