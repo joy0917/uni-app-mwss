@@ -6,25 +6,25 @@
       <tki-qrcode
         :val="user_info.my_recommend_code"
         :loadMake="true"></tki-qrcode>
-      <view class="txt">推荐人ID：{{ user_info.id }}</view>
+      <view class="txt">推荐码：{{ user_info.my_recommend_code }}</view>
     </view>
     <view class="member">
       <view class="title">我推荐的会员</view>
       <uni-table border emptyText="暂无更多数据" >
         <!-- 表头行 -->
         <uni-tr>
-          <uni-th width="25%" align="center" class="f12">用户ID</uni-th>
-          <uni-th width="25%" align="center" class="f12">手机号码</uni-th>
-          <uni-th width="25%" align="center" class="f12">代理等级</uni-th>
-          <uni-th width="25%" align="center" class="f12">注册时间</uni-th>
+          <uni-th width="70" align="center" class="f12">用户ID</uni-th>
+          <uni-th width="100" align="center" class="f12">手机号码</uni-th>
+          <uni-th width="70" align="center" class="f12">代理等级</uni-th>
+          <uni-th width="150" align="center" class="f12">注册时间</uni-th>
         </uni-tr>
           <!-- 表格数据行 -->
         <template v-for="(item, index) in tableListData">
           <uni-tr :key="index">
             <uni-td align="center" class="f12">{{ item.id }}</uni-td>
-            <uni-td align="center" class="f12">{{ item.tel }}</uni-td>
-            <uni-td align="center" class="f12">{{ item.lv }}</uni-td>
-            <uni-td align="center" class="f12">{{ item.date }}</uni-td>
+            <uni-td align="center" class="f12">{{ item.phone }}</uni-td>
+            <uni-td align="center" class="f12">{{ item.proxy }}</uni-td>
+            <uni-td align="center" class="f12">{{ item.created_at }}</uni-td>
           </uni-tr>
         </template>
       </uni-table>
@@ -33,15 +33,12 @@
 </template>
 
 <script>
+import { myInvites } from '@/static/api/api'
 import tkiQrcode from "@/components/tki-qrcode/tki-qrcode"
 export default {
   data() {
     return {
-      tableListData: [
-        { id: '123', tel: '15600000000', lv: '1', date: '06-16 16:36' },
-        { id: '456', tel: '15600000000', lv: '2', date: '06-15 15:30' },
-        { id: '789', tel: '15600000000', lv: '3', date: '06-15 15:00' }
-      ]
+      tableListData: []
     }
   },
   computed: {
@@ -52,8 +49,22 @@ export default {
   components: {
     tkiQrcode
   },
+  methods: {
+    myInvites () {
+      myInvites().then(res => {
+        this.tableListData = res.response.map(res => {
+          return {
+            id: res.id,
+            phone: res.phone,
+            created_at: res.created_at,
+            proxy: this.user_info.my_recommend_code === res.recommend_by ? 1 : 2
+          }
+        })
+      })
+    }
+  },
   mounted () {
-    console.log(this.$store.state.user.user_info)
+    this.myInvites()
   }
 }
 </script>

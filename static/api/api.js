@@ -114,3 +114,12 @@ export const signin = data => {
 		method: 'POST'
 	})
 }
+
+// 我邀请好友列表
+export const myInvites = data => {
+	return request({
+		url: '/api/frontend/user/my/invites',
+		data,
+		method: 'GET'
+	})
+}
