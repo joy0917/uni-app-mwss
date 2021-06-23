@@ -77,105 +77,90 @@
 </template>
 
 <script>
-	export default {
-		data() {
-			return {
-				money: '34.00', // 余额
-				growthValue: '0', // 成长值
-				point: '0', // 积分
-				id: '533333',
-				interestAmount: '0', // 利息
-				principalAmount: '0', // 本金
-				gridList1: [
-					{ image: '/static/image/signin.png', text: '每日签到', url: null },
-					{ image: '/static/image/fundsBreakdown.png', text: '资金明细', url: '/pages/user/log-fund' },
-					{ image: '/static/image/investmentRecord.png', text: '投资记录', url: '/pages/user/log-invest' },
-					{ image: '/static/image/earningsRecord.png', text: '收益记录', url: '/pages/user/log-earnings' },
-					{ image: '/static/image/rechargeRecord.png', text: '充值记录', url: '/pages/user/log-pay' },
-					{ image: '/static/image/cashWithdrawalRecords.png', text: '提现记录', url: '/pages/user/log-withdraw' },
-					{ image: '/static/image/pointsMall.png', text: '积分商城', url: '/pages/integral/index' },
-					{ image: '/static/image/promotions.png', text: '福利活动', url: '/pages/subpages/index?text=20' }
-				],
-				gridList2: [
-					{ image: '/static/image/message.png', text: '站内消息', url: '/pages/user/message' },
-					{ image: '/static/image/invite.png', text: '邀请好友', url: '/pages/index/invite' },
-					{ image: '/static/image/service2.png', text: '在线客服', url: '/pages/service/index' }
-				],
-				gridList3: [
-					{ image: '/static/image/accountSecurity.png', text: '账户安全', url: '/pages/user/set' },
-					{ image: '/static/image/realNameAuthentication.png', text: '实名认证', url: '/pages/user/auth' },
-					{ image: '/static/image/bankCardBinding.png', text: '银行卡绑定', url: '/pages/user/bind' }
-				]
-			}
-		},
-		computed: {
-			mobile () { // 账户
-				return '13333333333'
-			},
-			level () { // 等级
-				return '普通会员'
-			}
-		},
-		methods: {
-      checkLogin () { // 校验登录
-        if (getApp().globalData.userInfo.token) {
-          return true
-        }
-        uni.showModal({
-          title: '提示',
-          content: '请先登录',
-          showCancel: false,
-          success: () => {
-            uni.navigateTo({
-              url: '/pages/user/login'
-            })
-          }
-        })
-        return false
-      },
-			gridChange1 (e) { // 九宫格切换
-				let { index } = e.detail
-				let item = this.gridList1[index]
-				switch (item.text){
-					case '每日签到':
-						uni.showModal({
-							content: '签到成功',
-							showCancel: false
-						})
-						break;
-					case '积分商城':
-						uni.switchTab({ url: item.url })
-						break;
-					default:
-						uni.navigateTo({ url: item.url })
-						break;
-				}
-			},
-			gridChange2 (e) { // 九宫格切换
-				let { index } = e.detail
-				let item = this.gridList2[index]
-				switch (item.text){
-					case '在线客服':
-						uni.switchTab({ url: item.url })
-						break;
-					default:
-						uni.navigateTo({ url: item.url })
-						break;
-				}
-			},
-			gridChange3 (e) { // 九宫格切换
-				let { index } = e.detail
-				let item = this.gridList3[index]
-				uni.navigateTo({ url: item.url })
-			},
-			logout () { // 退出
-				uni.navigateTo({ url: '/pages/user/login' })
-			}
-		},
-    onShow () {
-      this.checkLogin()
+import { checkLogin } from 'static/libs/common'
+export default {
+  data() {
+    return {
+      money: '34.00', // 余额
+      growthValue: '0', // 成长值
+      point: '0', // 积分
+      id: '533333',
+      interestAmount: '0', // 利息
+      principalAmount: '0', // 本金
+      gridList1: [
+        { image: '/static/image/signin.png', text: '每日签到', url: null },
+        { image: '/static/image/fundsBreakdown.png', text: '资金明细', url: '/pages/user/log-fund' },
+        { image: '/static/image/investmentRecord.png', text: '投资记录', url: '/pages/user/log-invest' },
+        { image: '/static/image/earningsRecord.png', text: '收益记录', url: '/pages/user/log-earnings' },
+        { image: '/static/image/rechargeRecord.png', text: '充值记录', url: '/pages/user/log-pay' },
+        { image: '/static/image/cashWithdrawalRecords.png', text: '提现记录', url: '/pages/user/log-withdraw' },
+        { image: '/static/image/pointsMall.png', text: '积分商城', url: '/pages/integral/index' },
+        { image: '/static/image/promotions.png', text: '福利活动', url: '/pages/subpages/index?text=20' }
+      ],
+      gridList2: [
+        { image: '/static/image/message.png', text: '站内消息', url: '/pages/user/message' },
+        { image: '/static/image/invite.png', text: '邀请好友', url: '/pages/index/invite' },
+        { image: '/static/image/service2.png', text: '在线客服', url: '/pages/service/index' }
+      ],
+      gridList3: [
+        { image: '/static/image/accountSecurity.png', text: '账户安全', url: '/pages/user/set' },
+        { image: '/static/image/realNameAuthentication.png', text: '实名认证', url: '/pages/user/auth' },
+        { image: '/static/image/bankCardBinding.png', text: '银行卡绑定', url: '/pages/user/bind' }
+      ]
     }
-	}
+  },
+  computed: {
+    mobile () { // 账户
+      return '13333333333'
+    },
+    level () { // 等级
+      return '普通会员'
+    }
+  },
+  methods: {
+    gridChange1 (e) { // 九宫格切换
+      let { index } = e.detail
+      let item = this.gridList1[index]
+      switch (item.text){
+        case '每日签到':
+          uni.showModal({
+            content: '签到成功',
+            showCancel: false
+          })
+          break;
+        case '积分商城':
+          uni.switchTab({ url: item.url })
+          break;
+        default:
+          uni.navigateTo({ url: item.url })
+          break;
+      }
+    },
+    gridChange2 (e) { // 九宫格切换
+      let { index } = e.detail
+      let item = this.gridList2[index]
+      switch (item.text){
+        case '在线客服':
+          uni.switchTab({ url: item.url })
+          break;
+        default:
+          uni.navigateTo({ url: item.url })
+          break;
+      }
+    },
+    gridChange3 (e) { // 九宫格切换
+      let { index } = e.detail
+      let item = this.gridList3[index]
+      uni.navigateTo({ url: item.url })
+    },
+    logout () { // 退出
+      uni.navigateTo({ url: '/pages/user/login' })
+    }
+  },
+  onShow () {
+    checkLogin()
+  }
+}
 </script>
 
 <style scoped lang="less">

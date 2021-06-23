@@ -84,6 +84,7 @@
 <script>
 import { carouselList, articleList, investProject } from 'static/api/api'
 import { getFormatDate } from 'static/libs/libs'
+import { checkLogin } from 'static/libs/common'
 export default {
 	data() {
 		return {
@@ -118,26 +119,10 @@ export default {
 		}
 	},
 	methods: {
-    checkLogin () { // 校验登录
-      if (getApp().globalData.userInfo.token) {
-        return true
-      }
-      uni.showModal({
-        title: '提示',
-        content: '请先登录',
-        showCancel: false,
-        success: () => {
-          uni.navigateTo({
-            url: '/pages/user/login'
-          })
-        }
-      })
-      return false
-    },
 		gridChange (e) { // 九宫格切换
 			let { index } = e.detail
 			let item = this.gridData[index]
-      if (item.limit && !this.checkLogin()) {
+      if (item.limit && !checkLogin()) {
         return
       }
 			switch (item.text){
@@ -199,8 +184,8 @@ export default {
 		this.articleList()
 		this.investProject()
 	},
-	onNavigationBarButtonTap (e) { // 右上角按钮
-    if (this.checkLogin()) {
+	onNavigationBarButtonTap () { // 右上角按钮
+    if (checkLogin()) {
       uni.switchTab({
         url: '/pages/user/index'
       })
