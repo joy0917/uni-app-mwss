@@ -30,70 +30,66 @@
 </template>
 
 <script>
-	import { login } from 'static/api/api'
-	export default {
-		data () {
-			return {
-				tel: '',
-				password: '',
-				value: [],
-				range: [
-					{"value": 0,"text": "记住密码"},
-					{"value": 1,"text": "我已阅读并同意"}
-				]
-			}
-		},
-		methods: {
-			login () {
-				if (!/^1\d{10}$/.test(this.tel)) {
-					uni.showToast({title: '请输入正确的手机号码', icon: 'none'})
-					return
-				}
-				if (this.password.length < 6) {
-					uni.showToast({title: '请输入正确的密码', icon: 'none'})
-					return
-				}
-				if (this.value.length === 0 || this.value.findIndex(v => v === 1) === -1) {
-					uni.showToast({title: '请阅读并同意协议', icon: 'none'})
-					return
-				}
-				if (this.value.findIndex(v => v === 0) !== -1) {
-					uni.setStorage({
-						key: 'login_info',
-						data: { tel: this.tel, password: this.password }
-					})
-				}
-				login({ phone: this.tel, password: this.password }).then(res => {
-          getApp().globalData.userInfo = res.response
-					uni.setStorage({
-						key: 'user_info',
-						data: res.response,
-						success: () => {
-							uni.switchTab({
-								url: '/pages/index/index'
-							})
-						}
-					})
-				})
-			}
-		},
-		mounted () {
-			// 获取保存密码中的信息
-			uni.getStorage({
-				key: 'login_info',
-				success: (e) => {
-					this.tel = e.data.tel
-					this.password = e.data.password
-				}
-			})
-		},
-    onBackPress () {
-      uni.reLaunch({
-        url: '/pages/index/index'
-      })
-      return true
+import { login } from 'static/api/api'
+import { mapMutations } from 'vuex'
+export default {
+  data () {
+    return {
+      tel: '',
+      password: '',
+      value: [],
+      range: [
+        {"value": 0,"text": "记住密码"},
+        {"value": 1,"text": "我已阅读并同意"}
+      ]
     }
-	}
+  },
+  methods: {
+    ...mapMutations([
+      'setUserInfo'
+    ]),
+    login () {
+      if (!/^1\d{10}$/.test(this.tel)) {
+        uni.showToast({title: '请输入正确的手机号码', icon: 'none'})
+        return
+      }
+      if (this.password.length < 6) {
+        uni.showToast({title: '请输入正确的密码', icon: 'none'})
+        return
+      }
+      if (this.value.length === 0 || this.value.findIndex(v => v === 1) === -1) {
+        uni.showToast({title: '请阅读并同意协议', icon: 'none'})
+        return
+      }
+      if (this.value.findIndex(v => v === 0) !== -1) {
+        uni.setStorageSync('login_info', { tel: this.tel, password: this.password })
+      }
+      login({ phone: this.tel, password: this.password }).then(res => {
+        this.setUserInfo(res.response)
+        uni.switchTab({
+          url: '/pages/index/index'
+        })
+      })
+    }
+  },
+  mounted () {
+    // 获取保存密码中的信息
+    uni.getStorage({
+      key: 'login_info',
+      success: (e) => {
+        this.tel = e.data.tel
+        this.password = e.data.password
+        this.value = [0, 1]
+      }
+    })
+  },
+  onBackPress () {
+    uni.reLaunch({
+      url: '/pages/index/index'
+    })
+    return true
+  }
+}
 </script>
 
 <style scoped lang="less">

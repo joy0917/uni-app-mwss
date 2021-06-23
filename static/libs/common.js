@@ -1,8 +1,9 @@
+import store from 'store'
 /*
   校验登录
  */
 export const checkLogin = () => {
-  if (getApp().globalData.userInfo.token) {
+  if (store.state.user.user_info.token) {
     return true
   }
   uni.showModal({

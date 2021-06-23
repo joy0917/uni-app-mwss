@@ -113,22 +113,16 @@
 					return
 				}
 				register({ phone: this.tel, password: this.password, repassword: this.againPassword, code: this.SMSCode, recommend_by: this.referrer }).then(res => {
-					uni.setStorage({
-						key: 'register_info',
-						data: res.response,
-						success: () => {
-							uni.showModal({
-								title: '提示',
-								content: '注册成功',
-								showCancel: false,
-								success: () => {
-									uni.navigateTo({
-										url: '/pages/user/login'
-									})
-								}
-							})
-						}
-					})
+          uni.showModal({
+            title: '提示',
+            content: '注册成功',
+            showCancel: false,
+            success: () => {
+              uni.navigateTo({
+                url: '/pages/user/login'
+              })
+            }
+          })
 				})
 			},
 			sendSms () {
