@@ -34,6 +34,7 @@
 			productDetail (id) { // 商品详情
 				productDetail(id).then(res => {
 					this.detailFrom = res.response
+					this.detailFrom.product_detail = this.detailFrom.product_detail.replace(/<img/gi, '<img style="max-width: 100%" height="auto"');
 				})
 			}
 		},
@@ -71,10 +72,6 @@
 		}
 		.detail-body{
 			padding: 10rpx 40rpx;
-			img{
-				display: block !important;
-				max-width: 100% !important;
-			}
 		}
 	}
 </style>

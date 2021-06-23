@@ -15,11 +15,11 @@
 			</view>
 			<view class="loginAgreement">
 				<uni-data-checkbox multiple wrap selectedTextColor="black" v-model="value" :localdata="range"></uni-data-checkbox>
-				<navigator url="/pages/user/login">《用户协议》</navigator>
-				<navigator url="/pages/user/login" style="left: 406rpx">《隐私协议》</navigator>
+				<navigator url="/pages/user/agreement">《用户协议》</navigator>
+				<navigator url="/pages/user/privacy" style="left: 406rpx">《隐私协议》</navigator>
 			</view>
 			<view class="uni-btn-v">
-				<button @click="login">登陆</button>
+				<button @click="login">立即登陆</button>
 			</view>
 		</view>
 		<view class="bottom">
@@ -60,23 +60,19 @@
 				if (this.value.findIndex(v => v === 0) !== -1) {
 					uni.setStorage({
 						key: 'login_phone',
-						data: { tel: this.tel, password: this.password },
-						success: function () {
-							console.log('success');
-						}
-					});
+						data: { tel: this.tel, password: this.password }
+					})
 				}
 				login({ phone: this.tel, password: this.password }).then(res => {
 					uni.setStorage({
 						key: 'login_info',
 						data: res.response,
 						success: () => {
-							console.log('success');
 							uni.switchTab({
 								url: '/pages/index/index'
-							});
+							})
 						}
-					});
+					})
 				})
 			}
 		},
@@ -88,7 +84,7 @@
 					this.tel = e.data.tel
 					this.password = e.data.password
 				}
-			});
+			})
 		}
 	}
 </script>

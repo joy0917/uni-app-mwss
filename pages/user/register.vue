@@ -30,7 +30,7 @@
 				<view class="registerItemLabel">
 					<text>短信验证：</text>
 				</view>
-				<uni-easyinput class="registerItemInput" :inputBorder="false" type="text" v-model="SMSCode"></uni-easyinput>
+				<uni-easyinput class="registerItemInput" :inputBorder="false" type="text" v-model="SMSCode" maxlength="6"></uni-easyinput>
 				<button v-if="!smsLoading" class="sendSMS" type="default" @click="sendSms" :disabled="graphicalCAPTCHA !== codeText || !/^1\d{10}$/.test(tel)">发送验证码</button>
 				<button v-else class="sendSMS" type="default" :disabled="true">{{ smsTime }}秒后重发</button>
 			</view>
@@ -41,16 +41,16 @@
 				<uni-easyinput class="registerItemInput" placeholder="推荐人" :inputBorder="false" type="text" v-model="referrer"></uni-easyinput>
 			</view>
 			<view class="registerAgreement">
-				<uni-data-checkbox multiple wrap selectedTextColor="black" v-model="value" :localdata="range" @change="change"></uni-data-checkbox>
-				<navigator url="/pages/user/register">《用户协议》</navigator>
-				<navigator url="/pages/user/register" style="left: 406rpx">《隐私协议》</navigator>
+				<uni-data-checkbox multiple wrap selectedTextColor="black" v-model="value" :localdata="range"></uni-data-checkbox>
+				<navigator url="/pages/user/agreement">《用户协议》</navigator>
+				<navigator url="/pages/user/privacy" style="left: 406rpx">《隐私协议》</navigator>
 			</view>
 			<view class="uni-btn-v">
-				<button @click="register">注册并登陆</button>
+				<button @click="register">立即注册</button>
 			</view>
 		</view>
 		<view class="bottom">
-			<navigator url="/pages/user/register">忘记密码</navigator>
+			<!-- <navigator url="/pages/user/register">忘记密码</navigator> -->
 			<navigator url="/pages/user/login">登陆</navigator>
 		</view>
 		
@@ -117,12 +117,18 @@
 						key: 'register_info',
 						data: res.response,
 						success: () => {
-							console.log('success');
-							uni.navigateTo({
-								url: '/pages/user/login'
-							});
+							uni.showModal({
+								title: '提示',
+								content: '注册成功',
+								showCancel: false,
+								success: () => {
+									uni.navigateTo({
+										url: '/pages/user/login'
+									})
+								}
+							})
 						}
-					});
+					})
 				})
 			},
 			sendSms () {

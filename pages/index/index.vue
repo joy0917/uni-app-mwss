@@ -24,7 +24,7 @@
 		</view>
 		<!-- 公告和视频 -->
 		<view class="section3">
-			<uni-notice-bar :show-icon="true" :scrollable="true" :single="true" :text="articleData"/>
+			<uni-notice-bar :show-icon="true" :scrollable="true" :single="true" :speed="30" :text="articleData"/>
 			<video
         class="video"
         :loop="videoOption.loop"
@@ -35,23 +35,23 @@
 		</view>
 		<!-- 活动列表 -->
 		<view class="section4" v-for="(item, index) in eventData" :key="index">
-			<view class="event-title">{{ item.type }}</view>
+			<view class="event-title" v-if="index === 0 || item.type !== eventData[index-1].type">{{ eventType[item.type] }}</view>
 			<view class="event-head">
-				<image src="/static/image/bg.png" class="event-img"></image>
+				<image :src="item.image" class="event-img"></image>
 			</view>
 			<view class="event-body">
 				<view class="item-title"><image src="/static/image/verify.png" class="verify"></image>{{ item.title }}</view>				
 				<uni-row class="mb10">
 					<uni-col :span="8" class="tl">
-						<view><text class="txt1">{{ item.aa }}</text>元</view>
+						<view><text class="txt1">{{ item.min_investment }}</text>元</view>
 						<view>起投金额</view>
 					</uni-col>
 					<uni-col :span="8" class="tc">
-						<view><text class="txt1">{{ item.bb }}</text>元起</view>
+						<view><text class="txt1">{{ item.day_bonus }}</text>元起</view>
 						<view>每日分红</view>
 					</uni-col>
 					<uni-col :span="8" class="tr">
-						<view><text class="txt1">{{ item.cc }}</text>天</view>
+						<view><text class="txt1">{{ item.period }}</text>天</view>
 						<view>投资周期</view>
 					</uni-col>
 				</uni-row>
@@ -60,18 +60,18 @@
 						投资进度：
 					</uni-col>
 					<uni-col :span="13">
-						<progress :percent="item.dd" stroke-width="6" activeColor="#CBA65B" class="mt8"/>
+						<progress :percent="item.finished_investment_percent" stroke-width="6" activeColor="#CBA65B" class="mt8"/>
 					</uni-col>
 					<uni-col :span="6" class="txt2 tr">
-						{{ item.dd }}%
+						{{ item.finished_investment_percent }}%
 					</uni-col>
 				</uni-row>
 				<uni-row>
-					<uni-col :span="12">
-						<view class="mt2">项目规模：<text class="txt1">{{ item.ee }}</text>万元</view>
+					<uni-col :span="16">
+						<view class="mt2">项目规模：<text class="txt1">{{ item.total_investment }}</text>万元</view>
 					</uni-col>
-					<uni-col :span="12" class="tr">
-						<navigator url="/pages/index/invest-detail">
+					<uni-col :span="8" class="tr">
+						<navigator :url="`/pages/index/invest-detail?id=${item.id}`">
 							<view class="btn-invest"></view>
 						</navigator>
 					</uni-col>
@@ -109,11 +109,12 @@ export default {
 				{ image: '/static/image/service2.png', text: '在线客服', url: '/pages/service/index' }
 			],
       articleData: '',
-			eventData: [
-				{ type: '活动专享区', title: '道路建设项目', image: '/static/image/bg.png', aa: '8000', bb: '1960', cc: '85', dd: '26.66', ee: '230000' },
-				{ type: '新手体验区', title: '贵州妇女儿童医院建设项目', image: '/static/image/bg.png', aa: '8000', bb: '1960', cc: '85', dd: '26.66', ee: '230000' },
-				{ type: '稳健精选区', title: '投资理财项目', image: '/static/image/bg.png', aa: '8000', bb: '1960', cc: '85', dd: '26.66', ee: '230000' },
-			]
+			eventType: {
+				'STABLE': '稳健精选',
+				'ACTIVITY': '活动专享',
+				'NEW': '新手体验'
+			},
+			eventData: []
 		}
 	},
 	methods: {
@@ -135,9 +136,9 @@ export default {
 					break;
 			}
 		},
-		videoErrorCallback (e) { // 视频报错
+		videoErrorCallback () { // 视频报错
 			uni.showModal({
-				content: e.target.errMsg,
+				content: '视频加载失败',
 				showCancel: false
 			})
 		},
@@ -163,11 +164,14 @@ export default {
 		},
 		investProject () { // 投资项目
 			investProject({
-				type: 'STABLE',
-				page_num: 1,
+				type: '',
+				page_num: 100,
 				page: 1
 			}).then(res => {
-				
+				let activityData = res.response.activity || []
+				let newData = res.response.NEW || []
+				let stableData = res.response.STABLE || []
+				this.eventData = activityData.concat(newData).concat(stableData)
 			})
 		}
 	},
