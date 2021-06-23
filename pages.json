@@ -177,6 +177,18 @@
 			}
 		},
 		{
+			"path": "pages/user/login-password",
+			"style": {
+				"navigationBarTitleText": "修改登录密码"
+			}
+		},
+		{
+			"path": "pages/user/pay-password",
+			"style": {
+				"navigationBarTitleText": "修改支付密码"
+			}
+		},
+		{
 			"path": "pages/user/bind",
 			"style": {
 				"navigationBarTitleText": "银行卡绑定"

@@ -24,8 +24,8 @@
         defaultImg: `this.src="https://bjetxgzv.cdn.bspapp.com/VKCEYUGU-uni-app-doc/44f8d690-4f3d-11eb-b680-7980c8a877b8.svg"`,
         gridData: [
           { image: '/static/image/auth.png', text: '实名认证', url: '/pages/user/auth' },
-          { image: '/static/image/password1.png', text: '修改登录密码', url: '/pages/index/calculator' },
-          { image: '/static/image/password2.png', text: '修改支付密码', url: '/pages/subpages/index?text=19' }
+          { image: '/static/image/password1.png', text: '修改登录密码', url: '/pages/user/login-password' },
+          { image: '/static/image/password2.png', text: '修改支付密码', url: '/pages/user/pay-password' }
         ]
 			}
 		},

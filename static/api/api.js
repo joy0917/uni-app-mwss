@@ -140,3 +140,21 @@ export const updateUserInfo = id => {
 		method: 'GET'
 	})
 }
+
+// 修改登录密码
+export const setPassword = data => {
+	return request({
+		url: '/api/frontend/user/forget/password',
+		data,
+		method: 'POST'
+	})
+}
+
+// 修改支付密码
+export const setPayPassword = data => {
+	return request({
+		url: '/api/frontend/user/reset/pay/password',
+		data,
+		method: 'POST'
+	})
+}
