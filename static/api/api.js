@@ -123,3 +123,20 @@ export const myInvites = data => {
 		method: 'GET'
 	})
 }
+
+// 实名认证
+export const realname = data => {
+	return request({
+		url: '/api/frontend/user/check/realname',
+		data,
+		method: 'POST'
+	})
+}
+
+// 查询用户详情
+export const updateUserInfo = id => {
+	return request({
+		url: `/api/frontend/user/detail/${id}`,
+		method: 'GET'
+	})
+}

@@ -1,5 +1,5 @@
 import store from '@/store'
-import { signin } from '@/static/api/api'
+import { signin, updateUserInfo } from '@/static/api/api'
 /*
   校验登录
  */
@@ -29,5 +29,18 @@ export const userSignin = () => {
       content: '签到成功',
       showCancel: false
     })
+  })
+}
+
+/*
+  更新用户信息
+ */
+export const updateUser = () => {
+  updateUserInfo(store.state.user.user_info.id).then(res => {
+    let user_info = {
+      ...res.response,
+      token: store.state.user.user_info.token
+    }
+    store.commit('setUserInfo', user_info)
   })
 }

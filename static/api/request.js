@@ -13,7 +13,7 @@ export default ({url, data, method}) => {
         Authorization: 'Bearer' + ' ' + token
       }
 		}).then(response => {
-			let res = response[1].data
+			let res = response[1] && response[1].data
 			if (res.msg_code === 100000) {
 				resolve(res)
 			} else {

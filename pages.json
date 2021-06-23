@@ -165,12 +165,6 @@
 			}
 		},
 		{
-			"path": "pages/user/activity",
-			"style": {
-				"navigationBarTitleText": "优惠活动"
-			}
-		},
-		{
 			"path": "pages/user/message",
 			"style": {
 				"navigationBarTitleText": "站内信"
