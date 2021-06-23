@@ -1,4 +1,4 @@
-<!-- 会员中心 -->
+<!-- 积分商城 -->
 <template>
 	<view class="container integral">
 		<uni-row :gutter="20">

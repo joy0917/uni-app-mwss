@@ -1,3 +1,4 @@
+<!-- 会员中心 -->
 <template>
 	<view class="container">
 		<!-- 用户信息 -->
@@ -116,6 +117,22 @@
 			}
 		},
 		methods: {
+      checkLogin () { // 校验登录
+        if (getApp().globalData.userInfo.token) {
+          return true
+        }
+        uni.showModal({
+          title: '提示',
+          content: '请先登录',
+          showCancel: false,
+          success: () => {
+            uni.navigateTo({
+              url: '/pages/user/login'
+            })
+          }
+        })
+        return false
+      },
 			gridChange1 (e) { // 九宫格切换
 				let { index } = e.detail
 				let item = this.gridList1[index]
@@ -155,6 +172,9 @@
 				uni.navigateTo({ url: '/pages/user/login' })
 			}
 		},
+    onShow () {
+      this.checkLogin()
+    }
 	}
 </script>
 

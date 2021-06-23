@@ -23,7 +23,7 @@
 			</view>
 		</view>
 		<view class="bottom">
-			<navigator url="/pages/user/login">忘记密码</navigator>
+			<!-- <navigator url="/pages/user/login">忘记密码</navigator> -->
 			<navigator url="/pages/user/register">注册</navigator>
 		</view>
 	</view>
@@ -59,13 +59,13 @@
 				}
 				if (this.value.findIndex(v => v === 0) !== -1) {
 					uni.setStorage({
-						key: 'login_phone',
+						key: 'login_info',
 						data: { tel: this.tel, password: this.password }
 					})
 				}
 				login({ phone: this.tel, password: this.password }).then(res => {
 					uni.setStorage({
-						key: 'login_info',
+						key: 'user_info',
 						data: res.response,
 						success: () => {
 							uni.switchTab({
@@ -79,13 +79,19 @@
 		mounted () {
 			// 获取保存密码中的信息
 			uni.getStorage({
-				key: 'login_phone',
+				key: 'login_info',
 				success: (e) => {
 					this.tel = e.data.tel
 					this.password = e.data.password
 				}
 			})
-		}
+		},
+    onBackPress () {
+      uni.reLaunch({
+        url: '/pages/index/index'
+      })
+      return true
+    }
 	}
 </script>
 

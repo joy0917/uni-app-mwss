@@ -99,14 +99,14 @@ export default {
 				autoplay: false
 			},
 			gridData: [
-				{ image: '/static/image/invest.png', text: '如何投资', url: '/pages/subpages/index?text=1' },
-				{ image: '/static/image/calculator.png', text: '计算器', url: '/pages/index/calculator' },
-				{ image: '/static/image/download.png', text: 'APP下载', url: '/pages/subpages/index?text=19' },
-				{ image: '/static/image/signin.png', text: '每日签到', url: null },
-				{ image: '/static/image/pay.png', text: '马上充值', url: '/pages/index/pay' },
-				{ image: '/static/image/withdraw.png', text: '快速体现', url: '/pages/index/withdraw' },
-				{ image: '/static/image/invite.png', text: '邀请好友', url: '/pages/index/invite' },
-				{ image: '/static/image/service2.png', text: '在线客服', url: '/pages/service/index' }
+				{ image: '/static/image/invest.png', text: '如何投资', limit: false, url: '/pages/subpages/index?text=1' },
+				{ image: '/static/image/calculator.png', text: '计算器', limit: false, url: '/pages/index/calculator' },
+				{ image: '/static/image/download.png', text: 'APP下载', limit: false, url: '/pages/subpages/index?text=19' },
+				{ image: '/static/image/signin.png', text: '每日签到', limit: true, url: null },
+				{ image: '/static/image/pay.png', text: '马上充值', limit: true, url: '/pages/index/pay' },
+				{ image: '/static/image/withdraw.png', text: '快速提现', limit: true, url: '/pages/index/withdraw' },
+				{ image: '/static/image/invite.png', text: '邀请好友', limit: true, url: '/pages/index/invite' },
+				{ image: '/static/image/service2.png', text: '在线客服', limit: false, url: '/pages/service/index' }
 			],
       articleData: '',
 			eventType: {
@@ -118,9 +118,28 @@ export default {
 		}
 	},
 	methods: {
+    checkLogin () { // 校验登录
+      if (getApp().globalData.userInfo.token) {
+        return true
+      }
+      uni.showModal({
+        title: '提示',
+        content: '请先登录',
+        showCancel: false,
+        success: () => {
+          uni.navigateTo({
+            url: '/pages/user/login'
+          })
+        }
+      })
+      return false
+    },
 		gridChange (e) { // 九宫格切换
 			let { index } = e.detail
 			let item = this.gridData[index]
+      if (item.limit && !this.checkLogin()) {
+        return
+      }
 			switch (item.text){
 				case '在线客服':
 					uni.switchTab({ url: item.url })
@@ -181,9 +200,11 @@ export default {
 		this.investProject()
 	},
 	onNavigationBarButtonTap (e) { // 右上角按钮
-		uni.navigateTo({
-			url: '/pages/user/login'
-		})
+    if (this.checkLogin()) {
+      uni.switchTab({
+        url: '/pages/user/index'
+      })
+    }
 	}
 }
 </script>

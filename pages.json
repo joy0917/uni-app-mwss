@@ -40,7 +40,7 @@
 					"bounce": "vertical",
 					"titleNView": {
 						"buttons": [{
-							"text": "登陆",
+							"text": "会员中心",
 							"fontSize": "14"
 						}]
 					}
