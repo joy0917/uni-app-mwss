@@ -23,7 +23,7 @@
 </template>
 
 <script>
-	import { productDetail } from 'static/api/api'
+	import { productDetail } from '@/static/api/api'
 	export default {
 		data() {
 			return {

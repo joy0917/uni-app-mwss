@@ -32,7 +32,7 @@
 </template>
 
 <script>
-	import { productDetail, orderAdd } from 'static/api/api'
+	import { productDetail, orderAdd } from '@/static/api/api'
 	export default {
 		data() {
 			return {

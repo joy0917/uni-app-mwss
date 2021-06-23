@@ -1,7 +1,7 @@
 <!-- 关于我们 -->
 <template>
 	<view class="container about">
-		<image src="/static/image/bg.png" class="about-thumbnail"></image>
+		<image src="@/static/image/bg.png" class="about-thumbnail"></image>
 		<!-- 九宫格 -->
 		<view class="about-title">新手指南</view>
 		<view class="grid">

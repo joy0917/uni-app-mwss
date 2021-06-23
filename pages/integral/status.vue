@@ -9,7 +9,7 @@
 		<uni-list>
 			<uni-list-item :show-extra-icon="true" :extra-icon="{size: '20',type: 'location-filled'}" title="SUNNY 1333333333" note="河南省郑州市"></uni-list-item>
 			<uni-list-item title="商城订单"></uni-list-item>
-			<uni-list-item title="福鼎白茶 x1" note="1188积分" thumb="/static/image/bg.png" thumbSize="lg"></uni-list-item>
+			<uni-list-item title="福鼎白茶 x1" note="1188积分" thumb="@/static/image/bg.png" thumbSize="lg"></uni-list-item>
 			<uni-list-item>
 				<template slot="body">
 					<view class="t1">订单编号: 123456789</view>

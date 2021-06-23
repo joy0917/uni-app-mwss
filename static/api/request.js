@@ -1,12 +1,17 @@
 import { baseUrl } from './config'
+import store from '@/store'
+let token = store.state.user.user_info.token || ''
 
 export default ({url, data, method}) => {
+  console.log()
 	return new Promise((resolve, reject) => {
 		uni.request({
 			url: baseUrl + url,
 			data,
 			method,
-			header: {}
+			header: {
+        Authorization: 'Bearer' + ' ' + token
+      }
 		}).then(response => {
 			let res = response[1].data
 			if (res.msg_code === 100000) {

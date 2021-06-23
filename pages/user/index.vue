@@ -77,7 +77,7 @@
 </template>
 
 <script>
-import { checkLogin } from 'static/libs/common'
+import { checkLogin, userSignin } from '@/static/libs/common'
 import { mapMutations } from 'vuex'
 export default {
   data() {
@@ -124,10 +124,7 @@ export default {
       let item = this.gridList1[index]
       switch (item.text){
         case '每日签到':
-          uni.showModal({
-            content: '签到成功',
-            showCancel: false
-          })
+          userSignin()
           break;
         case '积分商城':
           uni.switchTab({ url: item.url })

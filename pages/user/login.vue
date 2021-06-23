@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import { login } from 'static/api/api'
+import { login } from '@/static/api/api'
 import { mapMutations } from 'vuex'
 export default {
   data () {

@@ -58,8 +58,8 @@
 </template>
 
 <script>
-	import generateCode from 'static/libs/canvas-verification-code'
-	import { register, sendSms } from 'static/api/api'
+	import generateCode from '@/static/libs/canvas-verification-code'
+	import { register, sendSms } from '@/static/api/api'
 	export default {
 		data () {
 			return {

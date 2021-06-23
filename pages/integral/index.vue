@@ -16,7 +16,7 @@
 </template>
 
 <script>
-	import { productList } from 'static/api/api'
+	import { productList } from '@/static/api/api'
 	export default {
 		data() {
 			return {

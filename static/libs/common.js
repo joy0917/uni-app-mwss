@@ -1,4 +1,5 @@
-import store from 'store'
+import store from '@/store'
+import { signin } from '@/static/api/api'
 /*
   校验登录
  */
@@ -17,4 +18,16 @@ export const checkLogin = () => {
     }
   })
   return false
+}
+
+/*
+  签到
+ */
+export const userSignin = () => {
+  signin({id: store.state.user.user_info.id}).then(res => {
+    uni.showModal({
+      content: '签到成功',
+      showCancel: false
+    })
+  })
 }

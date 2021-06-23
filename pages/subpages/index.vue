@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import { aboutDetail } from 'static/api/api'
+import { aboutDetail } from '@/static/api/api'
 export default {
 	data() {
 		return {

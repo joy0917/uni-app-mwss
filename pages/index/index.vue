@@ -40,7 +40,7 @@
 				<image :src="item.image" class="event-img"></image>
 			</view>
 			<view class="event-body">
-				<view class="item-title"><image src="/static/image/verify.png" class="verify"></image>{{ item.title }}</view>				
+				<view class="item-title"><image src="@/static/image/verify.png" class="verify"></image>{{ item.title }}</view>				
 				<uni-row class="mb10">
 					<uni-col :span="8" class="tl">
 						<view><text class="txt1">{{ item.min_investment }}</text>万元</view>
@@ -82,9 +82,9 @@
 </template>
 
 <script>
-import { carouselList, articleList, investProject } from 'static/api/api'
-import { getFormatDate } from 'static/libs/libs'
-import { checkLogin } from 'static/libs/common'
+import { carouselList, articleList, investProject } from '@/static/api/api'
+import { getFormatDate } from '@/static/libs/libs'
+import { checkLogin, userSignin } from '@/static/libs/common'
 export default {
 	data() {
 		return {
@@ -130,10 +130,7 @@ export default {
 					uni.switchTab({ url: item.url })
 					break;
 				case '每日签到':
-					uni.showModal({
-						content: '签到成功',
-						showCancel: false
-					})
+          userSignin()
 					break;
 				default:
 					uni.navigateTo({ url: item.url })
@@ -269,7 +266,7 @@ export default {
 				display: inline-block;
 				width: 114rpx;
 				height: 44rpx;
-				background: url(/static/image/btn-invest.png) no-repeat 100% 100%;
+				background: url('~@/static/image/btn-invest.png') no-repeat 100% 100%;
 				background-size: 100%;
 			}
 		}

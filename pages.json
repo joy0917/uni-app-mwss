@@ -66,12 +66,6 @@
 			}
 		},
 		{
-			"path": "pages/index/invest-order",
-			"style": {
-				"navigationBarTitleText": "立即投资"
-			}
-		},
-		{
 			"path": "pages/index/calculator",
 			"style": {
 				"navigationBarTitleText": "收益计算器"

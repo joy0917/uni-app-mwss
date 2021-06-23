@@ -44,12 +44,12 @@
 			</uni-list-item>
 			<view class="detail-body" v-html="baseForm.remark"></view>
 		</uni-list>
-    <navigator :url="`/pages/index/invest-order`" class="detail-btn">立即投资</navigator>
+    <button class="detail-btn">立即投资</button>
 </view>
 </template>
 
 <script>
-	import { investProjectDetail } from 'static/api/api'
+	import { investProjectDetail } from '@/static/api/api'
 	export default {
 		data () {
 			return {

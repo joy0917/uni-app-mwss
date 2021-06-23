@@ -105,3 +105,12 @@ export const sendSms = data => {
 		method: 'POST'
 	})
 }
+
+// 用户签到送现金
+export const signin = data => {
+	return request({
+		url: '/api/frontend/user/signin',
+		data,
+		method: 'POST'
+	})
+}
