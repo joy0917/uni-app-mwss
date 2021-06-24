@@ -101,6 +101,7 @@
 	.about-thumbnail{
 		width: 100%;
 		height: 360rpx;
+    border-radius: 15rpx;
 	}
 	.about-title{
 		font-size: 28rpx;

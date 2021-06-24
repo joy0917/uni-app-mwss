@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<uni-table class="uniTableContent" border emptyText="暂无更多数据">
+		<uni-table border emptyText="暂无更多数据">
       <!-- 表头行 -->
       <uni-tr>
         <uni-th width="220" align="center">标题</uni-th>

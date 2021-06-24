@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<uni-table class="uniTableContent" border emptyText="暂无更多数据" >
+		<uni-table border emptyText="暂无更多数据" >
 		    <!-- 表头行 -->
 		    <uni-tr>
 		        <uni-th width="100" align="center">项目名称</uni-th>

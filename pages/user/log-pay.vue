@@ -1,13 +1,13 @@
 <template>
 	<view>
-		<uni-table class="uniTableContent" border emptyText="暂无更多数据" >
-		    <!-- 表头行 -->
-		    <uni-tr>
-		        <uni-th width="90" align="center">充值金额</uni-th>
-		        <uni-th width="90" align="center">充值方式</uni-th>
-		        <uni-th width="90" align="center">充值时间</uni-th>
-		        <uni-th width="50" align="center">状态</uni-th>
-		    </uni-tr>
+		<uni-table border emptyText="暂无更多数据" >
+      <!-- 表头行 -->
+      <uni-tr>
+        <uni-th width="90" align="center">充值金额</uni-th>
+        <uni-th width="90" align="center">充值方式</uni-th>
+        <uni-th width="90" align="center">充值时间</uni-th>
+        <uni-th width="50" align="center">状态</uni-th>
+      </uni-tr>
 		    <!-- 表格数据行 -->
 			<template v-for="(item, index) in tableListData">
 				<uni-tr :key="index">

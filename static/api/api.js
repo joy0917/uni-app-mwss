@@ -226,3 +226,21 @@ export const noticeDetail = id => {
 		method: 'GET'
 	})
 }
+
+// 资金明细
+export const capitalFolw = data => {
+	return request({
+		url: '/api/frontend/user/capital/flow',
+    data,
+		method: 'GET'
+	})
+}
+
+// 投资订单列表
+export const investOrderList = data => {
+	return request({
+		url: '/api/frontend/invest_order',
+    data,
+		method: 'GET'
+	})
+}
