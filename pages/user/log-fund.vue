@@ -1,3 +1,4 @@
+<!-- 资金明细 -->
 <template>
 	<view>
 		<uni-table border emptyText="暂无更多数据" >

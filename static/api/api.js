@@ -244,3 +244,30 @@ export const investOrderList = data => {
 		method: 'GET'
 	})
 }
+
+// 用户提现
+export const cashOut = data => {
+	return request({
+		url: '/api/frontend/user/cash/out',
+    data,
+		method: 'POST'
+	})
+}
+
+// 提现记录
+export const cashOutList = data => {
+	return request({
+		url: '/api/frontend/user/cashout/list',
+    data,
+		method: 'GET'
+	})
+}
+
+// 收益记录
+export const profitList = data => {
+	return request({
+		url: '/api/frontend/user/profit/list',
+    data,
+		method: 'GET'
+	})
+}

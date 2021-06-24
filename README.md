@@ -15,7 +15,6 @@ https://uniapp.dcloud.io/component/README
   马上充值  接口没接
   快速提现  接口没接
 会员中心
-  收益记录  接口没接
   充值记录  接口没接
   提现记录  接口没接
 在线客服
