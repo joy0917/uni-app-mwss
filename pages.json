@@ -41,7 +41,8 @@
 					"titleNView": {
 						"buttons": [{
 							"text": "会员中心",
-							"fontSize": "14"
+							"fontSize": "14",
+              "width": "auto"
 						}]
 					}
 				}

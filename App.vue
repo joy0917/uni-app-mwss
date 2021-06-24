@@ -17,7 +17,7 @@
 	/*公共css */
 	@import '@/static/css/base.css';
 	.container{
-		padding: 0 40rpx;
+		padding: 0 30rpx;
 		background: #F0F0F0;
 		font-size: 24rpx;
 		color: #333;
