@@ -33,6 +33,7 @@
 
 <script>
 	import { productDetail, orderAdd } from '@/static/api/api'
+import { updateUser } from '@/static/libs/common'
 	export default {
 		data() {
 			return {
@@ -79,6 +80,7 @@
             content: '兑换成功',
             showCancel: false,
             success: () => {
+              updateUser()
               uni.navigateTo({ url: '/pages/integral/log' })
             }
           })

@@ -66,9 +66,7 @@ export default {
       }
       login({ phone: this.tel, password: this.password }).then(res => {
         this.setUserInfo(res.response)
-        uni.switchTab({
-          url: '/pages/index/index'
-        })
+        uni.switchTab({ url: '/pages/index/index' })
       })
     }
   },

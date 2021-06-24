@@ -59,9 +59,7 @@ export default {
             content: '修改成功',
             showCancel: false,
             success: () => {
-              uni.switchTab({
-                url: '/pages/user/index'
-              })
+              uni.switchTab({ url: '/pages/user/index' })
             }
           })
         })

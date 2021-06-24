@@ -9,7 +9,7 @@
 		<uni-forms ref="form" :modelValue="editForm" :rules="rules" label-width="100" class="invest-form mt5">
 			<uni-forms-item label="投资金额" name="invest_amount">
 				<uni-number-box v-model="editForm.invest_amount" :min="+min_investment" :max="100000000" :step="100" class="fr"></uni-number-box>
-				<view class="f12 pl10 fr mt5">最低起投{{ min_investment }}元，每次递增100元</view>
+				<view class="f12 pl10 fr mt5">最低起投<text class="red">{{ min_investment }}</text>元，每次递增<text class="red">100</text>元</view>
 			</uni-forms-item>
 			<uni-forms-item label="交易密码" name="pay_password">
 				<uni-easyinput clearable trim :inputBorder="false" v-model="editForm.pay_password" placeholder="默认为登录密码"/>
@@ -21,6 +21,7 @@
 
 <script>
 import { investOrder } from '@/static/api/api'
+import { updateUser } from '@/static/libs/common'
 export default {
   data () {
     return {
@@ -53,7 +54,15 @@ export default {
           ...this.editForm,
           invest_project_id: this.product_id
         }).then(res => {
-
+          uni.showModal({
+            title: '提示',
+            content: '下单成功',
+            showCancel: false,
+            success: () => {
+              updateUser()
+              uni.switchTab({ url: '/pages/user/index' })
+            }
+          })
         })
       })
     }

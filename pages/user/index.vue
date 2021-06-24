@@ -77,7 +77,7 @@
 </template>
 
 <script>
-import { checkLogin, userSignin } from '@/static/libs/common'
+import { checkLogin, updateUser, userSignin } from '@/static/libs/common'
 import { mapMutations } from 'vuex'
 export default {
   data() {
@@ -154,7 +154,9 @@ export default {
     console.log(this.user_info)
   },
   onShow () {
-    checkLogin()
+    if (checkLogin()) {
+      updateUser()
+    }
   }
 }
 </script>

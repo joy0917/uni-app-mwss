@@ -183,9 +183,7 @@ export default {
 	},
 	onNavigationBarButtonTap () { // 右上角按钮
     if (checkLogin()) {
-      uni.switchTab({
-        url: '/pages/user/index'
-      })
+      uni.switchTab({ url: '/pages/user/index' })
     }
 	}
 }
