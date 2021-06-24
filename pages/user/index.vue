@@ -4,10 +4,10 @@
 		<!-- 用户信息 -->
 		<view class="top">
 			<view>
-				<text>我的账号：</text><text>{{ user_info.phone }}</text>
+				<text>我的账号：</text><text>{{ user_info.phone || '-' }}</text>
 			</view>
 			<view>
-				<text>用户等级：</text><text>VIP {{ user_info.vip_level || 0 }}</text>
+				<text>用户等级：</text><text>VIP {{ user_info.vip_level || '-' }}</text>
 			</view>
 		</view>
 		<!-- 账户信息 -->
@@ -16,25 +16,25 @@
 				<text>账户余额（元）</text>
 			</view>
 			<view class="two">
-				<text>{{ money }}</text>
+				<text>{{ user_info.account_balance || '-' }}</text>
 			</view>
 			<view class="normal">
-				<text>成长值：{{ growthValue }}</text>
+				<text>成长值：{{ '-' }}</text>
 			</view>
 			<view class="normal">
-				<text>我的积分：{{ point }}</text>
+				<text>我的积分：{{ user_info.integral || '-' }}</text>
 			</view>
 			<view class="normal">
-				<text>我的ID：{{ user_info.id }}</text>
+				<text>我的ID：{{ user_info.id || '-' }}</text>
 			</view>
 			<view class="last">
 				<view class="left">
 					<text>待收利息（元）</text>
-					<text class="num">{{ interestAmount }}</text>
+					<text class="num">{{ '-'  }}</text>
 				</view>
 				<view class="right">
 					<text>待收本金（元）</text>
-					<text class="num">{{ principalAmount }}</text>
+					<text class="num">{{ '-'  }}</text>
 				</view>
 			</view>
 		</view>
@@ -82,12 +82,6 @@ import { mapMutations } from 'vuex'
 export default {
   data() {
     return {
-      money: '34.00', // 余额
-      growthValue: '0', // 成长值
-      point: '0', // 积分
-      id: '533333',
-      interestAmount: '0', // 利息
-      principalAmount: '0', // 本金
       gridList1: [
         { image: '/static/image/signin.png', text: '每日签到', url: null },
         { image: '/static/image/fundsBreakdown.png', text: '资金明细', url: '/pages/user/log-fund' },

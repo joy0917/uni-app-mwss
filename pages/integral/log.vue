@@ -2,8 +2,13 @@
 <template>
 	<view>
 		<uni-list>
-			<uni-list-item title="福鼎白茶 x1" note="等待收货" thumb="/static/image/bg.png" thumbSize="lg" showArrow clickable @click="itemClick"></uni-list-item>
-			<uni-list-item title="福鼎白茶 x1" note="已收货" thumb="/static/image/bg.png" thumbSize="lg" showArrow clickable @click="itemClick"></uni-list-item>
+			<uni-list-item
+        :title="item.product.title"
+        :note="item.product.status"
+        :thumb="item.product.bg_img"
+        @click="itemClick(item.id)"
+        thumbSize="lg" showArrow clickable v-for="(item, index) in orderData" :key="index">
+      </uni-list-item>
 		</uni-list>
 	</view>
 </template>
@@ -13,17 +18,27 @@
 	export default {
 		data () {
 			return {
-				
+				orderData: []
 			}
 		},
 		methods: {
-			itemClick (e) {
-				console.log(e)
+			itemClick (id) {
 				uni.navigateTo({
-					url: '/pages/integral/status'
+					url: `/pages/integral/status?id=${id}`
 				})
-			}
-		}
+			},
+      orderList () {
+        orderList({
+          per_page: 100,
+          current_page: 1
+        }).then(res => {
+          this.orderData = res.response.data
+        })
+      }
+		},
+    mounted () {
+      this.orderList()
+    },
 	}
 </script>
 

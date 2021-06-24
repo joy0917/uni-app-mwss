@@ -74,7 +74,14 @@
 					return
 				}
 				orderAdd(this.editForm).then(res => {
-					
+          uni.showModal({
+            title: '提示',
+            content: '兑换成功',
+            showCancel: false,
+            success: () => {
+              uni.navigateTo({ url: '/pages/integral/log' })
+            }
+          })
 				})
 			}
 		},

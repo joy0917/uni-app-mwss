@@ -1,23 +1,23 @@
 <!-- 快速提现 -->
 <template>
 	<view class="withdraw">
-    <uni-forms ref="form" :modelValue="formData" :rules="rules" label-width="10">
+    <uni-forms ref="form" :modelValue="editForm" :rules="rules" label-width="10">
       <uni-group>
         <uni-forms-item label="银行卡" name="card" :label-width="50" class="mb0">
-          <uni-data-picker placeholder="请选择" popup-title="银行卡" :localdata="cardList" v-model="formData.card" class="ccc">
+          <uni-data-picker placeholder="请选择" popup-title="银行卡" :localdata="cardList" v-model="editForm.card" class="ccc">
 				  </uni-data-picker>
         </uni-forms-item>
       </uni-group>
       <uni-group margin-top="20">
         <uni-title type="h3" title="提现金额"></uni-title>
           <uni-forms-item label="¥" name="amount">
-            <uni-easyinput type="number" :inputBorder="false" trim v-model="formData.amount" placeholder="请输入" />
+            <uni-easyinput type="number" :inputBorder="false" trim v-model="editForm.amount" placeholder="请输入" />
           </uni-forms-item>
         <view>可提现金额<text class="blue">34.00</text>元</view>
       </uni-group>
       <uni-group margin-top="20">
         <uni-forms-item label="交易密码" name="password" :label-width="60">
-          <uni-easyinput type="text" autocomplete="off" :inputBorder="false" trim v-model="formData.password" placeholder="请输入" />
+          <uni-easyinput type="text" autocomplete="off" :inputBorder="false" trim v-model="editForm.password" placeholder="请输入" />
         </uni-forms-item>
       </uni-group>
       <view class="p15">
@@ -31,7 +31,7 @@
 	export default {
 		data() {
 			return {
-				formData: {
+				editForm: {
           card: null,
 					amount: null,
           password: null

@@ -6,7 +6,7 @@
 			<uni-title type="h3" :title="detailFrom.title"></uni-title>
 			<uni-row class="mb10">
 				<uni-col :span="12">需要<text class="red">{{ detailFrom.integral }}</text>积分</uni-col>
-				<uni-col :span="12" class="tr">您有<text>0</text>积分</uni-col>
+				<uni-col :span="12" class="tr">您有<text>{{ user_info.integral }}</text>积分</uni-col>
 			</uni-row>
 			<uni-row>
 				<uni-col :span="12">库存：{{ detailFrom.stock_num || 0 }}</uni-col>
@@ -30,6 +30,11 @@
 				detailFrom: {}
 			}
 		},
+    computed: {
+      user_info () {
+        return this.$store.state.user.user_info
+      }
+    },
 		methods: {
 			productDetail (id) { // 商品详情
 				productDetail(id).then(res => {

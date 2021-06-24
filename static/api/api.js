@@ -70,6 +70,14 @@ export const orderList = data => {
 	})
 }
 
+// 积分商城-订单详情
+export const orderDetail = id => {
+	return request({
+		url: `/api/frontend/mall/order/detail/${id}`,
+		method: 'GET'
+	})
+}
+
 // 关于我们子页面
 export const aboutDetail = data => {
 	return request({

@@ -14,6 +14,7 @@ https://uniapp.dcloud.io/component/README
   收益计算  接口没接
   马上充值  接口没接
   快速提现  接口没接
+  立即投资  页面没画
 积分商城
   兑换记录  接口没接
   订单状态  接口没接

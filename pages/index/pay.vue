@@ -1,18 +1,18 @@
 <!-- 马上充值 -->
 <template>
 	<view class="pay">
-    <uni-forms ref="form" :modelValue="formData" :rules="rules" label-width="10">
+    <uni-forms ref="form" :modelValue="editForm" :rules="rules" label-width="10">
       <uni-group>
         <uni-title type="h3" title="充值金额"></uni-title>
           <uni-forms-item label="¥" name="amount">
-            <uni-easyinput type="number" :inputBorder="false" trim v-model="formData.amount" placeholder="请输入充值金额" />
+            <uni-easyinput type="number" :inputBorder="false" trim v-model="editForm.amount" placeholder="请输入充值金额" />
           </uni-forms-item>
         <view>可用金额<text class="blue">34.00</text>元</view>
       </uni-group>
       <uni-group margin-top="20">
         <uni-title type="h3" title="充值方式"></uni-title>
         <uni-forms-item name="type">
-          <uni-data-checkbox v-model="formData.type" :localdata="typeList"></uni-data-checkbox>
+          <uni-data-checkbox v-model="editForm.type" :localdata="typeList"></uni-data-checkbox>
         </uni-forms-item>
       </uni-group>
       <uni-group margin-top="20">
@@ -32,7 +32,7 @@
 	export default {
 		data() {
 			return {
-				formData: {
+				editForm: {
 					amount: null,
           type: null
 				},

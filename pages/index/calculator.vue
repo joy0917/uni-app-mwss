@@ -1,21 +1,21 @@
 <!-- 计算器 -->
 <template>
 	<view class="container calculator">
-		<uni-forms ref="form" :modelValue="formData" :rules="rules">
+		<uni-forms ref="form" :modelValue="editForm" :rules="rules">
 			<uni-forms-item label="投资金额" required name="amount">
-				<uni-easyinput type="number" :clearable="false" :trim="true" v-model="formData.amount" placeholder="请输入" />
+				<uni-easyinput type="number" :clearable="false" :trim="true" v-model="editForm.amount" placeholder="请输入" />
 				<text class="extra">元</text>
 			</uni-forms-item>
 			<uni-forms-item label="投资期限" required name="limit">
-				<uni-easyinput type="number" :clearable="false" :trim="true" v-model="formData.limit" placeholder="请输入" />
+				<uni-easyinput type="number" :clearable="false" :trim="true" v-model="editForm.limit" placeholder="请输入" />
 				<text class="extra">日</text>
 			</uni-forms-item>
 			<uni-forms-item label="日化利率" required name="rate">
-				<uni-easyinput type="number" :clearable="false" :trim="true" v-model="formData.rate" placeholder="请输入" />
+				<uni-easyinput type="number" :clearable="false" :trim="true" v-model="editForm.rate" placeholder="请输入" />
 				<text class="extra">%</text>
 			</uni-forms-item>
 			<uni-forms-item label="还款方式" required name="type">
-				<uni-data-picker placeholder="请选择" popup-title="还款方式" :localdata="typeList" v-model="formData.type">
+				<uni-data-picker placeholder="请选择" popup-title="还款方式" :localdata="typeList" v-model="editForm.type">
 				</uni-data-picker>
 			</uni-forms-item>
 			<uni-row :gutter="30">
@@ -41,7 +41,7 @@
 					{ value: 4, text: '每月返息，到期还本' },
 					{ value: 5, text: '每日复利，保本保息' }
 				],
-				formData: {
+				editForm: {
 					amount: null,
 					limit: null,
 					rate: null,

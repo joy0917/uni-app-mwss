@@ -2,12 +2,12 @@
 <!-- 实名认证 -->
 <template>
 	<view class="auth">
-		<uni-forms ref="form" :modelValue="formData" :rules="rules" label-width="80">
+		<uni-forms ref="form" :modelValue="editForm" :rules="rules" label-width="80">
 			<uni-forms-item label="姓名" required name="real_name">
-				<uni-easyinput :clearable="!user_info.real_name" trim :inputBorder="false" v-model="formData.real_name" placeholder="请输入" :disabled="!!user_info.real_name"/>
+				<uni-easyinput :clearable="!user_info.real_name" trim :inputBorder="false" v-model="editForm.real_name" placeholder="请输入" :disabled="!!user_info.real_name"/>
 			</uni-forms-item>
 			<uni-forms-item label="身份证号码" required name="id_code">
-				<uni-easyinput :clearable="!user_info.real_name" trim :inputBorder="false" v-model="formData.id_code" placeholder="请输入" :disabled="!!user_info.real_name"/>
+				<uni-easyinput :clearable="!user_info.real_name" trim :inputBorder="false" v-model="editForm.id_code" placeholder="请输入" :disabled="!!user_info.real_name"/>
 			</uni-forms-item>
       <button type="primary" class="submitbtn" @click="submitForm" v-if="!user_info.real_name">立即认证</button>
 		</uni-forms>
@@ -20,7 +20,7 @@ import { updateUser } from '@/static/libs/common'
 export default {
   data () {
     return {
-      formData: {
+      editForm: {
         id: null,
         real_name: null,
         id_code: null
@@ -43,7 +43,7 @@ export default {
   methods: {
     submitForm () {
       this.$refs.form.validate().then(res => {
-        realname(this.formData).then(res => {
+        realname(this.editForm).then(res => {
           updateUser()
           uni.showModal({
             title: '提示',
@@ -60,7 +60,7 @@ export default {
     }
   },
   mounted () {
-    this.formData = {
+    this.editForm = {
       id: this.user_info.id,
       real_name: this.user_info.real_name,
       id_code: this.user_info.id_code
