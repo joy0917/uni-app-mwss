@@ -2,9 +2,14 @@
 <template>
 	<view class="status">
 		<view class="tc mb30">
-			<uni-title type="h1" title="等待收货" align="center" class="mt20"></uni-title>
-			<view class="mb30 f12">请查收您的物品</view>
-			<button type="primary" size="mini" plain>确认收货</button>
+			<uni-title type="h1" :title="statusList[detailData.status]" align="center" class="mt20"></uni-title>
+      <view v-if="detailData.status !== 3">
+        <view class="mb30 f12">请查收您的物品</view>
+        <button type="primary" size="mini" plain @click="confirmGoods">确认收货</button>
+      </view>
+      <view v-if="detailData.status === 3">
+        <navigator url="/pages/integral/index" open-type="switchTab" class="status-btn">再次兑换</navigator>
+      </view>
 		</view>
 		<uni-list>
 			<uni-list-item :show-extra-icon="true" :extra-icon="{size: '20',type: 'location-filled'}" :title="`${detailData.address.name || '-'} ${detailData.address.phone || '-'}`" :note="detailData.address.detail"></uni-list-item>
@@ -28,7 +33,7 @@
 </template>
 
 <script>
-import { orderDetail } from '@/static/api/api'
+import { orderDetail, orderEnsure } from '@/static/api/api'
 import { setClipboardData } from '@/uni_modules/u-clipboard/js_sdk'
 export default {
   data() {
@@ -36,7 +41,8 @@ export default {
       detailData: {
         address: {},
         product: {}
-      }
+      },
+      statusList: [null, '待处理', '已发货', '已收货']
     }
   },
   methods: {
@@ -48,6 +54,18 @@ export default {
     copyData () {
       setClipboardData(this.detailData.order_num).then(res => {
         console.log('success')
+      })
+    },
+    confirmGoods () {
+      orderEnsure(this.detailData.id).then(res => {
+        uni.showModal({
+          title: '提示',
+          content: '操作成功',
+          showCancel: false,
+          success: () => {
+            this.orderDetail(this.detailData.id)
+          }
+        })
       })
     }
   },
@@ -68,6 +86,14 @@ export default {
   }
   .copybtn{
     margin-right: 0;
+  }
+  .status-btn{
+    display: inline-block;
+    font-size: 26rpx;
+    border: 1px solid #000;
+    border-radius: 10rpx;
+    padding: 0 1.34em;
+    line-height: 2.3;
   }
 }
 </style>

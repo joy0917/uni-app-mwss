@@ -87,6 +87,14 @@ export const orderDetail = id => {
 	})
 }
 
+// 积分商城-确认收货
+export const orderEnsure = id => {
+	return request({
+		url: `/api/frontend/mall/order/ensure/${id}`,
+		method: 'GET'
+	})
+}
+
 // 关于我们子页面
 export const aboutDetail = data => {
 	return request({
