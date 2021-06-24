@@ -4,7 +4,7 @@
 		<uni-list>
 			<uni-list-item
         :title="item.product.title"
-        :note="item.product.status"
+        :note="`${statusList[item.product.status]}`"
         :thumb="item.product.bg_img"
         @click="itemClick(item.id)"
         thumbSize="lg" showArrow clickable v-for="(item, index) in orderData" :key="index">
@@ -18,7 +18,8 @@
 	export default {
 		data () {
 			return {
-				orderData: []
+				orderData: [],
+        statusList: [null, '待处理', '已发货', '已收货']
 			}
 		},
 		methods: {
@@ -41,6 +42,3 @@
     },
 	}
 </script>
-
-<style lang="less" scoped>
-</style>

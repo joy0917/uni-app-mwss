@@ -7,12 +7,12 @@
 			<button type="primary" size="mini" plain>确认收货</button>
 		</view>
 		<uni-list>
-			<uni-list-item :show-extra-icon="true" :extra-icon="{size: '20',type: 'location-filled'}" :title="`${detailData.address.name} ${detailData.address.phone}`" :note="detailData.address.detail"></uni-list-item>
+			<uni-list-item :show-extra-icon="true" :extra-icon="{size: '20',type: 'location-filled'}" :title="`${detailData.address.name || '-'} ${detailData.address.phone || '-'}`" :note="detailData.address.detail"></uni-list-item>
 			<uni-list-item title="商城订单"></uni-list-item>
 			<uni-list-item :title="detailData.product.title" :note="`${detailData.product.integral}积分`" :thumb="detailData.product.bg_img" thumbSize="lg"></uni-list-item>
 			<uni-list-item>
 				<template slot="body">
-					<view class="t1">订单编号: {{ detailData.id }}</view>
+					<view class="t1">订单编号: {{ detailData.order_num }}</view>
 				</template>
 				<template slot="footer">
 					<button type="primary" size="mini" plain class="copybtn" @click="copyData">复制</button>
@@ -46,7 +46,7 @@ export default {
       })
     },
     copyData () {
-      setClipboardData(this.detailData.id).then(res => {
+      setClipboardData(this.detailData.order_num).then(res => {
         console.log('success')
       })
     }
