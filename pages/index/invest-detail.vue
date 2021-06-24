@@ -44,7 +44,7 @@
 			</uni-list-item>
 			<view class="detail-body" v-html="baseForm.remark"></view>
 		</uni-list>
-    <button class="detail-btn">立即投资</button>
+    <navigator :url="`/pages/index/invest-order?id=${product_id}&min=${baseForm.min_investment}`" class="detail-btn">立即投资</navigator>
 </view>
 </template>
 
@@ -53,6 +53,7 @@
 	export default {
 		data () {
 			return {
+        product_id: null,
 				baseForm: {}
 			}
 		},
@@ -64,6 +65,7 @@
 			}
 		},
 		onLoad (option) {
+      this.product_id = option.id
 			this.investProjectDetail(option.id)
 		}
 	}

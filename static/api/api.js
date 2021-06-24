@@ -35,6 +35,15 @@ export const investProjectDetail = id => {
 	})
 }
 
+// 投资项目-立即投资
+export const investOrder = data => {
+	return request({
+		url: '/api/frontend/invest_order/invest',
+		data,
+		method: 'POST'
+	})
+}
+
 // 积分商城-商品列表
 export const productList = data => {
 	return request({
