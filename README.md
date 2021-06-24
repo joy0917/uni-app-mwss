@@ -24,7 +24,6 @@ https://uniapp.dcloud.io/component/README
   充值记录  接口没接
   提现记录  接口没接
   站内消息  接口没接
-  银行绑定  接口没接
 在线客服
   在线客服  对接三方
 

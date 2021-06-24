@@ -1,8 +1,8 @@
 <!-- 银行卡列表 -->
 <template>
 	<view class="bank">
-		<uni-card title="储蓄卡" extra="中国工商银行" class="bankcard" isShadow @click="cardClick">
-			622 7002 5103 1033 8775
+		<uni-card title="储蓄卡" :extra="item.deposit_bank" class="bankcard" isShadow @click="cardClick(item.id)" v-for="(item, index) in cardData" :key="index">
+			{{ item.bank_card_code }}
 		</uni-card>
     <navigator url="/pages/user/bind" class="bankcard-btn">添加银行卡</navigator>
 	</view>
@@ -13,7 +13,7 @@ import { bankcardList, delBankcard } from '@/static/api/api'
 export default {
   data () {
     return {
-      
+      cardData: []
     }
   },
   computed: {
@@ -24,14 +24,22 @@ export default {
   methods: {
     bankcardList () {
       bankcardList(this.user_info.id).then(res => {
-
+        this.cardData = res.response
       })
     },
-    cardClick () {
+    cardClick (id) {
       uni.showModal({
         title: '提示',
         content: '确定解绑该银行卡吗？',
-        success: () => {
+        success: (e) => {
+          if (e.cancel) return
+          delBankcard({id}).then(res => {
+            uni.showToast({
+              title: '解绑成功',
+              icon: 'success'
+            })
+            this.bankcardList()
+          })
         }
       })
     }
