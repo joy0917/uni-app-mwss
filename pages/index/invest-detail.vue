@@ -61,6 +61,7 @@
 			investProjectDetail (id) {
 				investProjectDetail(id).then(res => {
 					this.baseForm = res.response
+					this.baseForm.remark = this.baseForm.remark.replace(/<img/gi, '<img style="max-width: 100%" height="auto"')
 				})
 			}
 		},

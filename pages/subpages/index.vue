@@ -42,7 +42,7 @@ export default {
 		aboutDetail(text) {
 			aboutDetail({ type: text }).then(res => {
 				this.detail = res.response
-				this.detail.content = this.detail.content.replace(/<img/gi, '< img style="max-width: 100%" height="auto"')
+				this.detail.content = this.detail.content.replace(/<img/gi, '<img style="max-width: 100%" height="auto"')
 				uni.setNavigationBarTitle({
 						title: this.detail.title
 				})

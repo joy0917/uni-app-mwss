@@ -18,6 +18,7 @@ export default {
     noticeDetail (id) {
       noticeDetail(id).then(res => {
         this.noticeData = res.response
+				this.noticeData.content = this.noticeData.content.replace(/<img/gi, '<img style="max-width: 100%" height="auto"')
       })
     }
   },
