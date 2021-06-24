@@ -171,6 +171,12 @@
 			}
 		},
 		{
+			"path": "pages/user/message-detail",
+			"style": {
+				"navigationBarTitleText": "站内信详情"
+			}
+		},
+		{
 			"path": "pages/user/auth",
 			"style": {
 				"navigationBarTitleText": "实名认证"

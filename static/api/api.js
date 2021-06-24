@@ -184,3 +184,20 @@ export const bankcardList = id => {
 		method: 'GET'
 	})
 }
+
+// 站内信列表
+export const noticeList = data => {
+	return request({
+		url: '/api/frontend/notice/list',
+    data,
+		method: 'GET'
+	})
+}
+
+// 查看消息
+export const noticeDetail = id => {
+	return request({
+		url: `/api/frontend/notice/detail/${id}`,
+		method: 'GET'
+	})
+}
