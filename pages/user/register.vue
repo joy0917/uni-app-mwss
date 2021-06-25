@@ -50,10 +50,9 @@
 			</view>
 		</view>
 		<view class="bottom">
-			<!-- <navigator url="/pages/user/register">忘记密码</navigator> -->
+			<!-- <navigator url="/pages/user/forget">忘记密码</navigator> -->
 			<navigator url="/pages/user/login">登陆</navigator>
 		</view>
-		
 	</view>
 </template>
 

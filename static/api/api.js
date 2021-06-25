@@ -113,6 +113,15 @@ export const login = data => {
 	})
 }
 
+// 忘记密码
+export const forgetPassword = data => {
+	return request({
+		url: '/api/frontend/user/forget/password',
+		data,
+		method: 'POST'
+	})
+}
+
 // 注册
 export const register = data => {
 	return request({

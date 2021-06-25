@@ -55,6 +55,12 @@
 			}
 		},
 		{
+			"path": "pages/user/forget",
+			"style": {
+				"navigationBarTitleText": "忘记密码"
+			}
+		},
+		{
 			"path": "pages/user/register",
 			"style": {
 				"navigationBarTitleText": "注册"
@@ -264,7 +270,7 @@
 		{
       "path" : "pages/subpages/index",
 			"style": {
-				"navigationBarTitleText": ""
+				"navigationBarTitleText": "加载中"
 			}
     }
   ],

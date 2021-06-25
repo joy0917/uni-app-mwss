@@ -14,4 +14,3 @@ https://uniapp.dcloud.io/component/README
   马上充值  接口没接
 会员中心
   充值记录  接口没接
-  忘记密码  页面没画

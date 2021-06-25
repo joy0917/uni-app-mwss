@@ -23,7 +23,7 @@
 			</view>
 		</view>
 		<view class="bottom">
-			<!-- <navigator url="/pages/user/login">忘记密码</navigator> -->
+			<navigator url="/pages/user/forget">忘记密码</navigator>
 			<navigator url="/pages/user/register">注册</navigator>
 		</view>
 	</view>
