@@ -1,16 +1,14 @@
 import { baseUrl } from './config'
 import store from '@/store'
-let token = store.state.user.user_info.token || ''
 
 export default ({url, data, method}) => {
-  console.log()
 	return new Promise((resolve, reject) => {
 		uni.request({
 			url: baseUrl + url,
 			data,
 			method,
 			header: {
-        Authorization: 'Bearer' + ' ' + token
+        Authorization: 'Bearer' + ' ' + store.state.user.user_info.token || ''
       }
 		}).then(response => {
 			let res = response[1] && response[1].data
