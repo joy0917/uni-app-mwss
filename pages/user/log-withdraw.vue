@@ -12,7 +12,7 @@
 				<uni-tr :key="index">
 					<uni-td align="center" class="f12">{{ item.cash_amount }}</uni-td>
 					<uni-td align="center" class="f12">{{ item.created_at }}</uni-td>
-					<uni-td align="center" class="f12">{{ item.status }}</uni-td>
+					<uni-td align="center" class="f12">{{ statusData[item.status] }}</uni-td>
 				</uni-tr>
 			</template>
 		</uni-table>
@@ -24,7 +24,8 @@ import { cashOutList } from '@/static/api/api'
 export default {
   data() {
     return {
-      tableListData: []
+      tableListData: [],
+      statusData: [ null, '申请中', '已处理' ]
     }
   },
   methods: {

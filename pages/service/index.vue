@@ -1,20 +1,21 @@
+<!-- 在线客服 -->
 <template>
 	<view class="container">
-		在线客服
+		<web-view :webview-styles="webviewStyles" :src="url"></web-view>
 	</view>
 </template>
 
 <script>
-	export default {
-		data() {
-			return {
-			}
-		},
-		methods: {
-
-		}
-	}
+export default {
+  data () {
+    return {
+      url: 'http://mankefu.dlyunkefu.net/Web/im.aspx?_=t&accountid=126412',
+      webviewStyles: {
+        progress: {
+          color: '#FF3333'
+        }
+      }
+    }
+  }
+}
 </script>
-
-<style>
-</style>
