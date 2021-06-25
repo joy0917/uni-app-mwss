@@ -8,7 +8,7 @@ export default ({url, data, method}) => {
 			data,
 			method,
 			header: {
-        Authorization: 'Bearer' + ' ' + store.state.user.user_info.token || ''
+        Authorization: 'Bearer' + ' ' + (store.state.user.user_info.token || '')
       }
 		}).then(response => {
 			let res = response[1] && response[1].data
