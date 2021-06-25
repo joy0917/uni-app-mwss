@@ -11,7 +11,6 @@ uni-app文档:
 https://uniapp.dcloud.io/component/README
 
 首页
-  收益计算  接口没接 2
   马上充值  接口没接 3
 会员中心
   充值记录  接口没接 4

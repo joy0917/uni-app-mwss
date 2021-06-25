@@ -271,3 +271,20 @@ export const profitList = data => {
 		method: 'GET'
 	})
 }
+
+// 还款方式
+export const countType = () => {
+	return request({
+		url: '/api/frontend/count/type',
+		method: 'GET'
+	})
+}
+
+// 收益计算
+export const countIndex = data => {
+	return request({
+		url: '/api/frontend/count/index',
+    data,
+		method: 'GET'
+	})
+}

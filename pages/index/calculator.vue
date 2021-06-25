@@ -1,79 +1,146 @@
 <!-- 计算器 -->
 <template>
 	<view class="container calculator">
-		<uni-forms ref="form" :modelValue="editForm" :rules="rules">
-			<uni-forms-item label="投资金额" required name="amount">
-				<uni-easyinput type="number" :clearable="false" :trim="true" v-model="editForm.amount" placeholder="请输入" />
-				<text class="extra">元</text>
-			</uni-forms-item>
-			<uni-forms-item label="投资期限" required name="limit">
-				<uni-easyinput type="number" :clearable="false" :trim="true" v-model="editForm.limit" placeholder="请输入" />
-				<text class="extra">日</text>
-			</uni-forms-item>
-			<uni-forms-item label="日化利率" required name="rate">
-				<uni-easyinput type="number" :clearable="false" :trim="true" v-model="editForm.rate" placeholder="请输入" />
-				<text class="extra">%</text>
-			</uni-forms-item>
-			<uni-forms-item label="还款方式" required name="type">
-				<uni-data-picker placeholder="请选择" popup-title="还款方式" :localdata="typeList" v-model="editForm.type">
-				</uni-data-picker>
-			</uni-forms-item>
-			<uni-row :gutter="30">
-				<uni-col :span="12">
-					<button type="primary" class="submitbtn" @click="submitForm">计算收益</button>
-				</uni-col>
-				<uni-col :span="12">
-					<button type="primary" @click="resetForm">重新计算</button>
-				</uni-col>
-			</uni-row>
-		</uni-forms>
+    <template v-if="!resultPage">
+      <uni-forms ref="form" :modelValue="editForm" :rules="rules">
+        <uni-forms-item label="投资金额" required name="money_num">
+          <uni-easyinput type="number" :clearable="false" :trim="true" v-model="editForm.money_num" placeholder="请输入" />
+          <text class="extra">元</text>
+        </uni-forms-item>
+        <uni-forms-item label="投资期限" required name="day_num">
+          <uni-easyinput type="number" :clearable="false" :trim="true" v-model="editForm.day_num" placeholder="请输入" />
+          <text class="extra">日</text>
+        </uni-forms-item>
+        <uni-forms-item label="日化利率" required name="rate">
+          <uni-easyinput type="number" :clearable="false" :trim="true" v-model="editForm.rate" placeholder="请输入" />
+          <text class="extra">%</text>
+        </uni-forms-item>
+        <uni-forms-item label="还款方式" required name="type">
+          <uni-data-picker placeholder="请选择" popup-title="还款方式" :localdata="typeData" v-model="editForm.type">
+          </uni-data-picker>
+        </uni-forms-item>
+        <uni-row>
+          <uni-col :span="11">
+            <button type="primary" class="submitbtn" @click="submitForm">计算收益</button>
+          </uni-col>
+          <uni-col :span="11" :push="2">
+            <button type="default" @click="resetForm">重新计算</button>
+          </uni-col>
+        </uni-row>
+      </uni-forms>
+    </template>
+    <template v-else>
+      <button type="primary" class="submitbtn mb10" @click="resultPage = false">重新计算</button>
+      <uni-table border emptyText="暂无更多数据" class="mb10">
+        <!-- 表头行 -->
+        <uni-tr>
+          <uni-th width="60" align="center" class="f12">收款日期</uni-th>
+          <uni-th width="60" align="center" class="f12">收款金额</uni-th>
+          <uni-th width="60" align="center" class="f12">收回本金</uni-th>
+          <uni-th width="60" align="center" class="f12">收回利息</uni-th>
+          <uni-th width="60" align="center" class="f12">剩余本金</uni-th>
+        </uni-tr>
+          <!-- 表格数据行 -->
+        <template v-for="(item, index) in resultData.list">
+          <uni-tr :key="index">
+            <uni-td align="center" class="f12">{{ item.get_date }}</uni-td>
+            <uni-td align="center" class="f12">{{ item.get_num }}</uni-td>
+            <uni-td align="center" class="f12">{{ item.get_principal }}</uni-td>
+            <uni-td align="center" class="f12">{{ item.get_interest }}</uni-td>
+            <uni-td align="center" class="f12">{{ item.stay_principal }}</uni-td>
+          </uni-tr>
+        </template>
+      </uni-table>
+      <uni-table border emptyText="暂无更多数据">
+        <!-- 表头行 -->
+        <uni-tr>
+          <uni-th width="60" align="center" class="f12">-</uni-th>
+          <uni-th width="60" align="center" class="f12">收款金额</uni-th>
+          <uni-th width="60" align="center" class="f12">收回本金</uni-th>
+          <uni-th width="60" align="center" class="f12">收回利息</uni-th>
+        </uni-tr>
+          <!-- 表格数据行 -->
+        <template v-for="(item, index) in resultData.count">
+          <uni-tr :key="index">
+            <uni-td align="center" class="f12">总结</uni-td>
+            <uni-td align="center" class="f12">{{ item.total_get }}</uni-td>
+            <uni-td align="center" class="f12">{{ item.principal }}</uni-td>
+            <uni-td align="center" class="f12">{{ item.interest }}</uni-td>
+          </uni-tr>
+        </template>
+      </uni-table>
+    </template>
 	</view>
 </template>
 
 <script>
-	export default {
-		data () {
-			return {
-				typeList: [
-					{ value: 1, text: '每日返息，到期还本' },
-					{ value: 2, text: '到期还本还息' },
-					{ value: 3, text: '每周返息，到期还本' },
-					{ value: 4, text: '每月返息，到期还本' },
-					{ value: 5, text: '每日复利，保本保息' }
-				],
-				editForm: {
-					amount: null,
-					limit: null,
-					rate: null,
-					type: null
-				},
-				rules: {
-					amount: {
-						rules: [{ required: true, errorMessage: '请输入' }]
-					},
-					limit: {
-						rules: [{ required: true, errorMessage: '请输入' }]
-					},
-					rate: {
-						rules: [{ required: true, errorMessage: '请输入' }]
-					},
-					type: {
-						rules: [{ required: true, errorMessage: '请输入' }]
-					}
-				}
-			}
-		},
-		methods: {
-			submitForm () {
-				this.$refs.form.validate().then((res)=>{
-					console.log('表单返回得值：', res)
-				})
-			},
-			resetForm () {
-				this.$refs.form.resetFields()
-			}
-		}
-	}
+import { countType, countIndex } from '@/static/api/api'
+export default {
+  data () {
+    return {
+      typeData: [],
+      editForm: {
+        money_num: null,
+        day_num: null,
+        rate: null,
+        type: null
+      },
+      rules: {
+        money_num: {
+          rules: [{ required: true, errorMessage: '请输入' }]
+        },
+        day_num: {
+          rules: [{ required: true, errorMessage: '请输入' }]
+        },
+        rate: {
+          rules: [{ required: true, errorMessage: '请输入' }]
+        },
+        type: {
+          rules: [{ required: true, errorMessage: '请输入' }]
+        }
+      },
+      resultData: {
+        count: [],
+        list: []
+      },
+      resultPage: true
+    }
+  },
+  methods: {
+    submitForm () {
+      this.$refs.form.validate().then(res => {
+        countIndex(this.editForm).then(res => {
+          let { count, list } = res.response
+          let arr = []
+          arr.push(count)
+          this.resultData = {
+            count: arr,
+            list: list
+          }
+          this.resultPage = true
+        })
+      })
+    },
+    resetForm () {
+      this.$refs.form.resetFields()
+    },
+    countType () {
+      countType().then(res => {
+        let data = res.response
+        this.typeData = []
+        for (let item in data) {
+          this.typeData.push({
+            value: data[item],
+            text: item
+          })
+        }
+      })
+    }
+  },
+  mounted () {
+    this.countType()
+  }
+}
 </script>
 
 <style lang="less" scoped>
