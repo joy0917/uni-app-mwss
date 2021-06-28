@@ -18,9 +18,9 @@
 			<view class="two">
 				<text>{{ user_info.account_balance || '-' }}</text>
 			</view>
-			<view class="normal">
+			<!-- <view class="normal">
 				<text>成长值：{{ '-' }}</text>
-			</view>
+			</view> -->
 			<view class="normal">
 				<text>我的积分：{{ user_info.integral || '-' }}</text>
 			</view>

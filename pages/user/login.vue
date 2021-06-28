@@ -1,5 +1,8 @@
 <template>
 	<view class="login">
+    <view class="tc p20">
+      <image src="@/static/image/logo.png" style="width: 140rpx; height: 140rpx"></image>
+    </view>
 		<view class="loginForm">
 			<view class="loginItem">
 				<view class="loginItemLabel">
