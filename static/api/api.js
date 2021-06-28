@@ -75,7 +75,8 @@ export const orderList = data => {
 	return request({
 		url: '/api/frontend/mall/order/list',
 		data,
-		method: 'GET'
+		method: 'GET',
+    loading: true
 	})
 }
 
@@ -224,7 +225,8 @@ export const noticeList = data => {
 	return request({
 		url: '/api/frontend/notice/list',
     data,
-		method: 'GET'
+		method: 'GET',
+    loading: true
 	})
 }
 
@@ -241,7 +243,8 @@ export const capitalFolw = data => {
 	return request({
 		url: '/api/frontend/user/capital/flow',
     data,
-		method: 'GET'
+		method: 'GET',
+    loading: true
 	})
 }
 
@@ -250,7 +253,8 @@ export const investOrderList = data => {
 	return request({
 		url: '/api/frontend/invest_order',
     data,
-		method: 'GET'
+		method: 'GET',
+    loading: true
 	})
 }
 
@@ -268,7 +272,8 @@ export const cashOutList = data => {
 	return request({
 		url: '/api/frontend/user/cashout/list',
     data,
-		method: 'GET'
+		method: 'GET',
+    loading: true
 	})
 }
 
@@ -277,7 +282,8 @@ export const profitList = data => {
 	return request({
 		url: '/api/frontend/user/profit/list',
     data,
-		method: 'GET'
+		method: 'GET',
+    loading: true
 	})
 }
 

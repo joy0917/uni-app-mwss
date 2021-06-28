@@ -1,3 +1,4 @@
+<!-- 站内信 -->
 <template>
 	<view>
 		<uni-table border emptyText="暂无更多数据">
@@ -8,7 +9,7 @@
         <uni-th width="40" align="center">状态</uni-th>
       </uni-tr>
 		    <!-- 表格数据行 -->
-			<template v-for="(item, index) in tableListData">
+			<template v-for="(item, index) in tableData">
 				<uni-tr :key="index">
 					<uni-td align="center">
             <view @click="noticeRead(item.id)">{{ item.title }}</view>
@@ -22,6 +23,7 @@
 				</uni-tr>
 			</template>
 		</uni-table>
+    <uni-pagination :total="total" :pageSize="editForm.per_page" :current="editForm.current_page" @change="pageChange($event.current)"></uni-pagination>
 	</view>
 </template>
 
@@ -30,7 +32,13 @@ import { noticeList } from '@/static/api/api'
 export default {
   data() {
     return {
-      tableListData: []
+      total: 0,
+      editForm: {
+        id: null,
+        per_page: 10,
+        current_page: 1
+      },
+      tableData: []
     }
   },
   computed: {
@@ -39,13 +47,17 @@ export default {
     }
   },
   methods: {
+    pageChange (page) {
+      this.editForm.current_page = page
+      this.noticeList()
+    },
     noticeList () {
       noticeList({
-        id: this.user_info.id,
-        per_page: 100,
-        current_page: 1
+        ...this.editForm,
+        id: this.user_info.id
       }).then(res => {
-        this.tableListData = res.response.data
+        this.tableData = res.response.data
+        this.total = res.response.total
       })
     },
     noticeRead (id) {
@@ -53,7 +65,7 @@ export default {
     }
   },
   onShow () {
-    this.noticeList()
+    this.pageChange(1)
   }
 }
 </script>

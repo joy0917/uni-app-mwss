@@ -103,7 +103,7 @@ export default {
         count: [],
         list: []
       },
-      resultPage: true
+      resultPage: false
     }
   },
   methods: {

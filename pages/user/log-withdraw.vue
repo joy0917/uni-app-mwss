@@ -8,7 +8,7 @@
         <uni-th width="60" align="center" class="f12">状态</uni-th>
       </uni-tr>
 		    <!-- 表格数据行 -->
-			<template v-for="(item, index) in tableListData">
+			<template v-for="(item, index) in tableData">
 				<uni-tr :key="index">
 					<uni-td align="center" class="f12">{{ item.cash_amount }}</uni-td>
 					<uni-td align="center" class="f12">{{ item.created_at }}</uni-td>
@@ -16,6 +16,7 @@
 				</uni-tr>
 			</template>
 		</uni-table>
+    <uni-pagination :total="total" :pageSize="editForm.per_page" :current="editForm.current_page" @change="pageChange($event.current)"></uni-pagination>
 	</view>
 </template>
 
@@ -24,22 +25,29 @@ import { cashOutList } from '@/static/api/api'
 export default {
   data() {
     return {
-      tableListData: [],
-      statusData: [ null, '申请中', '已处理' ]
+      statusData: [ null, '申请中', '已处理' ],
+      total: 0,
+      editForm: {
+        per_page: 10,
+        current_page: 1
+      },
+      tableData: []
     }
   },
   methods: {
+    pageChange (page) {
+      this.editForm.current_page = page
+      this.cashOutList()
+    },
     cashOutList () {
-      cashOutList({
-        per_page: 100,
-        current_page: 1
-      }).then(res => {
-        this.tableListData = res.response.data
+      cashOutList(this.editForm).then(res => {
+        this.tableData = res.response.data
+        this.total = res.response.total
       })
     }
   },
   mounted () {
-    this.cashOutList()
+    this.pageChange(1)
   }
 }
 </script>

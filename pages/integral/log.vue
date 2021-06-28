@@ -9,6 +9,7 @@
         </view>
       </uni-list-item>
 		</uni-list>
+    <uni-pagination :total="total" :pageSize="editForm.per_page" :current="editForm.current_page" @change="pageChange($event.current)"></uni-pagination>
 	</view>
 </template>
 
@@ -17,28 +18,35 @@
 	export default {
 		data () {
 			return {
-				orderData: [],
-        statusList: [null, '待处理', '已发货', '已收货']
+        statusList: [null, '待处理', '已发货', '已收货'],
+        total: 0,
+        editForm: {
+          per_page: 10,
+          current_page: 1
+        },
+				orderData: []
 			}
 		},
 		methods: {
+      pageChange (page) {
+        this.editForm.current_page = page
+        this.orderList()
+      },
+      orderList () {
+        orderList(this.editForm).then(res => {
+          this.orderData = res.response.data
+          this.total = res.response.total
+        })
+      },
 			itemClick (id) {
 				uni.navigateTo({
 					url: `/pages/integral/status?id=${id}`
 				})
-			},
-      orderList () {
-        orderList({
-          per_page: 100,
-          current_page: 1
-        }).then(res => {
-          this.orderData = res.response.data
-        })
-      }
+			}
 		},
     mounted () {
-      this.orderList()
-    },
+      this.pageChange(1)
+    }
 	}
 </script>
 

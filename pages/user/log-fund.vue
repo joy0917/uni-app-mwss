@@ -9,7 +9,7 @@
         <uni-th align="center" class="f12">时间</uni-th>
       </uni-tr>
 		    <!-- 表格数据行 -->
-			<template v-for="(item, index) in tableListData">
+			<template v-for="(item, index) in tableData">
 				<uni-tr :key="index">
 					<uni-td align="center" class="f12">{{ item.desc }}</uni-td>
 					<uni-td align="center" class="f12"><text class="green">{{ item.amount }}</text></uni-td>
@@ -17,6 +17,7 @@
 				</uni-tr>
 			</template>
 		</uni-table>
+    <uni-pagination :total="total" :pageSize="editForm.per_page" :current="editForm.current_page" @change="pageChange($event.current)"></uni-pagination>
 	</view>
 </template>
 
@@ -25,21 +26,28 @@ import { capitalFolw } from '@/static/api/api'
 export default {
   data () {
     return {
-      tableListData: []
+      total: 0,
+      editForm: {
+        per_page: 10,
+        current_page: 1
+      },
+      tableData: []
     }
   },
   methods: {
+    pageChange (page) {
+      this.editForm.current_page = page
+      this.capitalFolw()
+    },
     capitalFolw () {
-      capitalFolw({
-        per_page: 100,
-        current_page: 1
-      }).then(res => {
-        this.tableListData = res.response.data
+      capitalFolw(this.editForm).then(res => {
+        this.tableData = res.response.data
+        this.total = res.response.total
       })
     }
   },
   mounted () {
-    this.capitalFolw()
+    this.pageChange(1)
   }
 }
 </script>
