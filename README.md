@@ -12,5 +12,3 @@ https://uniapp.dcloud.io/component/README
 
 首页
   马上充值  接口没接
-会员中心
-  充值记录  接口没接

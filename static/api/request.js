@@ -1,4 +1,4 @@
-import { baseUrl } from './config'
+import { apiUrl } from './config'
 import store from '@/store'
 
 export default ({url, data, method, loading}) => {
@@ -7,7 +7,7 @@ export default ({url, data, method, loading}) => {
       uni.showLoading({ title: '加载中', mask: true })
     }
 		uni.request({
-			url: baseUrl + url,
+			url: apiUrl + url,
 			data,
 			method,
 			header: {

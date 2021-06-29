@@ -1,3 +1,4 @@
+<!-- 提现记录 -->
 <template>
 	<view>
 		<uni-table border emptyText="暂无更多数据" >

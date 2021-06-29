@@ -287,6 +287,16 @@ export const profitList = data => {
 	})
 }
 
+// 充值记录
+export const despositList = data => {
+	return request({
+		url: '/api/frontend/user/desposit/list',
+    data,
+		method: 'GET',
+    loading: true
+	})
+}
+
 // 还款方式
 export const countType = () => {
 	return request({
@@ -299,6 +309,15 @@ export const countType = () => {
 export const countIndex = data => {
 	return request({
 		url: '/api/frontend/count/index',
+    data,
+		method: 'GET'
+	})
+}
+
+// 获取首页视频，邀请二维码
+export const uploadDetail = data => {
+	return request({
+		url: '/api/frontend/upload/detail',
     data,
 		method: 'GET'
 	})

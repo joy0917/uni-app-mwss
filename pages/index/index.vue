@@ -29,8 +29,10 @@
         class="video"
         :loop="videoOption.loop"
         :autoplay="videoOption.autoplay"
-        src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-uni-app-doc/3c1782e0-60ab-11eb-8ff1-d5dcf8779628.m4v"
-			  @error="videoErrorCallback" controls poster="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/b1476d40-4e5f-11eb-b997-9918a5dda011.png">
+        :src="videoOption.video"
+        :poster="videoOption.img"
+			  @error="videoErrorCallback"
+        controls>
 			</video>
 		</view>
 		<!-- 活动列表 -->
@@ -82,9 +84,10 @@
 </template>
 
 <script>
-import { carouselList, articleList, investProject } from '@/static/api/api'
+import { carouselList, articleList, investProject, uploadDetail } from '@/static/api/api'
 import { getFormatDate } from '@/static/libs/libs'
 import { checkLogin, userSignin } from '@/static/libs/common'
+import { hostsUrl } from '@/static/api/config'
 export default {
 	data() {
 		return {
@@ -97,7 +100,9 @@ export default {
       },
 			videoOption: {
 				loop: true,
-				autoplay: false
+				autoplay: false,
+        video: '',
+        img: ''
 			},
 			gridData: [
 				{ image: '/static/image/invest.png', text: '如何投资', limit: false, url: '/pages/subpages/index?text=1' },
@@ -174,12 +179,21 @@ export default {
 				let stableData = res.response.STABLE || []
 				this.eventData = activityData.concat(newData).concat(stableData)
 			})
+		},
+		uploadDetail () { // 首页视频
+			uploadDetail({
+				type: '首页视频'
+			}).then(res => {
+        this.videoOption.video = hostsUrl + '/' + res.response.img_url
+        this.videoOption.img = ''
+			})
 		}
 	},
 	mounted () {
 		this.carouselList()
 		this.articleList()
 		this.investProject()
+		this.uploadDetail()
 	},
 	onNavigationBarButtonTap () { // 右上角按钮
     if (checkLogin()) {
