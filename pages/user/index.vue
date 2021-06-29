@@ -30,11 +30,11 @@
 			<view class="last">
 				<view class="left">
 					<text>待收利息（元）</text>
-					<text class="num">{{ '-'  }}</text>
+					<text class="num">{{ user_info.rest_bonus || '-'  }}</text>
 				</view>
 				<view class="right">
 					<text>待收本金（元）</text>
-					<text class="num">{{ '-'  }}</text>
+					<text class="num">{{ user_info.capital || '-'  }}</text>
 				</view>
 			</view>
 		</view>

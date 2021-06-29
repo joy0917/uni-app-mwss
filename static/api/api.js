@@ -322,3 +322,12 @@ export const uploadDetail = data => {
 		method: 'GET'
 	})
 }
+
+// 充值列表
+export const chargeList = data => {
+	return request({
+		url: '/api/frontend/charge/list',
+    data,
+		method: 'GET'
+	})
+}
