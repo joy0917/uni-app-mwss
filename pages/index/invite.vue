@@ -3,9 +3,10 @@
 	<view class="invite">
     <view class="qrcode">
       <view class="txt">邀请二维码</view>
-      <tki-qrcode
+      <!-- <tki-qrcode
         :val="user_info.my_recommend_code"
-        :loadMake="true"></tki-qrcode>
+        :loadMake="true"></tki-qrcode> -->
+      <image :src="qrImg" class="qrImg"/>
       <view class="txt">推荐码：{{ user_info.my_recommend_code }}</view>
     </view>
     <view class="member">
@@ -33,12 +34,13 @@
 </template>
 
 <script>
-import { myInvites } from '@/static/api/api'
-import tkiQrcode from "@/components/tki-qrcode/tki-qrcode"
+import { uploadDetail, myInvites } from '@/static/api/api'
+// import tkiQrcode from "@/components/tki-qrcode/tki-qrcode"
 export default {
   data() {
     return {
-      tableListData: []
+      tableListData: [],
+      qrImg: ''
     }
   },
   computed: {
@@ -46,10 +48,17 @@ export default {
       return this.$store.state.user.user_info
     }
   },
-  components: {
-    tkiQrcode
-  },
+  // components: {
+  //   tkiQrcode
+  // },
   methods: {
+    uploadDetail () {
+      uploadDetail({
+        type: '应用下载地址二维码'
+      }).then(res => {
+        this.qrImg = res.response.img_url
+      })
+    },
     myInvites () {
       myInvites().then(res => {
         this.tableListData = res.response.map(res => {
@@ -64,6 +73,7 @@ export default {
     }
   },
   mounted () {
+    this.uploadDetail()
     this.myInvites()
   }
 }
@@ -77,6 +87,12 @@ export default {
     text-align: center;
     margin-bottom: 40rpx;
     background: #fff;
+    .qrImg{
+      display: block;
+      margin: 0 auto;
+      width: 200rpx;
+      height: 200rpx;
+    }
     .txt{
       display: inline-block;
       padding: 10rpx 50rpx;

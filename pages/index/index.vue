@@ -143,9 +143,9 @@ export default {
 			}
 		},
 		videoErrorCallback () { // 视频报错
-			uni.showModal({
-				content: '视频加载失败',
-				showCancel: false
+			uni.showToast({
+        title: '首页视频加载失败',
+        icon: 'none'
 			})
 		},
 		carouselList () { // 轮播列表
