@@ -1,18 +1,18 @@
 <!-- 首页 -->
 <template>
-	<view class="container index">
+	<view class="index">
 		<!-- 轮播 -->
 		<view class="section1">
 			<swiper class="swiper" circular :indicator-dots="swiperOption.indicatorDots" :autoplay="swiperOption.autoplay" :interval="swiperOption.interval" :duration="swiperOption.duration">
 				<swiper-item v-for="(item, index) in swiperData" :key="index">
 					<view class="swiper-item">
-						<image :src="item.img_url" class="w h"></image>
+						<image :src="$hostsUrl + item.img_url" class="w h"></image>
 					</view>
 				</swiper-item>
 			</swiper>
 		</view>
 		<!-- 九宫格 -->
-		<view class="section2">
+		<view class="container section2">
 			<uni-grid :column="4" :highlight="false" :showBorder="false" @change="gridChange">
 				<uni-grid-item v-for="(item, index) in gridData" :index="index" :key="index">
 					<view class="grid-item-box">
@@ -23,7 +23,7 @@
 			</uni-grid>
 		</view>
 		<!-- 公告和视频 -->
-		<view class="section3">
+		<view class="container section3">
 			<uni-notice-bar :show-icon="true" :scrollable="true" :single="true" :speed="30" :text="articleData"/>
 			<video
         class="video"
@@ -35,16 +35,16 @@
 			</video>
 		</view>
 		<!-- 活动列表 -->
-		<view class="section4" v-for="(item, index) in eventData" :key="index">
+		<view class="container section4" v-for="(item, index) in eventData" :key="index">
 			<view class="event-title" v-if="index === 0 || item.type !== eventData[index-1].type">{{ eventType[item.type] }}</view>
 			<view class="event-head">
-				<image :src="item.image" class="event-img"></image>
+				<image :src="$hostsUrl + item.image" class="event-img"></image>
 			</view>
 			<view class="event-body">
 				<view class="item-title"><image src="@/static/image/verify.png" class="verify"></image>{{ item.title }}</view>				
 				<uni-row class="mb10">
 					<uni-col :span="8" class="tl">
-						<view><text class="txt1">{{ item.min_investment }}</text>万元</view>
+						<view><text class="txt1">{{ item.min_investment }}</text>元</view>
 						<view>起投金额</view>
 					</uni-col>
 					<uni-col :span="8" class="tc">
@@ -69,7 +69,7 @@
 				</uni-row>
 				<uni-row>
 					<uni-col :span="16">
-						<view class="mt2">项目规模：<text class="txt1">{{ item.total_investment }}</text>元</view>
+						<view class="mt2">项目规模：<text class="txt1">{{ item.total_investment }}</text>万元</view>
 					</uni-col>
 					<uni-col :span="8" class="tr">
 						<navigator :url="`/pages/index/invest-detail?id=${item.id}`">
@@ -86,7 +86,6 @@
 import { carouselList, articleList, investProject, uploadDetail } from '@/static/api/api'
 import { getFormatDate } from '@/static/libs/libs'
 import { checkLogin, userSignin } from '@/static/libs/common'
-import { hostsUrl } from '@/static/api/config'
 export default {
 	data() {
 		return {
@@ -168,8 +167,8 @@ export default {
 				page: 1
 			}).then(res => {
 				let activityData = res.response.activity || []
-				let newData = res.response.NEW || []
-				let stableData = res.response.STABLE || []
+				let newData = res.response.new || []
+				let stableData = res.response.stable || []
 				this.eventData = activityData.concat(newData).concat(stableData)
 			})
 		},
@@ -177,8 +176,8 @@ export default {
 			uploadDetail({
 				type: '首页视频'
 			}).then(res => {
-        this.videoOption.video = hostsUrl + '/' + res.response.img_url
-        this.videoOption.img = ''
+        this.videoOption.video = this.$hostsUrl + res.response.img_url
+        this.videoOption.img = this.$hostsUrl + res.response.img_path
 			})
 		}
 	},
@@ -197,7 +196,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-	.index{
+	.container{
 		background: #fff;
 	}
 	.section1{
@@ -240,10 +239,11 @@ export default {
 			font-size: 36rpx;
 		}
 		.event-head{
-			height: 252rpx;
+			height: 400rpx;
 			overflow: hidden;
 			.event-img{
 				width: 100%;
+        height: 100%;
 			}
 		}
 		.event-body{

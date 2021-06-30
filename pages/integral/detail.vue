@@ -1,7 +1,7 @@
 <!-- 商品详情 -->
 <template>
 	<view class="detail">
-		<image :src="detailFrom.bg_img" class="detail-img"></image>
+		<image :src="$hostsUrl + detailFrom.bg_img" class="detail-img"></image>
 		<view class="detail-head">
 			<uni-title type="h3" :title="detailFrom.title"></uni-title>
 			<uni-row class="mb10">
@@ -54,7 +54,6 @@
 		font-size: 28rpx;
 		.detail-img{
 			width: 100%;
-			height: 375rpx;
 		}
 		.detail-head{
 			padding: 10rpx 40rpx;

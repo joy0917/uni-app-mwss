@@ -1,7 +1,7 @@
 <!-- 投资详情 -->
 <template>
 	<view class="detail">
-		<image :src="baseForm.image" class="detail-img"></image>
+		<image :src="$hostsUrl + baseForm.image" class="detail-img"></image>
 		<uni-list :border="false" class="detail-head">
 			<uni-list-item>
 				<template slot="body">
@@ -49,27 +49,27 @@
 </template>
 
 <script>
-	import { investProjectDetail } from '@/static/api/api'
-	export default {
-		data () {
-			return {
-        product_id: null,
-				baseForm: {}
-			}
-		},
-		methods: {
-			investProjectDetail (id) {
-				investProjectDetail(id).then(res => {
-					this.baseForm = res.response
-					this.baseForm.remark = this.baseForm.remark.replace(/<img/gi, '<img style="max-width: 100%" height="auto"')
-				})
-			}
-		},
-		onLoad (option) {
-      this.product_id = option.id
-			this.investProjectDetail(option.id)
-		}
-	}
+import { investProjectDetail } from '@/static/api/api'
+export default {
+  data () {
+    return {
+      product_id: null,
+      baseForm: {}
+    }
+  },
+  methods: {
+    investProjectDetail (id) {
+      investProjectDetail(id).then(res => {
+        this.baseForm = res.response
+        this.baseForm.remark = this.baseForm.remark.replace(/<img/gi, '<img style="max-width: 100%" height="auto"')
+      })
+    }
+  },
+  onLoad (option) {
+    this.product_id = option.id
+    this.investProjectDetail(option.id)
+  }
+}
 </script>
 
 <style lang="less" scoped>
