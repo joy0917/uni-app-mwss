@@ -142,6 +142,7 @@ export default {
 		},
 		carouselList () { // 轮播列表
 			carouselList({
+        type: '首页轮播图',
         time: getFormatDate(),
         per_page: 10,
         current_page: 1

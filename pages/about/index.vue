@@ -96,9 +96,7 @@ export default {
     },
     carouselList () { // 广告图
       carouselList({
-        time: getFormatDate(),
-        per_page: 10,
-        current_page: 1
+        type: '关于我们页面广告图'
       }).then(res => {
         this.banner = res.response.data[0].img_url
       })
