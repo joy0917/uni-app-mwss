@@ -314,7 +314,7 @@ export const countIndex = data => {
 	})
 }
 
-// 获取首页视频，邀请二维码
+// 获取首页视频，邀请好友二维码
 export const uploadDetail = data => {
 	return request({
 		url: '/api/frontend/upload/detail',

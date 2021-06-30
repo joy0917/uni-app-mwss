@@ -6,7 +6,7 @@
       <!-- <tki-qrcode
         :val="user_info.my_recommend_code"
         :loadMake="true"></tki-qrcode> -->
-      <image :src="qrImg" class="qrImg"/>
+      <image :src="$hostsUrl + qrImg" class="qrImg"/>
       <view class="txt">推荐码：{{ user_info.my_recommend_code }}</view>
     </view>
     <view class="member">
@@ -54,7 +54,7 @@ export default {
   methods: {
     uploadDetail () {
       uploadDetail({
-        type: '应用下载地址二维码'
+        type: '邀请好友二维码'
       }).then(res => {
         this.qrImg = res.response.img_url
       })

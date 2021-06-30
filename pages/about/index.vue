@@ -1,7 +1,7 @@
 <!-- 关于我们 -->
 <template>
 	<view class="container about">
-		<image src="@/static/image/bg.png" class="about-thumbnail"></image>
+		<image :src="$hostsUrl + banner" class="about-thumbnail"></image>
 		<!-- 九宫格 -->
 		<view class="about-title">新手指南</view>
 		<view class="grid">
@@ -42,57 +42,72 @@
 </template>
 
 <script>
-	export default {
-		data() {
-			return {
-				gridList1: [
-					{ image: '/static/image/about-register.png', text: '如何注册', url: '/pages/subpages/index?text=0' },
-					{ image: '/static/image/about-invest.png', text: '如何投资', url: '/pages/subpages/index?text=1' },
-					{ image: '/static/image/about-pay.png', text: '如何充值', url: '/pages/about/pay' },
-					{ image: '/static/image/about-qa.png', text: '常见问题', url: '/pages/subpages/index?text=8' },
-					{ image: '/static/image/about-notice.png', text: '公司公告', url: '/pages/subpages/index?text=9' }
-				],
-				gridList2: [
-					{ image: '/static/image/about-about.png', text: '关于我们', url: '/pages/about/about' },
-					{ image: '/static/image/about-safeguard.png', text: '安全保障', url: '/pages/subpages/index?text=13' },
-					{ image: '/static/image/about-risk.png', text: '风控机构', url: '/pages/about/risk' },
-					{ image: '/static/image/about-qualification.png', text: '企业资质', url: '/pages/subpages/index?text=17' },
-					{ image: '/static/image/about-level.png', text: '会员等级', url: '/pages/subpages/index?text=18' },
-					{ image: '/static/image/download.png', text: 'APP下载', url: '/pages/subpages/index?text=19' },
-					{ image: '/static/image/about-welfare.png', text: '福利活动', url: '/pages/subpages/index?text=20' },
-					{ image: '/static/image/about-expand.png', text: '推广活动', url: '/pages/subpages/index?text=21' }
-				],
-				gridList3: [
-					{ image: '/static/image/about-contact.png', text: '联系我们', url: '/pages/subpages/index?text=22' },
-					{ image: '/static/image/service2.png', text: '在线客服', url: '/pages/service/index' }
-				]
-			}
-		},
-		methods: {
-			gridChange1 (e) { // 九宫格切换
-				let { index } = e.detail
-				let item = this.gridList1[index]
-        uni.navigateTo({ url: item.url })
-			},
-			gridChange2 (e) { // 九宫格切换
-				let { index } = e.detail
-				let item = this.gridList2[index]
-        uni.navigateTo({ url: item.url })
-			},
-			gridChange3 (e) { // 九宫格切换
-				let { index } = e.detail
-				let item = this.gridList3[index]
-				switch (item.text){
-					case '在线客服':
-						uni.switchTab({ url: item.url })
-						break;
-					default:
-						uni.navigateTo({ url: item.url })
-						break;
-				}
-			}
-		}
-	}
+import { carouselList } from '@/static/api/api'
+import { getFormatDate } from '@/static/libs/libs'
+export default {
+  data() {
+    return {
+      banner: '',
+      gridList1: [
+        { image: '/static/image/about-register.png', text: '如何注册', url: '/pages/subpages/index?text=0' },
+        { image: '/static/image/about-invest.png', text: '如何投资', url: '/pages/subpages/index?text=1' },
+        { image: '/static/image/about-pay.png', text: '如何充值', url: '/pages/about/pay' },
+        { image: '/static/image/about-qa.png', text: '常见问题', url: '/pages/subpages/index?text=8' },
+        { image: '/static/image/about-notice.png', text: '公司公告', url: '/pages/subpages/index?text=9' }
+      ],
+      gridList2: [
+        { image: '/static/image/about-about.png', text: '关于我们', url: '/pages/about/about' },
+        { image: '/static/image/about-safeguard.png', text: '安全保障', url: '/pages/subpages/index?text=13' },
+        { image: '/static/image/about-risk.png', text: '风控机构', url: '/pages/about/risk' },
+        { image: '/static/image/about-qualification.png', text: '企业资质', url: '/pages/subpages/index?text=17' },
+        { image: '/static/image/about-level.png', text: '会员等级', url: '/pages/subpages/index?text=18' },
+        { image: '/static/image/download.png', text: 'APP下载', url: '/pages/subpages/index?text=19' },
+        { image: '/static/image/about-welfare.png', text: '福利活动', url: '/pages/subpages/index?text=20' },
+        { image: '/static/image/about-expand.png', text: '推广活动', url: '/pages/subpages/index?text=21' }
+      ],
+      gridList3: [
+        { image: '/static/image/about-contact.png', text: '联系我们', url: '/pages/subpages/index?text=22' },
+        { image: '/static/image/service2.png', text: '在线客服', url: '/pages/service/index' }
+      ]
+    }
+  },
+  methods: {
+    gridChange1 (e) { // 九宫格切换
+      let { index } = e.detail
+      let item = this.gridList1[index]
+      uni.navigateTo({ url: item.url })
+    },
+    gridChange2 (e) { // 九宫格切换
+      let { index } = e.detail
+      let item = this.gridList2[index]
+      uni.navigateTo({ url: item.url })
+    },
+    gridChange3 (e) { // 九宫格切换
+      let { index } = e.detail
+      let item = this.gridList3[index]
+      switch (item.text){
+        case '在线客服':
+          uni.switchTab({ url: item.url })
+          break;
+        default:
+          uni.navigateTo({ url: item.url })
+          break;
+      }
+    },
+    carouselList () { // 广告图
+      carouselList({
+        time: getFormatDate(),
+        per_page: 10,
+        current_page: 1
+      }).then(res => {
+        this.banner = res.response.data[0].img_url
+      })
+    }
+  },
+  mounted () {
+    this.carouselList()
+  }
+}
 </script>
 
 <style lang="less" scoped>
