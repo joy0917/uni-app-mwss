@@ -98,7 +98,11 @@
     "h5" : {
         "title" : "盛世美湾",
         "router" : {
-            "mode" : "hash"
+            "mode" : "hash",
+            "base" : "./"
+        },
+        "devServer" : {
+            "https" : false
         }
     }
 }

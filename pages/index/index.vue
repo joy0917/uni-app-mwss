@@ -31,7 +31,6 @@
         :autoplay="videoOption.autoplay"
         :src="videoOption.video"
         :poster="videoOption.img"
-			  @error="videoErrorCallback"
         controls>
 			</video>
 		</view>
@@ -141,12 +140,6 @@ export default {
 					uni.navigateTo({ url: item.url })
 					break;
 			}
-		},
-		videoErrorCallback () { // 视频报错
-			uni.showToast({
-        title: '首页视频加载失败',
-        icon: 'none'
-			})
 		},
 		carouselList () { // 轮播列表
 			carouselList({
