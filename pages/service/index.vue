@@ -9,7 +9,7 @@
 export default {
   data () {
     return {
-      url: 'http://mankefu.dlyunkefu.net/Web/im.aspx?_=t&accountid=126412', // 米多客
+      url: 'http://chat.100888.xyz/php/app.php?widget-mobile',
       webviewStyles: {
         progress: {
           color: '#FF3333'

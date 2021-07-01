@@ -230,6 +230,7 @@ export default {
 	.section3{		
 		.video{
 			width: 100%;
+      height: 386rpx;
 			margin-top: 20rpx;
 		}
 	}
