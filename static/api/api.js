@@ -331,3 +331,12 @@ export const chargeList = data => {
 		method: 'GET'
 	})
 }
+
+// 获取系统配置项
+export const optionset = data => {
+	return request({
+		url: '/api/frontend/optionset/detail',
+    data,
+		method: 'GET'
+	})
+}
