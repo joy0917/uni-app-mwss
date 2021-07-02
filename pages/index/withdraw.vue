@@ -1,23 +1,24 @@
 <!-- 快速提现 -->
 <template>
 	<view class="withdraw">
-    <uni-forms ref="form" :modelValue="editForm" :rules="rules" label-width="10">
+    <uni-forms ref="form" :modelValue="editForm" label-width="10">
       <uni-group class="mb10">
-        <uni-forms-item label="银行卡" :label-width="50" class="mb0" name="card_id">
+        <uni-forms-item label="银行卡" :label-width="50" name="card_id">
           <uni-data-picker placeholder="请选择" popup-title="银行卡" :localdata="cardData" v-model="editForm.card_id" class="bordernone">
 				  </uni-data-picker>
         </uni-forms-item>
+        <view class="link" @click="gotoBind">前去绑定银行卡</view>
       </uni-group>
       <uni-group class="mb10">
         <uni-title type="h3" title="提现金额"></uni-title>
-          <uni-forms-item label="¥" name="cash_amount">
-            <uni-easyinput type="number" :inputBorder="false" trim v-model="editForm.cash_amount" placeholder="请输入" />
-          </uni-forms-item>
+        <uni-forms-item label="¥" name="cash_amount">
+          <uni-easyinput type="number" :inputBorder="false" trim v-model="editForm.cash_amount" placeholder="请输入" />
+        </uni-forms-item>
         <view>可提现金额<text class="blue">{{ user_info.account_balance }}</text>元</view>
       </uni-group>
       <uni-group class="mb10">
         <uni-forms-item label="交易密码" name="pay_password" :label-width="60">
-          <uni-easyinput type="text" autocomplete="off" :inputBorder="false" trim v-model="editForm.pay_password" placeholder="请输入" />
+          <uni-easyinput type="password" autocomplete="off" :inputBorder="false" trim v-model="editForm.pay_password" placeholder="请输入" />
         </uni-forms-item>
       </uni-group>
       <view class="withdraw-btn">
@@ -38,17 +39,6 @@ export default {
         cash_amount: null,
         pay_password: null
       },
-      rules: {
-        card_id: {
-          rules: [{ required: true, errorMessage: '请选择' }]
-        },
-        cash_amount: {
-          rules: [{ required: true, errorMessage: '请输入' }]
-        },
-        pay_password: {
-          rules: [{ required: true, errorMessage: '请输入' }]
-        }			
-      },
       cardData: []
     }
   },
@@ -58,6 +48,9 @@ export default {
     }
   },
   methods: {
+    gotoBind () {
+      uni.navigateTo({ url: '/pages/user/bank' })
+    },
     bankcardList () {
       bankcardList(this.user_info.id).then(res => {
         this.cardData = res.response.map(res => {
@@ -69,17 +62,31 @@ export default {
       })
     },
     submitForm () {
-      this.$refs.form.validate().then(res => {
-        cashOut(this.editForm).then(res => {
-          uni.showModal({
-            title: '提示',
-            content: '操作完成',
-            showCancel: false,
-            success: () => {
-              updateUser()
-              uni.navigateTo({ url: '/pages/user/log-withdraw' })
-            }
-          })
+      if (!this.editForm.card_id) {
+				uni.showToast({ title: '请选择银行卡', icon: 'none' })
+        return
+      }
+      if (!this.editForm.cash_amount) {
+				uni.showToast({ title: '请输入提现金额', icon: 'none' })
+        return
+      }
+      if (this.editForm.cash_amount <= 0 || this.editForm.cash_amount > this.user_info.account_balance) {
+				uni.showToast({ title: '提现金额不能小于等于0，不能大于可提现金额', icon: 'none' })
+        return
+      }
+      if (!this.editForm.pay_password) {
+				uni.showToast({ title: '请输入交易密码', icon: 'none' })
+        return
+      }
+      cashOut(this.editForm).then(res => {
+        uni.showModal({
+          title: '提示',
+          content: '操作完成',
+          showCancel: false,
+          success: () => {
+            updateUser()
+            uni.navigateTo({ url: '/pages/user/log-withdraw' })
+          }
         })
       })
     }
@@ -94,22 +101,30 @@ export default {
 	.withdraw{
 		background: #F0F0F0;
 		font-size: 24rpx;
-	}
-	.blue{
-		font-weight: bold;
-		padding: 0 10rpx;
-		font-size: 28rpx;
-	}
-  .submitbtn{
-    background: linear-gradient(180deg, #E7D294 0%, #CBA65B 100%);
-  }
-  .withdraw-btn{
-    padding: 30rpx;
-    background: #fff;
-  }
-  .bordernone{
-    /deep/ .input-value-border{
-      border: none;
+    .blue{
+      font-weight: bold;
+      padding: 0 10rpx;
+      font-size: 28rpx;
     }
-  }
+    .submitbtn{
+      background: linear-gradient(180deg, #E7D294 0%, #CBA65B 100%);
+    }
+    .withdraw-btn{
+      padding: 30rpx;
+      background: #fff;
+    }
+    .bordernone{
+      /deep/ .input-value-border{
+        border: none;
+      }
+    }
+    /deep/ .uni-forms-item__inner{
+      padding-bottom: 0;
+    }
+    .link{
+      text-decoration: underline;
+      color: #2d8cf0;
+      font-size: 24rpx;
+    }
+	}
 </style>

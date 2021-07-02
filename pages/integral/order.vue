@@ -2,7 +2,7 @@
 <template>
 	<view class="order">
 		<uni-list :border="false">
-			<uni-list-item :title="detailFrom.title" :note="`${ detailFrom.integral }积分`" :thumb="detailFrom.bg_img" thumbSize="lg" rightText="x1"></uni-list-item>
+			<uni-list-item :title="detailFrom.title" :note="`${ detailFrom.integral }积分`" :thumb="$hostsUrl + detailFrom.bg_img" thumbSize="lg" rightText="x1"></uni-list-item>
 			<uni-list-item title="收货地址"></uni-list-item>
 			<uni-list-item>
 				<template slot="body">
@@ -18,7 +18,7 @@
 			</uni-list-item>
 			<uni-list-item>
 				<template slot="body">
-					<text class="label">电话:</text>					
+					<text class="label">手机号:</text>					
 					<uni-easyinput v-model="editForm.phone" :inputBorder="false" trim clearable placeholder="请输入" />
 				</template>
 			</uni-list-item>
@@ -54,24 +54,20 @@ import { updateUser } from '@/static/libs/common'
 			},
 			orderAdd () {
 				if (!this.editForm.detail) {
-					uni.showToast({
-						title: '请输入地址',
-						icon: 'none'
-					})
+					uni.showToast({ title: '请输入地址', icon: 'none' })
 					return
 				}
 				if (!this.editForm.name) {
-					uni.showToast({
-						title: '请输入姓名',
-						icon: 'none'
-					})
+					uni.showToast({ title: '请输入姓名', icon: 'none' })
 					return
 				}
 				if (!this.editForm.phone) {
-					uni.showToast({
-						title: '请输入电话',
-						icon: 'none'
-					})
+					uni.showToast({ title: '请输入手机号', icon: 'none' })
+					return
+				}
+        let myreg = /^[1][3,4,5,6,7,8,9][0-9]{9}$/
+				if (!myreg.test(this.editForm.phone)) {
+					uni.showToast({ title: '手机号格式有误', icon: 'none' })
 					return
 				}
 				orderAdd(this.editForm).then(res => {

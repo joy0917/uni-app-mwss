@@ -44,7 +44,7 @@
 			</uni-list-item>
 			<view class="detail-body" v-html="baseForm.remark"></view>
 		</uni-list>
-    <navigator :url="`/pages/index/invest-order?id=${product_id}&min=${baseForm.min_investment}`" class="detail-btn">立即投资</navigator>
+    <button type="primary" class="detail-btn" @click="gotoInvest">立即投资</button>
 </view>
 </template>
 
@@ -58,6 +58,9 @@ export default {
     }
   },
   methods: {
+    gotoInvest () {
+      uni.navigateTo({ url: `/pages/index/invest-order?id=${this.product_id}&min=${this.baseForm.min_investment}` })
+    },
     investProjectDetail (id) {
       investProjectDetail(id).then(res => {
         this.baseForm = res.response

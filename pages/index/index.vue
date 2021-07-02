@@ -24,7 +24,7 @@
 		</view>
 		<!-- 公告和视频 -->
 		<view class="container section3">
-			<uni-notice-bar :show-icon="true" :scrollable="true" :single="true" :speed="30" :text="articleData"/>
+			<uni-notice-bar :show-icon="true" :scrollable="true" :single="true" :speed="10" :text="articleData"/>
 			<video
         class="video"
         :loop="videoOption.loop"
@@ -72,9 +72,7 @@
 						<view class="mt2">项目规模：<text class="txt1">{{ item.total_investment }}</text>万元</view>
 					</uni-col>
 					<uni-col :span="8" class="tr">
-						<navigator :url="`/pages/index/invest-detail?id=${item.id}`">
-							<view class="btn-invest"></view>
-						</navigator>
+            <view class="btn-invest" @click="gotoDetail(item.id)"></view>
 					</uni-col>
 				</uni-row>
 			</view>
@@ -122,6 +120,9 @@ export default {
 		}
 	},
 	methods: {
+    gotoDetail (id) {
+      uni.navigateTo({ url: `/pages/index/invest-detail?id=${id}` })
+    },
 		gridChange (e) { // 九宫格切换
 			let { index } = e.detail
 			let item = this.gridData[index]
@@ -158,7 +159,7 @@ export default {
         current_page: 1
       }).then(res => {
         let data = res.response.data
-        this.articleData = data[0] && data[0].desc
+        this.articleData = data[0] && data[0].content && data[0].content.replace(/<.*?>/g, "")
 			})
 		},
 		investProject () { // 投资项目
