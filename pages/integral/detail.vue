@@ -1,7 +1,7 @@
 <!-- 商品详情 -->
 <template>
 	<view class="detail">
-		<image :src="$hostsUrl + detailFrom.bg_img" class="detail-img"></image>
+		<image :src="detailFrom.bg_img" mode="aspectFit" class="detail-img"></image>
 		<view class="detail-head">
 			<uni-title type="h3" :title="detailFrom.title"></uni-title>
 			<uni-row class="mb10">
@@ -39,6 +39,7 @@
 			productDetail (id) { // 商品详情
 				productDetail(id).then(res => {
 					this.detailFrom = res.response
+					this.detailFrom.bg_img = this.$hostsUrl + this.detailFrom.bg_img
 					this.detailFrom.product_detail = this.detailFrom.product_detail.replace(/<img/gi, '<img style="max-width: 100%" height="auto"')
 				})
 			}

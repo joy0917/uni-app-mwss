@@ -1,7 +1,9 @@
 <!-- 投资详情 -->
 <template>
 	<view class="detail">
-		<image :src="$hostsUrl + baseForm.image" class="detail-img"></image>
+    <view class="pl15 pr15">
+		  <image :src="baseForm.image" class="detail-img"></image>
+    </view>
 		<uni-list :border="false" class="detail-head">
 			<uni-list-item>
 				<template slot="body">
@@ -37,7 +39,7 @@
 					</view>
 				</template>
 			</uni-list-item>
-			<uni-list-item>
+			<uni-list-item class="border">
 				<template slot="body">
 					<uni-title type="h3" title="投资详情" align="center" color="#56B0E9"></uni-title>
 				</template>
@@ -64,6 +66,7 @@ export default {
     investProjectDetail (id) {
       investProjectDetail(id).then(res => {
         this.baseForm = res.response
+        this.baseForm.image = this.$hostsUrl + this.baseForm.image
         this.baseForm.remark = this.baseForm.remark.replace(/<img/gi, '<img style="max-width: 100%" height="auto"')
       })
     }
@@ -80,7 +83,7 @@ export default {
 		background: #f8f8f8;
 		font-size: 28rpx;
 		.detail-img{
-			width: 100%;
+      width: 100%;
 			height: 375rpx;
 		}
 		.detail-head{
@@ -99,7 +102,14 @@ export default {
 			}
 		}
 		.detail-body{
-			padding: 10rpx 40rpx 110rpx 40rpx;
+			padding: 40rpx 40rpx 110rpx 40rpx;
+      /deep/ table{
+        border-collapse: collapse;
+        td{
+          border: 1px solid #000;
+          padding: 4rpx 10rpx;
+        }
+      }
 		}
     .detail-btn{
       position: fixed;
@@ -111,6 +121,9 @@ export default {
       text-align: center;
       font-size: 32rpx;
       background: linear-gradient(180deg, #E7D294 0%, #CBA65B 100%);
+    }
+    .border{
+      border-bottom: 2px solid #56B0E9;
     }
 	}
 </style>

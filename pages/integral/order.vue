@@ -2,7 +2,7 @@
 <template>
 	<view class="order">
 		<uni-list :border="false">
-			<uni-list-item :title="detailFrom.title" :note="`${ detailFrom.integral }积分`" :thumb="$hostsUrl + detailFrom.bg_img" thumbSize="lg" rightText="x1"></uni-list-item>
+			<uni-list-item :title="detailFrom.title" :note="`${ detailFrom.integral }积分`" :thumb="detailFrom.bg_img" thumbSize="lg" rightText="x1"></uni-list-item>
 			<uni-list-item title="收货地址"></uni-list-item>
 			<uni-list-item>
 				<template slot="body">
@@ -50,6 +50,7 @@ import { updateUser } from '@/static/libs/common'
 			productDetail (id) { // 商品详情
 				productDetail(id).then(res => {
 					this.detailFrom = res.response
+					this.detailFrom.bg_img = this.$hostsUrl + this.detailFrom.bg_img
 				})
 			},
 			orderAdd () {

@@ -1,7 +1,7 @@
 <!-- 关于我们 -->
 <template>
 	<view class="container about">
-		<image :src="$hostsUrl + banner" class="about-thumbnail"></image>
+		<image :src="banner" class="about-thumbnail"></image>
 		<!-- 九宫格 -->
 		<view class="about-title">新手指南</view>
 		<view class="grid">
@@ -98,7 +98,7 @@ export default {
       carouselList({
         type: '关于我们页面广告图'
       }).then(res => {
-        this.banner = res.response.data[0].img_url
+        this.banner = this.$hostsUrl + res.response.data[0].img_url
       })
     }
   },

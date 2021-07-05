@@ -5,7 +5,7 @@
 			<uni-col :span="12" class="mb10" v-for="(item, index) in productData" :key="index">
 				<navigator :url="`/pages/integral/detail?id=${item.id}`">
 					<view class="goods-item">
-						<image :src="$hostsUrl + item.bg_img" class="goods-img"></image>
+						<image :src="$hostsUrl + item.bg_img" mode="aspectFit" class="goods-img"></image>
 						<view class="goods-title">{{ item.title }}</view>
 						<view class="goods-sub">需要<text class="red">{{ item.integral }}</text>积分</view>
 					</view>
