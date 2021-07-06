@@ -160,6 +160,12 @@
 			}
 		},
 		{
+			"path": "pages/user/log-invest-detail",
+			"style": {
+				"navigationBarTitleText": "投资记录详情"
+			}
+		},
+		{
 			"path": "pages/user/log-earnings",
 			"style": {
 				"navigationBarTitleText": "收益记录"

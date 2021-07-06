@@ -258,6 +258,15 @@ export const investOrderList = data => {
 	})
 }
 
+
+// 投资订单详情
+export const investOrderDetail = id => {
+	return request({
+		url: `/api/frontend/invest_order/${id}`,
+		method: 'GET'
+	})
+}
+
 // 用户提现
 export const cashOut = data => {
 	return request({

@@ -16,13 +16,16 @@
 					<uni-td align="center" class="f12">{{ item.invest_project.title }}</uni-td>
 					<uni-td align="center" class="f12">{{ item.invest_amount }}</uni-td>
 					<uni-td align="center" class="f12">
-            <text :class="{ 'green': item.status === 'FINISHED', 'orange': item.status === 'INVESTING' }">{{ statusList[item.status] }}</text>
+            <text :class="{ 'green': item.status === 'FINISHED', 'red': item.status === 'INVESTING' }">{{ statusList[item.status] }}</text>
           </uni-td>
 					<uni-td align="center" class="f12">{{ '-' }}</uni-td>
 					<uni-td align="center" class="f12">
-						<navigator :url="`/pages/index/invest-detail?id=${item.invest_project_id}`">
+						<navigator :url="`/pages/user/log-invest-detail?id=${item.id}`">
 							<button size="mini" type="primary">查看</button>
 						</navigator>
+						<!-- <navigator :url="`/pages/index/invest-detail?id=${item.invest_project_id}`">
+							<button size="mini" type="primary">查看</button>
+						</navigator> -->
           </uni-td>
 				</uni-tr>
 			</template>
