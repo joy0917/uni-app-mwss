@@ -16,7 +16,7 @@
 			<uni-grid :column="4" :highlight="false" :showBorder="false" @change="gridChange">
 				<uni-grid-item v-for="(item, index) in gridData" :index="index" :key="index">
 					<view class="grid-item-box">
-						<image :src="item.image" class="image"/>
+						<image :src="item.oldimg" class="image"/>
 						<view class="text">{{ item.text }}</view>
 					</view>
 				</uni-grid-item>
@@ -24,7 +24,7 @@
 		</view>
 		<!-- 公告和视频 -->
 		<view class="container section3">
-			<uni-notice-bar :show-icon="true" :scrollable="true" :single="true" :speed="10" :text="articleData"/>
+			<uni-notice-bar :show-icon="true" :scrollable="true" :single="true" :speed="5" color="#FF0000" :text="articleData"/>
 			<video
         class="video"
         :loop="videoOption.loop"
@@ -57,6 +57,14 @@
 					</uni-col>
 				</uni-row>
 				<uni-row class="mb10">
+					<uni-col :span="16">
+						<view class="mt2">项目规模：<text class="txt1">{{ item.total_investment }}</text>万元</view>
+					</uni-col>
+					<uni-col :span="8" class="tr">
+            <view class="btn-invest" @click="gotoDetail(item.id)">立即投资</view>
+					</uni-col>
+				</uni-row>
+				<uni-row>
 					<uni-col :span="5" class="mt2">
 						投资进度：
 					</uni-col>
@@ -65,14 +73,6 @@
 					</uni-col>
 					<uni-col :span="6" class="txt2 tr">
 						{{ item.finished_investment_percent }}%
-					</uni-col>
-				</uni-row>
-				<uni-row>
-					<uni-col :span="16">
-						<view class="mt2">项目规模：<text class="txt1">{{ item.total_investment }}</text>万元</view>
-					</uni-col>
-					<uni-col :span="8" class="tr">
-            <view class="btn-invest" @click="gotoDetail(item.id)"></view>
 					</uni-col>
 				</uni-row>
 			</view>
@@ -101,14 +101,14 @@ export default {
         img: ''
 			},
 			gridData: [
-				{ image: '/static/image/invest.png', text: '如何投资', limit: false, url: '/pages/subpages/index?text=1' },
-				{ image: '/static/image/calculator.png', text: '计算器', limit: false, url: '/pages/index/calculator' },
-				{ image: '/static/image/download.png', text: 'APP下载', limit: false, url: '/pages/subpages/index?text=19' },
-				{ image: '/static/image/signin.png', text: '每日签到', limit: true, url: null },
-				{ image: '/static/image/pay.png', text: '马上充值', limit: true, url: '/pages/index/pay' },
-				{ image: '/static/image/withdraw.png', text: '快速提现', limit: true, url: '/pages/index/withdraw' },
-				{ image: '/static/image/invite.png', text: '邀请好友', limit: true, url: '/pages/index/invite' },
-				{ image: '/static/image/service2.png', text: '在线客服', limit: false, url: '/pages/service/index' }
+				{ image: '/static/image/invest.png', oldimg: '/static/oldimg/1.png', text: '如何投资', limit: false, url: '/pages/subpages/index?text=1' },
+				{ image: '/static/image/calculator.png', oldimg: '/static/oldimg/2.png', text: '计算器', limit: false, url: '/pages/index/calculator' },
+				{ image: '/static/image/download.png', oldimg: '/static/oldimg/3.png', text: 'APP下载', limit: false, url: '/pages/subpages/index?text=19' },
+				{ image: '/static/image/signin.png', oldimg: '/static/oldimg/4.png', text: '每日签到', limit: true, url: null },
+				{ image: '/static/image/pay.png', oldimg: '/static/oldimg/5.png', text: '马上充值', limit: true, url: '/pages/index/pay' },
+				{ image: '/static/image/withdraw.png', oldimg: '/static/oldimg/6.png', text: '快速提现', limit: true, url: '/pages/index/withdraw' },
+				{ image: '/static/image/invite.png', oldimg: '/static/oldimg/7.png', text: '邀请好友', limit: true, url: '/pages/index/invite' },
+				{ image: '/static/image/service2.png', oldimg: '/static/oldimg/8.png', text: '在线客服', limit: false, url: '/pages/service/index' }
 			],
       articleData: '',
 			eventType: {
@@ -203,7 +203,7 @@ export default {
 	}
 	.section1{
 		.swiper {
-			height: 360rpx;
+			height: 400rpx;
 			.swiper-item {
 				display: block;
 				height: 100%;
@@ -211,18 +211,17 @@ export default {
 		}
 	}
 	.section2 {
-		padding: 40rpx 0;
+    border-bottom: 20rpx solid #F0F0F0;
 		.grid-item-box {
 			flex: 1;
 			display: flex;
 			flex-direction: column;
 			align-items: center;
 			justify-content: center;
-			padding: 20rpx 0;
 		}
 		.image {
-			width: 88rpx;
-			height: 88rpx;
+			width: 80rpx;
+			height: 80rpx;
 		}
 		.text{
 			margin-top: 10rpx;
@@ -239,10 +238,12 @@ export default {
 		.event-title{
 			padding: 30rpx 0;
 			color: #CBA65B;
-			font-size: 36rpx;
+			font-size: 32rpx;
+      text-align: center;
+      font-weight: bold;
 		}
 		.event-head{
-			height: 400rpx;
+			height: 380rpx;
 			overflow: hidden;
 			.event-img{
 				width: 100%;
@@ -250,32 +251,37 @@ export default {
 			}
 		}
 		.event-body{
-			padding: 20rpx 40rpx 30rpx 40rpx;
+			padding: 20rpx 20rpx 30rpx 20rpx;
 			.item-title{
-				font-size: 28rpx;
+				font-size: 32rpx;
 				color: #000;
 				margin-bottom: 20rpx;
 				font-weight: bold;
 			}
 			.verify{
-				width: 32rpx;
-				height: 32rpx;
+				width: 50rpx;
+				height: 50rpx;
+        margin-right: 20rpx;
 				vertical-align: middle;
 			}
 			.txt1{
-				color: #E38075;
+				color: #ff2200;
 				font-size: 32rpx;
 			}
 			.txt2{
-				color: #CBA65B;
+				color: #000;
 				font-size: 32rpx;
 			}
 			.btn-invest{
 				display: inline-block;
-				width: 114rpx;
-				height: 44rpx;
-				background: url('~@/static/image/btn-invest.png') no-repeat 100% 100%;
-				background-size: 100%;
+				width: 180rpx;
+				height: 60rpx;
+        line-height: 60rpx;
+        text-align: center;
+        color: #BA682E;
+        font-size: 28rpx;
+        border-radius: 10rpx;
+        background: linear-gradient(#F5D0B5, #E7B08F);
 			}
 		}
 	}
