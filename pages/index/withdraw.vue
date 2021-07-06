@@ -91,7 +91,7 @@ export default {
       })
     }
   },
-  mounted () {
+  onShow () {
     this.bankcardList()
   }
 }

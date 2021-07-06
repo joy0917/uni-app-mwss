@@ -64,9 +64,7 @@ export default {
             content: '绑定成功',
             showCancel: false,
             success: () => {
-              uni.navigateTo({
-                url: '/pages/user/bank'
-              })
+              uni.redirectTo({ url: '/pages/user/bank' })
             }
           })
         })

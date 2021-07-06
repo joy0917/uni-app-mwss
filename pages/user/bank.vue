@@ -4,7 +4,7 @@
 		<uni-card title="储蓄卡" :extra="item.deposit_bank" class="bankcard" isShadow @click="cardClick(item.id)" v-for="(item, index) in cardData" :key="index">
 			{{ item.bank_card_code }}
 		</uni-card>
-    <navigator url="/pages/user/bind" class="bankcard-btn">添加银行卡</navigator>
+    <navigator url="/pages/user/bind" open-type="redirect" class="bankcard-btn">添加银行卡</navigator>
 	</view>
 </template>
 
@@ -52,6 +52,21 @@ export default {
 
 <style lang="less" scoped>
 .bank{
+  /deep/.bankcard{
+    background: linear-gradient(to bottom,  #58a5e4 0%,#2b61a7 100%);
+    .uni-card__header-title-text{
+      color: #FFFFFF;
+    }
+    .uni-card__header-extra-text{
+      color: #FFFFFF;
+    }
+    .uni-card__content{
+      color: #FFFFFF;
+    }
+    .uni-border-bottom:after{
+      border-bottom: none;
+    }
+  }
 	.bankcard-btn{
     height: 100rpx;
     line-height: 100rpx;

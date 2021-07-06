@@ -85,9 +85,7 @@ export default {
     })
   },
   onBackPress () {
-    uni.reLaunch({
-      url: '/pages/index/index'
-    })
+    uni.reLaunch({ url: '/pages/index/index' })
     return true
   }
 }

@@ -35,7 +35,7 @@
 			</video>
 		</view>
 		<!-- 活动列表 -->
-		<view class="container section4" v-for="(item, index) in eventData" :key="index">
+		<view class="container section4" v-for="(item, index) in eventData" :key="index" @click="gotoDetail(item.id)">
 			<view class="event-title" v-if="index === 0 || item.type !== eventData[index-1].type">{{ eventType[item.type] }}</view>
 			<view class="event-head">
 				<image :src="$hostsUrl + item.image" class="event-img"></image>
@@ -61,7 +61,7 @@
 						<view class="mt2">项目规模：<text class="txt1">{{ item.total_investment }}</text>万元</view>
 					</uni-col>
 					<uni-col :span="8" class="tr">
-            <view class="btn-invest" @click="gotoDetail(item.id)">立即投资</view>
+            <view class="btn-invest">立即投资</view>
 					</uni-col>
 				</uni-row>
 				<uni-row>
