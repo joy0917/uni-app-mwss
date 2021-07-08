@@ -73,8 +73,8 @@ export default {
     text-align: center;
     border-radius: 10rpx;
     font-size: 28rpx;
-		background: linear-gradient(180deg, #E7D294 0%, #CBA65B 100%);
-		color: #FFFFFF;
+		background: linear-gradient(#F5D0B5, #E7B08F);
+		color: #BA682E;
 		margin: 30rpx;
 	}
 }

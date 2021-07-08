@@ -202,7 +202,7 @@
 }
 
 .w200 {
-  width: 200px;
+  width: 200px !important;
 }
 
 .w250 {

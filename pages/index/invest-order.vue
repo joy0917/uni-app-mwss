@@ -76,6 +76,7 @@ export default {
   onLoad (option) {
     this.product_id = option.id
     this.min_investment = option.min
+    this.editForm.invest_amount = this.min_investment
   }
 }
 </script>
@@ -87,7 +88,14 @@ export default {
 		padding: 0 30rpx;
 	}
   .submitbtn{
-    background: linear-gradient(180deg, #E7D294 0%, #CBA65B 100%);
+    color: #BA682E;
+    background: linear-gradient(#F5D0B5, #E7B08F);
+  }
+  /deep/.uni-numbox{
+    width: 320rpx;
+    .uni-numbox__value{
+      width: 180rpx;
+    }
   }
 }
 </style>

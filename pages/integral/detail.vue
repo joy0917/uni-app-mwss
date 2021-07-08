@@ -11,9 +11,9 @@
 			<uni-row>
 				<uni-col :span="12">库存：{{ detailFrom.stock_num || 0 }}</uni-col>
 				<uni-col :span="12" class="tr">
-					<navigator :url="`/pages/integral/order?id=${ detailFrom.id }`">
-						<button type="primary" class="detail-btn">立即兑换</button>
-					</navigator>
+          <button type="primary" class="detail-btn" @click="gotoDetail(detailFrom.id)">
+					  立即兑换
+          </button>
 				</uni-col>
 			</uni-row>
 		</view>
@@ -36,6 +36,9 @@
       }
     },
 		methods: {
+      gotoDetail (id) {
+        uni.navigateTo({ url: `/pages/integral/order?id=${ id }` })
+      },
 			productDetail (id) { // 商品详情
 				productDetail(id).then(res => {
 					this.detailFrom = res.response

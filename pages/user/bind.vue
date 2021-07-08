@@ -1,7 +1,7 @@
 <!-- 银行卡绑定 -->
 <template>
 	<view class="bind">
-		<uni-forms ref="form" :modelValue="editForm" :rules="rules" label-width="80">
+		<uni-forms ref="form" :modelValue="editForm" label-width="80">
 			<uni-forms-item label="所属银行" required name="bank_name">
 				<uni-easyinput clearable trim :inputBorder="false" v-model="editForm.bank_name" placeholder="请输入"/>
 			</uni-forms-item>
@@ -30,20 +30,6 @@ export default {
         bank_card_code: null,
         deposit_bank: null,
         real_name: null
-      },
-      rules: {
-        bank_name: {
-          rules: [{ required: true, errorMessage: '请输入' }]
-        },
-        bank_card_code: {
-          rules: [{ required: true, errorMessage: '请输入' }]
-        },
-        deposit_bank: {
-          rules: [{ required: true, errorMessage: '请输入' }]
-        },
-        real_name: {
-          rules: [{ required: true, errorMessage: '请输入' }]
-        }
       }
     }
   },
@@ -54,19 +40,33 @@ export default {
   },
   methods: {
     submitForm () {
-      this.$refs.form.validate().then(res => {
-        bindBankcard({
-          ...this.editForm,
-          user_id: this.user_info.id
-        }).then(res => {
-          uni.showModal({
-            title: '提示',
-            content: '绑定成功',
-            showCancel: false,
-            success: () => {
-              uni.redirectTo({ url: '/pages/user/bank' })
-            }
-          })
+      if (!this.editForm.bank_name) {
+				uni.showToast({ title: '请输入所属银行', icon: 'none' })
+        return
+      }
+      if (!this.editForm.bank_card_code) {
+				uni.showToast({ title: '请输入卡号', icon: 'none' })
+        return
+      }
+      if (!this.editForm.deposit_bank) {
+				uni.showToast({ title: '请输入开户行', icon: 'none' })
+        return
+      }
+      if (!this.editForm.real_name) {
+				uni.showToast({ title: '请输入姓名', icon: 'none' })
+        return
+      }
+      bindBankcard({
+        ...this.editForm,
+        user_id: this.user_info.id
+      }).then(res => {
+        uni.showModal({
+          title: '提示',
+          content: '绑定成功',
+          showCancel: false,
+          success: () => {
+            uni.redirectTo({ url: '/pages/user/bank' })
+          }
         })
       })
     }
@@ -78,7 +78,11 @@ export default {
 .bind{
   padding: 40rpx;
   .submitbtn{
-    background: linear-gradient(180deg, #E7D294 0%, #CBA65B 100%);
+    height: 80rpx;
+    line-height: 80rpx;
+    font-size: 28rpx;
+    color: #BA682E;
+    background: linear-gradient(#F5D0B5, #E7B08F);
   }
 }
 </style>

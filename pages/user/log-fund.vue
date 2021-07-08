@@ -12,7 +12,13 @@
 			<template v-for="(item, index) in tableData">
 				<uni-tr :key="index">
 					<uni-td align="center" class="f12">{{ item.desc }}</uni-td>
-					<uni-td align="center" class="f12"><text class="green">{{ item.amount }}</text></uni-td>
+					<uni-td align="center" class="f12">
+            <text :class="{ 'green': item.symbol_tag === 'INCREASE', 'red': item.symbol_tag === 'DECREASE' }">
+              <text v-if="item.symbol_tag === 'INCREASE'">+</text>
+              <text v-if="item.symbol_tag === 'DECREASE'">-</text>
+              {{ item.amount }}
+            </text>
+          </uni-td>
 					<uni-td align="center" class="f12">{{ item.created_at }}</uni-td>
 				</uni-tr>
 			</template>

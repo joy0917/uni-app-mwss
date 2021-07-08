@@ -85,7 +85,12 @@ export default {
           showCancel: false,
           success: () => {
             updateUser()
-            uni.switchTab({ url: '/pages/index/index' })
+            // uni.switchTab({ url: '/pages/index/index' })
+            this.editForm = {
+              card_id: null,
+              cash_amount: null,
+              pay_password: null
+            }
           }
         })
       })
