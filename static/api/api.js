@@ -341,6 +341,15 @@ export const chargeList = data => {
 	})
 }
 
+// 充值说明
+export const chargeDetail = data => {
+	return request({
+		url: '/api/frontend/charge/detail',
+    data,
+		method: 'GET'
+	})
+}
+
 // 获取系统配置项
 export const optionset = data => {
 	return request({

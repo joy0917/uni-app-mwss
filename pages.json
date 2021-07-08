@@ -91,6 +91,12 @@
 			}
 		},
 		{
+			"path": "pages/index/pay-detail",
+			"style": {
+				"navigationBarTitleText": "充值说明"
+			}
+		},
+		{
 			"path": "pages/index/withdraw",
 			"style": {
 				"navigationBarTitleText": "快速提现"
