@@ -1,7 +1,7 @@
 {
-    "name" : "盛世美湾",
+    "name" : "美湾盛世",
     "appid" : "__UNI__0FA0BFA",
-    "description" : "盛世美湾",
+    "description" : "美湾盛世",
     "versionName" : "1.0.0",
     "versionCode" : "100",
     "transformPx" : false,
@@ -96,7 +96,7 @@
         "usingComponents" : true
     },
     "h5" : {
-        "title" : "盛世美湾",
+        "title" : "美湾盛世",
         "router" : {
             "mode" : "hash",
             "base" : "./"

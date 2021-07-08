@@ -60,13 +60,15 @@
 			padding: 10rpx 40rpx;
 		}
 		.detail-btn{
-			display: inline-block;
-			width: 200rpx;
-			height: 60rpx;
-			line-height: 60rpx;
-			background: linear-gradient(180deg, #E8D396 0%, #CCA75D 100%);
-			border-radius: 15px;
-			font-size: 28rpx;
+      display: inline-block;
+      width: 180rpx;
+      height: 60rpx;
+      line-height: 60rpx;
+      text-align: center;
+      font-size: 28rpx;
+      border-radius: 10rpx;
+      color: #BA682E;
+      background: linear-gradient(#F5D0B5, #E7B08F);
 		}
 		.detail-title{
 			padding: 20rpx 0;

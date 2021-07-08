@@ -120,7 +120,8 @@ export default {
       line-height: 100rpx;
       text-align: center;
       font-size: 32rpx;
-      background: linear-gradient(180deg, #E7D294 0%, #CBA65B 100%);
+      color: #BA682E;
+      background: linear-gradient(#F5D0B5, #E7B08F);
     }
     .border{
       border-bottom: 2px solid #56B0E9;

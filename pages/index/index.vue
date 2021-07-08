@@ -101,14 +101,14 @@ export default {
         img: ''
 			},
 			gridData: [
-				{ image: '/static/image/invest.png', oldimg: '/static/oldimg/1.png', text: '如何投资', limit: false, url: '/pages/subpages/index?text=1' },
-				{ image: '/static/image/calculator.png', oldimg: '/static/oldimg/2.png', text: '计算器', limit: false, url: '/pages/index/calculator' },
-				{ image: '/static/image/download.png', oldimg: '/static/oldimg/3.png', text: 'APP下载', limit: false, url: '/pages/subpages/index?text=19' },
-				{ image: '/static/image/signin.png', oldimg: '/static/oldimg/4.png', text: '每日签到', limit: true, url: null },
-				{ image: '/static/image/pay.png', oldimg: '/static/oldimg/5.png', text: '马上充值', limit: true, url: '/pages/index/pay' },
-				{ image: '/static/image/withdraw.png', oldimg: '/static/oldimg/6.png', text: '快速提现', limit: true, url: '/pages/index/withdraw' },
-				{ image: '/static/image/invite.png', oldimg: '/static/oldimg/7.png', text: '邀请好友', limit: true, url: '/pages/index/invite' },
-				{ image: '/static/image/service2.png', oldimg: '/static/oldimg/8.png', text: '在线客服', limit: false, url: '/pages/service/index' }
+				{ image: '/static/image/invest.png', oldimg: '/static/oldimg/home/1.png', text: '如何投资', limit: false, url: '/pages/subpages/index?text=1' },
+				{ image: '/static/image/calculator.png', oldimg: '/static/oldimg/home/2.png', text: '计算器', limit: false, url: '/pages/index/calculator' },
+				{ image: '/static/image/download.png', oldimg: '/static/oldimg/home/3.png', text: 'APP下载', limit: false, url: '/pages/subpages/index?text=19' },
+				{ image: '/static/image/signin.png', oldimg: '/static/oldimg/home/4.png', text: '每日签到', limit: true, url: null },
+				{ image: '/static/image/pay.png', oldimg: '/static/oldimg/home/5.png', text: '马上充值', limit: true, url: '/pages/index/pay' },
+				{ image: '/static/image/withdraw.png', oldimg: '/static/oldimg/home/6.png', text: '快速提现', limit: true, url: '/pages/index/withdraw' },
+				{ image: '/static/image/invite.png', oldimg: '/static/oldimg/home/7.png', text: '邀请好友', limit: true, url: '/pages/index/invite' },
+				{ image: '/static/image/service2.png', oldimg: '/static/oldimg/home/8.png', text: '在线客服', limit: false, url: '/pages/service/index' }
 			],
       articleData: '',
 			eventType: {

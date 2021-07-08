@@ -43,7 +43,7 @@
 			<uni-grid :column="4" :highlight="false" :showBorder="false" @change="gridChange1">
 				<uni-grid-item v-for="(item, index) in gridList1" :index="index" :key="index">
 					<view class="grid-item-box">
-						<image :src="item.image" class="image"/>
+						<image :src="item.oldimg" class="image"/>
 						<view class="text">{{ item.text }}</view>
 					</view>
 				</uni-grid-item>
@@ -54,7 +54,7 @@
 			<uni-grid :column="4" :highlight="false" :showBorder="false" @change="gridChange2">
 				<uni-grid-item v-for="(item, index) in gridList2" :index="index" :key="index">
 					<view class="grid-item-box">
-						<image :src="item.image" class="image"/>
+						<image :src="item.oldimg" class="image"/>
 						<view class="text">{{ item.text }}</view>
 					</view>
 				</uni-grid-item>
@@ -65,7 +65,7 @@
 			<uni-grid :column="4" :highlight="false" :showBorder="false" @change="gridChange3">
 				<uni-grid-item v-for="(item, index) in gridList3" :index="index" :key="index">
 					<view class="grid-item-box">
-						<image :src="item.image" class="image"/>
+						<image :src="item.oldimg" class="image"/>
 						<view class="text">{{ item.text }}</view>
 					</view>
 				</uni-grid-item>
@@ -83,24 +83,24 @@ export default {
   data() {
     return {
       gridList1: [
-        { image: '/static/image/signin.png', text: '每日签到', url: null },
-        { image: '/static/image/fundsBreakdown.png', text: '资金明细', url: '/pages/user/log-fund' },
-        { image: '/static/image/investmentRecord.png', text: '投资记录', url: '/pages/user/log-invest' },
-        { image: '/static/image/earningsRecord.png', text: '收益记录', url: '/pages/user/log-earnings' },
-        { image: '/static/image/rechargeRecord.png', text: '充值记录', url: '/pages/user/log-pay' },
-        { image: '/static/image/cashWithdrawalRecords.png', text: '提现记录', url: '/pages/user/log-withdraw' },
-        { image: '/static/image/pointsMall.png', text: '积分商城', url: '/pages/integral/index' },
-        { image: '/static/image/promotions.png', text: '福利活动', url: '/pages/subpages/index?text=20' }
+        { image: '/static/image/signin.png', oldimg: '/static/oldimg/user/1.png', text: '每日签到', url: null },
+        { image: '/static/image/fundsBreakdown.png', oldimg: '/static/oldimg/user/2.png', text: '资金明细', url: '/pages/user/log-fund' },
+        { image: '/static/image/investmentRecord.png', oldimg: '/static/oldimg/user/3.png', text: '投资记录', url: '/pages/user/log-invest' },
+        { image: '/static/image/earningsRecord.png', oldimg: '/static/oldimg/user/4.png', text: '收益记录', url: '/pages/user/log-earnings' },
+        { image: '/static/image/rechargeRecord.png', oldimg: '/static/oldimg/user/5.png', text: '充值记录', url: '/pages/user/log-pay' },
+        { image: '/static/image/cashWithdrawalRecords.png', oldimg: '/static/oldimg/user/6.png', text: '提现记录', url: '/pages/user/log-withdraw' },
+        { image: '/static/image/pointsMall.png', oldimg: '/static/oldimg/user/7.png', text: '积分商城', url: '/pages/integral/index' },
+        { image: '/static/image/promotions.png', oldimg: '/static/oldimg/user/8.png', text: '福利活动', url: '/pages/subpages/index?text=20' }
       ],
       gridList2: [
-        { image: '/static/image/message.png', text: '站内消息', url: '/pages/user/message' },
-        { image: '/static/image/invite.png', text: '邀请好友', url: '/pages/index/invite' },
-        { image: '/static/image/service2.png', text: '在线客服', url: '/pages/service/index' }
+        { image: '/static/image/message.png', oldimg: '/static/oldimg/user/9.png', text: '站内消息', url: '/pages/user/message' },
+        { image: '/static/image/invite.png', oldimg: '/static/oldimg/user/10.png', text: '邀请好友', url: '/pages/index/invite' },
+        { image: '/static/image/service2.png', oldimg: '/static/oldimg/user/11.png', text: '在线客服', url: '/pages/service/index' }
       ],
       gridList3: [
-        { image: '/static/image/accountSecurity.png', text: '账户安全', url: '/pages/user/set' },
-        { image: '/static/image/realNameAuthentication.png', text: '实名认证', url: '/pages/user/auth' },
-        { image: '/static/image/bankCardBinding.png', text: '银行卡绑定', url: '/pages/user/bank' }
+        { image: '/static/image/accountSecurity.png', oldimg: '/static/oldimg/user/12.png', text: '账户安全', url: '/pages/user/set' },
+        { image: '/static/image/realNameAuthentication.png', oldimg: '/static/oldimg/user/13.png', text: '实名认证', url: '/pages/user/auth' },
+        { image: '/static/image/bankCardBinding.png', oldimg: '/static/oldimg/user/14.png', text: '银行卡绑定', url: '/pages/user/bank' }
       ]
     }
   },
@@ -177,7 +177,7 @@ export default {
 		.card {
 			margin-top: 42rpx;
 			width: 100%;
-			background: linear-gradient(180deg, #E8D49A 0%, #CDA961 100%);
+      background-image: linear-gradient(#fff6f0, #ffbc93);
 			border-radius: 36rpx;
 			padding: 36rpx 0;
 			text-align: center;
@@ -252,11 +252,11 @@ export default {
 		}
 		.logout {
 			border-radius: 16rpx;
-			background: linear-gradient(180deg, #E7D294 0%, #CBA65B 100%);
+      color: #BA682E;
+      background: linear-gradient(#F5D0B5, #E7B08F);
 			width: 100%;
 			height: 104rpx;
 			line-height: 104rpx;
-			color: #fff;
 			font-size: 32rpx;
 			text-align: center;
 			border: none;

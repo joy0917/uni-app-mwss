@@ -70,8 +70,8 @@ export default {
 				uni.showToast({ title: '请输入提现金额', icon: 'none' })
         return
       }
-      if (this.editForm.cash_amount <= 0 || this.editForm.cash_amount > this.user_info.account_balance) {
-				uni.showToast({ title: '提现金额不能小于等于0，不能大于可提现金额', icon: 'none' })
+      if (this.editForm.cash_amount < 200 || this.editForm.cash_amount > this.user_info.account_balance) {
+				uni.showToast({ title: '提现金额不能小于200元，不能大于可提现金额', icon: 'none' })
         return
       }
       if (!this.editForm.pay_password) {
@@ -85,7 +85,7 @@ export default {
           showCancel: false,
           success: () => {
             updateUser()
-            uni.navigateTo({ url: '/pages/user/log-withdraw' })
+            uni.switchTab({ url: '/pages/index/index' })
           }
         })
       })
@@ -107,7 +107,8 @@ export default {
       font-size: 28rpx;
     }
     .submitbtn{
-      background: linear-gradient(180deg, #E7D294 0%, #CBA65B 100%);
+      color: #BA682E;
+      background: linear-gradient(#F5D0B5, #E7B08F);
     }
     .withdraw-btn{
       padding: 30rpx;

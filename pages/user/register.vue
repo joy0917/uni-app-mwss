@@ -1,7 +1,11 @@
 <template>
 	<view class="register">
-    <view class="tc p20">
+    <!-- <view class="tc p20">
       <image src="@/static/image/logo.png" style="width: 140rpx; height: 140rpx"></image>
+    </view> -->
+    <view class="logintab">
+      <view class="tabitem"><navigator url="/pages/user/login">登录</navigator></view>
+      <view class="tabitem active">注册</view>
     </view>
 		<view class="registerForm">
 			<view class="registerItem">
@@ -52,10 +56,10 @@
 				<button @click="register">立即注册</button>
 			</view>
 		</view>
-		<view class="bottom">
-			<!-- <navigator url="/pages/user/forget">忘记密码</navigator> -->
-			<navigator url="/pages/user/login">登陆</navigator>
-		</view>
+		<!-- <view class="bottom">
+			<navigator url="/pages/user/forget">忘记密码</navigator>
+			<navigator url="/pages/user/login">登录</navigator>
+		</view> -->
 	</view>
 </template>
 
@@ -154,9 +158,26 @@
 <style scoped lang="less">
 	.register {
 		box-sizing: border-box;
-		min-height: calc(100vh - 88rpx);
 		padding: 24rpx 36rpx;
-		background: #f0f0f0;
+		background: #fff;
+    .logintab{
+      width: 60%;
+      margin: 32px auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .tabitem{
+        text-align: center;
+        padding: 8px 0;
+        width: 50%;
+        color: #bbb;
+        font-size: 20px;
+        &.active{
+          color: #222;
+          border-bottom: 2px solid #222
+        }
+      }
+    }
 		.registerForm {
 			.registerItem {
 				background: #F6F6F6;
@@ -213,12 +234,12 @@
 			}
 			.uni-btn-v {
 				button {
-					width: 100%;
-					height: 106rpx;
-					background: linear-gradient(180deg, #EDDDB6 0%, #D6B97F 100%);
-					border-radius: 18rpx;
-					line-height: 106rpx;
-					color: #fff;
+					width: 80%;
+					height: 70rpx;
+					line-height: 70rpx;
+          color: #BA682E;
+          background: linear-gradient(#F5D0B5, #E7B08F);
+					border-radius: 10rpx;
 					font-size: 32rpx;
 					font-weight: 500;
 					text-align: center;

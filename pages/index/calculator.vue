@@ -153,7 +153,8 @@ export default {
 			top: 18rpx;
 		}
 		.submitbtn{
-			background: linear-gradient(180deg, #E7D294 0%, #CBA65B 100%);
+      color: #BA682E;
+      background: linear-gradient(#F5D0B5, #E7B08F);
 		}
 	}
 </style>

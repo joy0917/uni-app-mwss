@@ -29,7 +29,7 @@
 			</view>
 		</view>
 		<view class="bottom">
-			<navigator url="/pages/user/login">登陆</navigator>
+			<navigator url="/pages/user/login">登录</navigator>
 		</view>
 	</view>
 </template>
@@ -165,10 +165,10 @@ export default {
 				button {
 					width: 100%;
 					height: 106rpx;
-					background: linear-gradient(180deg, #EDDDB6 0%, #D6B97F 100%);
+          color: #BA682E;
+          background: linear-gradient(#F5D0B5, #E7B08F);
 					border-radius: 18rpx;
 					line-height: 106rpx;
-					color: #fff;
 					font-size: 32rpx;
 					font-weight: 500;
 					text-align: center;

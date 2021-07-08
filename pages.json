@@ -35,7 +35,7 @@
 		{
 			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "盛世美湾",
+				"navigationBarTitleText": "美湾盛世",
 				"app-plus": {
 					"bounce": "vertical",
 					"titleNView": {
@@ -51,7 +51,7 @@
 		{
 			"path": "pages/user/login",
 			"style": {
-				"navigationBarTitleText": "登陆"
+				"navigationBarTitleText": "登录"
 			}
 		},
 		{

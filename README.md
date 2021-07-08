@@ -1,5 +1,5 @@
 # uni-app-mwss
-盛世美湾
+美湾盛世
 
 原型：
 https://v6.modao.cc/app/88a33fdd1d94d4433347d2a66e5829be415d6dd5?simulator_type=device&sticky=#screen=skpulbydrczvqrt
@@ -11,8 +11,8 @@ uni-app文档:
 https://uniapp.dcloud.io/component/README
 
 系统
-  登录 2
-  注册 2
+  登录 
+  注册 
   忘记密码
 首页
   首页
@@ -30,13 +30,13 @@ https://uniapp.dcloud.io/component/README
   兑换记录
   订单状态
 会员中心
-  会员中心 1
-  资金明细 1
-  投资记录 1
-  收益记录 1
-  充值记录 1
-  提现记录 1
-  站内消息 1
+  会员中心 
+  资金明细 
+  投资记录 
+  收益记录 
+  充值记录 
+  提现记录 
+  站内消息 
   消息详情
   账户安全
   实名认证
@@ -46,11 +46,9 @@ https://uniapp.dcloud.io/component/README
   银行卡绑定
 关于我们
   关于我们
-  二级页面 1
-  如何充值 1
-  关于详情 1
-  风控机构 1
+  二级页面 
+  如何充值 
+  关于详情 
+  风控机构 
 在线客服
   对接第三方
-
-  15 56

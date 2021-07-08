@@ -1,7 +1,14 @@
 <template>
 	<view class="login">
     <view class="tc p20">
-      <image src="@/static/image/logo.png" style="width: 140rpx; height: 140rpx"></image>
+      <!-- <image src="@/static/image/logo.png" style="width: 140rpx; height: 140rpx"></image> -->
+      <image src="@/static/oldimg/common/logo.png" style="width: 260rpx; height: 346rpx"></image>
+    </view>
+    <view class="logintab">
+      <view class="tabitem active">登录</view>
+      <view class="tabitem">
+        <navigator url="/pages/user/register">注册</navigator>
+      </view>
     </view>
 		<view class="loginForm">
 			<view class="loginItem">
@@ -22,13 +29,13 @@
 				<navigator url="/pages/user/privacy" style="left: 406rpx">《隐私协议》</navigator>
 			</view>
 			<view class="uni-btn-v">
-				<button @click="login">立即登陆</button>
+				<button @click="login">立即登录</button>
 			</view>
 		</view>
-		<view class="bottom">
+		<!-- <view class="bottom">
 			<navigator url="/pages/user/forget">忘记密码</navigator>
 			<navigator url="/pages/user/register">注册</navigator>
-		</view>
+		</view> -->
 	</view>
 </template>
 
@@ -96,7 +103,25 @@ export default {
 		box-sizing: border-box;
 		min-height: calc(100vh - 88rpx);
 		padding: 24rpx 36rpx;
-		background: #f0f0f0;
+		background: #fff;
+    .logintab{
+      width: 60%;
+      margin: 32px auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .tabitem{
+        text-align: center;
+        padding: 8px 0;
+        width: 50%;
+        color: #bbb;
+        font-size: 20px;
+        &.active{
+          color: #222;
+          border-bottom: 2px solid #222
+        }
+      }
+    }
 		.loginForm {
 			.loginItem {
 				background: #F6F6F6;
@@ -127,12 +152,12 @@ export default {
 			}
 			.uni-btn-v {
 				button {
-					width: 100%;
-					height: 106rpx;
-					background: linear-gradient(180deg, #EDDDB6 0%, #D6B97F 100%);
-					border-radius: 18rpx;
-					line-height: 106rpx;
-					color: #fff;
+					width: 80%;
+					height: 70rpx;
+          line-height: 70rpx;
+          color: #BA682E;
+          background: linear-gradient(#F5D0B5, #E7B08F);
+					border-radius: 10rpx;
 					font-size: 32rpx;
 					font-weight: 500;
 					text-align: center;
