@@ -4,9 +4,9 @@
 		<uni-list :border="false">
 			<uni-list-item title="项目名称" :rightText="result.invest_project.title"></uni-list-item>
 			<uni-list-item title="投资金额" :rightText="`${result.invest_amount}元`"></uni-list-item>
-			<uni-list-item title="每日分红" :rightText="`${result.invest_project.day_bonus}元`"></uni-list-item>
-			<uni-list-item title="日化收益" :rightText="`${result.invest_project.day_bonus_percent}%`"></uni-list-item>
-			<uni-list-item title="投资周期" :rightText="`${result.invest_project.period}天`"></uni-list-item>
+			<uni-list-item title="每日分红" :rightText="`${result.daily_bonus}元`"></uni-list-item>
+			<uni-list-item title="日化收益" :rightText="`${result.total_percent}%`"></uni-list-item>
+			<uni-list-item title="投资周期" :rightText="`${result.period}天`"></uni-list-item>
 			<uni-list-item title="状态">
         <template slot="footer">
           <span class="f13" :class="{ 'green': result.status === 'FINISHED', 'orange': result.status === 'INVESTING' }">{{ statusList[result.status] }}</span>
@@ -27,12 +27,12 @@ export default {
       },
       result: {
         invest_amount: '',
+        daily_bonus: '',
+        total_percent: '',
+        period: '',
         status: '',
         invest_project: {
-          title: '',
-          day_bonus: '',
-          day_bonus_percent: '',
-          period: ''
+          title: ''
         }
       }
     }
