@@ -7,34 +7,34 @@
 				<text>我的账号：</text><text>{{ user_info.phone || '-' }}</text>
 			</view>
 			<view>
-				<text>用户等级：</text><text>VIP {{ user_info.vip_level || '-' }}</text>
+				<text>用户等级：</text><text class="red fb">{{ user_info.vip.name || '-' }}</text>
 			</view>
 		</view>
 		<!-- 账户信息 -->
 		<view class="card">
 			<view class="one">
-				<text>账户余额（元）</text>
+				<text>账户余额(元)</text>
 			</view>
 			<view class="two">
-				<text>{{ user_info.account_balance || '-' }}</text>
+				<text class="red fb">{{ user_info.account_balance || '-' }}</text>
 			</view>
 			<!-- <view class="normal">
 				<text>成长值：{{ '-' }}</text>
 			</view> -->
 			<view class="normal">
-				<text>我的积分：{{ user_info.integral || '-' }}</text>
+				<text>我的积分：<text class="red fb">{{ user_info.integral || '-' }}</text></text>
 			</view>
 			<view class="normal">
 				<text>我的ID：{{ user_info.id || '-' }}</text>
 			</view>
 			<view class="last">
 				<view class="left">
-					<text>待收利息（元）</text>
-					<text class="num">{{ user_info.rest_bonus || '-'  }}</text>
+					<text>待收利息(元)</text>
+					<text class="num red fb">{{ user_info.rest_bonus || '-'  }}</text>
 				</view>
 				<view class="right">
-					<text>待收本金（元）</text>
-					<text class="num">{{ user_info.capital || '-'  }}</text>
+					<text>待收本金(元)</text>
+					<text class="num red fb">{{ user_info.capital || '-'  }}</text>
 				</view>
 			</view>
 		</view>
@@ -220,7 +220,6 @@ export default {
 					flex-direction: column;
 				}
 				.num {
-					color: #000;
 					font-size: 36rpx;
 					line-height: 50rpx;
 				}
