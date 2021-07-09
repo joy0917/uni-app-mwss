@@ -57,17 +57,17 @@ export default {
       ],
       gridList2: [
         { icon1: '/static/icon1/about/6.png', icon2: '/static/icon2/about/1.png', text: '关于我们', url: '/pages/about/about' },
-        { icon1: '/static/icon1/about/7.png', icon2: '/static/icon2/about/2.png', text: '安全保障', url: '/pages/subpages/index?text=13' },
-        { icon1: '/static/icon1/about/8.png', icon2: '/static/icon2/about/3.png', text: '风控机构', url: '/pages/about/risk' },
-        { icon1: '/static/icon1/about/9.png', icon2: '/static/icon2/about/4.png', text: '企业资质', url: '/pages/subpages/index?text=17' },
+        { icon1: '/static/icon1/about/7.png', icon2: '/static/icon2/about/7.png', text: '安全保障', url: '/pages/subpages/index?text=13' },
+        { icon1: '/static/icon1/about/8.png', icon2: '/static/icon2/about/8.png', text: '风控机构', url: '/pages/about/risk' },
+        { icon1: '/static/icon1/about/9.png', icon2: '/static/icon2/about/9.png', text: '企业资质', url: '/pages/subpages/index?text=17' },
         { icon1: '/static/icon1/about/10.png', icon2: '/static/icon2/about/1.png', text: '会员等级', url: '/pages/subpages/index?text=18' },
         { icon1: '/static/icon1/about/11.png', icon2: '/static/icon2/about/1.png', text: 'APP下载', url: '/pages/subpages/index?text=19' },
         { icon1: '/static/icon1/about/12.png', icon2: '/static/icon2/about/1.png', text: '福利活动', url: '/pages/subpages/index?text=20' },
         { icon1: '/static/icon1/about/13.png', icon2: '/static/icon2/about/1.png', text: '推广活动', url: '/pages/subpages/index?text=21' }
       ],
       gridList3: [
-        { icon1: '/static/icon1/about/14.png', icon2: '/static/icon2/about/5.png', text: '联系我们', url: '/pages/subpages/index?text=22' },
-        { icon1: '/static/icon1/about/15.png', icon2: '/static/icon2/about/6.png', text: '在线客服', url: '/pages/service/index' }
+        { icon1: '/static/icon1/about/14.png', icon2: '/static/icon2/about/14.png', text: '联系我们', url: '/pages/subpages/index?text=22' },
+        { icon1: '/static/icon1/about/15.png', icon2: '/static/icon2/about/15.png', text: '在线客服', url: '/pages/service/index' }
       ]
     }
   },
