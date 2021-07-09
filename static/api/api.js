@@ -358,3 +358,12 @@ export const optionset = data => {
 		method: 'GET'
 	})
 }
+
+// 用户充值
+export const userCharge = data => {
+	return request({
+		url: '/api/frontend/user/charge',
+    data,
+		method: 'POST'
+	})
+}

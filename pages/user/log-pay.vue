@@ -13,9 +13,11 @@
 			<template v-for="(item, index) in tableData">
 				<uni-tr :key="index">
 					<uni-td align="center" class="f12">{{ item.amount }}</uni-td>
-					<uni-td align="center" class="f12">{{ item.extra_attr }}</uni-td>
+					<uni-td align="center" class="f12">{{ item.type }}</uni-td>
 					<uni-td align="center" class="f12">{{ item.created_at }}</uni-td>
-					<uni-td align="center" class="f12">完成</uni-td>
+					<uni-td align="center" class="f12">
+            <text :class="{ 'green': item.status === '2', 'red': item.status === '3' }">{{ statusData[item.status] }}</text>
+          </uni-td>
 				</uni-tr>
 			</template>
 		</uni-table>
@@ -28,6 +30,7 @@ import { despositList } from '@/static/api/api'
 export default {
   data () {
     return {
+      statusData: ['', '已提交', '客服已确认', '充值未到账'],
       total: 0,
       editForm: {
         per_page: 10,
