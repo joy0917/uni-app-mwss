@@ -1,7 +1,7 @@
 <template>
 	<view class="forget">
     <view class="tc p20">
-      <image src="@/static/image/logo.png" style="width: 140rpx; height: 140rpx"></image>
+      <image src="@/static/image/logo.png" style="width: 260rpx; height: 346rpx"></image>
     </view>
 		<view class="registerForm">
 			<view class="registerItem">

@@ -1,7 +1,7 @@
 <template>
 	<view class="register">
     <!-- <view class="tc p20">
-      <image src="@/static/image/logo.png" style="width: 140rpx; height: 140rpx"></image>
+      <image src="@/static/image/logo.png" style="width: 260rpx; height: 346rpx"></image>
     </view> -->
     <view class="logintab">
       <view class="tabitem"><navigator url="/pages/user/login">登录</navigator></view>

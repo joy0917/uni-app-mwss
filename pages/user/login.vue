@@ -1,8 +1,7 @@
 <template>
 	<view class="login">
     <view class="tc p20">
-      <!-- <image src="@/static/image/logo.png" style="width: 140rpx; height: 140rpx"></image> -->
-      <image src="@/static/oldimg/common/logo.png" style="width: 260rpx; height: 346rpx"></image>
+      <image src="@/static/image/logo.png" style="width: 260rpx; height: 346rpx"></image>
     </view>
     <view class="logintab">
       <view class="tabitem active">登录</view>

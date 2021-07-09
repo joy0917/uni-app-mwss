@@ -7,7 +7,7 @@
 				<text>我的账号：</text><text>{{ user_info.phone || '-' }}</text>
 			</view>
 			<view>
-				<text>用户等级：</text><text class="red fb">{{ user_info.vip.name || '-' }}</text>
+				<text>用户等级：</text><text class="red fb">{{ user_info.vip && user_info.vip.name || '-' }}</text>
 			</view>
 		</view>
 		<!-- 账户信息 -->
@@ -43,7 +43,7 @@
 			<uni-grid :column="4" :highlight="false" :showBorder="false" @change="gridChange1">
 				<uni-grid-item v-for="(item, index) in gridList1" :index="index" :key="index">
 					<view class="grid-item-box">
-						<image :src="item.oldimg" class="image"/>
+						<image :src="item.icon2" class="image"/>
 						<view class="text">{{ item.text }}</view>
 					</view>
 				</uni-grid-item>
@@ -54,7 +54,7 @@
 			<uni-grid :column="4" :highlight="false" :showBorder="false" @change="gridChange2">
 				<uni-grid-item v-for="(item, index) in gridList2" :index="index" :key="index">
 					<view class="grid-item-box">
-						<image :src="item.oldimg" class="image"/>
+						<image :src="item.icon2" class="image"/>
 						<view class="text">{{ item.text }}</view>
 					</view>
 				</uni-grid-item>
@@ -65,7 +65,7 @@
 			<uni-grid :column="4" :highlight="false" :showBorder="false" @change="gridChange3">
 				<uni-grid-item v-for="(item, index) in gridList3" :index="index" :key="index">
 					<view class="grid-item-box">
-						<image :src="item.oldimg" class="image"/>
+						<image :src="item.icon2" class="image"/>
 						<view class="text">{{ item.text }}</view>
 					</view>
 				</uni-grid-item>
@@ -83,24 +83,24 @@ export default {
   data() {
     return {
       gridList1: [
-        { image: '/static/image/signin.png', oldimg: '/static/oldimg/user/1.png', text: '每日签到', url: null },
-        { image: '/static/image/fundsBreakdown.png', oldimg: '/static/oldimg/user/2.png', text: '资金明细', url: '/pages/user/log-fund' },
-        { image: '/static/image/investmentRecord.png', oldimg: '/static/oldimg/user/3.png', text: '投资记录', url: '/pages/user/log-invest' },
-        { image: '/static/image/earningsRecord.png', oldimg: '/static/oldimg/user/4.png', text: '收益记录', url: '/pages/user/log-earnings' },
-        { image: '/static/image/rechargeRecord.png', oldimg: '/static/oldimg/user/5.png', text: '充值记录', url: '/pages/user/log-pay' },
-        { image: '/static/image/cashWithdrawalRecords.png', oldimg: '/static/oldimg/user/6.png', text: '提现记录', url: '/pages/user/log-withdraw' },
-        { image: '/static/image/pointsMall.png', oldimg: '/static/oldimg/user/7.png', text: '积分商城', url: '/pages/integral/index' },
-        { image: '/static/image/promotions.png', oldimg: '/static/oldimg/user/8.png', text: '福利活动', url: '/pages/subpages/index?text=20' }
+        { icon1: '/static/icon1/user/1.png', icon2: '/static/icon2/user/1.png', text: '每日签到', url: null },
+        { icon1: '/static/icon1/user/2.png', icon2: '/static/icon2/user/2.png', text: '资金明细', url: '/pages/user/log-fund' },
+        { icon1: '/static/icon1/user/3.png', icon2: '/static/icon2/user/3.png', text: '投资记录', url: '/pages/user/log-invest' },
+        { icon1: '/static/icon1/user/4.png', icon2: '/static/icon2/user/4.png', text: '收益记录', url: '/pages/user/log-earnings' },
+        { icon1: '/static/icon1/user/5.png', icon2: '/static/icon2/user/5.png', text: '充值记录', url: '/pages/user/log-pay' },
+        { icon1: '/static/icon1/user/6.png', icon2: '/static/icon2/user/6.png', text: '提现记录', url: '/pages/user/log-withdraw' },
+        { icon1: '/static/icon1/user/7.png', icon2: '/static/icon2/user/7.png', text: '积分商城', url: '/pages/integral/index' },
+        { icon1: '/static/icon1/user/8.png', icon2: '/static/icon2/user/8.png', text: '福利活动', url: '/pages/subpages/index?text=20' }
       ],
       gridList2: [
-        { image: '/static/image/message.png', oldimg: '/static/oldimg/user/9.png', text: '站内消息', url: '/pages/user/message' },
-        { image: '/static/image/invite.png', oldimg: '/static/oldimg/user/10.png', text: '邀请好友', url: '/pages/index/invite' },
-        { image: '/static/image/service2.png', oldimg: '/static/oldimg/user/11.png', text: '在线客服', url: '/pages/service/index' }
+        { icon1: '/static/icon1/user/9.png', icon2: '/static/icon2/user/9.png', text: '站内消息', url: '/pages/user/message' },
+        { icon1: '/static/icon1/user/10.png', icon2: '/static/icon2/user/10.png', text: '邀请好友', url: '/pages/index/invite' },
+        { icon1: '/static/icon1/user/11.png', icon2: '/static/icon2/user/11.png', text: '在线客服', url: '/pages/service/index' }
       ],
       gridList3: [
-        { image: '/static/image/accountSecurity.png', oldimg: '/static/oldimg/user/12.png', text: '账户安全', url: '/pages/user/set' },
-        { image: '/static/image/realNameAuthentication.png', oldimg: '/static/oldimg/user/13.png', text: '实名认证', url: '/pages/user/auth' },
-        { image: '/static/image/bankCardBinding.png', oldimg: '/static/oldimg/user/14.png', text: '银行卡绑定', url: '/pages/user/bank' }
+        { icon1: '/static/icon1/user/12.png', icon2: '/static/icon2/user/12.png', text: '账户安全', url: '/pages/user/set' },
+        { icon1: '/static/icon1/user/13.png', icon2: '/static/icon2/user/13.png', text: '实名认证', url: '/pages/user/auth' },
+        { icon1: '/static/icon1/user/14.png', icon2: '/static/icon2/user/14.png', text: '银行卡绑定', url: '/pages/user/bank' }
       ]
     }
   },
