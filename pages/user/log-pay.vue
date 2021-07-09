@@ -13,7 +13,7 @@
 			<template v-for="(item, index) in tableData">
 				<uni-tr :key="index">
 					<uni-td align="center" class="f12">{{ item.amount }}</uni-td>
-					<uni-td align="center" class="f12">{{ item.type }}</uni-td>
+					<uni-td align="center" class="f12">{{ typeData[item.type] }}</uni-td>
 					<uni-td align="center" class="f12">{{ item.created_at }}</uni-td>
 					<uni-td align="center" class="f12">
             <text :class="{ 'green': item.status === '2', 'red': item.status === '3' }">{{ statusData[item.status] }}</text>
@@ -31,6 +31,7 @@ export default {
   data () {
     return {
       statusData: ['', '已提交', '客服已确认', '充值未到账'],
+      typeData: ['', '微信充值', '支付宝充值', '银联充值'],
       total: 0,
       editForm: {
         per_page: 10,
