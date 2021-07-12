@@ -28,7 +28,7 @@ export default {
       optionset({
         code: 'KE_FU_YU_MING'
       }).then(res => {
-        this.url = res.response.value + '/php/app.php?widget-mobile'
+        this.url = res.response.value + '/index/index/home?business_id=1&groupid=0&special=1&theme=D3AC73'
       })
     }
   },
