@@ -140,7 +140,7 @@ export default {
       height: 88rpx;
     }
     .text{
-      font-size: 20rpx;
+      // font-size: 20rpx;
       margin-top: 10rpx;
       line-height: 28rpx;
       color: #000;

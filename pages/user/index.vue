@@ -195,7 +195,7 @@ export default {
 			}
 			.normal {
 				color: #875A00;
-				font-size: 24rpx;
+				// font-size: 24rpx;
 				line-height: 34rpx;
 				margin-top: 2rpx;
 			}
@@ -207,14 +207,14 @@ export default {
 				align-items: center;
 				.left {
 					color: #875A00;
-					font-size: 20rpx;
+					// font-size: 20rpx;
 					line-height: 28rpx;
 					display: flex;
 					flex-direction: column;
 				}
 				.right {
 					color: #875A00;
-					font-size: 20rpx;
+					// font-size: 20rpx;
 					line-height: 28rpx;
 					display: flex;
 					flex-direction: column;
@@ -243,7 +243,7 @@ export default {
 				height: 88rpx;
 			}
 			.text{
-				font-size: 20rpx;
+				// font-size: 20rpx;
 				margin-top: 10rpx;
 				line-height: 28rpx;
 				color: #000;

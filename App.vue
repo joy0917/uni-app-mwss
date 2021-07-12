@@ -19,7 +19,7 @@
 	.container{
 		padding: 0 30rpx;
 		background: #F0F0F0;
-		font-size: 24rpx;
+		font-size: 26rpx;
 		color: #333;
 	}
 </style>

@@ -1,6 +1,7 @@
 {
 	"tabBar": {
 		"color": "#7A7E83",
+		"fontSize": "13px",
 		"selectedColor": "#007AFF",
 		"borderStyle": "black",
 		"backgroundColor": "#F8F8F8",
