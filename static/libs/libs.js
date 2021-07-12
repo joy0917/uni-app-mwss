@@ -1,6 +1,6 @@
 /*
   获取格式化时间
- */
+*/
 export const getFormatDate = (format = 'YYYY-MM-DD hh:mm:ss', date = new Date()) => {
   let Y = date.getFullYear()
   let M = date.getMonth() + 1
@@ -15,3 +15,12 @@ export const getFormatDate = (format = 'YYYY-MM-DD hh:mm:ss', date = new Date())
   if (s >= 0 && s <= 9) s = '0' + s
   return format.replace('YYYY', Y).replace('MM', M).replace('DD', D).replace('hh', h).replace('mm', m).replace('ss', s)
 }
+
+/*
+  千分位数字
+*/
+export const getThousand = (data) => {
+  let num = +data
+  return num.toLocaleString()
+}
+    

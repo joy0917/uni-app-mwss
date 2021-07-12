@@ -43,7 +43,6 @@
 
 <script>
 import { carouselList } from '@/static/api/api'
-import { getFormatDate } from '@/static/libs/libs'
 export default {
   data() {
     return {

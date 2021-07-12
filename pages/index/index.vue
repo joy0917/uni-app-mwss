@@ -44,11 +44,11 @@
 				<view class="item-title"><image src="@/static/image/verify.png" class="verify"></image>{{ item.title }}</view>				
 				<uni-row class="mb10">
 					<uni-col :span="8" class="tl">
-						<view><text class="txt1">{{ item.min_investment }}</text>元</view>
+						<view><text class="txt1">{{ getThousand(item.min_investment) }}</text>元</view>
 						<view>起投金额</view>
 					</uni-col>
 					<uni-col :span="8" class="tc">
-						<view><text class="txt1">{{ item.day_bonus }}</text>元起</view>
+						<view><text class="txt1">{{ getThousand(item.day_bonus) }}</text>元起</view>
 						<view>每日分红</view>
 					</uni-col>
 					<uni-col :span="8" class="tr">
@@ -58,7 +58,7 @@
 				</uni-row>
 				<uni-row class="mb10">
 					<uni-col :span="16">
-						<view class="mt2">项目规模：<text class="txt1">{{ item.total_investment }}</text>万元</view>
+						<view class="mt2">项目规模：<text class="txt1">{{ getThousand(item.total_investment) }}</text>万元</view>
 					</uni-col>
 					<uni-col :span="8" class="tr">
             <view class="btn-invest">立即投资</view>
@@ -82,11 +82,13 @@
 
 <script>
 import { carouselList, articleList, investProject, uploadDetail } from '@/static/api/api'
-import { getFormatDate } from '@/static/libs/libs'
+import { getFormatDate, getThousand } from '@/static/libs/libs'
 import { checkLogin, userSignin } from '@/static/libs/common'
 export default {
 	data() {
 		return {
+      getFormatDate,
+      getThousand,
       swiperData: [],
       swiperOption: {
         indicatorDots: true,
@@ -144,7 +146,7 @@ export default {
 		carouselList () { // 轮播列表
 			carouselList({
         type: '首页轮播图',
-        time: getFormatDate(),
+        time: this.getFormatDate(),
         per_page: 10,
         current_page: 1
       }).then(res => {
@@ -268,10 +270,12 @@ export default {
 			.txt1{
 				color: #ff2200;
 				font-size: 32rpx;
+        font-weight: bold;
 			}
 			.txt2{
 				color: #000;
 				font-size: 32rpx;
+        font-weight: bold;
 			}
 			.btn-invest{
 				display: inline-block;

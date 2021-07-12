@@ -15,21 +15,21 @@
 					<uni-row class="detail-item">
 						<uni-col :span="8">
 							<text class="t1">项目规模</text>
-							<view><text class="red">{{ baseForm.total_investment }}</text>万元</view>
+							<view><text class="red fb">{{ getThousand(baseForm.total_investment) }}</text>万元</view>
 						</uni-col>
 						<uni-col :span="8">
 							<text class="t1">每日分红</text>
-							<view><text class="red">{{ baseForm.day_bonus }}</text>元起</view>
+							<view><text class="red fb">{{ getThousand(baseForm.day_bonus) }}</text>元起</view>
 						</uni-col>
 						<uni-col :span="8">
 							<text class="t1">投资周期</text>
-							<view><text class="red">{{ baseForm.period }}</text>天</view>
+							<view><text class="red fb">{{ baseForm.period }}</text>天</view>
 						</uni-col>
 					</uni-row>
 				</template>
 			</uni-list-item>
 			<uni-list-item :title="`日化收益：${ baseForm.day_bonus_percent }%`"></uni-list-item>
-			<uni-list-item :title="`起投金额：${ baseForm.min_investment }元`"></uni-list-item>
+			<uni-list-item :title="`起投金额：${ getThousand(baseForm.min_investment) }元`"></uni-list-item>
 			<uni-list-item :title="`担保机构：${ baseForm.guarantee_agency }`"></uni-list-item>
 			<uni-list-item title="投资零风险：本金保障"></uni-list-item>
 			<uni-list-item>
@@ -52,9 +52,11 @@
 
 <script>
 import { investProjectDetail } from '@/static/api/api'
+import { getThousand } from '@/static/libs/libs'
 export default {
   data () {
     return {
+      getThousand,
       product_id: null,
       baseForm: {}
     }
