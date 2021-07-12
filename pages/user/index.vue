@@ -16,13 +16,13 @@
 				<text>账户余额(元)</text>
 			</view>
 			<view class="two">
-				<text class="red fb">{{ user_info.account_balance || '-' }}</text>
+				<text class="red fb">{{ getThousand(user_info.account_balance) }}</text>
 			</view>
 			<!-- <view class="normal">
 				<text>成长值：{{ '-' }}</text>
 			</view> -->
 			<view class="normal">
-				<text>我的积分：<text class="red fb">{{ user_info.integral || '-' }}</text></text>
+				<text>我的积分：<text class="red fb">{{ getThousand(user_info.integral) }}</text></text>
 			</view>
 			<view class="normal">
 				<text>我的ID：{{ user_info.id || '-' }}</text>
@@ -30,11 +30,11 @@
 			<view class="last">
 				<view class="left">
 					<text>待收利息(元)</text>
-					<text class="num red fb">{{ user_info.rest_bonus || '-'  }}</text>
+					<text class="num red fb">{{ getThousand(user_info.rest_bonus) }}</text>
 				</view>
 				<view class="right">
 					<text>待收本金(元)</text>
-					<text class="num red fb">{{ user_info.capital || '-'  }}</text>
+					<text class="num red fb">{{ getThousand(user_info.capital) }}</text>
 				</view>
 			</view>
 		</view>
@@ -78,10 +78,12 @@
 
 <script>
 import { checkLogin, updateUser, userSignin } from '@/static/libs/common'
+import { getThousand } from '@/static/libs/libs'
 import { mapMutations } from 'vuex'
 export default {
   data() {
     return {
+      getThousand,
       gridList1: [
         { icon1: '/static/icon1/user/1.png', icon2: '/static/icon2/user/1.png', icon3: '/static/icon3/user/1.png', text: '每日签到', url: null },
         { icon1: '/static/icon1/user/2.png', icon2: '/static/icon2/user/2.png', icon3: '/static/icon3/user/2.png', text: '资金明细', url: '/pages/user/log-fund' },

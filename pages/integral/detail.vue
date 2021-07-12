@@ -5,11 +5,11 @@
 		<view class="detail-head">
 			<uni-title type="h3" :title="detailFrom.title"></uni-title>
 			<uni-row class="mb10">
-				<uni-col :span="12">需要<text class="red">{{ detailFrom.integral }}</text>积分</uni-col>
-				<uni-col :span="12" class="tr">您有<text>{{ user_info.integral }}</text>积分</uni-col>
+				<uni-col :span="12">需要<text class="red">{{ getThousand(detailFrom.integral) }}</text>积分</uni-col>
+				<uni-col :span="12" class="tr">您有<text>{{ getThousand(user_info.integral) }}</text>积分</uni-col>
 			</uni-row>
 			<uni-row>
-				<uni-col :span="12">库存：{{ detailFrom.stock_num || 0 }}</uni-col>
+				<uni-col :span="12">库存：{{ getThousand(detailFrom.stock_num) }}</uni-col>
 				<uni-col :span="12" class="tr">
           <button type="primary" class="detail-btn" @click="gotoDetail(detailFrom.id)">
 					  立即兑换
@@ -24,9 +24,11 @@
 
 <script>
 	import { productDetail } from '@/static/api/api'
+  import { getThousand } from '@/static/libs/libs'
 	export default {
 		data() {
 			return {
+        getThousand,
 				detailFrom: {}
 			}
 		},

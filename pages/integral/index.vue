@@ -7,7 +7,7 @@
 					<view class="goods-item">
 						<image :src="$hostsUrl + item.bg_img" mode="aspectFit" class="goods-img"></image>
 						<view class="goods-title">{{ item.title }}</view>
-						<view class="goods-sub">需要<text class="red">{{ item.integral }}</text>积分</view>
+						<view class="goods-sub">需要<text class="red">{{ getThousand(item.integral) }}</text>积分</view>
 					</view>
 				</navigator>
 			</uni-col>
@@ -17,9 +17,11 @@
 
 <script>
 	import { productList } from '@/static/api/api'
+  import { getThousand } from '@/static/libs/libs'
 	export default {
 		data() {
 			return {
+        getThousand,
 				productData: []
 			}
 		},

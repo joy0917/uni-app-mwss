@@ -19,7 +19,7 @@ export const getFormatDate = (format = 'YYYY-MM-DD hh:mm:ss', date = new Date())
 /*
   千分位数字
 */
-export const getThousand = (data) => {
+export const getThousand = (data = null) => {
   let num = +data
   return num.toLocaleString()
 }
