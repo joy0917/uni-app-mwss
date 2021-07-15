@@ -26,7 +26,7 @@
 		<view class="container section3">
 			<uni-notice-bar :show-icon="true" :scrollable="true" :single="true" :speed="5" color="#FF0000" :text="articleData"/>
 			<video
-        v-if="videoOption.video"
+        v-if="videoOption.is_show"
         class="video"
         :loop="videoOption.loop"
         :autoplay="videoOption.autoplay"
@@ -98,6 +98,7 @@ export default {
         duration: 500
       },
 			videoOption: {
+        is_show: 0,
 				loop: true,
 				autoplay: false,
         video: '',
@@ -183,6 +184,7 @@ export default {
 			}).then(res => {
         this.videoOption.video = res.response.img_url ? this.$hostsUrl + res.response.img_url : ''
         this.videoOption.img = res.response.img_path ? this.$hostsUrl + res.response.img_path : ''
+        this.videoOption.is_show = res.response.is_show
 			})
 		}
 	},
