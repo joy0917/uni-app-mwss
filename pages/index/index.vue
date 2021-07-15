@@ -26,6 +26,7 @@
 		<view class="container section3">
 			<uni-notice-bar :show-icon="true" :scrollable="true" :single="true" :speed="5" color="#FF0000" :text="articleData"/>
 			<video
+        v-if="videoOption.video"
         class="video"
         :loop="videoOption.loop"
         :autoplay="videoOption.autoplay"
@@ -180,8 +181,8 @@ export default {
 			uploadDetail({
 				type: '首页视频'
 			}).then(res => {
-        this.videoOption.video = this.$hostsUrl + res.response.img_url
-        this.videoOption.img = this.$hostsUrl + res.response.img_path
+        this.videoOption.video = res.response.img_url ? this.$hostsUrl + res.response.img_url : ''
+        this.videoOption.img = res.response.img_path ? this.$hostsUrl + res.response.img_path : ''
 			})
 		}
 	},
