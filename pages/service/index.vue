@@ -1,6 +1,6 @@
 <!-- 在线客服 -->
 <template>
-	<view>
+	<view v-if="hasAuth">
     <template v-if="url">
 		  <web-view :webview-styles="webviewStyles" :src="url"></web-view>
     </template>
@@ -12,9 +12,11 @@
 
 <script>
 import { optionset } from '@/static/api/api'
+import { checkLogin } from '@/static/libs/common'
 export default {
   data () {
     return {
+      hasAuth: false,
       url: '',
       webviewStyles: {
         progress: {
@@ -23,17 +25,28 @@ export default {
       }
     }
   },
+  computed: {
+    user_info () {
+      return this.$store.state.user.user_info
+    }
+  },
   methods: {
     optionset () {
       optionset({
         code: 'KE_FU_YU_MING'
       }).then(res => {
-        this.url = res.response.value + '/index/index/home?business_id=1&groupid=0&special=1&theme=D3AC73'
+        this.url = res.response.value + `/index/index/home?business_id=1&groupid=0&special=1&theme=D3AC73&visiter_name=${this.user_info.real_name}&avatar=${encodeURIComponent(this.user_info.avatar)}&phone=${this.user_info.phone}`
+        // this.url = res.response.value + '/index/index/home?business_id=1&groupid=0&special=1&theme=D3AC73'
       })
     }
   },
   mounted () {
     this.optionset()
+  },
+  onShow () {
+    if (checkLogin()) {
+      this.hasAuth = true
+    }
   }
 }
 </script>

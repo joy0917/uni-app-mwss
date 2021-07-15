@@ -4,10 +4,10 @@
     <uni-forms ref="form" :modelValue="editForm" label-width="10">
       <uni-group class="mb10">
         <uni-forms-item label="银行卡" :label-width="50" name="card_id">
-          <uni-data-picker placeholder="请选择" popup-title="银行卡" :localdata="cardData" v-model="editForm.card_id" class="bordernone">
+          <uni-data-picker placeholder="请选择" popup-title="银行卡" :localdata="cardData" v-model="editForm.card_id" @change="pickerChange" class="bordernone">
 				  </uni-data-picker>
         </uni-forms-item>
-        <view class="link" @click="gotoBind">前去绑定银行卡</view>
+        <!-- <view class="link" @click="gotoBind">前去绑定银行卡</view> -->
       </uni-group>
       <uni-group class="mb10">
         <uni-title type="h3" title="提现金额"></uni-title>
@@ -48,9 +48,14 @@ export default {
     }
   },
   methods: {
-    gotoBind () {
-      uni.navigateTo({ url: '/pages/user/bank' })
+    pickerChange (e) {
+      if (e.detail.value[0].value === '银行卡') {
+        uni.navigateTo({ url: '/pages/user/bank' })
+      }
     },
+    // gotoBind () {
+    //   uni.navigateTo({ url: '/pages/user/bank' })
+    // },
     bankcardList () {
       bankcardList(this.user_info.id).then(res => {
         this.cardData = res.response.map(res => {
@@ -58,6 +63,10 @@ export default {
             value: res.id,
             text: res.bank_card_code
           }
+        })
+        this.cardData.push({
+          value: '银行卡',
+          text: '点击添加银行卡'
         })
       })
     },
@@ -97,6 +106,11 @@ export default {
     }
   },
   onShow () {
+    this.editForm = {
+      card_id: null,
+      cash_amount: null,
+      pay_password: null
+    }
     this.bankcardList()
   }
 }
@@ -131,6 +145,14 @@ export default {
       text-decoration: underline;
       color: #2d8cf0;
       font-size: 24rpx;
+    }
+    /deep/ .uni-scroll-view-content{
+      .item:last-child{
+        text-align: center;
+        .item-text{
+          color: #007aff;
+        }
+      }
     }
 	}
 </style>
