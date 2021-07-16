@@ -38,6 +38,14 @@
 				</view>
 			</view>
 		</view>
+    <uni-row class="mt15 mb15">
+      <uni-col :span="12">
+        <button type="default" class="card-btn" @click="gotoPay">充值</button>
+      </uni-col>
+      <uni-col :span="12">
+        <button type="default" class="card-btn" @click="gotoWithdraw">提现</button>
+      </uni-col>
+    </uni-row>
 		<!-- 九宫格 -->
 		<view class="grid">
 			<uni-grid :column="4" :highlight="false" :showBorder="false" @change="gridChange1">
@@ -115,6 +123,12 @@ export default {
     ...mapMutations([
       'setUserInfo'
     ]),
+    gotoPay () {
+      uni.navigateTo({ url: `/pages/index/pay` })
+    },
+    gotoWithdraw () {
+      uni.navigateTo({ url: `/pages/index/withdraw` })
+    },
     gridChange1 (e) { // 九宫格切换
       let { index } = e.detail
       let item = this.gridList1[index]
@@ -227,6 +241,15 @@ export default {
 				}
 			}
 		}
+    .card-btn{
+			border-radius: 16rpx;
+      color: #BA682E;
+      background: linear-gradient(#F5D0B5, #E7B08F);
+      width: 80%;
+      height: 70rpx;
+      line-height: 70rpx;
+      font-size: 14px;
+    }
 		.grid{
 			margin-top: 24rpx;
 			padding: 18rpx 0;
