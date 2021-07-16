@@ -47,19 +47,21 @@
         <uni-list-item :title="item.title" :note="item.desc" :thumb="item.icon" thumbSize="lg" :key="index"></uni-list-item>
       </template>
 		</uni-list>
+    <view class="pay-btn">
+      <button type="primary" class="submitbtn" @click="submitForm">我已充值</button>
+    </view>
   </view>
 </template>
 
 <script>
-import { chargeDetail } from '@/static/api/api'
+import { chargeDetail, alreadyCharge } from '@/static/api/api'
 import { setClipboardData } from '@/uni_modules/u-clipboard/js_sdk'
 export default {
 	data() {
 		return {
 			baseForm: {
         amount: '',
-        card_code: '',
-        name: ''
+        id: ''
       },
       resForm: {
         account_name: '',
@@ -87,6 +89,18 @@ export default {
       setClipboardData(key).then(res => {
         console.log('success')
       })
+    },
+    submitForm () {
+      alreadyCharge({ id: this.baseForm.id }).then(res => {
+        uni.showModal({
+          title: '提示',
+          content: '操作成功，请等待审核',
+          showCancel: false,
+          success: () => {
+            uni.switchTab({ url: '/pages/index/index' })
+          }
+        })
+      })
     }
 	}
 }
@@ -111,6 +125,15 @@ export default {
   }
   .copybtn{
     margin-right: 0;
+  }
+  .submitbtn{
+    color: #BA682E;
+    background: linear-gradient(#F5D0B5, #E7B08F);
+  }
+  .pay-btn{
+    margin-top: 20rpx;
+    padding: 30rpx;
+    background: #fff;
   }
 }
 </style>

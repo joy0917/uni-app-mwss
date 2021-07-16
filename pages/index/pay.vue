@@ -88,7 +88,7 @@ export default {
       }
       userCharge(this.editForm).then(res => {
         if (this.editForm.type === '3') {
-          uni.navigateTo({ url: `/pages/index/pay-card?amount=${this.editForm.amount}&name=${this.editForm.name}&card_code=${this.editForm.card_code}` })
+          uni.navigateTo({ url: `/pages/index/pay-card?amount=${this.editForm.amount}&id=${res.response.id}` })
         } else {
           uni.navigateTo({ url: `/pages/index/pay-detail?type=${this.editForm.type}` })
         }

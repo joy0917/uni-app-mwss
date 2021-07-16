@@ -350,6 +350,15 @@ export const chargeDetail = data => {
 	})
 }
 
+// 我已付款
+export const alreadyCharge = data => {
+	return request({
+		url: '/api/frontend/user/already/charge',
+    data,
+		method: 'POST'
+	})
+}
+
 // 获取系统配置项
 export const optionset = data => {
 	return request({
