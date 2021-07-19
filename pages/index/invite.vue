@@ -3,9 +3,6 @@
 	<view class="invite">
     <view class="qrcode">
       <view class="txt">邀请二维码</view>
-      <!-- <tki-qrcode
-        :val="user_info.my_recommend_code"
-        :loadMake="true"></tki-qrcode> -->
       <image :src="qrImg" class="qrImg"/>
       <view class="txt">推荐码：{{ user_info.my_recommend_code }}</view>
     </view>
@@ -35,7 +32,6 @@
 
 <script>
 import { uploadDetail, myInvites } from '@/static/api/api'
-// import tkiQrcode from "@/components/tki-qrcode/tki-qrcode"
 export default {
   data() {
     return {
@@ -48,9 +44,6 @@ export default {
       return this.$store.state.user.user_info
     }
   },
-  // components: {
-  //   tkiQrcode
-  // },
   methods: {
     uploadDetail () {
       uploadDetail({

@@ -64,95 +64,103 @@
 </template>
 
 <script>
-	import generateCode from '@/static/libs/canvas-verification-code'
-	import { register, sendSms } from '@/static/api/api'
-	export default {
-		data () {
-			return {
-				tel: '',
-				password: '',
-				againPassword: '',
-				graphicalCAPTCHA: '',
-				SMSCode: '',
-				referrer: '',
-				imageData: '', // 生成的图形验证码
-				codeText: '', // 图形验证码校验值
-				smsLoading: false,
-				smsTime: 59,
-				smsTimeout: null,
-				value: [],
-				range: [
-					{"value": 1,"text": "我已阅读并同意"}
-				]
-			}
-		},
-		methods: {
-			// 创建图形验证码
-			createGraphCode () {
-				const { code, data } = generateCode(86, 50)
-				this.imageData = data
-				this.codeText = code
-			},
-			register () {
-				if (!/^1\d{10}$/.test(this.tel)) {
-					uni.showToast({title: '请输入正确的手机号码', icon: 'none'})
-					return
-				}
-				if (this.password.length < 6) {
-					uni.showToast({title: '请输入正确的密码', icon: 'none'})
-					return
-				}
-				if (this.againPassword !== this.password) {
-					uni.showToast({title: '两次密码不匹配', icon: 'none'})
-					return
-				}
-				if (this.graphicalCAPTCHA !== this.codeText) {
-					uni.showToast({title: '请输入正确的图形验证码', icon: 'none'})
-					return
-				}
-				if (!/^\d{6}$/.test(this.SMSCode)) {
-					uni.showToast({title: '请输入正确的短信验证码', icon: 'none'})
-					return
-				}
-				if (this.value.length < 1) {
-					uni.showToast({title: '请阅读并同意协议', icon: 'none'})
-					return
-				}
-				register({ phone: this.tel, password: this.password, repassword: this.againPassword, code: this.SMSCode, recommend_by: this.referrer }).then(res => {
-          uni.showModal({
-            title: '提示',
-            content: '注册成功',
-            showCancel: false,
-            success: () => {
-              uni.navigateTo({
-                url: '/pages/user/login'
-              })
-            }
-          })
-				})
-			},
-			sendSms () {
-				if (!/^1\d{10}$/.test(this.tel)) {
-					uni.showToast({title: '请输入正确的手机号码', icon: 'none'})
-					return
-				}
-				sendSms({ business_type: 'USER_REGISTER_VERIFICATION_CODE', phone: this.tel, area_code: 'CHINA' }).then(res => {
-					this.smsLoading = true
-					this.smsTimeout = setInterval(() => {
-						this.smsTime--
-						if (this.smsTime === 0) {
-							this.smsTime = 60
-							this.smsLoading = false
-							clearInterval(this.smsTimeout)
-						}
-					}, 1000)
-				})
-			}
-		},
-		mounted () {
-			this.createGraphCode()
-		}
-	}
+import generateCode from '@/static/libs/canvas-verification-code'
+import { register, sendSms } from '@/static/api/api'
+import { channelCode } from '@/static/api/config'
+export default {
+  data () {
+    return {
+      tel: '',
+      password: '',
+      againPassword: '',
+      graphicalCAPTCHA: '',
+      SMSCode: '',
+      referrer: '',
+      imageData: '', // 生成的图形验证码
+      codeText: '', // 图形验证码校验值
+      smsLoading: false,
+      smsTime: 59,
+      smsTimeout: null,
+      value: [],
+      range: [
+        {"value": 1,"text": "我已阅读并同意"}
+      ]
+    }
+  },
+  methods: {
+    // 创建图形验证码
+    createGraphCode () {
+      const { code, data } = generateCode(86, 50)
+      this.imageData = data
+      this.codeText = code
+    },
+    register () {
+      if (!/^1\d{10}$/.test(this.tel)) {
+        uni.showToast({title: '请输入正确的手机号码', icon: 'none'})
+        return
+      }
+      if (this.password.length < 6) {
+        uni.showToast({title: '请输入正确的密码', icon: 'none'})
+        return
+      }
+      if (this.againPassword !== this.password) {
+        uni.showToast({title: '两次密码不匹配', icon: 'none'})
+        return
+      }
+      if (this.graphicalCAPTCHA !== this.codeText) {
+        uni.showToast({title: '请输入正确的图形验证码', icon: 'none'})
+        return
+      }
+      if (!/^\d{6}$/.test(this.SMSCode)) {
+        uni.showToast({title: '请输入正确的短信验证码', icon: 'none'})
+        return
+      }
+      if (this.value.length < 1) {
+        uni.showToast({title: '请阅读并同意协议', icon: 'none'})
+        return
+      }
+      register({
+        phone: this.tel,
+        password: this.password,
+        repassword: this.againPassword,
+        code: this.SMSCode,
+        recommend_by: this.referrer,
+        channel_code: channelCode
+      }).then(res => {
+        uni.showModal({
+          title: '提示',
+          content: '注册成功',
+          showCancel: false,
+          success: () => {
+            uni.navigateTo({
+              url: '/pages/user/login'
+            })
+          }
+        })
+      })
+    },
+    sendSms () {
+      if (!/^1\d{10}$/.test(this.tel)) {
+        uni.showToast({title: '请输入正确的手机号码', icon: 'none'})
+        return
+      }
+      sendSms({ business_type: 'USER_REGISTER_VERIFICATION_CODE', phone: this.tel, area_code: 'CHINA' }).then(res => {
+        this.smsLoading = true
+        this.smsTimeout = setInterval(() => {
+          this.smsTime--
+          if (this.smsTime === 0) {
+            this.smsTime = 60
+            this.smsLoading = false
+            clearInterval(this.smsTimeout)
+          }
+        }, 1000)
+      })
+    }
+  },
+  mounted () {
+    this.createGraphCode()
+  }
+}
 </script>
 
 <style scoped lang="less">

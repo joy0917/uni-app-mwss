@@ -14,6 +14,11 @@ export const apiUrl = env === 'development'
 /**
  * @description 图片视频链接的基础路径
  */
-export const hostsUrl = env === 'development'
-	? 'http://47.117.131.251:8021/public/'
-	: 'http://47.117.131.251:8021/public/'
+ export const hostsUrl = env === 'development'
+ ? 'http://47.117.131.251:8021/public/'
+ : 'http://47.117.131.251:8021/public/'
+
+/**
+ * @description 渠道编码参数
+ */
+ export const channelCode = 'TEST_123'
