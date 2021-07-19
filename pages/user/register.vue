@@ -43,9 +43,9 @@
 			</view>
 			<view class="registerItem">
 				<view class="registerItemLabel">
-					<text class="three">推荐人：</text>
+					<text class="three">推荐码：</text>
 				</view>
-				<uni-easyinput class="registerItemInput" placeholder="推荐人" :inputBorder="false" type="text" v-model="referrer"></uni-easyinput>
+				<uni-easyinput class="registerItemInput" placeholder="推荐码" :inputBorder="false" type="text" v-model="referrer"></uni-easyinput>
 			</view>
 			<view class="registerAgreement">
 				<uni-data-checkbox multiple wrap selectedTextColor="black" v-model="value" :localdata="range"></uni-data-checkbox>
