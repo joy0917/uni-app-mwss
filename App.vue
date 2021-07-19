@@ -1,16 +1,30 @@
 <script>
-	export default {
-		onLaunch () {
-			console.warn('当前组件仅支持 uni_modules 目录结构 ，请升级 HBuilderX 到 3.1.0 版本以上！')
-			console.log('App Launch')
-		},
-		onShow () {
-			console.log('App Show')
-		},
-		onHide () {
-			console.log('App Hide')
-		}
-	}
+import { mapMutations } from 'vuex'
+import { channelCode } from '@/static/api/config'
+export default {
+  methods: {
+    ...mapMutations([
+      'setUserChannelCode'
+    ])
+  },
+  onLaunch () {
+    console.warn('当前组件仅支持 uni_modules 目录结构 ，请升级 HBuilderX 到 3.1.0 版本以上！')
+    console.log('App Launch')
+  },
+  onShow (e) {  
+    let code = ''
+    // #ifdef APP-PLUS
+    if (channelCode) code = channelCode
+    // #endif
+    // #ifdef H5
+    if (e.query.channelCode) code = e.query.channelCode
+    // #endif
+    this.setUserChannelCode(code)
+  },
+  onHide () {
+    this.setUserChannelCode('')
+  }
+}
 </script>
 
 <style>

@@ -66,7 +66,6 @@
 <script>
 import generateCode from '@/static/libs/canvas-verification-code'
 import { register, sendSms } from '@/static/api/api'
-import { channelCode } from '@/static/api/config'
 export default {
   data () {
     return {
@@ -125,7 +124,7 @@ export default {
         repassword: this.againPassword,
         code: this.SMSCode,
         recommend_by: this.referrer,
-        channel_code: channelCode
+        channel_code: this.$store.state.user.user_channel_code || ''
       }).then(res => {
         uni.showModal({
           title: '提示',
@@ -159,6 +158,7 @@ export default {
   },
   mounted () {
     this.createGraphCode()
+    console.log('渠道编码', this.$store.state.user.user_channel_code)
   }
 }
 </script>

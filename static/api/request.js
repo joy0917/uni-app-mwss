@@ -1,4 +1,4 @@
-import { apiUrl } from './config'
+import { apiUrl } from '@/static/api/config'
 import store from '@/store'
 
 export default ({url, data, method, loading}) => {

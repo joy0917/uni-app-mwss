@@ -19,6 +19,6 @@ export const apiUrl = env === 'development'
  : 'http://47.117.131.251:8021/public/'
 
 /**
- * @description 渠道编码参数
+ * @description 安卓渠道编码参数, ios通过链接参数?channelCode=TEST_123设置
  */
  export const channelCode = 'TEST_123'
