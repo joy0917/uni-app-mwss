@@ -12,19 +12,19 @@
 				<view class="registerItemLabel">
 					<text>手机号码：</text>
 				</view>
-				<uni-easyinput class="registerItemInput" :inputBorder="false" :maxlength="11" placeholder="请输入手机号码" type="text" v-model="tel"></uni-easyinput>
+				<uni-easyinput class="registerItemInput" :inputBorder="false" :maxlength="11" placeholder="请输入手机号码" type="text" v-model="editForm.phone"></uni-easyinput>
 			</view>
 			<view class="registerItem">
 				<view class="registerItemLabel">
 					<text>您的密码：</text>
 				</view>
-				<uni-easyinput class="registerItemInput" :inputBorder="false" :maxlength="13" placeholder="6-13位数字和字母" type="password" v-model="password"></uni-easyinput>
+				<uni-easyinput class="registerItemInput" :inputBorder="false" :maxlength="13" placeholder="6-13位数字和字母" type="password" v-model="editForm.password"></uni-easyinput>
 			</view>
 			<view class="registerItem">
 				<view class="registerItemLabel">
 					<text>确认密码：</text>
 				</view>
-				<uni-easyinput class="registerItemInput" :inputBorder="false" :maxlength="13" placeholder="6-13位数字和字母" type="password" v-model="againPassword"></uni-easyinput>
+				<uni-easyinput class="registerItemInput" :inputBorder="false" :maxlength="13" placeholder="6-13位数字和字母" type="password" v-model="editForm.repassword"></uni-easyinput>
 			</view>
 			<view class="registerItem">
 				<view class="registerItemLabel">
@@ -37,15 +37,15 @@
 				<view class="registerItemLabel">
 					<text>短信验证：</text>
 				</view>
-				<uni-easyinput class="registerItemInput" :inputBorder="false" type="text" v-model="SMSCode" maxlength="6"></uni-easyinput>
-				<button v-if="!smsLoading" class="sendSMS" type="default" @click="sendSms" :disabled="graphicalCAPTCHA !== codeText || !/^1\d{10}$/.test(tel)">发送验证码</button>
+				<uni-easyinput class="registerItemInput" :inputBorder="false" type="text" v-model="editForm.code" maxlength="6"></uni-easyinput>
+				<button v-if="!smsLoading" class="sendSMS" type="default" @click="sendSms">发送验证码</button>
 				<button v-else class="sendSMS" type="default" :disabled="true">{{ smsTime }}秒后重发</button>
 			</view>
 			<view class="registerItem">
 				<view class="registerItemLabel">
 					<text class="three">推荐码：</text>
 				</view>
-				<uni-easyinput class="registerItemInput" placeholder="推荐码" :inputBorder="false" type="text" v-model="referrer"></uni-easyinput>
+				<uni-easyinput class="registerItemInput" placeholder="推荐码" :inputBorder="false" type="text" v-model="editForm.recommend_by"></uni-easyinput>
 			</view>
 			<view class="registerAgreement">
 				<uni-data-checkbox multiple wrap selectedTextColor="black" v-model="value" :localdata="range"></uni-data-checkbox>
@@ -69,12 +69,15 @@ import { register, sendSms } from '@/static/api/api'
 export default {
   data () {
     return {
-      tel: '',
-      password: '',
-      againPassword: '',
-      graphicalCAPTCHA: '',
-      SMSCode: '',
-      referrer: '',
+      editForm: {
+        phone: '',
+        password: '',
+        repassword: '',
+        code: '',
+        recommend_by: '',
+        channel_code: ''
+      },
+      graphicalCAPTCHA: '', // 输入的图形验证码
       imageData: '', // 生成的图形验证码
       codeText: '', // 图形验证码校验值
       smsLoading: false,
@@ -94,15 +97,15 @@ export default {
       this.codeText = code
     },
     register () {
-      if (!/^1\d{10}$/.test(this.tel)) {
+      if (!/^1\d{10}$/.test(this.editForm.phone)) {
         uni.showToast({title: '请输入正确的手机号码', icon: 'none'})
         return
       }
-      if (this.password.length < 6) {
+      if (this.editForm.password.length < 6) {
         uni.showToast({title: '请输入正确的密码', icon: 'none'})
         return
       }
-      if (this.againPassword !== this.password) {
+      if (this.editForm.repassword !== this.editForm.password) {
         uni.showToast({title: '两次密码不匹配', icon: 'none'})
         return
       }
@@ -110,7 +113,7 @@ export default {
         uni.showToast({title: '请输入正确的图形验证码', icon: 'none'})
         return
       }
-      if (!/^\d{6}$/.test(this.SMSCode)) {
+      if (!/^\d{6}$/.test(this.editForm.code)) {
         uni.showToast({title: '请输入正确的短信验证码', icon: 'none'})
         return
       }
@@ -119,11 +122,7 @@ export default {
         return
       }
       register({
-        phone: this.tel,
-        password: this.password,
-        repassword: this.againPassword,
-        code: this.SMSCode,
-        recommend_by: this.referrer,
+        ...this.editForm,
         channel_code: this.$store.state.user.user_channel_code || ''
       }).then(res => {
         uni.showModal({
@@ -139,11 +138,15 @@ export default {
       })
     },
     sendSms () {
-      if (!/^1\d{10}$/.test(this.tel)) {
+      if (!/^1\d{10}$/.test(this.editForm.phone)) {
         uni.showToast({title: '请输入正确的手机号码', icon: 'none'})
         return
       }
-      sendSms({ business_type: 'USER_REGISTER_VERIFICATION_CODE', phone: this.tel, area_code: 'CHINA' }).then(res => {
+      if (this.graphicalCAPTCHA.toLowerCase() !== this.codeText) {
+        uni.showToast({title: '请输入图形验证码，不区分大小写', icon: 'none'})
+        return
+      }
+      sendSms({ business_type: 'USER_REGISTER_VERIFICATION_CODE', phone: this.editForm.phone, area_code: 'CHINA' }).then(res => {
         this.smsLoading = true
         this.smsTimeout = setInterval(() => {
           this.smsTime--

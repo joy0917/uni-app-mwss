@@ -13,6 +13,7 @@
 <script>
 import { optionset } from '@/static/api/api'
 import { checkLogin } from '@/static/libs/common'
+import { servicePath } from '@/static/api/config'
 export default {
   data () {
     return {
@@ -35,8 +36,15 @@ export default {
       optionset({
         code: 'KE_FU_YU_MING'
       }).then(res => {
-        this.url = res.response.value + `/index/index/home?business_id=1&groupid=0&special=1&theme=D3AC73&visiter_name=${this.user_info.real_name}&id=${this.user_info.id}&phone=${this.user_info.phone}`
-        // this.url = res.response.value + '/index/index/home?business_id=1&groupid=0&special=1&theme=D3AC73'
+        this.url = res.response.value + servicePath +
+        '?business_id=1' + 
+        '&groupid=0' +
+        '&special=1' +
+        '&theme=D3AC73' +
+        '&visiter_name=' + this.user_info.real_name +
+        '&id=' + this.user_info.id +
+        '&phone=' + this.user_info.phone
+        console.log(this.url)
       })
     }
   },

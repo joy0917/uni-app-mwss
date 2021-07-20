@@ -31,10 +31,10 @@
 				<button @click="login">立即登录</button>
 			</view>
 		</view>
-		<!-- <view class="bottom">
+		<view class="bottom">
 			<navigator url="/pages/user/forget">忘记密码</navigator>
-			<navigator url="/pages/user/register">注册</navigator>
-		</view> -->
+			<!-- <navigator url="/pages/user/register">注册</navigator> -->
+		</view>
 	</view>
 </template>
 
@@ -46,7 +46,7 @@ export default {
     return {
       tel: '',
       password: '',
-      value: [],
+      value: [0],
       range: [
         {"value": 0,"text": "记住密码"},
         {"value": 1,"text": "我已阅读并同意"}

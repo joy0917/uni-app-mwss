@@ -1,7 +1,7 @@
 <template>
 	<view class="forget">
-    <view class="tc p20">
-      <image src="@/static/image/logo.png" style="width: 260rpx; height: 346rpx"></image>
+    <view class="tc p10">
+      <!-- <image src="@/static/image/logo.png" style="width: 260rpx; height: 346rpx"></image> -->
     </view>
 		<view class="registerForm">
 			<view class="registerItem">
@@ -106,7 +106,7 @@ export default {
 		box-sizing: border-box;
 		min-height: calc(100vh - 88rpx);
 		padding: 24rpx 36rpx;
-		background: #f0f0f0;
+		background: #fff;
 		.registerForm {
 			.registerItem {
 				background: #F6F6F6;

@@ -53,6 +53,7 @@
 <script>
 import { investProjectDetail } from '@/static/api/api'
 import { getThousand } from '@/static/libs/libs'
+import { checkLogin } from '@/static/libs/common'
 export default {
   data () {
     return {
@@ -63,7 +64,9 @@ export default {
   },
   methods: {
     gotoInvest () {
-      uni.navigateTo({ url: `/pages/index/invest-order?id=${this.product_id}&min=${this.baseForm.min_investment}` })
+      if (checkLogin()) {
+        uni.navigateTo({ url: `/pages/index/invest-order?id=${this.product_id}&min=${this.baseForm.min_investment}` })
+      }
     },
     investProjectDetail (id) {
       investProjectDetail(id).then(res => {
