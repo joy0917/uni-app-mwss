@@ -558,6 +558,7 @@
 
 /* 颜色 */
 .black{ color: black; }
+.gray{ color: #444; }
 .white{ color: #fff; }
 .red{ color: #ed4014; }
 .green{ color: #19be6b; }

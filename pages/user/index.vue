@@ -16,13 +16,13 @@
 				<text>账户余额(元)</text>
 			</view>
 			<view class="two">
-				<text class="red fb">{{ getThousand(user_info.account_balance) }}</text>
+				<text class="gray fb">{{ getThousand(user_info.account_balance) }}</text>
 			</view>
 			<!-- <view class="normal">
 				<text>成长值：{{ '-' }}</text>
 			</view> -->
 			<view class="normal">
-				<text>我的积分：<text class="red fb">{{ getThousand(user_info.integral) }}</text></text>
+				<text>我的积分：<text class="gray fb">{{ getThousand(user_info.integral) }}</text></text>
 			</view>
 			<view class="normal">
 				<text>我的ID：{{ user_info.id || '-' }}</text>
@@ -30,11 +30,11 @@
 			<view class="last">
 				<view class="left">
 					<text>待收利息(元)</text>
-					<text class="num red fb">{{ getThousand(user_info.rest_bonus) }}</text>
+					<text class="num gray fb">{{ getThousand(user_info.rest_bonus) }}</text>
 				</view>
 				<view class="right">
 					<text>待收本金(元)</text>
-					<text class="num red fb">{{ getThousand(user_info.capital) }}</text>
+					<text class="num gray fb">{{ getThousand(user_info.capital) }}</text>
 				</view>
 			</view>
 		</view>
@@ -109,7 +109,7 @@ export default {
       ],
       gridList3: [
         { icon1: '/static/icon1/user/12.png', icon2: '/static/icon2/user/12.png', icon3: '/static/icon3/user/12.png', text: '账户安全', url: '/pages/user/set' },
-        { icon1: '/static/icon1/user/13.png', icon2: '/static/icon2/user/13.png', icon3: '/static/icon3/user/13.png', text: '实名认证', url: '/pages/user/auth' },
+        // { icon1: '/static/icon1/user/13.png', icon2: '/static/icon2/user/13.png', icon3: '/static/icon3/user/13.png', text: '实名认证', url: '/pages/user/auth' },
         { icon1: '/static/icon1/user/14.png', icon2: '/static/icon2/user/14.png', icon3: '/static/icon3/user/14.png', text: '银行卡绑定', url: '/pages/user/bank' }
       ]
     }

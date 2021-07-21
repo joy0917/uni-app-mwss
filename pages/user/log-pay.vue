@@ -30,7 +30,7 @@ import { despositList } from '@/static/api/api'
 export default {
   data () {
     return {
-      statusData: ['', '已提交', '客服已确认', '充值未到账', '已充值待审核'],
+      statusData: ['', '已提交', '已确认', '未到账', '已充值待审核'],
       typeData: ['', '微信充值', '支付宝充值', '银联充值'],
       total: 0,
       editForm: {

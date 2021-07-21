@@ -109,8 +109,8 @@ export default {
         uni.showToast({title: '两次密码不匹配', icon: 'none'})
         return
       }
-      if (this.graphicalCAPTCHA !== this.codeText) {
-        uni.showToast({title: '请输入正确的图形验证码', icon: 'none'})
+      if (this.graphicalCAPTCHA.toLowerCase() !== this.codeText) {
+        uni.showToast({title: '请输入图形验证码，不区分大小写', icon: 'none'})
         return
       }
       if (!/^\d{6}$/.test(this.editForm.code)) {

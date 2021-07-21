@@ -3,7 +3,9 @@
 	<view class="bind">
 		<uni-forms ref="form" :modelValue="editForm" label-width="80">
 			<uni-forms-item label="所属银行" required name="bank_name">
-				<uni-easyinput clearable trim :inputBorder="false" v-model="editForm.bank_name" placeholder="请输入"/>
+				<!-- <uni-easyinput clearable trim :inputBorder="false" v-model="editForm.bank_name" placeholder="请输入"/> -->
+        <uni-data-picker placeholder="请选择" popup-title="所属银行" :localdata="typeData" v-model="editForm.bank_name" class="bordernone">
+        </uni-data-picker>
 			</uni-forms-item>
 			<uni-forms-item label="卡号" required name="bank_card_code">
 				<uni-easyinput clearable trim :inputBorder="false" v-model="editForm.bank_card_code" placeholder="请输入"/>
@@ -24,6 +26,12 @@ import { bindBankcard } from '@/static/api/api'
 export default {
   data () {
     return {
+      typeData: [
+        { value: '中国银行', text: '中国银行' },
+        { value: '中国工商银行', text: '中国工商银行' },
+        { value: '中国农业银行', text: '中国农业银行' },
+        { value: '中国建设银行', text: '中国建设银行' }
+      ],
       editForm: {
         user_id: null,
         bank_name: null,
@@ -83,6 +91,11 @@ export default {
     font-size: 28rpx;
     color: #BA682E;
     background: linear-gradient(#F5D0B5, #E7B08F);
+  }
+  .bordernone{
+    /deep/ .input-value-border{
+      border: none;
+    }
   }
 }
 </style>
