@@ -376,3 +376,12 @@ export const userCharge = data => {
 		method: 'POST'
 	})
 }
+
+// 注册统计
+export const registerVisit = data => {
+	return request({
+		url: '/api/frontend/user/count/register/visit',
+    data,
+		method: 'GET'
+	})
+}

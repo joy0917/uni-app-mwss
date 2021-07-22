@@ -65,7 +65,7 @@
 
 <script>
 import generateCode from '@/static/libs/canvas-verification-code'
-import { register, sendSms } from '@/static/api/api'
+import { register, sendSms, registerVisit } from '@/static/api/api'
 export default {
   data () {
     return {
@@ -89,12 +89,19 @@ export default {
       ]
     }
   },
+	computed: {
+		channel_code () {
+			return this.$store.state.user.user_channel_code || ''
+		}
+	},
   methods: {
-    // 创建图形验证码
-    createGraphCode () {
+    createGraphCode () { // 创建图形验证码
       const { code, data } = generateCode(86, 50)
       this.imageData = data
       this.codeText = code
+    },
+		registerVisit () {
+			registerVisit({ channel_code: this.channel_code })
     },
     register () {
       if (!/^1\d{10}$/.test(this.editForm.phone)) {
@@ -123,7 +130,7 @@ export default {
       }
       register({
         ...this.editForm,
-        channel_code: this.$store.state.user.user_channel_code || ''
+        channel_code: this.channel_code
       }).then(res => {
         uni.showModal({
           title: '提示',
@@ -161,7 +168,8 @@ export default {
   },
   mounted () {
     this.createGraphCode()
-    console.log('渠道编码', this.$store.state.user.user_channel_code)
+    this.registerVisit()
+    console.log('渠道编码', this.channel_code)
   }
 }
 </script>

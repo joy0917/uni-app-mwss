@@ -79,7 +79,7 @@ export default {
 				uni.showToast({ title: '请输入提现金额', icon: 'none' })
         return
       }
-      if (this.editForm.cash_amount < 200 || this.editForm.cash_amount > this.user_info.account_balance) {
+      if (+this.editForm.cash_amount < 200 || +this.editForm.cash_amount > +this.user_info.account_balance) {
 				uni.showToast({ title: '提现金额不能小于200元，不能大于可提现金额', icon: 'none' })
         return
       }
