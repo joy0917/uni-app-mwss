@@ -7,18 +7,18 @@
         <uni-th width="200" align="center" class="f12">项目名称</uni-th>
         <uni-th width="100" align="center" class="f12">投资金额</uni-th>
         <uni-th width="100" align="center" class="f12">状态</uni-th>
-        <uni-th width="100" align="center" class="f12">合同</uni-th>
+        <!-- <uni-th width="100" align="center" class="f12">合同</uni-th> -->
         <uni-th width="100" align="center" class="f12">详情</uni-th>
       </uni-tr>
 		    <!-- 表格数据行 -->
 			<template v-for="(item, index) in tableData">
 				<uni-tr :key="index">
-					<uni-td align="center" class="f12">{{ item.invest_project.title }}</uni-td>
+					<uni-td align="center" class="f12">{{ item.invest_project && item.invest_project.title }}</uni-td>
 					<uni-td align="center" class="f12">{{ item.invest_amount }}</uni-td>
 					<uni-td align="center" class="f12">
             <text :class="{ 'green': item.status === 'FINISHED', 'red': item.status === 'INVESTING' }">{{ statusList[item.status] }}</text>
           </uni-td>
-					<uni-td align="center" class="f12">{{ '-' }}</uni-td>
+					<!-- <uni-td align="center" class="f12">{{ '-' }}</uni-td> -->
 					<uni-td align="center" class="f12">
 						<navigator :url="`/pages/user/log-invest-detail?id=${item.id}`">
 							<button size="mini" type="primary">查看</button>

@@ -19,8 +19,8 @@ export const getFormatDate = (format = 'YYYY-MM-DD hh:mm:ss', date = new Date())
 /*
   千分位数字
 */
-export const getThousand = (data = null) => {
-  let num = +data
-  return num.toLocaleString()
+export const getThousand = num => {
+  if (num === null || num === undefined) return '-'
+  let data = num + ''
+  return data.replace(/(\d{1,3})(?=(\d{3})+(?:$|\.))/g,'$1,')
 }
-    

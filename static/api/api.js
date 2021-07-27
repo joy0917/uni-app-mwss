@@ -263,7 +263,8 @@ export const investOrderList = data => {
 export const investOrderDetail = id => {
 	return request({
 		url: `/api/frontend/invest_order/${id}`,
-		method: 'GET'
+		method: 'GET',
+    loading: true
 	})
 }
 
