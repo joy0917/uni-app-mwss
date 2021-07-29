@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import { uploadDetail, myInvites } from '@/static/api/api'
+import { uploadDetail, myInvites, channelDetail } from '@/static/api/api'
 export default {
   data() {
     return {
@@ -42,9 +42,19 @@ export default {
   computed: {
     user_info () {
       return this.$store.state.user.user_info
+    },
+    channel_code () {
+      return this.$store.state.user.user_channel_code
     }
   },
   methods: {
+    channelDetail () {
+      channelDetail({
+        channel_code: this.channel_code
+      }).then(res => {
+        this.qrImg = this.$hostsUrl + res.response.invite_qrcode
+      })
+    },
     uploadDetail () {
       uploadDetail({
         type: '邀请好友二维码'
@@ -66,7 +76,11 @@ export default {
     }
   },
   mounted () {
-    this.uploadDetail()
+    if (this.channel_code) {
+      this.channelDetail()
+    } else {
+      this.uploadDetail()
+    }
     this.myInvites()
   }
 }

@@ -1,13 +1,16 @@
 
 <!-- 二级页面 -->
 <template>
-	<view class="subpages" v-html="detail.content"></view>
+  <view class="subpages">
+    <image v-if="qrImg" :src="qrImg" class="qrImg"/>
+    <view v-else v-html="detail.content"></view>
+  </view>
 </template>
 
 <script>
-import { aboutDetail } from '@/static/api/api'
+import { aboutDetail, channelDetail } from '@/static/api/api'
 export default {
-	data() {
+	data () {
 		return {
 			text: {
 				0: '如何注册',
@@ -34,20 +37,36 @@ export default {
 				21: '推广活动',
 				22: '联系我们'
 			},
-			detail: {}
+			detail: {},
+      qrImg: ''
 		}
 	},
+  computed: {
+    channel_code () {
+      return this.$store.state.user.user_channel_code
+    }
+  },
 	onLoad(options) {
-		this.aboutDetail(this.text[options.text])
+    if (this.channel_code && options.text === '19') {
+      this.channelDetail()
+    } else {
+      this.aboutDetail(this.text[options.text])
+    }
 	},
 	methods: {
+    channelDetail () {
+      channelDetail({
+        channel_code: this.channel_code
+      }).then(res => {
+        this.qrImg = this.$hostsUrl + res.response.download_qrcode
+        uni.setNavigationBarTitle({ title: 'APP下载' })
+      })
+    },
 		aboutDetail(text) {
 			aboutDetail({ type: text }).then(res => {
 				this.detail = res.response
 				this.detail.content = this.detail.content.replace(/<img/gi, '<img style="max-width: 100%" height="auto"')
-				uni.setNavigationBarTitle({
-						title: this.detail.title
-				})
+				uni.setNavigationBarTitle({ title: this.detail.title })
 			})
 		}
 	}
@@ -61,5 +80,9 @@ img {
 }
 .subpages {
 	padding: 10rpx;
+}
+.qrImg{
+  display: block;
+  width: 100%;
 }
 </style>

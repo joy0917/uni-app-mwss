@@ -12,17 +12,16 @@ export default {
     console.log('App Launch')
   },
   onShow (e) {  
-    let code = ''
     // #ifdef APP-PLUS
-    if (channelCode) code = channelCode
+    if (channelCode) {
+      this.setUserChannelCode(channelCode)
+    }
     // #endif
     // #ifdef H5
-    if (e.query.channelCode) code = e.query.channelCode
+    if (e.query.channelCode) {
+      this.setUserChannelCode(e.query.channelCode)
+    }
     // #endif
-    this.setUserChannelCode(code)
-  },
-  onHide () {
-    this.setUserChannelCode('')
   }
 }
 </script>

@@ -386,3 +386,12 @@ export const registerVisit = data => {
 		method: 'GET'
 	})
 }
+
+// 渠道详情
+export const channelDetail = data => {
+	return request({
+		url: '/api/frontend/user/channel/detail',
+    data,
+		method: 'GET'
+	})
+}

@@ -121,7 +121,8 @@ export default {
   },
   methods: {
     ...mapMutations([
-      'setUserInfo'
+      'setUserInfo',
+      'setUserChannelCode'
     ]),
     gotoPay () {
       uni.navigateTo({ url: `/pages/index/pay` })
@@ -163,6 +164,7 @@ export default {
     },
     logout () { // 退出
       this.setUserInfo({})
+      this.setUserChannelCode('')
       uni.navigateTo({ url: '/pages/user/login' })
     }
   },
