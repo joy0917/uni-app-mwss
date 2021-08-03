@@ -130,6 +130,7 @@ export default {
 
 <style lang="less" scoped>
 .about{
+	padding-top: 40rpx;
 	padding-bottom: 40rpx;
 	.about-thumbnail{
 		width: 100%;
