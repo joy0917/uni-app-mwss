@@ -27,8 +27,8 @@
 			"text": "关于我们"
 		}, {
 			"pagePath": "pages/service/index",
-			"iconPath": "static/image/service.png",
-			"selectedIconPath": "static/image/service.png",
+			"iconPath": "static/image/service1.png",
+			"selectedIconPath": "static/image/service2.png",
 			"text": "在线客服"
 		}]
 	},

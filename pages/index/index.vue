@@ -105,14 +105,14 @@ export default {
         img: ''
 			},
 			gridData: [
-				{ icon1: '/static/icon1/home/1.png', icon2: '/static/icon2/home/1.png', icon3: '/static/icon3/home/1.png', icon4: '/static/icon4/home/1.png', text: '如何投资', limit: false, url: '/pages/subpages/index?text=1' },
-				{ icon1: '/static/icon1/home/2.png', icon2: '/static/icon2/home/2.png', icon3: '/static/icon3/home/2.png', icon4: '/static/icon4/home/2.png', text: '计算器', limit: false, url: '/pages/index/calculator' },
-				{ icon1: '/static/icon1/home/3.png', icon2: '/static/icon2/home/3.png', icon3: '/static/icon3/home/3.png', icon4: '/static/icon4/home/3.png', text: 'APP下载', limit: false, url: '/pages/subpages/index?text=19' },
-				{ icon1: '/static/icon1/home/4.png', icon2: '/static/icon2/home/4.png', icon3: '/static/icon3/home/4.png', icon4: '/static/icon4/home/4.png', text: '每日签到', limit: true, url: null },
-				{ icon1: '/static/icon1/home/5.png', icon2: '/static/icon2/home/5.png', icon3: '/static/icon3/home/5.png', icon4: '/static/icon4/home/5.png', text: '马上充值', limit: true, url: '/pages/index/pay' },
-				{ icon1: '/static/icon1/home/6.png', icon2: '/static/icon2/home/6.png', icon3: '/static/icon3/home/6.png', icon4: '/static/icon4/home/6.png', text: '快速提现', limit: true, url: '/pages/index/withdraw' },
-				{ icon1: '/static/icon1/home/7.png', icon2: '/static/icon2/home/7.png', icon3: '/static/icon3/home/7.png', icon4: '/static/icon4/home/7.png', text: '邀请好友', limit: true, url: '/pages/index/invite' },
-				{ icon1: '/static/icon1/home/8.png', icon2: '/static/icon2/home/8.png', icon3: '/static/icon3/home/8.png', icon4: '/static/icon4/home/8.png', text: '在线客服', limit: false, url: '/pages/service/index' }
+				{ icon4: '/static/icon4/home/1.png', text: '如何投资', limit: false, url: '/pages/subpages/index?text=1' },
+				{ icon4: '/static/icon4/home/2.png', text: '计算器', limit: false, url: '/pages/index/calculator' },
+				{ icon4: '/static/icon4/home/3.png', text: 'APP下载', limit: false, url: '/pages/subpages/index?text=19' },
+				{ icon4: '/static/icon4/home/4.png', text: '每日签到', limit: true, url: null },
+				{ icon4: '/static/icon4/home/5.png', text: '马上充值', limit: true, url: '/pages/index/pay' },
+				{ icon4: '/static/icon4/home/6.png', text: '快速提现', limit: true, url: '/pages/index/withdraw' },
+				{ icon4: '/static/icon4/home/7.png', text: '邀请好友', limit: true, url: '/pages/index/invite' },
+				{ icon4: '/static/icon4/home/8.png', text: '在线客服', limit: false, url: '/pages/service/index' }
 			],
       articleData: '',
 			eventType: {

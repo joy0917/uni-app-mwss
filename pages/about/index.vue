@@ -60,29 +60,29 @@ export default {
     return {
       banner: '',
       gridList1: [
-        { icon1: '/static/icon1/about/1.png', icon2: '/static/icon2/about/1.png', icon3: '/static/icon3/about/1.png', icon4: '/static/icon4/about/1.png',  text: '如何注册', url: '/pages/subpages/index?text=0' },
-        { icon1: '/static/icon1/about/2.png', icon2: '/static/icon2/about/1.png', icon3: '/static/icon3/about/2.png', icon4: '/static/icon4/about/2.png',  text: '如何投资', url: '/pages/subpages/index?text=1' },
-        { icon1: '/static/icon1/about/3.png', icon2: '/static/icon2/about/1.png', icon3: '/static/icon3/about/3.png', icon4: '/static/icon4/about/3.png',  text: '如何充值', url: '/pages/about/pay' },
-        { icon1: '/static/icon1/about/4.png', icon2: '/static/icon2/about/1.png', icon3: '/static/icon3/about/4.png', icon4: '/static/icon4/about/4.png',  text: '常见问题', url: '/pages/subpages/index?text=8' }
+        { icon4: '/static/icon4/about/1.png',  text: '如何注册', url: '/pages/subpages/index?text=0' },
+        { icon4: '/static/icon4/about/2.png',  text: '如何投资', url: '/pages/subpages/index?text=1' },
+        { icon4: '/static/icon4/about/3.png',  text: '如何充值', url: '/pages/about/pay' },
+        { icon4: '/static/icon4/about/4.png',  text: '常见问题', url: '/pages/subpages/index?text=8' }
       ],
       gridList2: [
-        { icon1: '/static/icon1/about/6.png', icon2: '/static/icon2/about/1.png', icon3: '/static/icon3/about/6.png', icon4: '/static/icon4/about/6.png',  text: '关于我们', url: '/pages/about/about' },
-        { icon1: '/static/icon1/about/7.png', icon2: '/static/icon2/about/7.png', icon3: '/static/icon3/about/7.png', icon4: '/static/icon4/about/7.png',  text: '安全保障', url: '/pages/subpages/index?text=13' },
-        { icon1: '/static/icon1/about/8.png', icon2: '/static/icon2/about/8.png', icon3: '/static/icon3/about/8.png', icon4: '/static/icon4/about/8.png',  text: '风控机构', url: '/pages/about/risk' },
-        { icon1: '/static/icon1/about/9.png', icon2: '/static/icon2/about/9.png', icon3: '/static/icon3/about/9.png', icon4: '/static/icon4/about/9.png',  text: '企业资质', url: '/pages/subpages/index?text=17' },
-        { icon1: '/static/icon1/about/10.png', icon2: '/static/icon2/about/1.png', icon3: '/static/icon3/about/10.png', icon4: '/static/icon4/about/10.png',  text: '会员等级', url: '/pages/subpages/index?text=18' },
-        { icon1: '/static/icon1/about/11.png', icon2: '/static/icon2/about/1.png', icon3: '/static/icon3/about/11.png', icon4: '/static/icon4/about/11.png',  text: 'APP下载', url: '/pages/subpages/index?text=19' },
-        { icon1: '/static/icon1/about/12.png', icon2: '/static/icon2/about/1.png', icon3: '/static/icon3/about/12.png', icon4: '/static/icon4/about/12.png',  text: '福利活动', url: '/pages/subpages/index?text=20' },
-        { icon1: '/static/icon1/about/13.png', icon2: '/static/icon2/about/1.png', icon3: '/static/icon3/about/13.png', icon4: '/static/icon4/about/13.png',  text: '推广活动', url: '/pages/subpages/index?text=21' }
+        { icon4: '/static/icon4/about/6.png',  text: '关于我们', url: '/pages/about/about' },
+        { icon4: '/static/icon4/about/7.png',  text: '安全保障', url: '/pages/subpages/index?text=13' },
+        { icon4: '/static/icon4/about/8.png',  text: '风控机构', url: '/pages/about/risk' },
+        { icon4: '/static/icon4/about/9.png',  text: '企业资质', url: '/pages/subpages/index?text=17' },
+        { icon4: '/static/icon4/about/10.png',  text: '会员等级', url: '/pages/subpages/index?text=18' },
+        { icon4: '/static/icon4/about/11.png',  text: 'APP下载', url: '/pages/subpages/index?text=19' },
+        { icon4: '/static/icon4/about/12.png',  text: '福利活动', url: '/pages/subpages/index?text=20' },
+        { icon4: '/static/icon4/about/13.png',  text: '推广活动', url: '/pages/subpages/index?text=21' }
       ],
       gridList3: [
-        { icon1: '/static/icon1/about/14.png', icon2: '/static/icon2/about/14.png', icon3: '/static/icon3/about/14.png', icon4: '/static/icon4/about/14.png',  text: '联系我们', url: '/pages/subpages/index?text=22' },
-        { icon1: '/static/icon1/about/6.png', icon2: '/static/icon2/about/1.png', icon3: '/static/icon3/about/6.png', icon4: '/static/icon4/about/6.png',  text: '隐私政策', url: '/pages/subpages/index?text=23' },
-        { icon1: '/static/icon1/about/5.png', icon2: '/static/icon2/about/1.png', icon3: '/static/icon3/about/5.png', icon4: '/static/icon4/about/5.png',  text: '用户协议', url: '/pages/subpages/index?text=24' },
-        { icon1: '/static/icon1/about/8.png', icon2: '/static/icon2/about/8.png', icon3: '/static/icon3/about/8.png', icon4: '/static/icon4/about/8.png',  text: '防疫工作', url: '/pages/subpages/index?text=25' }
+        { icon4: '/static/icon4/about/14.png',  text: '联系我们', url: '/pages/subpages/index?text=22' },
+        { icon4: '/static/icon4/about/15.png',  text: '隐私政策', url: '/pages/subpages/index?text=23' },
+        { icon4: '/static/icon4/about/16.png',  text: '用户协议', url: '/pages/subpages/index?text=24' },
+        { icon4: '/static/icon4/about/17.png',  text: '防疫工作', url: '/pages/subpages/index?text=25' }
       ],
       gridList4: [
-        { icon1: '/static/icon1/about/5.png', icon2: '/static/icon2/about/1.png', icon3: '/static/icon3/about/5.png', icon4: '/static/icon4/about/5.png',  text: '平台公告', url: '/pages/about/article' }
+        { icon4: '/static/icon4/about/5.png',  text: '平台公告', url: '/pages/about/article' }
       ]
     }
   },

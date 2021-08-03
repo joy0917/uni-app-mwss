@@ -5,11 +5,11 @@
 		<view class="card">
       <uni-row class="card-top">
         <uni-col :span="12">
-          <view class="f16">账户</view>
+          <view class="f14">账户</view>
           <view class="warning">{{ user_info.phone || '-' }}</view>
         </uni-col>
         <uni-col :span="12">
-          <view class="f16">余额</view>
+          <view class="f14">余额</view>
           <view class="warning">{{ getThousand(user_info.account_balance) }}元</view>
         </uni-col>
       </uni-row>
@@ -63,7 +63,7 @@
 			</uni-grid>
 		</view>
 		<!-- 九宫格 -->
-		<view class="grid">
+		<!-- <view class="grid">
 			<uni-grid :column="4" :highlight="false" :showBorder="false" @change="gridChange3">
 				<uni-grid-item v-for="(item, index) in gridList3" :index="index" :key="index">
 					<view class="grid-item-box">
@@ -72,7 +72,7 @@
 					</view>
 				</uni-grid-item>
 			</uni-grid>
-		</view>
+		</view> -->
 		<!-- 退出 -->
 		<button type="default" class="logout" @click="logout">安全退出</button>
 	</view>
@@ -87,24 +87,24 @@ export default {
     return {
       getThousand,
       gridList1: [
-        { icon1: '/static/icon1/user/1.png', icon2: '/static/icon2/user/1.png', icon3: '/static/icon3/user/1.png', icon4: '/static/icon4/user/1.png', text: '每日签到', url: null },
-        { icon1: '/static/icon1/user/2.png', icon2: '/static/icon2/user/2.png', icon3: '/static/icon3/user/2.png', icon4: '/static/icon4/user/2.png', text: '资金明细', url: '/pages/user/log-fund' },
-        { icon1: '/static/icon1/user/3.png', icon2: '/static/icon2/user/3.png', icon3: '/static/icon3/user/3.png', icon4: '/static/icon4/user/3.png', text: '投资记录', url: '/pages/user/log-invest' },
-        { icon1: '/static/icon1/user/4.png', icon2: '/static/icon2/user/4.png', icon3: '/static/icon3/user/4.png', icon4: '/static/icon4/user/4.png', text: '收益记录', url: '/pages/user/log-earnings' },
-        { icon1: '/static/icon1/user/5.png', icon2: '/static/icon2/user/5.png', icon3: '/static/icon3/user/5.png', icon4: '/static/icon4/user/5.png', text: '充值记录', url: '/pages/user/log-pay' },
-        { icon1: '/static/icon1/user/6.png', icon2: '/static/icon2/user/6.png', icon3: '/static/icon3/user/6.png', icon4: '/static/icon4/user/6.png', text: '提现记录', url: '/pages/user/log-withdraw' },
-        { icon1: '/static/icon1/user/7.png', icon2: '/static/icon2/user/7.png', icon3: '/static/icon3/user/7.png', icon4: '/static/icon4/user/7.png', text: '积分商城', url: '/pages/integral/index' },
-        { icon1: '/static/icon1/user/8.png', icon2: '/static/icon2/user/8.png', icon3: '/static/icon3/user/8.png', icon4: '/static/icon4/user/8.png', text: '福利活动', url: '/pages/subpages/index?text=20' }
+        { icon4: '/static/icon4/user/3.png', text: '投资记录', url: '/pages/user/log-invest' },
+        { icon4: '/static/icon4/user/5.png', text: '充值记录', url: '/pages/user/log-pay' },
+        { icon4: '/static/icon4/user/4.png', text: '收益记录', url: '/pages/user/log-earnings' },
+        { icon4: '/static/icon4/user/1.png', text: '每日签到', url: null },
+        { icon4: '/static/icon4/user/2.png', text: '资金明细', url: '/pages/user/log-fund' },
+        { icon4: '/static/icon4/user/6.png', text: '提现记录', url: '/pages/user/log-withdraw' },
+        // { icon4: '/static/icon4/user/7.png', text: '积分商城', url: '/pages/integral/index' },
+        { icon4: '/static/icon4/user/10.png', text: '邀请好友', url: '/pages/index/invite' },
+        { icon4: '/static/icon4/user/8.png', text: '福利活动', url: '/pages/subpages/index?text=20' }
       ],
       gridList2: [
-        { icon1: '/static/icon1/user/9.png', icon2: '/static/icon2/user/9.png', icon3: '/static/icon3/user/9.png', icon4: '/static/icon4/user/9.png', text: '站内消息', url: '/pages/user/message' },
-        { icon1: '/static/icon1/user/10.png', icon2: '/static/icon2/user/10.png', icon3: '/static/icon3/user/10.png', icon4: '/static/icon4/user/10.png', text: '邀请好友', url: '/pages/index/invite' },
-        { icon1: '/static/icon1/user/11.png', icon2: '/static/icon2/user/11.png', icon3: '/static/icon3/user/11.png', icon4: '/static/icon4/user/11.png', text: '在线客服', url: '/pages/service/index' }
+        { icon4: '/static/icon4/user/9.png', text: '站内消息', url: '/pages/user/message' },
+        // { icon4: '/static/icon4/user/11.png', text: '在线客服', url: '/pages/service/index' }
+        { icon4: '/static/icon4/user/12.png', text: '账户安全', url: '/pages/user/set' },
+        { icon4: '/static/icon4/user/13.png', text: '实名认证', url: '/pages/user/auth' },
+        { icon4: '/static/icon4/user/14.png', text: '银行卡绑定', url: '/pages/user/bank' }
       ],
       gridList3: [
-        { icon1: '/static/icon1/user/12.png', icon2: '/static/icon2/user/12.png', icon3: '/static/icon3/user/12.png', icon4: '/static/icon4/user/12.png', text: '账户安全', url: '/pages/user/set' },
-        // { icon1: '/static/icon1/user/13.png', icon2: '/static/icon2/user/13.png', icon3: '/static/icon3/user/13.png', icon4: '/static/icon4/user/13.png', text: '实名认证', url: '/pages/user/auth' },
-        { icon1: '/static/icon1/user/14.png', icon2: '/static/icon2/user/14.png', icon3: '/static/icon3/user/14.png', icon4: '/static/icon4/user/14.png', text: '银行卡绑定', url: '/pages/user/bank' }
       ]
     }
   },
