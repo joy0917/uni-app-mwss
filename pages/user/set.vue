@@ -23,9 +23,9 @@
 			return {
         defaultImg: `this.src="https://bjetxgzv.cdn.bspapp.com/VKCEYUGU-uni-app-doc/44f8d690-4f3d-11eb-b680-7980c8a877b8.svg"`,
         gridData: [
-          // { icon4: '/static/icon4/user/13.png', text: '实名认证', url: '/pages/user/auth' },
-          { icon4: '/static/icon4/user/16.png', text: '修改登录密码', url: '/pages/user/login-password' },
-          { icon4: '/static/icon4/user/17.png', text: '修改支付密码', url: '/pages/user/pay-password' }
+          // { icon4: '/static/icon4/user/11.png', text: '实名认证', url: '/pages/user/auth' },
+          { icon4: '/static/icon4/user/13.png', text: '修改登录密码', url: '/pages/user/login-password' },
+          { icon4: '/static/icon4/user/14.png', text: '修改支付密码', url: '/pages/user/pay-password' }
         ]
 			}
 		},
