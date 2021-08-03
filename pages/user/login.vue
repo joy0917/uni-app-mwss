@@ -98,100 +98,101 @@ export default {
 </script>
 
 <style scoped lang="less">
-	.login {
-		box-sizing: border-box;
-		min-height: calc(100vh - 88rpx);
-		padding: 24rpx 36rpx;
-		background: #fff;
-    .logintab{
-      width: 60%;
-      margin: 32px auto;
+@import '@/static/css/theme.less';
+.login {
+  box-sizing: border-box;
+  min-height: calc(100vh - 88rpx);
+  padding: 24rpx 36rpx;
+  background: #fff;
+  .logintab{
+    width: 60%;
+    margin: 32px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .tabitem{
+      text-align: center;
+      padding: 8px 0;
+      width: 50%;
+      color: #bbb;
+      font-size: 20px;
+      &.active{
+        color: #222;
+        border-bottom: 2px solid #222
+      }
+    }
+  }
+  .loginForm {
+    .loginItem {
+      background: #F6F6F6;
+      border-radius: 18rpx;
+      height: 108rpx;
+      box-sizing: border-box;
+      padding: 0 40rpx;
+      line-height: 108rpx;
       display: flex;
+      justify-content: space-between;
       align-items: center;
-      justify-content: center;
-      .tabitem{
-        text-align: center;
-        padding: 8px 0;
-        width: 50%;
-        color: #bbb;
-        font-size: 20px;
-        &.active{
-          color: #222;
-          border-bottom: 2px solid #222
+      margin-bottom: 40rpx;
+      .loginItemLabel {
+        width: 172rpx;
+        text {
+          font-size: 32rpx;
+        }
+      }
+      .three {
+        letter-spacing:0.33em;
+      }
+      .loginItemInput {
+        width: calc(100% - 172rpx);
+        * {
+          border: none;
         }
       }
     }
-		.loginForm {
-			.loginItem {
-				background: #F6F6F6;
-				border-radius: 18rpx;
-				height: 108rpx;
-				box-sizing: border-box;
-				padding: 0 40rpx;
-				line-height: 108rpx;
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
-				margin-bottom: 40rpx;
-				.loginItemLabel {
-					width: 172rpx;
-					text {
-						font-size: 32rpx;
-					}
-				}
-				.three {
-					letter-spacing:0.33em;
-				}
-				.loginItemInput {
-					width: calc(100% - 172rpx);
-					* {
-						border: none;
-					}
-				}
-			}
-			.uni-btn-v {
-				button {
-					width: 80%;
-					height: 70rpx;
-          line-height: 70rpx;
-          color: #BA682E;
-          background: linear-gradient(#F5D0B5, #E7B08F);
-					border-radius: 10rpx;
-					font-size: 32rpx;
-					font-weight: 500;
-					text-align: center;
-				}
-			}
-			.loginAgreement {
-				display: flex;
-				justify-content: flex-start;
-				align-items: center;
-				font-size: 28rpx;
-				margin-top: 0;
-				margin-bottom: 30rpx;
-				position: relative;
-				&:first-child {
-					margin-top: 40rpx;
-					margin-bottom: 20rpx;
-				}
-				checkbox {
-					transform:scale(0.5)
-				}
-				navigator {
-					color: rgb(0, 122, 255);
-					position: absolute; bottom: 8rpx; left: 238rpx;
-				}
-			}
-		}
-		.bottom {
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-			margin-top: 28rpx;
-			font-size: 25rpx;
-			navigator {
-				text-decoration: underline;
-			}
-		}
-	}
+    .uni-btn-v {
+      button {
+        width: 100%;
+        height: 45px;
+        line-height: 45px;
+        border-radius: 10rpx;
+        font-size: 32rpx;
+        font-weight: 500;
+        text-align: center;
+        color: @default;
+        background: @warning;
+      }
+    }
+    .loginAgreement {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      font-size: 28rpx;
+      margin-top: 0;
+      margin-bottom: 30rpx;
+      position: relative;
+      &:first-child {
+        margin-top: 40rpx;
+        margin-bottom: 20rpx;
+      }
+      checkbox {
+        transform:scale(0.5)
+      }
+      navigator {
+        color: rgb(0, 122, 255);
+        position: absolute; bottom: 8rpx; left: 238rpx;
+      }
+    }
+  }
+  .bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 28rpx;
+    font-size: 25rpx;
+    navigator {
+      text-decoration: underline;
+    }
+  }
+}
 </style>

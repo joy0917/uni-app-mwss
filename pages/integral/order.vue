@@ -92,19 +92,20 @@ import { updateUser } from '@/static/libs/common'
 </script>
 
 <style lang="less" scoped>
-	.order{
-		.list-img{
-			width: 128rpx;
-			height: 128rpx;
-		}
-		.label{
-			padding-top: 16rpx;
-			font-size: 28rpx;
-		}
-		.btn{
-      color: #BA682E;
-      background: linear-gradient(#F5D0B5, #E7B08F);
-			width: 95%;
-		}
-	}
+@import '@/static/css/theme.less';
+.order{
+  .list-img{
+    width: 128rpx;
+    height: 128rpx;
+  }
+  .label{
+    padding-top: 16rpx;
+    font-size: 28rpx;
+  }
+  .btn{
+    color: @default;
+    background: @warning;
+    width: 95%;
+  }
+}
 </style>

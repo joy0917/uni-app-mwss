@@ -144,17 +144,18 @@ export default {
 </script>
 
 <style lang="less" scoped>
-	.calculator{
-		background: #fff;
-		padding-top: 40rpx;
-		.extra{
-			position: absolute;
-			right: 20rpx;
-			top: 18rpx;
-		}
-		.submitbtn{
-      color: #BA682E;
-      background: linear-gradient(#F5D0B5, #E7B08F);
-		}
-	}
+@import '@/static/css/theme.less';
+.calculator{
+  background: #fff;
+  padding-top: 40rpx;
+  .extra{
+    position: absolute;
+    right: 20rpx;
+    top: 18rpx;
+  }
+  .submitbtn{
+    color: @default;
+    background: @warning;
+  }
+}
 </style>

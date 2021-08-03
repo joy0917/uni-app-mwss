@@ -107,6 +107,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
+@import '@/static/css/theme.less';
 .carddetail{
   .t1{
     font-size: 28rpx;
@@ -127,8 +128,8 @@ export default {
     margin-right: 0;
   }
   .submitbtn{
-    color: #BA682E;
-    background: linear-gradient(#F5D0B5, #E7B08F);
+    color: @default;
+    background: @warning;
   }
   .pay-btn{
     margin-top: 20rpx;

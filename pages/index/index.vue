@@ -58,22 +58,22 @@
 					</uni-col>
 				</uni-row>
 				<uni-row class="mb10">
-					<uni-col :span="16">
-						<view class="mt2">项目规模：<text class="txt1">{{ getThousand(item.total_investment) }}</text>万元</view>
+					<uni-col :span="12">
+						<view class="mt2">规模：<text class="txt1">{{ getThousand(item.total_investment) }}</text>万元</view>
 					</uni-col>
-					<uni-col :span="8" class="tr">
-            <view class="btn-invest">立即投资</view>
-					</uni-col>
+          <uni-col :span="4" class="mt5 tr">
+            进度：
+          </uni-col>
+          <uni-col :span="4">
+            <progress :percent="item.finished_investment_percent" stroke-width="6" activeColor="#ff8a00" class="mt10"/>
+          </uni-col>
+          <uni-col :span="4" class="txt2 tr mt2">
+            {{ item.finished_investment_percent }}%
+          </uni-col>
 				</uni-row>
 				<uni-row>
-					<uni-col :span="5" class="mt2">
-						投资进度：
-					</uni-col>
-					<uni-col :span="13">
-						<progress :percent="item.finished_investment_percent" stroke-width="6" activeColor="#CBA65B" class="mt8"/>
-					</uni-col>
-					<uni-col :span="6" class="txt2 tr">
-						{{ item.finished_investment_percent }}%
+					<uni-col :span="24">
+            <view class="btn-invest">立即投资</view>
 					</uni-col>
 				</uni-row>
 			</view>
@@ -203,94 +203,95 @@ export default {
 </script>
 
 <style lang="less" scoped>
-	.container{
-		background: #fff;
-	}
-	.section1{
-		.swiper {
-			height: 400rpx;
-			.swiper-item {
-				display: block;
-				height: 100%;
-			}
-		}
-	}
-	.section2 {
-    border-bottom: 20rpx solid #F0F0F0;
-		.grid-item-box {
-			flex: 1;
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			justify-content: center;
-		}
-		.image {
-			width: 80rpx;
-			height: 80rpx;
-		}
-		.text{
-			margin-top: 10rpx;
-		}
-	}
-	.section3{		
-		.video{
-			width: 100%;
-      height: 386rpx;
-			margin-top: 20rpx;
-		}
-	}
-	.section4{
-		.event-title{
-			padding: 30rpx 0;
-			color: #CBA65B;
-			font-size: 32rpx;
-      text-align: center;
+@import '@/static/css/theme.less';
+.container{
+  background: #fff;
+}
+.section1{
+  .swiper {
+    height: 400rpx;
+    .swiper-item {
+      display: block;
+      height: 100%;
+    }
+  }
+}
+.section2 {
+  border-bottom: 20rpx solid #F0F0F0;
+  .grid-item-box {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .image {
+    width: 80rpx;
+    height: 80rpx;
+  }
+  .text{
+    margin-top: 10rpx;
+  }
+}
+.section3{		
+  .video{
+    width: 100%;
+    height: 386rpx;
+    margin-top: 20rpx;
+  }
+}
+.section4{
+  .event-title{
+    padding: 30rpx 0;
+    color: #CBA65B;
+    font-size: 32rpx;
+    text-align: center;
+    font-weight: bold;
+  }
+  .event-head{
+    height: 380rpx;
+    overflow: hidden;
+    .event-img{
+      width: 100%;
+      height: 100%;
+      border-radius: 8px;
+    }
+  }
+  .event-body{
+    padding: 20rpx 20rpx 30rpx 20rpx;
+    .item-title{
+      font-size: 32rpx;
+      color: #000;
+      margin-bottom: 20rpx;
       font-weight: bold;
-		}
-		.event-head{
-			height: 380rpx;
-			overflow: hidden;
-			.event-img{
-				width: 100%;
-        height: 100%;
-        border-radius: 8px;
-			}
-		}
-		.event-body{
-			padding: 20rpx 20rpx 30rpx 20rpx;
-			.item-title{
-				font-size: 32rpx;
-				color: #000;
-				margin-bottom: 20rpx;
-				font-weight: bold;
-			}
-			.verify{
-				width: 50rpx;
-				height: 50rpx;
-        margin-right: 20rpx;
-				vertical-align: middle;
-			}
-			.txt1{
-				color: #ff2200;
-				font-size: 32rpx;
-        font-weight: bold;
-			}
-			.txt2{
-				color: #000;
-				font-size: 32rpx;
-        font-weight: bold;
-			}
-			.btn-invest{
-				display: inline-block;
-				width: 180rpx;
-				height: 60rpx;
-        line-height: 60rpx;
-        text-align: center;
-        color: #BA682E;
-        font-size: 28rpx;
-        border-radius: 10rpx;
-        background: linear-gradient(#F5D0B5, #E7B08F);
-			}
-		}
-	}
+    }
+    .verify{
+      width: 50rpx;
+      height: 50rpx;
+      margin-right: 20rpx;
+      vertical-align: middle;
+    }
+    .txt1{
+      color: #ff2200;
+      font-size: 32rpx;
+      font-weight: bold;
+    }
+    .txt2{
+      color: #000;
+      font-size: 32rpx;
+      font-weight: bold;
+    }
+    .btn-invest{
+      display: inline-block;
+      width: 100%;
+      height: 70rpx;
+      line-height: 70rpx;
+      text-align: center;
+      font-size: 28rpx;
+      border-radius: 10rpx;
+      color: @default;
+      background: @warning;
+    }
+  }
+}
 </style>

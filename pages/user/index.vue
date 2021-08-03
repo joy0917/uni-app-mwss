@@ -1,49 +1,43 @@
 <!-- 会员中心 -->
 <template>
 	<view class="container">
-		<!-- 用户信息 -->
-		<view class="top">
-			<view>
-				<text>我的账号：</text><text>{{ user_info.phone || '-' }}</text>
-			</view>
-			<view>
-				<text>用户等级：</text><text class="red fb">{{ user_info.vip && user_info.vip.name || '-' }}</text>
-			</view>
-		</view>
 		<!-- 账户信息 -->
 		<view class="card">
-			<view class="one">
-				<text>账户余额(元)</text>
-			</view>
-			<view class="two">
-				<text class="gray fb">{{ getThousand(user_info.account_balance) }}</text>
-			</view>
-			<!-- <view class="normal">
-				<text>成长值：{{ '-' }}</text>
-			</view> -->
-			<view class="normal">
-				<text>我的积分：<text class="gray fb">{{ getThousand(user_info.integral) }}</text></text>
-			</view>
-			<view class="normal">
-				<text>我的ID：{{ user_info.id || '-' }}</text>
-			</view>
-			<view class="last">
-				<view class="left">
-					<text>待收利息(元)</text>
-					<text class="num gray fb">{{ getThousand(user_info.rest_bonus) }}</text>
-				</view>
-				<view class="right">
-					<text>待收本金(元)</text>
-					<text class="num gray fb">{{ getThousand(user_info.capital) }}</text>
-				</view>
-			</view>
+      <uni-row class="card-top">
+        <uni-col :span="12">
+          <view class="f16">账户</view>
+          <view class="warning">{{ user_info.phone || '-' }}</view>
+        </uni-col>
+        <uni-col :span="12">
+          <view class="f16">余额</view>
+          <view class="warning">{{ getThousand(user_info.account_balance) }}元</view>
+        </uni-col>
+      </uni-row>
+      <uni-row>
+        <uni-col :span="12" class="mb5">
+          <view class="f14">账户等级</view>
+          <view class="warning">{{ user_info.vip && user_info.vip.name || '-' }}</view>
+        </uni-col>
+        <uni-col :span="12" class="mb5">
+          <view class="f14">账户积分</view>
+          <view class="warning">{{ getThousand(user_info.integral) }}</view>
+        </uni-col>
+        <uni-col :span="12">          
+					<view class="f14">待收利息</view>
+					<view class="warning">{{ getThousand(user_info.rest_bonus) }}元</view>
+        </uni-col>
+        <uni-col :span="12">
+					<view class="f14">待收本金</view>
+					<view class="warning">{{ getThousand(user_info.capital) }}元</view>
+        </uni-col>
+      </uni-row>
 		</view>
     <uni-row class="mt15 mb15">
       <uni-col :span="12">
         <button type="default" class="card-btn" @click="gotoPay">充值</button>
       </uni-col>
       <uni-col :span="12">
-        <button type="default" class="card-btn" @click="gotoWithdraw">提现</button>
+        <button type="default" class="card-btn card-btn1" @click="gotoWithdraw">提现</button>
       </uni-col>
     </uni-row>
 		<!-- 九宫格 -->
@@ -180,113 +174,73 @@ export default {
 </script>
 
 <style scoped lang="less">
-	.container {
-		padding: 24rpx 40rpx;
-		box-sizing: border-box;
-		min-height: calc(100vh - 188rpx);
-		.top {
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-			font-size: 28rpx;
-			color: #cca75d;
-			line-height: 40rpx;
-		}
-		.card {
-			margin-top: 42rpx;
-			width: 100%;
-      background-image: linear-gradient(#fff6f0, #ffbc93);
-			border-radius: 36rpx;
-			padding: 36rpx 0;
-			text-align: center;
-			.one {
-				color: #875A00;
-				font-size: 28rpx;
-				line-height: 40rpx;
-			}
-			.two {
-				color: #000;
-				font-size: 36rpx;
-				line-height: 50rpx;
-				margin-top: 10rpx;
-				margin-bottom: 6rpx;
-			}
-			.normal {
-				color: #875A00;
-				// font-size: 24rpx;
-				line-height: 34rpx;
-				margin-top: 2rpx;
-			}
-			.last {
-				margin-top: 18rpx;
-				padding: 0 108rpx;
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
-				.left {
-					color: #875A00;
-					// font-size: 20rpx;
-					line-height: 28rpx;
-					display: flex;
-					flex-direction: column;
-				}
-				.right {
-					color: #875A00;
-					// font-size: 20rpx;
-					line-height: 28rpx;
-					display: flex;
-					flex-direction: column;
-				}
-				.num {
-					font-size: 36rpx;
-					line-height: 50rpx;
-				}
-			}
-		}
-    .card-btn{
-			border-radius: 16rpx;
-      color: #BA682E;
-      background: linear-gradient(#F5D0B5, #E7B08F);
-      width: 80%;
-      height: 70rpx;
-      line-height: 70rpx;
-      font-size: 14px;
+@import '@/static/css/theme.less';
+.container {
+  padding: 24rpx 40rpx;
+  box-sizing: border-box;
+  min-height: calc(100vh - 188rpx);
+  .card {
+    background: #ffffff;
+    border-radius: 15px;
+    padding: 15px;
+    margin-top: 10px;
+    text-align: center;
+    .warning{
+      color: @warning;
     }
-		.grid{
-			margin-top: 24rpx;
-			padding: 18rpx 0;
-			background: #fff;
-			border-radius: 36rpx;
-			.grid-item-box {
-				flex: 1;
-				display: flex;
-				flex-direction: column;
-				align-items: center;
-				justify-content: center;
-				padding: 20rpx 0;
-			}
-			.image {
-				width: 88rpx;
-				height: 88rpx;
-			}
-			.text{
-				// font-size: 20rpx;
-				margin-top: 10rpx;
-				line-height: 28rpx;
-				color: #000;
-			}
-		}
-		.logout {
-			border-radius: 16rpx;
-      color: #BA682E;
-      background: linear-gradient(#F5D0B5, #E7B08F);
-			width: 100%;
-			height: 104rpx;
-			line-height: 104rpx;
-			font-size: 32rpx;
-			text-align: center;
-			border: none;
-			margin-top: 22rpx;
-		}
-	}
+    .card-top{
+      padding-bottom: 7px;
+      margin-bottom: 7px;
+      border-bottom: 1px solid #eee;
+    }
+  }
+  .card-btn{
+    border-radius: 16rpx;
+    width: 80%;
+    height: 70rpx;
+    line-height: 70rpx;
+    font-size: 14px;
+    color: @default;
+    background: @warning;
+    &.card-btn1{
+      background: @info;
+    }
+  }
+  .grid{
+    margin-top: 24rpx;
+    padding: 18rpx 0;
+    background: #fff;
+    border-radius: 36rpx;
+    .grid-item-box {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20rpx 0;
+    }
+    .image {
+      width: 88rpx;
+      height: 88rpx;
+    }
+    .text{
+      // font-size: 20rpx;
+      margin-top: 10rpx;
+      line-height: 28rpx;
+      color: #000;
+    }
+  }
+  .logout {
+    border-radius: 16rpx;
+    width: 100%;
+    height: 45px;
+    line-height: 45px;
+    font-size: 32rpx;
+    text-align: center;
+    border: none;
+    margin-top: 22rpx;
+    color: @default;
+    background: @warning;
+  }
+}
 </style>

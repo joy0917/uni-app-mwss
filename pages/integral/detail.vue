@@ -56,34 +56,35 @@
 </script>
 
 <style lang="less" scoped>
-	.detail{
-		font-size: 28rpx;
-		.detail-img{
-			width: 100%;
-		}
-		.detail-head{
-			padding: 10rpx 40rpx;
-		}
-		.detail-btn{
-      display: inline-block;
-      width: 180rpx;
-      height: 60rpx;
-      line-height: 60rpx;
-      text-align: center;
-      font-size: 28rpx;
-      border-radius: 10rpx;
-      color: #BA682E;
-      background: linear-gradient(#F5D0B5, #E7B08F);
-		}
-		.detail-title{
-			padding: 20rpx 0;
-			margin-bottom: 20rpx;
-			color: #CCA85E;
-			text-align: center;
-			border-bottom: 2px solid #CCA85E;
-		}
-		.detail-body{
-			padding: 10rpx 40rpx;
-		}
-	}
+@import '@/static/css/theme.less';
+.detail{
+  font-size: 28rpx;
+  .detail-img{
+    width: 100%;
+  }
+  .detail-head{
+    padding: 10rpx 40rpx;
+  }
+  .detail-btn{
+    display: inline-block;
+    width: 180rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    text-align: center;
+    font-size: 28rpx;
+    border-radius: 10rpx;
+    color: @default;
+    background: @warning;
+  }
+  .detail-title{
+    padding: 20rpx 0;
+    margin-bottom: 20rpx;
+    color: #CCA85E;
+    text-align: center;
+    border-bottom: 2px solid #CCA85E;
+  }
+  .detail-body{
+    padding: 10rpx 40rpx;
+  }
+}
 </style>

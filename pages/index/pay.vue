@@ -102,25 +102,26 @@ export default {
 </script>
 
 <style lang="less" scoped>
-	.pay{
-		background: #F0F0F0;
-		font-size: 24rpx;
-    .blue{
-      font-weight: bold;
-      padding: 0 10rpx;
-      font-size: 28rpx;
-    }
-    .submitbtn{
-      color: #BA682E;
-      background: linear-gradient(#F5D0B5, #E7B08F);
-    }
-    .pay-btn{
-      margin-top: 20rpx;
-      padding: 30rpx;
-      background: #fff;
-    }
-    /deep/.uni-forms-item__inner{
-      padding-bottom: 0;
-    }
-	}
+@import '@/static/css/theme.less';
+.pay{
+  background: #F0F0F0;
+  font-size: 24rpx;
+  .blue{
+    font-weight: bold;
+    padding: 0 10rpx;
+    font-size: 28rpx;
+  }
+  .submitbtn{
+    color: @default;
+    background: @warning;
+  }
+  .pay-btn{
+    margin-top: 20rpx;
+    padding: 30rpx;
+    background: #fff;
+  }
+  /deep/.uni-forms-item__inner{
+    padding-bottom: 0;
+  }
+}
 </style>

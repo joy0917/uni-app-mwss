@@ -82,14 +82,15 @@ export default {
 </script>
 
 <style lang="less" scoped>
+@import '@/static/css/theme.less';
 .invest{
   padding: 10rpx 0;
 	.invest-form{
 		padding: 0 30rpx;
 	}
   .submitbtn{
-    color: #BA682E;
-    background: linear-gradient(#F5D0B5, #E7B08F);
+    color: @default;
+    background: @warning;
   }
   /deep/.uni-numbox{
     width: 320rpx;

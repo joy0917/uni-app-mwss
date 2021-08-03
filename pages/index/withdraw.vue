@@ -117,42 +117,43 @@ export default {
 </script>
 
 <style lang="less" scoped>
-	.withdraw{
-		background: #F0F0F0;
-		font-size: 24rpx;
-    .blue{
-      font-weight: bold;
-      padding: 0 10rpx;
-      font-size: 28rpx;
+@import '@/static/css/theme.less';
+.withdraw{
+  background: #F0F0F0;
+  font-size: 24rpx;
+  .blue{
+    font-weight: bold;
+    padding: 0 10rpx;
+    font-size: 28rpx;
+  }
+  .submitbtn{
+    color: @default;
+    background: @warning;
+  }
+  .withdraw-btn{
+    padding: 30rpx;
+    background: #fff;
+  }
+  .bordernone{
+    /deep/ .input-value-border{
+      border: none;
     }
-    .submitbtn{
-      color: #BA682E;
-      background: linear-gradient(#F5D0B5, #E7B08F);
-    }
-    .withdraw-btn{
-      padding: 30rpx;
-      background: #fff;
-    }
-    .bordernone{
-      /deep/ .input-value-border{
-        border: none;
+  }
+  /deep/ .uni-forms-item__inner{
+    padding-bottom: 0;
+  }
+  .link{
+    text-decoration: underline;
+    color: #2d8cf0;
+    font-size: 24rpx;
+  }
+  /deep/ .uni-scroll-view-content{
+    .item:last-child{
+      text-align: center;
+      .item-text{
+        color: #007aff;
       }
     }
-    /deep/ .uni-forms-item__inner{
-      padding-bottom: 0;
-    }
-    .link{
-      text-decoration: underline;
-      color: #2d8cf0;
-      font-size: 24rpx;
-    }
-    /deep/ .uni-scroll-view-content{
-      .item:last-child{
-        text-align: center;
-        .item-text{
-          color: #007aff;
-        }
-      }
-    }
-	}
+  }
+}
 </style>

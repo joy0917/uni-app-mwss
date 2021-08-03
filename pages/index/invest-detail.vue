@@ -35,7 +35,7 @@
 			<uni-list-item>
 				<template slot="body">
 					<view class="w">
-						<progress :percent="baseForm.finished_investment_percent" stroke-width="15" activeColor="#CBA65B" show-info/>
+						<progress :percent="baseForm.finished_investment_percent" stroke-width="15" activeColor="#ff8a00" show-info/>
 					</view>
 				</template>
 			</uni-list-item>
@@ -84,52 +84,52 @@ export default {
 </script>
 
 <style lang="less" scoped>
-	.detail{
-		background: #f8f8f8;
-		font-size: 28rpx;
-		.detail-img{
+@import '@/static/css/theme.less';
+.detail{
+  background: #f8f8f8;
+  font-size: 28rpx;
+  .detail-img{
+    width: 100%;
+    height: 375rpx;
+  }
+  .detail-head{
+    .uni-list-item{
+      background: #f8f8f8;
+    }
+    .detail-item{
+      background: #fff;
       width: 100%;
-			height: 375rpx;
-		}
-		.detail-head{
-			.uni-list-item{
-				background: #f8f8f8;
-			}
-			.detail-item{
-				background: #fff;
-				width: 100%;
-				text-align: center;
-				padding: 20rpx 0;
-				.t1{
-					font-size: 24rpx;
-					color: #929292;
-				}
-			}
-		}
-		.detail-body{
-			padding: 40rpx 40rpx 110rpx 40rpx;
-      /deep/ table{
-        border-collapse: collapse;
-        td{
-          border: 1px solid #000;
-          padding: 4rpx 10rpx;
-        }
-      }
-		}
-    .detail-btn{
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      color: #fff;
-      height: 100rpx;
-      line-height: 100rpx;
       text-align: center;
-      font-size: 32rpx;
-      color: #BA682E;
-      background: linear-gradient(#F5D0B5, #E7B08F);
+      padding: 20rpx 0;
+      .t1{
+        font-size: 24rpx;
+        color: #929292;
+      }
     }
-    .border{
-      border-bottom: 2px solid #56B0E9;
+  }
+  .detail-body{
+    padding: 40rpx 40rpx 110rpx 40rpx;
+    /deep/ table{
+      border-collapse: collapse;
+      td{
+        border: 1px solid #000;
+        padding: 4rpx 10rpx;
+      }
     }
-	}
+  }
+  .detail-btn{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 100rpx;
+    line-height: 100rpx;
+    text-align: center;
+    font-size: 32rpx;
+    color: @default;
+    background: @warning;
+  }
+  .border{
+    border-bottom: 2px solid #56B0E9;
+  }
+}
 </style>

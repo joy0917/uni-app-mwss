@@ -52,7 +52,7 @@ export default {
         { icon1: '/static/icon1/about/2.png', icon2: '/static/icon2/about/1.png', icon3: '/static/icon3/about/2.png', icon4: '/static/icon4/about/2.png',  text: '如何投资', url: '/pages/subpages/index?text=1' },
         { icon1: '/static/icon1/about/3.png', icon2: '/static/icon2/about/1.png', icon3: '/static/icon3/about/3.png', icon4: '/static/icon4/about/3.png',  text: '如何充值', url: '/pages/about/pay' },
         { icon1: '/static/icon1/about/4.png', icon2: '/static/icon2/about/1.png', icon3: '/static/icon3/about/4.png', icon4: '/static/icon4/about/4.png',  text: '常见问题', url: '/pages/subpages/index?text=8' },
-        { icon1: '/static/icon1/about/5.png', icon2: '/static/icon2/about/1.png', icon3: '/static/icon3/about/5.png', icon4: '/static/icon4/about/5.png',  text: '公司公告', url: '/pages/subpages/index?text=9' }
+        { icon1: '/static/icon1/about/5.png', icon2: '/static/icon2/about/1.png', icon3: '/static/icon3/about/5.png', icon4: '/static/icon4/about/5.png',  text: '平台公告', url: '/pages/about/article' }
       ],
       gridList2: [
         { icon1: '/static/icon1/about/6.png', icon2: '/static/icon2/about/1.png', icon3: '/static/icon3/about/6.png', icon4: '/static/icon4/about/6.png',  text: '关于我们', url: '/pages/about/about' },

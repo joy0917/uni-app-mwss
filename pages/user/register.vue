@@ -175,125 +175,126 @@ export default {
 </script>
 
 <style scoped lang="less">
-	.register {
-		box-sizing: border-box;
-		padding: 24rpx 36rpx;
-		background: #fff;
-    .logintab{
-      width: 60%;
-      margin: 32px auto;
+@import '@/static/css/theme.less';
+.register {
+  box-sizing: border-box;
+  padding: 24rpx 36rpx;
+  background: #fff;
+  .logintab{
+    width: 60%;
+    margin: 32px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .tabitem{
+      text-align: center;
+      padding: 8px 0;
+      width: 50%;
+      color: #bbb;
+      font-size: 20px;
+      &.active{
+        color: #222;
+        border-bottom: 2px solid #222
+      }
+    }
+  }
+  .registerForm {
+    .registerItem {
+      background: #F6F6F6;
+      border-radius: 18rpx;
+      height: 108rpx;
+      box-sizing: border-box;
+      padding: 0 40rpx;
+      line-height: 108rpx;
       display: flex;
+      justify-content: space-between;
       align-items: center;
-      justify-content: center;
-      .tabitem{
-        text-align: center;
-        padding: 8px 0;
-        width: 50%;
-        color: #bbb;
-        font-size: 20px;
-        &.active{
-          color: #222;
-          border-bottom: 2px solid #222
+      margin-bottom: 40rpx;
+      position: relative;
+      .registerItemLabel {
+        width: 172rpx;
+        text {
+          font-size: 28rpx;
+        }
+      }
+      .three {
+        letter-spacing:0.33em;
+      }
+      .registerItemInput {
+        width: calc(100% - 172rpx);
+        * {
+          border: none;
+        }
+      }
+      .img {
+        position: absolute;
+        width: 86rpx;
+        height: 50rpx;
+        right: 30rpx;
+        border-radius: 8rpx;
+        overflow: hidden;
+        display: block;
+      }
+      .sendSMS {
+        position: absolute;
+        font-size: 24rpx;
+        right: 30rpx;
+        color: #D3B374;
+        &::after {
+          border-color: #D3B374;
+        }
+      }
+      .sendSMS[disabled][type=default] {
+        color: rgba(0,0,0,.3);
+        background-color: #f7f7f7;
+        &::after {
+          border-color: rgba(0,0,0,.3);
         }
       }
     }
-		.registerForm {
-			.registerItem {
-				background: #F6F6F6;
-				border-radius: 18rpx;
-				height: 108rpx;
-				box-sizing: border-box;
-				padding: 0 40rpx;
-				line-height: 108rpx;
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
-				margin-bottom: 40rpx;
-				position: relative;
-				.registerItemLabel {
-					width: 172rpx;
-					text {
-						font-size: 28rpx;
-					}
-				}
-				.three {
-					letter-spacing:0.33em;
-				}
-				.registerItemInput {
-					width: calc(100% - 172rpx);
-					* {
-						border: none;
-					}
-				}
-				.img {
-					position: absolute;
-					width: 86rpx;
-					height: 50rpx;
-					right: 30rpx;
-					border-radius: 8rpx;
-					overflow: hidden;
-					display: block;
-				}
-				.sendSMS {
-					position: absolute;
-					font-size: 24rpx;
-					right: 30rpx;
-					color: #D3B374;
-					&::after {
-						border-color: #D3B374;
-					}
-				}
-				.sendSMS[disabled][type=default] {
-					color: rgba(0,0,0,.3);
-					background-color: #f7f7f7;
-					&::after {
-						border-color: rgba(0,0,0,.3);
-					}
-				}
-			}
-			.uni-btn-v {
-				button {
-					width: 80%;
-					height: 70rpx;
-					line-height: 70rpx;
-          color: #BA682E;
-          background: linear-gradient(#F5D0B5, #E7B08F);
-					border-radius: 10rpx;
-					font-size: 32rpx;
-					font-weight: 500;
-					text-align: center;
-				}
-			}
-			.registerAgreement {
-				display: flex;
-				justify-content: flex-start;
-				align-items: center;
-				font-size: 28rpx;
-				margin-top: 0;
-				margin-bottom: 30rpx;
-				position: relative;
-				&:first-child {
-					margin-top: 40rpx;
-					margin-bottom: 20rpx;
-				}
-				checkbox {
-					transform:scale(0.5)
-				}
-				navigator {
-					color: rgb(0, 122, 255);
-					position: absolute; bottom: 8rpx; left: 238rpx;
-				}
-			}
-		}
-		.bottom {
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-			margin-top: 28rpx;
-			font-size: 25rpx;
-			navigator {
-				text-decoration: underline;
-			}
-		}
-	}
+    .uni-btn-v {
+      button {
+        width: 100%;
+        height: 45px;
+        line-height: 45px;
+        border-radius: 10rpx;
+        font-size: 32rpx;
+        font-weight: 500;
+        text-align: center;
+        color: @default;
+        background: @warning;
+      }
+    }
+    .registerAgreement {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      font-size: 28rpx;
+      margin-top: 0;
+      margin-bottom: 30rpx;
+      position: relative;
+      &:first-child {
+        margin-top: 40rpx;
+        margin-bottom: 20rpx;
+      }
+      checkbox {
+        transform:scale(0.5)
+      }
+      navigator {
+        color: rgb(0, 122, 255);
+        position: absolute; bottom: 8rpx; left: 238rpx;
+      }
+    }
+  }
+  .bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 28rpx;
+    font-size: 25rpx;
+    navigator {
+      text-decoration: underline;
+    }
+  }
+}
 </style>

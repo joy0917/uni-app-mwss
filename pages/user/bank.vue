@@ -51,6 +51,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
+@import '@/static/css/theme.less';
 .bank{
   /deep/.bankcard{
     background: linear-gradient(to bottom,  #58a5e4 0%,#2b61a7 100%);
@@ -73,9 +74,9 @@ export default {
     text-align: center;
     border-radius: 10rpx;
     font-size: 28rpx;
-		background: linear-gradient(#F5D0B5, #E7B08F);
-		color: #BA682E;
 		margin: 30rpx;
+    color: @default;
+    background: @warning;
 	}
 }
 </style>
