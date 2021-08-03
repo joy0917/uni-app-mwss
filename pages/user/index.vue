@@ -179,6 +179,8 @@ export default {
   padding: 24rpx 40rpx;
   box-sizing: border-box;
   min-height: calc(100vh - 188rpx);
+  background: #F0F0F0 url('/static/image/hyzx-bg.png') no-repeat center top;
+  background-size: 100%;
   .card {
     background: #ffffff;
     border-radius: 15px;
@@ -189,8 +191,8 @@ export default {
       color: @warning;
     }
     .card-top{
-      padding-bottom: 7px;
-      margin-bottom: 7px;
+      padding-bottom: 10px;
+      margin-bottom: 10px;
       border-bottom: 1px solid #eee;
     }
   }
@@ -207,7 +209,7 @@ export default {
     }
   }
   .grid{
-    margin-top: 24rpx;
+    margin: 20px 0;
     padding: 18rpx 0;
     background: #fff;
     border-radius: 36rpx;

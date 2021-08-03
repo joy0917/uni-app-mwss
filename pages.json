@@ -52,72 +52,96 @@
 		{
 			"path": "pages/user/login",
 			"style": {
+        "navigationBarBackgroundColor": "#FA7C33",
+        "navigationBarTextStyle": "#ffffff",
 				"navigationBarTitleText": "登录"
 			}
 		},
 		{
 			"path": "pages/user/forget",
 			"style": {
+        "navigationBarBackgroundColor": "#FA7C33",
+        "navigationBarTextStyle": "#ffffff",
 				"navigationBarTitleText": "忘记密码"
 			}
 		},
 		{
 			"path": "pages/user/register",
 			"style": {
+        "navigationBarBackgroundColor": "#FA7C33",
+        "navigationBarTextStyle": "#ffffff",
 				"navigationBarTitleText": "注册"
 			}
 		},
 		{
 			"path": "pages/index/invest-detail",
 			"style": {
+        "navigationBarBackgroundColor": "#FA7C33",
+        "navigationBarTextStyle": "#ffffff",
 				"navigationBarTitleText": "投资详情"
 			}
 		},
 		{
 			"path": "pages/index/invest-order",
 			"style": {
+        "navigationBarBackgroundColor": "#FA7C33",
+        "navigationBarTextStyle": "#ffffff",
 				"navigationBarTitleText": "立即投资"
 			}
 		},
 		{
 			"path": "pages/index/calculator",
 			"style": {
+        "navigationBarBackgroundColor": "#FA7C33",
+        "navigationBarTextStyle": "#ffffff",
 				"navigationBarTitleText": "收益计算器"
 			}
 		},
 		{
 			"path": "pages/index/pay",
 			"style": {
+        "navigationBarBackgroundColor": "#FA7C33",
+        "navigationBarTextStyle": "#ffffff",
 				"navigationBarTitleText": "马上充值"
 			}
 		},
 		{
 			"path": "pages/index/pay-detail",
 			"style": {
+        "navigationBarBackgroundColor": "#FA7C33",
+        "navigationBarTextStyle": "#ffffff",
 				"navigationBarTitleText": "充值说明"
 			}
 		},
 		{
 			"path": "pages/index/pay-card",
 			"style": {
+        "navigationBarBackgroundColor": "#FA7C33",
+        "navigationBarTextStyle": "#ffffff",
 				"navigationBarTitleText": "充值说明"
 			}
 		},
 		{
 			"path": "pages/index/withdraw",
 			"style": {
+        "navigationBarBackgroundColor": "#FA7C33",
+        "navigationBarTextStyle": "#ffffff",
 				"navigationBarTitleText": "快速提现"
 			}
 		},
 		{
 			"path": "pages/index/invite",
 			"style": {
+        "navigationBarBackgroundColor": "#FA7C33",
+        "navigationBarTextStyle": "#ffffff",
 				"navigationBarTitleText": "邀请好友"
 			}
 		},
 		{
 			"path": "pages/integral/index",
 			"style": {
+        "navigationBarBackgroundColor": "#FA7C33",
+        "navigationBarTextStyle": "#ffffff",
 				"navigationBarTitleText": "积分商城",
 				"app-plus": {
 					"bounce": "vertical",
@@ -133,174 +157,232 @@
 		{
 			"path": "pages/integral/detail",
 			"style": {
+        "navigationBarBackgroundColor": "#FA7C33",
+        "navigationBarTextStyle": "#ffffff",
 				"navigationBarTitleText": "商品详情"
 			}
 		},
 		{
 			"path": "pages/integral/order",
 			"style": {
+        "navigationBarBackgroundColor": "#FA7C33",
+        "navigationBarTextStyle": "#ffffff",
 				"navigationBarTitleText": "订单详情"
 			}
 		},
 		{
 			"path": "pages/integral/log",
 			"style": {
+        "navigationBarBackgroundColor": "#FA7C33",
+        "navigationBarTextStyle": "#ffffff",
 				"navigationBarTitleText": "兑换记录"
 			}
 		},
 		{
 			"path": "pages/integral/status",
 			"style": {
+        "navigationBarBackgroundColor": "#FA7C33",
+        "navigationBarTextStyle": "#ffffff",
 				"navigationBarTitleText": "订单状态"
 			}
 		},
 		{
 			"path": "pages/user/index",
 			"style": {
+        "navigationBarBackgroundColor": "#FA7C33",
+        "navigationBarTextStyle": "#ffffff",
 				"navigationBarTitleText": "会员中心"
 			}
 		},
 		{
 			"path": "pages/user/log-fund",
 			"style": {
+        "navigationBarBackgroundColor": "#FA7C33",
+        "navigationBarTextStyle": "#ffffff",
 				"navigationBarTitleText": "资金明细"
 			}
 		},
 		{
 			"path": "pages/user/log-invest",
 			"style": {
+        "navigationBarBackgroundColor": "#FA7C33",
+        "navigationBarTextStyle": "#ffffff",
 				"navigationBarTitleText": "投资记录"
 			}
 		},
 		{
 			"path": "pages/user/log-invest-detail",
 			"style": {
+        "navigationBarBackgroundColor": "#FA7C33",
+        "navigationBarTextStyle": "#ffffff",
 				"navigationBarTitleText": "投资记录详情"
 			}
 		},
 		{
 			"path": "pages/user/log-earnings",
 			"style": {
+        "navigationBarBackgroundColor": "#FA7C33",
+        "navigationBarTextStyle": "#ffffff",
 				"navigationBarTitleText": "收益记录"
 			}
 		},
 		{
 			"path": "pages/user/log-pay",
 			"style": {
+        "navigationBarBackgroundColor": "#FA7C33",
+        "navigationBarTextStyle": "#ffffff",
 				"navigationBarTitleText": "充值记录"
 			}
 		},
 		{
 			"path": "pages/user/log-withdraw",
 			"style": {
+        "navigationBarBackgroundColor": "#FA7C33",
+        "navigationBarTextStyle": "#ffffff",
 				"navigationBarTitleText": "提现记录"
 			}
 		},
 		{
 			"path": "pages/user/message",
 			"style": {
+        "navigationBarBackgroundColor": "#FA7C33",
+        "navigationBarTextStyle": "#ffffff",
 				"navigationBarTitleText": "站内信"
 			}
 		},
 		{
 			"path": "pages/user/message-detail",
 			"style": {
+        "navigationBarBackgroundColor": "#FA7C33",
+        "navigationBarTextStyle": "#ffffff",
 				"navigationBarTitleText": "站内信详情"
 			}
 		},
 		{
 			"path": "pages/user/auth",
 			"style": {
+        "navigationBarBackgroundColor": "#FA7C33",
+        "navigationBarTextStyle": "#ffffff",
 				"navigationBarTitleText": "实名认证"
 			}
 		},
 		{
 			"path": "pages/user/login-password",
 			"style": {
+        "navigationBarBackgroundColor": "#FA7C33",
+        "navigationBarTextStyle": "#ffffff",
 				"navigationBarTitleText": "修改登录密码"
 			}
 		},
 		{
 			"path": "pages/user/pay-password",
 			"style": {
+        "navigationBarBackgroundColor": "#FA7C33",
+        "navigationBarTextStyle": "#ffffff",
 				"navigationBarTitleText": "修改支付密码"
 			}
 		},
 		{
 			"path": "pages/user/bank",
 			"style": {
+        "navigationBarBackgroundColor": "#FA7C33",
+        "navigationBarTextStyle": "#ffffff",
 				"navigationBarTitleText": "银行卡列表"
 			}
 		},
 		{
 			"path": "pages/user/bind",
 			"style": {
+        "navigationBarBackgroundColor": "#FA7C33",
+        "navigationBarTextStyle": "#ffffff",
 				"navigationBarTitleText": "银行卡绑定"
 			}
 		},
 		{
 			"path": "pages/user/set",
 			"style": {
+        "navigationBarBackgroundColor": "#FA7C33",
+        "navigationBarTextStyle": "#ffffff",
 				"navigationBarTitleText": "账户安全"
 			}
 		},
 		{
 			"path": "pages/user/agreement",
 			"style": {
+        "navigationBarBackgroundColor": "#FA7C33",
+        "navigationBarTextStyle": "#ffffff",
 				"navigationBarTitleText": "用户协议"
 			}
 		},
 		{
 			"path": "pages/user/privacy",
 			"style": {
+        "navigationBarBackgroundColor": "#FA7C33",
+        "navigationBarTextStyle": "#ffffff",
 				"navigationBarTitleText": "隐私协议"
 			}
 		},
 		{
 			"path": "pages/about/index",
 			"style": {
+        "navigationBarBackgroundColor": "#FA7C33",
+        "navigationBarTextStyle": "#ffffff",
 				"navigationBarTitleText": "关于我们"
 			}
 		},
 		{
 			"path": "pages/about/pay",
 			"style": {
+        "navigationBarBackgroundColor": "#FA7C33",
+        "navigationBarTextStyle": "#ffffff",
 				"navigationBarTitleText": "如何充值"
 			}
 		},
 		{
 			"path": "pages/about/about",
 			"style": {
+        "navigationBarBackgroundColor": "#FA7C33",
+        "navigationBarTextStyle": "#ffffff",
 				"navigationBarTitleText": "关于我们"
 			}
 		},
 		{
 			"path": "pages/about/article",
 			"style": {
+        "navigationBarBackgroundColor": "#FA7C33",
+        "navigationBarTextStyle": "#ffffff",
 				"navigationBarTitleText": "平台公告"
 			}
 		},
 		{
 			"path": "pages/about/article-detail",
 			"style": {
+        "navigationBarBackgroundColor": "#FA7C33",
+        "navigationBarTextStyle": "#ffffff",
 				"navigationBarTitleText": "公告详情"
 			}
 		},
 		{
 			"path": "pages/about/risk",
 			"style": {
+        "navigationBarBackgroundColor": "#FA7C33",
+        "navigationBarTextStyle": "#ffffff",
 				"navigationBarTitleText": "风控机构"
 			}
 		},
 		{
 			"path": "pages/service/index",
 			"style": {
+        "navigationBarBackgroundColor": "#FA7C33",
+        "navigationBarTextStyle": "#ffffff",
 				"navigationBarTitleText": "在线客服"
 			}
 		},
 		{
       "path" : "pages/subpages/index",
 			"style": {
+        "navigationBarBackgroundColor": "#FA7C33",
+        "navigationBarTextStyle": "#ffffff",
 				"navigationBarTitleText": "加载中"
 			}
     }
