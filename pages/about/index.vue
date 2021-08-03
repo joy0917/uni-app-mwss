@@ -38,6 +38,18 @@
 				</uni-grid-item>
 			</uni-grid>
 		</view>
+		<!-- 九宫格 -->
+		<view class="about-title">平台公告</view>
+		<view class="grid">
+			<uni-grid :column="4" :highlight="false" :showBorder="false" @change="gridChange4">
+				<uni-grid-item v-for="(item, index) in gridList4" :index="index" :key="index">
+					<view class="grid-item-box">
+						<image :src="item.icon4" class="image"/>
+						<view class="text">{{ item.text }}</view>
+					</view>
+				</uni-grid-item>
+			</uni-grid>
+		</view>
 	</view>
 </template>
 
@@ -51,8 +63,7 @@ export default {
         { icon1: '/static/icon1/about/1.png', icon2: '/static/icon2/about/1.png', icon3: '/static/icon3/about/1.png', icon4: '/static/icon4/about/1.png',  text: '如何注册', url: '/pages/subpages/index?text=0' },
         { icon1: '/static/icon1/about/2.png', icon2: '/static/icon2/about/1.png', icon3: '/static/icon3/about/2.png', icon4: '/static/icon4/about/2.png',  text: '如何投资', url: '/pages/subpages/index?text=1' },
         { icon1: '/static/icon1/about/3.png', icon2: '/static/icon2/about/1.png', icon3: '/static/icon3/about/3.png', icon4: '/static/icon4/about/3.png',  text: '如何充值', url: '/pages/about/pay' },
-        { icon1: '/static/icon1/about/4.png', icon2: '/static/icon2/about/1.png', icon3: '/static/icon3/about/4.png', icon4: '/static/icon4/about/4.png',  text: '常见问题', url: '/pages/subpages/index?text=8' },
-        { icon1: '/static/icon1/about/5.png', icon2: '/static/icon2/about/1.png', icon3: '/static/icon3/about/5.png', icon4: '/static/icon4/about/5.png',  text: '平台公告', url: '/pages/about/article' }
+        { icon1: '/static/icon1/about/4.png', icon2: '/static/icon2/about/1.png', icon3: '/static/icon3/about/4.png', icon4: '/static/icon4/about/4.png',  text: '常见问题', url: '/pages/subpages/index?text=8' }
       ],
       gridList2: [
         { icon1: '/static/icon1/about/6.png', icon2: '/static/icon2/about/1.png', icon3: '/static/icon3/about/6.png', icon4: '/static/icon4/about/6.png',  text: '关于我们', url: '/pages/about/about' },
@@ -66,7 +77,12 @@ export default {
       ],
       gridList3: [
         { icon1: '/static/icon1/about/14.png', icon2: '/static/icon2/about/14.png', icon3: '/static/icon3/about/14.png', icon4: '/static/icon4/about/14.png',  text: '联系我们', url: '/pages/subpages/index?text=22' },
-        { icon1: '/static/icon1/about/15.png', icon2: '/static/icon2/about/15.png', icon3: '/static/icon3/about/15.png', icon4: '/static/icon4/about/15.png',  text: '在线客服', url: '/pages/service/index' }
+        { icon1: '/static/icon1/about/6.png', icon2: '/static/icon2/about/1.png', icon3: '/static/icon3/about/6.png', icon4: '/static/icon4/about/6.png',  text: '隐私政策', url: '/pages/subpages/index?text=23' },
+        { icon1: '/static/icon1/about/5.png', icon2: '/static/icon2/about/1.png', icon3: '/static/icon3/about/5.png', icon4: '/static/icon4/about/5.png',  text: '用户协议', url: '/pages/subpages/index?text=24' },
+        { icon1: '/static/icon1/about/8.png', icon2: '/static/icon2/about/8.png', icon3: '/static/icon3/about/8.png', icon4: '/static/icon4/about/8.png',  text: '防疫工作', url: '/pages/subpages/index?text=25' }
+      ],
+      gridList4: [
+        { icon1: '/static/icon1/about/5.png', icon2: '/static/icon2/about/1.png', icon3: '/static/icon3/about/5.png', icon4: '/static/icon4/about/5.png',  text: '平台公告', url: '/pages/about/article' }
       ]
     }
   },
@@ -92,6 +108,11 @@ export default {
           uni.navigateTo({ url: item.url })
           break;
       }
+    },
+    gridChange4 (e) { // 九宫格切换
+      let { index } = e.detail
+      let item = this.gridList4[index]
+      uni.navigateTo({ url: item.url })
     },
     carouselList () { // 广告图
       carouselList({

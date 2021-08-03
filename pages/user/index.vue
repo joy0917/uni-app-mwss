@@ -240,7 +240,7 @@ export default {
     border: none;
     margin-top: 22rpx;
     color: @default;
-    background: @warning;
+    background: @error;
   }
 }
 </style>
