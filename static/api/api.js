@@ -18,6 +18,14 @@ export const articleList = data => {
 	})
 }
 
+// 公告详情
+export const articleDetail = data => {
+	return request({
+		url: `/api/frontend/article/detail/${data}`,
+		method: 'GET'
+	})
+}
+
 // 投资项目列表
 export const investProject = data => {
 	return request({

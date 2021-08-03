@@ -275,6 +275,18 @@
 			}
 		},
 		{
+			"path": "pages/about/article",
+			"style": {
+				"navigationBarTitleText": "平台公告"
+			}
+		},
+		{
+			"path": "pages/about/article-detail",
+			"style": {
+				"navigationBarTitleText": "公告详情"
+			}
+		},
+		{
 			"path": "pages/about/risk",
 			"style": {
 				"navigationBarTitleText": "风控机构"
