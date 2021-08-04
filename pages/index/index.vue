@@ -24,7 +24,7 @@
 		</view>
 		<!-- 公告和视频 -->
 		<view class="container section3">
-			<uni-notice-bar :show-icon="true" :scrollable="true" :single="true" :speed="5" color="#FF0000" :text="articleData"/>
+			<uni-notice-bar :show-icon="true" :scrollable="true" :single="true" :speed="5" color="#FF0000" :text="articleData.content" @click="gotoDetail2(articleData.id)"/>
 			<video
         v-if="videoOption.is_show"
         class="video"
@@ -114,7 +114,7 @@ export default {
 				{ icon4: '/static/icon4/home/7.png', text: '邀请好友', limit: true, url: '/pages/index/invite' },
 				{ icon4: '/static/icon4/home/8.png', text: '在线客服', limit: false, url: '/pages/service/index' }
 			],
-      articleData: '',
+      articleData: {},
 			eventType: {
 				'STABLE': '稳健精选',
 				'ACTIVITY': '活动专享',
@@ -126,6 +126,9 @@ export default {
 	methods: {
     gotoDetail (id) {
       uni.navigateTo({ url: `/pages/index/invest-detail?id=${id}` })
+    },
+    gotoDetail2 (id) {
+      uni.navigateTo({ url: `/pages/about/article-detail?id=${id}` })
     },
 		gridChange (e) { // 九宫格切换
 			let { index } = e.detail
@@ -163,7 +166,10 @@ export default {
         current_page: 1
       }).then(res => {
         let data = res.response.data
-        this.articleData = data[0] && data[0].content && data[0].content.replace(/<.*?>/g, "")
+        this.articleData = {
+          content: data[0] && data[0].content && data[0].content.replace(/<.*?>/g, ""),
+          id:  data[0] && data[0].id
+        }
 			})
 		},
 		investProject () { // 投资项目

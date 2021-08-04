@@ -4,10 +4,10 @@
 	<view class="auth">
 		<uni-forms ref="form" :modelValue="editForm" :rules="rules" label-width="80">
 			<uni-forms-item label="姓名" required name="real_name">
-				<uni-easyinput :clearable="!user_info.real_name" trim :inputBorder="false" v-model="editForm.real_name" placeholder="请输入" :disabled="!!user_info.real_name"/>
+				<uni-easyinput :clearable="!user_info.real_name" trim :inputBorder="false" v-model="editForm.real_name" placeholder="请输入姓名" :disabled="!!user_info.real_name"/>
 			</uni-forms-item>
 			<uni-forms-item label="身份证号码" required name="id_code">
-				<uni-easyinput :clearable="!user_info.real_name" trim :inputBorder="false" v-model="editForm.id_code" placeholder="请输入" :disabled="!!user_info.real_name"/>
+				<uni-easyinput :clearable="!user_info.real_name" trim :inputBorder="false" v-model="editForm.id_code" placeholder="请输入身份证号码" :disabled="!!user_info.real_name"/>
 			</uni-forms-item>
       <button type="primary" class="submitbtn" @click="submitForm" v-if="!user_info.real_name">立即认证</button>
 		</uni-forms>

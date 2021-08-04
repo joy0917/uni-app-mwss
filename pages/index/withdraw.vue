@@ -3,22 +3,27 @@
 	<view class="withdraw">
     <uni-forms ref="form" :modelValue="editForm" label-width="10">
       <uni-group class="mb10">
-        <uni-forms-item label="银行卡" :label-width="50" name="card_id">
-          <uni-data-picker placeholder="请选择" popup-title="银行卡" :localdata="cardData" v-model="editForm.card_id" @change="pickerChange" class="bordernone">
-				  </uni-data-picker>
-        </uni-forms-item>
-        <!-- <view class="link" @click="gotoBind">前去绑定银行卡</view> -->
+        <label>
+          <uni-forms-item label="银行卡" :label-width="50" name="card_id">
+            <uni-data-picker v-slot:default="{data, error, options}" placeholder="请选择银行卡" popup-title="银行卡" :localdata="cardData" v-model="editForm.card_id" @change="pickerChange" class="bordernone">
+              <view v-if="data.length">
+                <view class="f14 mb5">{{ chooseCardInfo.bank }} - {{ chooseCardInfo.name }}</view>
+                <view class="f14">{{ chooseCardInfo.text }}</view>
+              </view>
+            </uni-data-picker>
+          </uni-forms-item>
+        </label>
       </uni-group>
       <uni-group class="mb10">
         <uni-title type="h3" title="提现金额"></uni-title>
         <uni-forms-item label="¥" name="cash_amount">
-          <uni-easyinput type="number" :inputBorder="false" trim v-model="editForm.cash_amount" placeholder="请输入" />
+          <uni-easyinput type="number" :inputBorder="false" trim v-model="editForm.cash_amount" placeholder="请输入提现金额" />
         </uni-forms-item>
         <view>可提现金额<text class="blue">{{ user_info.account_balance }}</text>元</view>
       </uni-group>
       <uni-group class="mb10">
         <uni-forms-item label="交易密码" name="pay_password" :label-width="60">
-          <uni-easyinput type="password" autocomplete="off" :inputBorder="false" trim v-model="editForm.pay_password" placeholder="请输入" />
+          <uni-easyinput type="password" autocomplete="off" :inputBorder="false" trim v-model="editForm.pay_password" placeholder="请输入交易密码" />
         </uni-forms-item>
       </uni-group>
       <view class="withdraw-btn">
@@ -39,6 +44,7 @@ export default {
         cash_amount: null,
         pay_password: null
       },
+      chooseCardInfo: {},
       cardData: []
     }
   },
@@ -49,19 +55,19 @@ export default {
   },
   methods: {
     pickerChange (e) {
+      this.chooseCardInfo = e.detail.value[0]
       if (e.detail.value[0].value === '银行卡') {
         uni.navigateTo({ url: '/pages/user/bank' })
       }
     },
-    // gotoBind () {
-    //   uni.navigateTo({ url: '/pages/user/bank' })
-    // },
     bankcardList () {
       bankcardList(this.user_info.id).then(res => {
         this.cardData = res.response.map(res => {
           return {
             value: res.id,
-            text: res.bank_card_code
+            text: res.bank_card_code,
+            name: res.real_name,
+            bank: res.bank_name
           }
         })
         this.cardData.push({

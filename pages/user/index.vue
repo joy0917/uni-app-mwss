@@ -5,20 +5,21 @@
 		<view class="card">
       <uni-row class="card-top">
         <uni-col :span="12">
-          <view class="f14">账户</view>
-          <view class="warning">{{ user_info.phone || '-' }}</view>
+          <text class="f14">账户：</text>
+          <text class="warning f16">{{ user_info.phone || '-' }}</text>
         </uni-col>
         <uni-col :span="12">
-          <view class="f14">余额</view>
-          <view class="warning">{{ getThousand(user_info.account_balance) }}元</view>
+          <text class="f14">余额：</text>
+          <text class="warning f16">{{ getThousand(user_info.account_balance) }}</text>
+          <text>元</text>
         </uni-col>
       </uni-row>
       <uni-row>
-        <uni-col :span="12" class="mb5">
+        <uni-col :span="12" class="mb10">
           <view class="f14">账户等级</view>
           <view class="warning">{{ user_info.vip && user_info.vip.name || '-' }}</view>
         </uni-col>
-        <uni-col :span="12" class="mb5">
+        <uni-col :span="12" class="mb10">
           <view class="f14">账户积分</view>
           <view class="warning">{{ getThousand(user_info.integral) }}</view>
         </uni-col>
@@ -185,7 +186,7 @@ export default {
     background: #ffffff;
     border-radius: 15px;
     padding: 15px;
-    margin-top: 10px;
+    margin-top: 20px;
     text-align: center;
     .warning{
       color: @warning;

@@ -3,18 +3,17 @@
 	<view class="bind">
 		<uni-forms ref="form" :modelValue="editForm" label-width="80">
 			<uni-forms-item label="所属银行" required name="bank_name">
-				<!-- <uni-easyinput clearable trim :inputBorder="false" v-model="editForm.bank_name" placeholder="请输入"/> -->
-        <uni-data-picker placeholder="请选择" popup-title="所属银行" :localdata="typeData" v-model="editForm.bank_name" class="bordernone">
+        <uni-data-picker placeholder="请选择所属银行" popup-title="所属银行" :localdata="typeData" v-model="editForm.bank_name" class="bordernone">
         </uni-data-picker>
 			</uni-forms-item>
 			<uni-forms-item label="卡号" required name="bank_card_code">
-				<uni-easyinput clearable trim :inputBorder="false" v-model="editForm.bank_card_code" placeholder="请输入"/>
+				<uni-easyinput clearable trim :inputBorder="false" v-model="editForm.bank_card_code" placeholder="请输入卡号"/>
 			</uni-forms-item>
 			<uni-forms-item label="开户行" required name="deposit_bank">
-				<uni-easyinput clearable trim :inputBorder="false" v-model="editForm.deposit_bank" placeholder="请输入"/>
+				<uni-easyinput clearable trim :inputBorder="false" v-model="editForm.deposit_bank" placeholder="请输入开户行"/>
 			</uni-forms-item>
 			<uni-forms-item label="姓名" required name="real_name">
-				<uni-easyinput clearable trim :inputBorder="false" v-model="editForm.real_name" placeholder="请输入"/>
+				<uni-easyinput clearable trim :inputBorder="false" v-model="editForm.real_name" placeholder="请输入姓名"/>
 			</uni-forms-item>
       <button type="primary" class="submitbtn" @click="submitForm">立即绑定</button>
 		</uni-forms>
@@ -62,6 +61,10 @@ export default {
       }
       if (!this.editForm.bank_card_code) {
 				uni.showToast({ title: '请输入卡号', icon: 'none' })
+        return
+      }
+      if (this.editForm.bank_card_code.length < 16) {
+				uni.showToast({ title: '卡号有误，请重新输入', icon: 'none' })
         return
       }
       if (!this.editForm.deposit_bank) {
