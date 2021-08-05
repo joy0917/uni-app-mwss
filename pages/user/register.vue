@@ -30,14 +30,14 @@
 				<view class="registerItemLabel">
 					<text class="three">验证码：</text>
 				</view>
-				<uni-easyinput class="registerItemInput" :maxlength="4" :inputBorder="false" type="text" v-model="graphicalCAPTCHA"></uni-easyinput>
+				<uni-easyinput class="registerItemInput" :maxlength="4" :inputBorder="false" type="text" v-model="graphicalCAPTCHA" placeholder="请输入验证码"></uni-easyinput>
 				<image class="img" :src="imageData" @click="createGraphCode"></image>
 			</view>
 			<view class="registerItem">
 				<view class="registerItemLabel">
 					<text>短信验证：</text>
 				</view>
-				<uni-easyinput class="registerItemInput" :inputBorder="false" type="text" v-model="editForm.code" maxlength="6"></uni-easyinput>
+				<uni-easyinput class="registerItemInput" :inputBorder="false" type="text" v-model="editForm.code" maxlength="6" placeholder="请输入短信验证码"></uni-easyinput>
 				<button v-if="!smsLoading" class="sendSMS" type="default" @click="sendSms">发送验证码</button>
 				<button v-else class="sendSMS" type="default" :disabled="true">{{ smsTime }}秒后重发</button>
 			</view>
@@ -45,7 +45,7 @@
 				<view class="registerItemLabel">
 					<text class="three">推荐码：</text>
 				</view>
-				<uni-easyinput class="registerItemInput" placeholder="推荐码" :inputBorder="false" type="text" v-model="editForm.recommend_by"></uni-easyinput>
+				<uni-easyinput class="registerItemInput" placeholder="请输入推荐码" :inputBorder="false" type="text" v-model="editForm.recommend_by"></uni-easyinput>
 			</view>
 			<view class="registerAgreement">
 				<uni-data-checkbox multiple wrap selectedTextColor="black" v-model="value" :localdata="range"></uni-data-checkbox>

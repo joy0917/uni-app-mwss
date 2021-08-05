@@ -2,12 +2,12 @@
 <template>
 	<view class="pay">
     <view class="pay-card">
-      <view class="f14 mb5">
+      <view class="f13 mb5">
         <text class="vm">账号余额(元)</text>
         <img class="vm ml5" src="/static/image/eye1.png" width="20" @click="closeEye = true" v-if="!closeEye">
         <img class="vm ml5" src="/static/image/eye2.png" width="20" @click="closeEye = false" v-else>
       </view>
-      <view class="f16">
+      <view class="f17">
         <text v-if="!closeEye">{{ user_info.account_balance }}</text>
         <text v-else>******</text>
       </view>

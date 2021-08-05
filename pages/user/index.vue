@@ -10,7 +10,7 @@
         </uni-col>
         <uni-col :span="12">
           <text class="f14">余额：</text>
-          <text class="warning f16">{{ getThousand(user_info.account_balance) }}</text>
+          <text class="warning f16 fb">{{ getThousand(user_info.account_balance) }}</text>
           <text>元</text>
         </uni-col>
       </uni-row>
@@ -25,11 +25,11 @@
         </uni-col>
         <uni-col :span="12">          
 					<view class="f14">待收利息</view>
-					<view class="warning">{{ getThousand(user_info.rest_bonus) }}元</view>
+					<view><span class="warning f14 fb">{{ getThousand(user_info.rest_bonus) }}</span>元</view>
         </uni-col>
         <uni-col :span="12">
 					<view class="f14">待收本金</view>
-					<view class="warning">{{ getThousand(user_info.capital) }}元</view>
+					<view><span class="warning f14 fb">{{ getThousand(user_info.capital) }}</span>元</view>
         </uni-col>
       </uni-row>
 		</view>

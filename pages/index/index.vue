@@ -24,7 +24,7 @@
 		</view>
 		<!-- 公告和视频 -->
 		<view class="container section3">
-			<uni-notice-bar :show-icon="true" :scrollable="true" :single="true" :speed="5" color="#FF0000" :text="articleData.content" @click="gotoDetail2(articleData.id)"/>
+			<uni-notice-bar :show-icon="true" :scrollable="true" :single="true" :speed="5" color="#FF0000" :text="articleData.content" @click="gotoDetail2"/>
 			<video
         v-if="videoOption.is_show"
         class="video"
@@ -127,8 +127,15 @@ export default {
     gotoDetail (id) {
       uni.navigateTo({ url: `/pages/index/invest-detail?id=${id}` })
     },
-    gotoDetail2 (id) {
-      uni.navigateTo({ url: `/pages/about/article-detail?id=${id}` })
+    gotoDetail2 () {
+      uni.showModal({
+        title: this.articleData.title,
+        content: this.articleData.content,
+        showCancel: false,
+        success: () => {
+          // uni.navigateTo({ url: `/pages/about/article-detail?id=${id}` })
+        }
+      })
     },
 		gridChange (e) { // 九宫格切换
 			let { index } = e.detail
@@ -165,10 +172,10 @@ export default {
         per_page: 1,
         current_page: 1
       }).then(res => {
-        let data = res.response.data
+        let data = res.response.data[0] || {}
         this.articleData = {
-          content: data[0] && data[0].content && data[0].content.replace(/<.*?>/g, ""),
-          id:  data[0] && data[0].id
+          ...data,
+          content: data && data.content && data.content.replace(/<.*?>/g, ""),
         }
 			})
 		},
@@ -279,12 +286,12 @@ export default {
     }
     .txt1{
       color: #ff2200;
-      font-size: 32rpx;
+      font-size: 17px;
       font-weight: bold;
     }
     .txt2{
       color: #000;
-      font-size: 32rpx;
+      font-size: 15px;
       font-weight: bold;
     }
     .btn-invest{

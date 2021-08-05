@@ -14,7 +14,7 @@
 				<view class="loginItemLabel">
 					<text>手机号：</text>
 				</view>
-				<uni-easyinput class="loginItemInput" :inputBorder="false" :maxlength="11" type="text" v-model="tel"></uni-easyinput>
+				<uni-easyinput class="loginItemInput" :inputBorder="false" :maxlength="11" type="text" v-model="tel" placeholder="请输入手机号"></uni-easyinput>
 			</view>
 			<view class="loginItem">
 				<view class="loginItemLabel">

@@ -14,7 +14,7 @@
 				<view class="registerItemLabel">
 					<text>短信验证：</text>
 				</view>
-				<uni-easyinput class="registerItemInput" :inputBorder="false" type="text" v-model="editForm.code" maxlength="6"></uni-easyinput>
+				<uni-easyinput class="registerItemInput" :inputBorder="false" type="text" v-model="editForm.code" maxlength="6" placeholder="请输入短信验证码"></uni-easyinput>
 				<button v-if="!smsLoading" class="sendSMS" type="default" @click="sendSms">发送验证码</button>
 				<button v-else class="sendSMS" type="default" :disabled="true">{{ smsTime }}秒后重发</button>
 			</view>
