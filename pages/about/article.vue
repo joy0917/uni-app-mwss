@@ -21,7 +21,7 @@ export default {
 		articleList () { // 公告列表
 			articleList({
         title: '',
-        type: '',
+        type: '平台公告',
         per_page: 100,
         current_page: 1
       }).then(res => {

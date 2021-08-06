@@ -168,7 +168,7 @@ export default {
 		articleList () { // 公告列表
 			articleList({
         title: '',
-        type: '',
+        type: '系统公告',
         per_page: 1,
         current_page: 1
       }).then(res => {
