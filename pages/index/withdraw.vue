@@ -19,7 +19,7 @@
         <uni-forms-item label="¥" name="cash_amount">
           <uni-easyinput type="number" :inputBorder="false" trim v-model="editForm.cash_amount" placeholder="请输入提现金额" />
         </uni-forms-item>
-        <view>可提现金额<text class="blue">{{ user_info.account_balance }}</text>元</view>
+        <view>可提现金额<text class="blue f16">{{ user_info.account_balance }}</text>元</view>
       </uni-group>
       <uni-group class="mb10">
         <uni-forms-item label="交易密码" name="pay_password" :label-width="60">
@@ -35,7 +35,7 @@
 
 <script>
 import { bankcardList, cashOut } from '@/static/api/api'
-import { updateUser } from '@/static/libs/common'
+import { updateUser, checkRealAuth } from '@/static/libs/common'
 export default {
   data () {
     return {
@@ -77,6 +77,9 @@ export default {
       })
     },
     submitForm () {
+      if (!checkRealAuth()) {
+        return
+      }
       if (!this.editForm.card_id) {
 				uni.showToast({ title: '请选择银行卡', icon: 'none' })
         return

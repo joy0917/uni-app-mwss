@@ -22,6 +22,7 @@
 
 <script>
 import { bindBankcard } from '@/static/api/api'
+import { checkRealAuth } from '@/static/libs/common'
 export default {
   data () {
     return {
@@ -55,6 +56,9 @@ export default {
   },
   methods: {
     submitForm () {
+      if (!checkRealAuth()) {
+        return
+      }
       if (!this.editForm.bank_name) {
 				uni.showToast({ title: '请输入所属银行', icon: 'none' })
         return

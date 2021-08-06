@@ -21,6 +21,26 @@ export const checkLogin = () => {
 }
 
 /*
+  校验实名认证
+ */
+export const checkRealAuth = () => {
+  if (store.state.user.user_info.id_code) {
+    return true
+  }
+  uni.showModal({
+    title: '提示',
+    content: '请先实名认证',
+    showCancel: false,
+    success: () => {
+      uni.navigateTo({
+        url: '/pages/user/auth'
+      })
+    }
+  })
+  return false
+}
+
+/*
   签到
  */
 export const userSignin = () => {

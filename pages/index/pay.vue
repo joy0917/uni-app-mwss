@@ -7,7 +7,7 @@
         <img class="vm ml5" src="/static/image/eye1.png" width="20" @click="closeEye = true" v-if="!closeEye">
         <img class="vm ml5" src="/static/image/eye2.png" width="20" @click="closeEye = false" v-else>
       </view>
-      <view class="f17">
+      <view class="f16">
         <text v-if="!closeEye">{{ user_info.account_balance }}</text>
         <text v-else>******</text>
       </view>
@@ -48,6 +48,7 @@
 </template>
 
 <script>
+import { checkRealAuth } from '@/static/libs/common'
 import { chargeList, userCharge } from '@/static/api/api'
 export default {
   data () {
@@ -83,6 +84,9 @@ export default {
       })
     },
     submitForm () {
+      if (!checkRealAuth()) {
+        return
+      }
       if (!this.editForm.amount) {
 				uni.showToast({ title: '请输入充值金额', icon: 'none' })
         return

@@ -24,8 +24,8 @@
 			</view>
 			<view class="loginAgreement">
 				<uni-data-checkbox multiple wrap selectedTextColor="black" v-model="value" :localdata="range"></uni-data-checkbox>
-				<navigator url="/pages/user/agreement">《用户协议》</navigator>
-				<navigator url="/pages/user/privacy" style="left: 406rpx">《隐私协议》</navigator>
+				<navigator url="/pages/subpages/index?text=24">《用户协议》</navigator>
+				<navigator url="/pages/subpages/index?text=23" style="left: 406rpx">《隐私协议》</navigator>
 			</view>
 			<view class="uni-btn-v">
 				<button @click="login">立即登录</button>
