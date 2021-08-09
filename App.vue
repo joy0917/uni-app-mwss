@@ -18,8 +18,8 @@ export default {
     }
     // #endif
     // #ifdef H5
-    if (e.query.channelCode) {
-      this.setUserChannelCode(e.query.channelCode)
+    if (e.query.channelCode || e.query.channel_code) {
+      this.setUserChannelCode(e.query.channelCode || e.query.channel_code)
     }
     // #endif
   }
