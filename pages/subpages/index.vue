@@ -2,7 +2,7 @@
 <!-- 二级页面 -->
 <template>
   <view class="subpages">
-    <image v-if="qrImg" :src="qrImg" class="qrImg"/>
+    <img v-if="qrImg" :src="qrImg" class="qrImg"/>
     <view v-else v-html="detail.content"></view>
   </view>
 </template>
