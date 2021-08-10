@@ -4,7 +4,7 @@
     <uni-forms ref="form" :modelValue="editForm" label-width="10">
       <uni-group class="mb10">
         <label>
-          <uni-forms-item label="银行卡" :label-width="50" name="card_id">
+          <uni-forms-item label="银行卡" :label-width="75" name="card_id">
             <uni-data-picker v-slot:default="{data, error, options}" placeholder="请选择银行卡" popup-title="银行卡" :localdata="cardData" v-model="editForm.card_id" @change="pickerChange" class="bordernone">
               <view v-if="data.length">
                 <view class="f14 mb5">{{ chooseCardInfo.bank }} - {{ chooseCardInfo.name }}</view>
@@ -22,7 +22,7 @@
         <view>可提现金额<text class="blue f16">{{ user_info.account_balance }}</text>元</view>
       </uni-group>
       <uni-group class="mb10">
-        <uni-forms-item label="交易密码" name="pay_password" :label-width="60">
+        <uni-forms-item label="交易密码" name="pay_password" :label-width="75">
           <uni-easyinput type="password" autocomplete="off" :inputBorder="false" trim v-model="editForm.pay_password" placeholder="请输入交易密码" />
         </uni-forms-item>
       </uni-group>
@@ -163,6 +163,15 @@ export default {
         color: #007aff;
       }
     }
+  }
+  /deep/.uni-forms-item__label .label-text{
+    font-size: 18px;
+  }
+  /deep/.uni-input-input{
+    font-size: 18px;
+  }
+  /deep/.uni-easyinput__content-input{
+    font-size: 18px;
   }
 }
 </style>
